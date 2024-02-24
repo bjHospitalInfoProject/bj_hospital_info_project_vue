@@ -170,8 +170,7 @@ const asyncRoutes = [
         meta: { title: '所有医生', icon: 'doctor' }
       }
     ]
-  }
-  ,
+  },
   {
     path: '/center',
     component: 'Layout',
@@ -181,6 +180,20 @@ const asyncRoutes = [
         name: 'Center',
         component: 'center/index',
         meta: { title: '中心管理', icon: 'center' }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: 'Layout',
+    hidden: true,
+    meta: { title: '个人信息' },
+    children: [
+      {
+        path: 'usercenter',
+        name: 'user',
+        breadcrumb: true,
+        component: 'user/usercenter'
       }
     ]
   }

@@ -33,20 +33,10 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
-  
+
   {
     path: '/login',
     component: () => import('@/views/login/index'),
-    hidden: true
-  },
-  {
-    path: '/404',
-    component: () => import('@/views/error-page/404'),
-    hidden: true
-  },
-  {
-    path: '/401',
-    component: () => import('@/views/error-page/401'),
     hidden: true
   },
   {
@@ -61,6 +51,32 @@ export const constantRoutes = [
         meta: { title: '数据大屏', icon: 'dashboard', affix: true }
       }
     ]
+  }, 
+  {
+    path: '/404',
+    hidden: true,
+    component: Layout,
+    children: [
+      {
+        path: '/404',
+        component: () => import('@/views/error-page/404'),
+        name: 'Dashboard',
+        meta: { title: '错误页面' }
+      }
+    ]
+  },
+  {
+    path: '/401',
+    hidden: true,
+    component: Layout,
+    children: [
+      {
+        path: '/401',
+        component: () => import('@/views/error-page/401'),
+        name: 'Dashboard',
+        meta: { title: '权限错误' }
+      }
+    ]
   }
 ]
 
@@ -69,7 +85,7 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  
+
 ]
 
 const createRouter = () => new Router({

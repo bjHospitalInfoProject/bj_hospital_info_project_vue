@@ -19,11 +19,12 @@
 
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-
-          <el-dropdown-item @click.native="showPersonInfoDialog">
-            个人信息
-          </el-dropdown-item>
-          <el-dropdown-item @click.native="showUpdateDialog">
+          <router-link to="/user/usercenter">
+            <el-dropdown-item>
+              个人信息
+            </el-dropdown-item>
+          </router-link>
+          <el-dropdown-item>
             修改密码
           </el-dropdown-item>
           <el-dropdown-item divided @click.native="logout">
@@ -32,11 +33,6 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-
-    <el-dialog :visible.sync="updatedialogVisible" width="30%" center :show-close="true">
-
-      
-    </el-dialog>
   </div>
 </template>
 
@@ -47,13 +43,6 @@ import Hamburger from '@/components/Hamburger'
 import Screenfull from '@/components/Screenfull'
 
 export default {
-
-  data() {
-    return {
-      updatedialogVisible: false,
-      personaldialogVisible: false,
-    };
-  },
   components: {
     Breadcrumb,
     Hamburger,
@@ -75,12 +64,6 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    },
-    showUpdateDialog() {
-      this.updatedialogVisible = true;
-    },
-    showPersonInfoDialog() {
-      this.personaldialogVisible = true;
     }
   }
 }
