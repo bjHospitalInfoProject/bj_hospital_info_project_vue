@@ -34,6 +34,8 @@
     </div>
 
     <el-dialog :visible.sync="updatedialogVisible" width="30%" center :show-close="true">
+
+      
     </el-dialog>
   </div>
 </template>
