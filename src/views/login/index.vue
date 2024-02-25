@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <el-dialog :visible.sync="dialogLoginVisible" width="60%" center :show-close="false">
+    <el-dialog :visible.sync="dialogLoginVisible" width="50%" center :show-close="false">
       <div class="login-dialog-container">
         <div class="login-image">
           <h1 class="image-title">大动脉炎外科治疗</h1>
@@ -65,12 +65,13 @@
               <el-input class="borderNone" v-model="loginInfo.region" placeholder="用户名"></el-input>
             </el-form-item>
             <el-form-item prop="phone" v-if="isregister">
-              <el-input class="borderNone" v-model="loginInfo.phone" placeholder="手机号" type="number" @input="handlePhoneInput"
-                :validate-event="false" :controls="false"></el-input>
+              <el-input class="borderNone" v-model="loginInfo.phone" placeholder="手机号" type="number"
+                @input="handlePhoneInput" :validate-event="false" :controls="false"></el-input>
             </el-form-item>
             <el-form-item prop="code" v-if="isregister">
               <el-input v-model="loginInfo.code" class=" borderNone code-input" type="number" placeholder="验证码">
-                <el-button slot="append" @click="getVerificationCode" :disabled="countdown > 0">{{ countdown > 0 ?
+                <el-button slot="append" @click="getVerificationCode" :disabled="countdown > 0">{{
+                  countdown > 0 ?
                   countdown +
                   's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
@@ -84,10 +85,10 @@
 
             </el-form-item>
             <el-form-item v-if="!isregister">
-              <span>还没有账号？ <el-link type="primary" @click="changestatus">立即注册</el-link></span>
+              <span>还没有账号？ <el-button type="text" @click="changestatus">立即注册</el-button></span>
             </el-form-item>
             <el-form-item v-if="isregister">
-              <span>已经有账号？ <el-link type="primary" @click="changestatus">去登录</el-link></span>
+              <span>已经有账号？ <el-button type="text" @click="changestatus">去登录</el-button></span>
             </el-form-item>
           </el-form>
         </div>
@@ -419,6 +420,16 @@ export default {
   border-bottom: #1681d3;
 }
 
+::v-deep .el-button.btnborderNone {
+  border: none !important;
+}
+
+
+::v-deep .el-input-group__append,
+::v-deep .el-input-group__prepend {
+    border: none !important;
+}
+
 ::v-deep .el-input {
   border: none;
   border-bottom: 1px solid #ccc;
@@ -437,6 +448,7 @@ export default {
 ::v-deep input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
 }
+
 ::v-deep input[type='number'] {
   -moz-appearance: textfield !important;
 }

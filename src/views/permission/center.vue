@@ -2,14 +2,25 @@
   <div class="app-container">
 
     <div class="filter-container">
-      <el-input v-model="listQuery.name" placeholder="姓名" style="width: 200px;" @keyup.enter.native="handleFilter" />
-
+      <!-- <el-input v-model="listQuery.name" placeholder="姓名" style="width: 200px;" @keyup.enter.native="handleFilter" />
       <el-input v-model="listQuery.tel" placeholder="手机号" style="width: 200px;" class="filter-item"
         @keyup.enter.native="handleFilter" />
 
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         搜索
-      </el-button>
+      </el-button> -->
+
+      <el-form :inline="true" :model="listQuery" class="demo-form-inline">
+        <el-form-item label="姓名">
+          <el-input v-model="listQuery.user"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="listQuery.tel"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">查询</el-button>
+        </el-form-item>
+      </el-form>
 
     </div>
 
@@ -35,7 +46,7 @@
       <el-table-column fixed="right" label="操作" width="200">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">移动小组</el-button>
-          <el-button type="text" size="small">删除</el-button>
+          <el-button type="text" @click="deleteoption" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -72,7 +83,10 @@ export default {
       total: 0,
       listQuery: {
         page: 1,
-        limit: 10
+        limit: 10,
+        user: "",
+        tel: "",
+
       }
     }
   },
@@ -80,6 +94,23 @@ export default {
     this.getList()
   },
   methods: {
+    deleteoption() {
+      this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+      }).catch(() => {
+
+      });
+    },
+    onSubmit() {
+      console.log('submit!');
+    },
     async getList() {
       this.listLoading = true
       const { data } = await fetchList(this.listQuery)
@@ -114,7 +145,7 @@ export default {
 
 <style scoped>
 .filter-container {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
   .filter-item {
     margin-left: 20px;
