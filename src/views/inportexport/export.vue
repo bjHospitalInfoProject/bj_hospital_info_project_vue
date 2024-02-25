@@ -1,85 +1,214 @@
 <template>
-  <div class="app-container">
-    <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="Activity name">
-        <el-input v-model="form.name" />
-      </el-form-item>
-      <el-form-item label="Activity zone">
-        <el-select v-model="form.region" placeholder="please select your zone">
-          <el-option label="Zone one" value="shanghai" />
-          <el-option label="Zone two" value="beijing" />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="Activity time">
-        <el-col :span="11">
-          <el-date-picker v-model="form.date1" type="date" placeholder="Pick a date" style="width: 100%;" />
-        </el-col>
-        <el-col :span="2" class="line">-</el-col>
-        <el-col :span="11">
-          <el-time-picker v-model="form.date2" type="fixed-time" placeholder="Pick a time" style="width: 100%;" />
-        </el-col>
-      </el-form-item>
-      <el-form-item label="Instant delivery">
-        <el-switch v-model="form.delivery" />
-      </el-form-item>
-      <el-form-item label="Activity type">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="Online activities" name="type" />
-          <el-checkbox label="Promotion activities" name="type" />
-          <el-checkbox label="Offline activities" name="type" />
-          <el-checkbox label="Simple brand exposure" name="type" />
-        </el-checkbox-group>
-      </el-form-item>
-      <el-form-item label="Resources">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="Sponsor" />
-          <el-radio label="Venue" />
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="Activity form">
-        <el-input v-model="form.desc" type="textarea" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">Create</el-button>
-        <el-button @click="onCancel">Cancel</el-button>
-      </el-form-item>
-    </el-form>
+  <div class="app-container export-container">
+    <el-card class="header">
+      <el-form>
+        <el-form-item>
+          <el-select v-model="fileTemplate" placeholder="请选择导出的数据" clearable @change="switchData">
+            <el-option v-for="opt in templateOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+          </el-select>
+          <el-button :disabled="!fileTemplate" class="export-btn" icon="el-icon-download" type="primary" @click="exportFile">导出</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
+
+    <el-card class="body">
+      <el-table v-if="excelData.header && excelData.results.length" height="100%" :data="excelData.results">
+        <el-table-column
+          v-for="(value, key) in excelData.header"
+          :key="value"
+          :prop="value"
+          :label="key"
+          align="center"
+        />
+      </el-table>
+      <el-empty v-else description="暂无数据" />
+    </el-card>
   </div>
 </template>
 
 <script>
+import dict from './dict'
+
 export default {
+  name: 'Export',
+
   data() {
     return {
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+      fileTemplate: '',
+      templateOptions: [
+        { label: '模板1-数据', value: 'template' }
+      ],
+      excelData: {
+        header: null,
+        results: [
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          },
+          {
+            'header1': 1,
+            'header2': 2,
+            'header3': 3
+          },
+          {
+            'header1': 4,
+            'header2': 5,
+            'header3': 6
+          }
+        ]
       }
     }
   },
+
   methods: {
-    onSubmit() {
-      this.$message('submit!')
+    switchData(value) {
+      this.excelData.header = dict[value]
+      console.log(this.excelData)
     },
-    onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
+
+    exportFile() {
+      import('/vendor/Export2Excel').then(excel => {
+        const { header, results } = this.excelData
+        const filename = this.templateOptions.find(item => item.value === this.fileTemplate).label
+        console.log(header, results)
+        excel.export_json_to_excel({
+          header: Object.keys(header),
+          data: results.map(item => Object.values(item)),
+          filename,
+          autoWidth: true,
+          bookType: 'xlsx'
+        })
       })
     }
   }
 }
 </script>
 
-<style scoped>
-.line{
-  text-align: center;
+<style scoped lang="scss">
+::v-deep {
+  .body .el-card__body {
+    height: 100%;
+  }
+}
+
+.export-container {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+
+  .export-btn {
+    margin-left: 10px;
+  }
+
+  .body {
+    height: 100%;
+    margin-top: 20px;
+  }
 }
 </style>
-

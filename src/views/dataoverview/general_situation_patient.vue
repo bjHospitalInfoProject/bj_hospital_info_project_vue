@@ -2,14 +2,17 @@
   <div class="app-container">
 
     <div class="filter-container">
-      <el-input v-model="listQuery.name" placeholder="姓名" style="width: 200px;" @keyup.enter.native="handleFilter" />
-
-      <el-input v-model="listQuery.tel" placeholder="手机号" style="width: 200px;" class="filter-item"
-        @keyup.enter.native="handleFilter" />
-
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-        搜索
-      </el-button>
+      <el-form :inline="true" :model="listQuery" class="demo-form-inline">
+        <el-form-item label="姓名">
+          <el-input v-model="listQuery.user"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="listQuery.tel"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="getList">查询</el-button>
+        </el-form-item>
+      </el-form>
 
     </div>
 
@@ -35,37 +38,37 @@
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
-      </el-table-column> 
+      </el-table-column>
       <el-table-column align="center" label="名族">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
-      </el-table-column> 
+      </el-table-column>
       <el-table-column align="center" label="地区">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
-      </el-table-column> 
+      </el-table-column>
       <el-table-column align="center" label="住院手术次数">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
-      </el-table-column> 
+      </el-table-column>
       <el-table-column align="center" label="手术敢于情况">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
-      </el-table-column> 
+      </el-table-column>
       <el-table-column align="center" label="重建血管数">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
-       <el-table-column align="center" label="介入手术次数">
+      <el-table-column align="center" label="介入手术次数">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
-      </el-table-column> 
+      </el-table-column>
       <el-table-column align="center" label="支架植入次数">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
@@ -195,7 +198,10 @@ export default {
       total: 0,
       listQuery: {
         page: 1,
-        limit: 10
+        limit: 10,
+        user: "",
+        tel: "",
+        centerCode: 1001
       }
     }
   },

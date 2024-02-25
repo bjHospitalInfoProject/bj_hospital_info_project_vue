@@ -43,6 +43,12 @@
         </template>
       </el-table-column>
 
+      <el-table-column align="center" label="上次登录时间">
+        <template slot-scope="{row}">
+          <span>{{ row.author }}</span>
+        </template>
+      </el-table-column>
+
       <el-table-column fixed="right" label="操作" width="200">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">移动小组</el-button>
@@ -86,7 +92,7 @@ export default {
         limit: 10,
         user: "",
         tel: "",
-
+        centerCode: 1001
       }
     }
   },

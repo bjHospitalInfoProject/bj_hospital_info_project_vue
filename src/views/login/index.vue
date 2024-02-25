@@ -114,8 +114,8 @@ export default {
       loginInfo: {
         username: 'admin',
         password: '11111',
-        model: "大动脉炎",
-        center: "北京医院中心"
+        model: "大动脉炎数据库",
+        center: "北京医院血管外科中心"
       },
       countdown: 0, // 倒计时
       dialogLoginVisible: false,//d登录弹窗的显示隐藏变量
@@ -444,6 +444,8 @@ export default {
   /* 保留底边框，可以根据需求调整颜色和样式 */
 }
 
+/**取消输入框后边的加减
+ */
 ::v-deep input::-webkit-outer-spin-button,
 ::v-deep input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
