@@ -24,6 +24,7 @@
                 <el-card class="box-card patientInfo">
                     <div slot="header" class="clearfix">
                         <span>病人一般情况</span>
+                        <el-button style="float: right;margin-top: 5px;" size="mini" type="success">编辑</el-button>
                     </div>
                     <div>
                         <el-form :inline="true" label-width="150px" :model="patientInfo">
@@ -54,6 +55,7 @@
                 <el-card class="box-card imageInfo">
                     <div slot="header" class="clearfix">
                         <span>影像学检查 - 2024-01-01-name</span>
+                        <el-button style="float: right;margin-top: 5px;" size="mini" type="success">编辑</el-button>
                     </div>
                     <div>
                         <el-form label-width="150px" :model="imageInfo">
