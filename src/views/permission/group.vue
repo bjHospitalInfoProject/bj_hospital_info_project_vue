@@ -74,7 +74,7 @@
       </el-table>
     </el-card>
 
-    <el-dialog :title="addGroupForm.id ? '编辑小组' : '创建小组'" :visible.sync="dialogvis" width="40%">
+    <el-dialog :title="addGroupForm.id ? '编辑小组' : '创建小组'" :visible.sync="dialogvis" width="50%">
       <div class="dialogBdoy">
         <el-row :gutter="20">
           <el-col :span="14">
@@ -86,32 +86,32 @@
 
             <p>初始权限</p>
 
-            <el-table size="mini" :data="grouplist" border fit highlight-current-row style="width: 100%">
+            <el-table size="mini" :data="authlist" border fit highlight-current-row style="width: 100%">
               <el-table-column align="center" label="">
                 <template slot-scope="{row}">
-                  <span>{{ row.id }}</span>
+                  <span>{{ row.name }}</span>
                 </template>
               </el-table-column>
-              <el-table-column align="center" label="预览">
+              <el-table-column align="center" width="80" label="预览">
                 <template slot-scope="{row}">
-                  <span>{{ row.id }}</span>
+                  <el-checkbox v-model="row.preview"></el-checkbox>
                 </template>
               </el-table-column>
-              <el-table-column align="center" label="编辑">
+              <el-table-column align="center" width="80" label="编辑">
                 <template slot-scope="{row}">
-                  <span>{{ row.id }}</span>
+                  <el-checkbox @change="authEditChange(row)" v-model="row.edit"></el-checkbox>
                 </template>
               </el-table-column>
-              <el-table-column align="center" label="删除">
+              <el-table-column align="center" width="80" label="删除">
                 <template slot-scope="{row}">
-                  <span>{{ row.id }}</span>
+                  <el-checkbox v-model="row.del"></el-checkbox>
                 </template>
               </el-table-column>
             </el-table>
           </el-col>
           <el-col :span="10">
-            <el-table size="mini" :data="grouplist" border fit highlight-current-row style="width: 100%">
-              <el-table-column align="center" type="selection">
+            <el-table size="mini" :data="userlist" border fit highlight-current-row style="width: 100%">
+              <el-table-column align="center"  width="40" type="selection">
               </el-table-column>
               <el-table-column align="center" label="姓名">
                 <template slot-scope="{row}">
@@ -141,12 +141,27 @@ export default {
     return {
       grouplist: [{}],
       addGroupForm: {},
-      dialogvis: false
+      dialogvis: false,
+      userlist:[],
+      authlist:[
+        {
+          name:'手术信息 | 模板名',
+          // auth:['preview','edit','del'],
+          preview:0,
+          edit:0,
+          del:0
+        }
+      ]
     }
   },
   methods: {
     addGroup() {
       this.dialogvis = true;
+    },
+    authEditChange(data){
+      if(data.edit){
+        data.preview = true
+      }
     }
   }
 }
