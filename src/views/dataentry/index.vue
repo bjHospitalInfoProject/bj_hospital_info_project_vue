@@ -6,7 +6,7 @@
                     <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false">
                         <div slot-scope="{ node, data }" :title="node.label"
                             :class="'custom-tree-node tree-node-' + node.data.zindex">
-                            <el-input :disabled="editVis" class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
+                            <el-input class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
                                 @change="treeInputChange(node)" v-model="addTreeText"></el-input>
                             <!-- @blur="treeInputChange(node)" -->
                             <p v-else class="custom-tree-node-text">{{ node.label }}</p>

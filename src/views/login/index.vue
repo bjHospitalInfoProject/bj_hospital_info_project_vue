@@ -357,7 +357,7 @@ export default {
 }
 
 .code-input {
-  width: calc(100% 110px);
+  width: calc(100%);
   /* 调整输入框宽度，留出按钮的宽度 */
 }
 
