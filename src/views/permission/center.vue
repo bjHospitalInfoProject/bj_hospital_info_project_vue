@@ -60,6 +60,102 @@
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
       @pagination="getList" />
 
+
+    <el-dialog title="移动小组" :visible.sync="dialogvis" width="50%">
+      <div class="dialogBdoy">
+        <el-row :gutter="20">
+          <el-col :span="11">
+            <el-form label-width="0" :model="addGroupForm">
+
+              <div style="display: flex; justify-content: left; align-items: center;">
+                <span style="color: rgb(43, 86, 226);">目前小组</span>
+              </div>
+              <el-form-item style="margin: 0px 0;width:100%;" label="">
+                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.name"></el-input>
+              </el-form-item>
+
+              <el-form-item style="margin-top: 20px;">
+                <el-table size="mini" :data="authlist" border fit highlight-current-row style="width: 100%">
+                  <el-table-column align="center" label="模版名称">
+                    <template slot-scope="{row}">
+                      <span>{{ row.name }}</span>
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" width="80" label="预览">
+                    <template slot-scope="{row}">
+                      <el-checkbox disabled :checked="row.preview == 1"></el-checkbox>
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" width="80" label="编辑">
+                    <template slot-scope="{row}">
+                      <el-checkbox disabled :checked="row.edit == 1"></el-checkbox>
+
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" width="80" label="删除">
+                    <template slot-scope="{row}">
+                      <el-checkbox disabled :checked="row.del == 1"></el-checkbox>
+                    </template>
+                  </el-table-column>
+                </el-table>
+              </el-form-item>
+
+            </el-form>
+
+
+          </el-col>
+
+          <el-col :span="2" style="display: flex; align-items: center; justify-content: center; height: 300px">
+            <img style="width:90%" src="@/assets/images/jiantou.png" alt="">
+          </el-col>
+          <el-col :span="11">
+            <el-form label-width="0px" :model="addGroupForm">
+
+              <div style="display: flex; justify-content: left; align-items: center;">
+                <span style="color: rgb(43, 226, 110);font-weight: 1000;">目标小组</span>
+              </div>
+              <el-form-item style="margin: 0px 0;width:100%;" label="">
+                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.name"></el-input>
+              </el-form-item>
+
+              <el-form-item style="margin-top: 20px;">
+                <el-table size="mini" :data="authlist" border fit highlight-current-row style="width: 100%">
+                  <el-table-column align="center" label="模版名称">
+                    <template slot-scope="{row}">
+                      <span>{{ row.name }}</span>
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" width="80" label="预览">
+                    <template slot-scope="{row}">
+                      <el-checkbox disabled :checked="row.preview == 1"></el-checkbox>
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" width="80" label="编辑">
+                    <template slot-scope="{row}">
+                      <el-checkbox disabled :checked="row.edit == 1"></el-checkbox>
+
+                    </template>
+                  </el-table-column>
+                  <el-table-column align="center" width="80" label="删除">
+                    <template slot-scope="{row}">
+                      <el-checkbox disabled :checked="row.del == 1"></el-checkbox>
+                    </template>
+                  </el-table-column>
+                </el-table>
+              </el-form-item>
+
+            </el-form>
+
+
+          </el-col>
+        </el-row>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="small" @click="dialogvis = false">取 消</el-button>
+        <el-button size="small" type="primary" @click="dialogvis = false">保 存</el-button>
+      </span>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -93,7 +189,45 @@ export default {
         user: "",
         tel: "",
         centerCode: 1001
-      }
+      },
+      addGroupForm: {},
+      dialogvis: false,
+      authlist: [
+        {
+          name: '手术信息 | 模板名',
+          // auth:['preview','edit','del'],
+          preview: 1,
+          edit: 1,
+          del: 0
+        },
+        {
+          name: '影像学检查 | 模版名',
+          // auth:['preview','edit','del'],
+          preview: 1,
+          edit: 1,
+          del: 1
+        }, {
+          name: '随访记录 | 模板名',
+          // auth:['preview','edit','del'],
+          preview: 0,
+          edit: 0,
+          del: 0
+        }
+        , {
+          name: '血样本 | 模板名',
+          // auth:['preview','edit','del'],
+          preview: 1,
+          edit: 0,
+          del: 0
+        }
+        , {
+          name: '冷冻组织 | 模板名',
+          // auth:['preview','edit','del'],
+          preview: 1,
+          edit: 1,
+          del: 1
+        }
+      ]
     }
   },
   created() {
@@ -129,21 +263,10 @@ export default {
       })
       this.listLoading = false
     },
-    cancelEdit(row) {
-      row.title = row.originalTitle
-      row.edit = false
-      this.$message({
-        message: 'The title has been restored to the original value',
-        type: 'warning'
-      })
-    },
-    confirmEdit(row) {
-      row.edit = false
-      row.originalTitle = row.title
-      this.$message({
-        message: 'The title has been edited',
-        type: 'success'
-      })
+    //更换小组的点击
+    handleClick(row) {
+      this.dialogvis = true;
+      console.log(row)
     }
   }
 }

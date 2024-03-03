@@ -45,10 +45,9 @@
 
       <el-table-column align="center" label="操作" width="300px">
         <template slot-scope="{row}">
-          <el-tag type="success" size="medium" @click="">同意</el-tag>
-          <el-tag style="margin-left: 20px;" size="medium" type="danger">拒绝</el-tag>
-
-
+          <el-button type="primary" round size="mini" @click="deleteoption">编辑</el-button>
+          <el-button type="success" round size="mini" @click="agreeOption">同意</el-button>
+          <el-button type="danger" round size="mini" @click="disagreeOption">拒绝</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -105,7 +104,7 @@ export default {
       })
       this.listLoading = false
     },
-    cancelEdit(row) {
+    agreeOption(row) {
       row.title = row.originalTitle
       row.edit = false
       this.$message({
@@ -113,7 +112,7 @@ export default {
         type: 'warning'
       })
     },
-    confirmEdit(row) {
+    disagreeOption(row) {
       row.edit = false
       row.originalTitle = row.title
       this.$message({

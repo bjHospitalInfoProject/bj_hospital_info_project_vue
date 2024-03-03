@@ -111,7 +111,7 @@
                         </el-row>
                     </el-col>
                     <el-col :span="4" style="text-align: center;">
-                        <img style="width:90%" src="@/assets/images/a12368b55eb1b9a1c6de6d9ca039ea8.png" alt="">
+                        <img style="width:90%" src="@/assets/images/headInfo.png" alt="">
                     </el-col>
                     <el-col :span="10">
                         <el-row>
