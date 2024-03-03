@@ -2,40 +2,61 @@
   <div class="app-container">
 
     <div class="filter-container">
-      <el-input v-model="listQuery.name" placeholder="姓名" style="width: 200px;" @keyup.enter.native="handleFilter" />
-
-      <el-input v-model="listQuery.tel" placeholder="手机号" style="width: 200px;" class="filter-item"
-        @keyup.enter.native="handleFilter" />
-
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-        搜索
-      </el-button>
+      <el-form :inline="true" :model="listQuery" class="demo-form-inline">
+        <el-form-item label="姓名">
+          <el-input v-model="listQuery.user"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="listQuery.tel"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="getList">查询</el-button>
+        </el-form-item>
+      </el-form>
 
     </div>
 
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
-      <el-table-column align="center" label="姓名">
+      <el-table-column align="center" label="血液冻存样本ID">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="所在小组">
+      <el-table-column align="center" label="血液样本采集时间">
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="手机号">
+      <el-table-column align="center" label="目前血浆样本管数">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
-
-      <el-table-column fixed="right" label="操作" width="200">
-        <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">移动小组</el-button>
-          <el-button type="text" size="small">删除</el-button>
+      <el-table-column align="center" label="目前白膜层样本管数">
+        <template slot-scope="{row}">
+          <span>{{ row.author }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="已有实验结果">
+        <template slot-scope="{row}">
+          <span>{{ row.author }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="当前保存位置">
+        <template slot-scope="{row}">
+          <span>{{ row.author }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="来源住院手术信息ID">
+        <template slot-scope="{row}">
+          <span>{{ row.author }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="备注">
+        <template slot-scope="{row}">
+          <span>{{ row.author }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -72,7 +93,10 @@ export default {
       total: 0,
       listQuery: {
         page: 1,
-        limit: 10
+        limit: 10,
+        user: "",
+        tel: "",
+        centerCode: 1001
       }
     }
   },
@@ -91,22 +115,6 @@ export default {
         return v
       })
       this.listLoading = false
-    },
-    cancelEdit(row) {
-      row.title = row.originalTitle
-      row.edit = false
-      this.$message({
-        message: 'The title has been restored to the original value',
-        type: 'warning'
-      })
-    },
-    confirmEdit(row) {
-      row.edit = false
-      row.originalTitle = row.title
-      this.$message({
-        message: 'The title has been edited',
-        type: 'success'
-      })
     }
   }
 }
