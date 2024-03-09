@@ -30,7 +30,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column  label="上次登录时间">
+      <el-table-column label="上次登录时间">
         <template slot-scope="{row}">
 
           <span>{{ row.status }}</span>
@@ -38,8 +38,8 @@
       </el-table-column>
 
       <el-table-column align="center" label="操作" width="200px">
-        <template slot-scope="{row}">
-          <el-button type="text" round size="small" @click="deleteoption">修改</el-button>
+        <template slot-scope="scope">
+          <el-button type="text" round size="small" @click="updateoption(scope.row)">修改</el-button>
 
           <el-button type="text" round size="small" @click="deleteoption">删除</el-button>
         </template>
@@ -48,6 +48,19 @@
 
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
       @pagination="getList" />
+
+    <el-dialog title="更改数据库中心权限" :visible.sync="dialogVisiable" width="30%" center>
+      <el-form label-width="120px">
+        <el-form-item label="权限选择">
+          <el-cascader :options="options" :props="props" clearable :separator="customSeparator"
+            v-model="selectedOptions"></el-cascader>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisiable = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisiable = false">确 定</el-button>
+      </span>
+    </el-dialog>
 
   </div>
 </template>
@@ -79,7 +92,40 @@ export default {
       listQuery: {
         page: 1,
         limit: 10
-      }
+      },
+      dialogVisiable: false,
+      props: { multiple: true },
+      options: [{
+        value: 1,
+        label: '东南',
+        children: [{
+          value: 2,
+          label: '上海',
+        }, {
+          value: 7,
+          label: '江苏',
+        }, {
+          value: 12,
+          label: '浙江',
+        }]
+      },
+      {
+        value: 2,
+        label: '东南',
+        children: [{
+          value: 2,
+          label: '上海',
+        }, {
+          value: 7,
+          label: '江苏',
+        }, {
+          value: 12,
+          label: '浙江',
+        }]
+      }],
+      customSeparator: '   --->  ',
+      selectedOptions: [],
+
     }
   },
   created() {
@@ -98,21 +144,26 @@ export default {
       })
       this.listLoading = false
     },
-    agreeOption(row) {
-      row.title = row.originalTitle
-      row.edit = false
-      this.$message({
-        message: 'The title has been restored to the original value',
+    deleteoption() {
+      this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
         type: 'warning'
-      })
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+      }).catch(() => {
+
+      });
     },
-    disagreeOption(row) {
-      row.edit = false
-      row.originalTitle = row.title
-      this.$message({
-        message: 'The title has been edited',
-        type: 'success'
-      })
+    updateoption(row) {
+      this.dialogVisiable = true;
+
+    },
+    updateSubmit() {
+
     }
   }
 }
@@ -127,5 +178,9 @@ export default {
   position: absolute;
   right: 15px;
   top: 10px;
+}
+
+.el-cascader {
+  width: 100%;
 }
 </style>

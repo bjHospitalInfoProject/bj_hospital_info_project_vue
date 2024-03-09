@@ -1459,18 +1459,18 @@
 
           <el-row>
             <el-col :span="5">
-              <div>
+              <div class="centerInfo">
                 结核抗体快速卡试验：
               </div>
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3" placeholder="请输入内容" >
+                <el-input disabled="true" type="textarea" :rows="3">
                 </el-input>
-
               </div>
             </el-col>
           </el-row>
+
 
         </el-tab-pane>
         <el-tab-pane label="肿瘤标志物" name="s">定时任务补偿</el-tab-pane>
@@ -1575,7 +1575,11 @@ export default {
 }
 
 .el-row {
-
+  margin-right: 20px;
   margin-bottom: 15px;
+}
+
+.centerInfo {
+  margin-top: 10px;
 }
 </style>

@@ -30,7 +30,7 @@
 
       <el-table-column class-name="status-col" label="数据库选择">
         <template slot-scope="{row}">
-          <el-tag :type="row.status | statusFilter">
+          <el-tag :type="row.status">
             {{ row.status }}
           </el-tag>
         </template>
@@ -44,16 +44,46 @@
       </el-table-column>
 
       <el-table-column align="center" label="操作" width="300px">
-        <template slot-scope="{row}">
-          <el-button type="primary" round size="mini" @click="deleteoption">编辑</el-button>
-          <el-button type="success" round size="mini" @click="agreeOption">同意</el-button>
-          <el-button type="danger" round size="mini" @click="disagreeOption">拒绝</el-button>
+        <template slot-scope="scope">
+
+          <div v-if="scope.row.id != 1">
+
+            <el-button type="success" round size="mini" @click="openAgreeDialogOption(scope.row)">同意</el-button>
+            <el-button type="danger" round size="mini" @click="disagreeOption(scope.row)">拒绝</el-button>
+          </div>
+
+          <div v-else>
+            <el-tag :type="scope.row.status | scope.statusFilter">
+              {{ scope.row.status }}
+            </el-tag>
+          </div>
         </template>
+
+
       </el-table-column>
     </el-table>
 
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
       @pagination="getList" />
+
+
+    <el-dialog title="审批数据库中心权限" :visible.sync="dialogVisiable" width="30%" center>
+      <el-form label-width="120px" :model="form">
+        <el-form-item label="权限选择">
+          <el-cascader :options="options" :props="props" clearable :separator="customSeparator"
+            v-model="form.centerIds"></el-cascader>
+        </el-form-item>
+        <el-form-item label="审批意见">
+          <el-input type="textarea" :rows="4" placeholder="请输入内容" v-model="form.handingOpinions">
+          </el-input>
+
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisiable = false">取 消</el-button>
+        <el-button type="primary" @click="agreeOption">确 定</el-button>
+      </span>
+    </el-dialog>
 
   </div>
 </template>
@@ -85,7 +115,45 @@ export default {
       listQuery: {
         page: 1,
         limit: 10
-      }
+      },
+      dialogVisiable: false,
+      props: { multiple: true },
+      options: [{
+        value: 1,
+        label: '东南',
+        children: [{
+          value: 2,
+          label: '上海',
+        }, {
+          value: 7,
+          label: '江苏',
+        }, {
+          value: 12,
+          label: '浙江',
+        }]
+      },
+      {
+        value: 2,
+        label: '东南',
+        children: [{
+          value: 2,
+          label: '上海',
+        }, {
+          value: 7,
+          label: '江苏',
+        }, {
+          value: 12,
+          label: '浙江',
+        }]
+      }],
+      customSeparator: '   --->  ',
+
+      form: {
+        centerIds: [],
+        handingOpinions: "",
+        status: 1,
+        userApplyId: ""
+      },
     }
   },
   created() {
@@ -104,22 +172,23 @@ export default {
       })
       this.listLoading = false
     },
-    agreeOption(row) {
-      row.title = row.originalTitle
-      row.edit = false
-      this.$message({
-        message: 'The title has been restored to the original value',
-        type: 'warning'
-      })
+    openAgreeDialogOption(row) {
+      this.dialogVisiable = true;
+      this.$data.form = {
+        selectedOptions: [],
+        handingOpinions: "",
+        status: 1,
+        userApplyId: ""
+      };
     },
     disagreeOption(row) {
-      row.edit = false
-      row.originalTitle = row.title
-      this.$message({
-        message: 'The title has been edited',
-        type: 'success'
-      })
-    }
+
+    },
+    agreeOption() {
+      this.dialogVisiable = false;
+
+      console.log(this.form)
+    },
   }
 }
 </script>
@@ -133,5 +202,9 @@ export default {
   position: absolute;
   right: 15px;
   top: 10px;
+}
+
+.el-cascader {
+  width: 100%;
 }
 </style>
