@@ -98,9 +98,9 @@ const asyncRoutes = [
     component: 'Layout',
     children: [
       {
-        path: 'index',
+        path: 'indexlist',
         name: 'Dataentry',
-        component: 'dataentry/index',
+        component: 'dataentry/indexlist',
         meta: { title: '数据录入', icon: 'datainsert' }
       }
     ]
@@ -194,6 +194,20 @@ const asyncRoutes = [
         name: 'user',
         breadcrumb: true,
         component: 'user/usercenter'
+      }
+    ]
+  },
+  {
+    path: '/dataentry/',
+    component: 'Layout',
+    hidden: true,
+    meta: { title: '详情信息' },
+    children: [
+      {
+        path: 'index',
+        name: 'dataentryDetail',
+        breadcrumb: true,
+        component: 'dataentry/index'
       }
     ]
   }

@@ -29,6 +29,11 @@ import BarChart from './components/BarChart'
 
 
 export default {
+
+  mounted() {
+    let userId = this.$route.query.name;
+    console.log('用户ID:', userId); // 输出：用户ID: 123
+  },
   name: 'DashboardAdmin',
   components: {
     PanelGroup,

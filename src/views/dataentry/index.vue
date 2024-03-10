@@ -33,23 +33,26 @@
                     <div>
                         <el-form :inline="true" label-width="150px" :model="patientInfo">
                             <el-form-item label="姓名:">
-                                <el-input :disabled="editVis" style="width:200px" size="mini" v-model="patientInfo.name"></el-input>
+                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                    v-model="patientInfo.name"></el-input>
                             </el-form-item>
                             <el-form-item label="距离上次手术时间:">
-                                <el-date-picker :disabled="editVis" style="width:200px" size="mini" v-model="patientInfo.operativeTime"
-                                    type="month" placeholder="选择月">
+                                <el-date-picker :disabled="editVis" style="width:200px" size="mini"
+                                    v-model="patientInfo.operativeTime" type="month" placeholder="选择月">
                                 </el-date-picker>
                             </el-form-item>
-                          
+
                             <el-form-item label="既往就诊医院:">
-                                <el-select :disabled="editVis" style="width:200px" size="mini" v-model="patientInfo.hospital" placeholder="请选择">
+                                <el-select :disabled="editVis" style="width:200px" size="mini"
+                                    v-model="patientInfo.hospital" placeholder="请选择">
                                     <el-option v-for="item in options" :key="item.value" :label="item.label"
                                         :value="item.value">
                                     </el-option>
                                 </el-select>
                             </el-form-item>
                             <el-form-item label="住院号:">
-                                <el-input :disabled="editVis" style="width:200px" size="mini" v-model="patientInfo.code"></el-input>
+                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                    v-model="patientInfo.code"></el-input>
                             </el-form-item>
                             <el-form-item label="有无微信?:">
                                 <el-checkbox :disabled="editVis" v-model="patientInfo.vchat"></el-checkbox>
@@ -64,8 +67,12 @@
 </template>
   
 <script>
-import imageInfo from "./components/imageInfo.vue"
+import imageInfo from "./components/Imaging_examination_results_com.vue"
 export default {
+    mounted() {
+        let userId = this.$route.query.name;
+        console.log('用户ID----:', userId); // 输出：用户ID: 123
+    },
     data() {
         return {
             tree: [{
@@ -164,7 +171,7 @@ export default {
                 hospital: '',
                 code: ''
             },
-            editVis:true,
+            editVis: true,
             options: [],
             imageInfo: {
                 name: '',
