@@ -20,7 +20,7 @@ module.exports = [
     type: 'get',
     response: _ => {
       return {
-        code: 200,
+        code: 0,
         data: roles
       }
     }

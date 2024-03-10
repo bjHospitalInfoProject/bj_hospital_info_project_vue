@@ -1,6 +1,6 @@
 
 const tokens = {
-  admin: {
+  18301626898: {
     token: 'admin-token'
   },
   editor: {
@@ -26,7 +26,7 @@ const users = {
 module.exports = [
   // user login
   {
-    url: '/vue-admin-template/user/login',
+    url: '/user/authLogin',
     type: 'post',
     response: config => {
       const { username } = config.body
@@ -41,15 +41,28 @@ module.exports = [
       }
 
       return {
-        code: 200,
+        code: 0,
         data: token
+      }
+    }
+  },
+  // user memberRegister
+  {
+    url: '/user/memberRegister',
+    type: 'post',
+    response: config => {
+      return {
+        code: 0,
+        msg: "注册成功",
+        data: null,
+        succeeded: true
       }
     }
   },
 
   // get user info
   {
-    url: '/vue-admin-template/user/info\.*',
+    url: '/user/info\.*',
     type: 'get',
     response: config => {
       const { token } = config.query
@@ -64,7 +77,7 @@ module.exports = [
       }
 
       return {
-        code: 200,
+        code: 0,
         data: info
       }
     }
@@ -72,11 +85,11 @@ module.exports = [
 
   // user logout
   {
-    url: '/vue-admin-template/user/logout',
+    url: '/user/logout',
     type: 'post',
     response: _ => {
       return {
-        code: 200,
+        code: 0,
         data: 'success'
       }
     }

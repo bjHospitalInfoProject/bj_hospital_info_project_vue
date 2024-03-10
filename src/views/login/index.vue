@@ -20,13 +20,13 @@
           <svg-icon icon-class="loginicon" style="margin-right: 8x;" /> xx数据库 [在建..]
         </h3>
         <el-row>
-          <el-button type="primary" @click="showLoginDialog(true)" icon="el-icon-edit">注册</el-button>
-          <el-button type="primary" @click="showLoginDialog(false)" icon="el-icon-user-solid">登录</el-button>
+          <el-button type="primary" @click="showLoginDialog(0)" icon="el-icon-edit">注册</el-button>
+          <el-button type="primary" @click="showLoginDialog(1)" icon="el-icon-user-solid">登录</el-button>
         </el-row>
       </div>
     </div>
 
-    <el-dialog :visible.sync="dialogLoginVisible" width="50%" center :show-close="false">
+    <el-dialog :visible.sync="dialogLoginVisible" width="55%" center :show-close="false">
       <div class="login-dialog-container">
         <div class="login-image">
           <h1 class="image-title">大动脉炎外科治疗</h1>
@@ -38,72 +38,124 @@
           <h2 class="image-title"> <i class="el-icon-phone-outline"></i>400-110-0000</h2>
         </div>
         <div class="login-form">
-          <el-form ref="registrationLoginForm" :model="loginInfo" label-width="0px">
-            <el-form-item prop="model" v-if="!isregister">
-              <el-select class="borderNone" v-model="loginInfo.model" placeholder="数据库选择/模板选择">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item prop="center" v-if="!isregister">
-              <el-select class="borderNone" v-model="loginInfo.center" placeholder="中心选择">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item prop="username" v-if="!isregister">
-              <el-input class="borderNone" type="username" v-model="loginInfo.username" placeholder="请输入用户名"></el-input>
-            </el-form-item>
-            <el-form-item prop="password" v-if="!isregister">
-              <el-input class="borderNone" type="password" v-model="loginInfo.password" placeholder="请输入密码"></el-input>
-            </el-form-item>
 
-            <el-form-item prop="orgname" v-if="isregister">
-              <el-input class="borderNone" v-model="loginInfo.orgname" placeholder="机构名"></el-input>
+          <!-- 注册 -->
+          <el-form ref="registrationLoginForm" :rules="registerRules" :model="registerInfo" label-width="0px"
+            v-if="isregister == 0">
+
+            <el-form-item prop="nickname">
+              <el-input class="borderNone" v-model="registerInfo.nickname" placeholder="用户名"></el-input>
             </el-form-item>
-            <el-form-item prop="region" v-if="isregister">
-              <el-input class="borderNone" v-model="loginInfo.region" placeholder="用户名"></el-input>
-            </el-form-item>
-            <el-form-item prop="phone" v-if="isregister">
-              <el-input class="borderNone" v-model="loginInfo.phone" placeholder="手机号" type="number"
+            <el-form-item prop="username">
+              <el-input class="borderNone" v-model="registerInfo.username" placeholder="手机号" type="number"
                 @input="handlePhoneInput" :validate-event="false" :controls="false"></el-input>
             </el-form-item>
-            <el-form-item prop="code" v-if="isregister">
-              <el-input v-model="loginInfo.code" class=" borderNone code-input" type="number" placeholder="验证码">
+            <el-form-item prop="verifyCode">
+              <el-input v-model="registerInfo.verifyCode" class=" borderNone code-input" type="number" placeholder="验证码">
                 <el-button slot="append" @click="getVerificationCode" :disabled="countdown > 0">{{
                   countdown > 0 ?
                   countdown +
                   's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
             </el-form-item>
-
-
+            <el-form-item prop="remark">
+              <el-input class="borderNone" v-model="registerInfo.remark" placeholder="备注"></el-input>
+            </el-form-item>
             <el-form-item>
-              <el-button type="primary" v-if="!isregister"
-                @click="submitLoginForm('registrationLoginForm')">登录</el-button>
-              <el-button type="primary" v-if="isregister" @click="submitLoginForm('registrationLoginForm')">注册</el-button>
+              <el-button type="primary" :loading="registerLoading"
+                @click="submitRegisterForm('registrationLoginForm')">注册</el-button>
+            </el-form-item>
+            <el-form-item>
+              <span>已经有账号？ <el-button type="text" @click="changestatus(1)">去登录></el-button></span>
+            </el-form-item>
+          </el-form>
 
+
+          <!-- 登录 -->
+
+          <el-form ref="LoginForm" :rules="loginrules" :model="loginInfo" label-width="0px" v-if="isregister == 1">
+            <el-form-item prop="templateId">
+              <el-select class="borderNone" v-model="loginInfo.templateId" placeholder="数据库选择/模板选择">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
             </el-form-item>
-            <el-form-item v-if="!isregister">
-              <span>还没有账号？ <el-button type="text" @click="changestatus">立即注册</el-button></span>
+            <el-form-item prop="centerId">
+              <el-select class="borderNone" v-model="loginInfo.centerId" placeholder="中心选择">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
             </el-form-item>
-            <el-form-item v-if="isregister">
-              <span>已经有账号？ <el-button type="text" @click="changestatus">去登录</el-button></span>
+            <el-form-item prop="username">
+              <el-input class="borderNone" v-model="loginInfo.username" placeholder="手机号" type="number"
+                @input="handlePhoneInput" :validate-event="false" :controls="false"></el-input>
+            </el-form-item>
+            <el-form-item prop="password">
+              <el-input class="borderNone" type="password" v-model="loginInfo.password" placeholder="请输入密码"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <div style="display: flex; justify-content: right; align-items: center;">
+                <el-button type="text" @click="showLoginDialog(2)">忘记密码?</el-button>
+              </div>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" :loading="loginLoading" @click="submitLoginForm('LoginForm')">登录</el-button>
+            </el-form-item>
+            <el-form-item>
+              <span>还没有账号？ <el-button type="text" @click="changestatus(0)">立即注册></el-button></span>
+            </el-form-item>
+          </el-form>
+
+          <!-- 忘记密码 -->
+          <el-form ref="passwordForm" :rules="passwordrules" :model="passwordInfo" label-width="0px"
+            v-if="isregister == 2">
+
+            <el-form-item prop="username">
+              <el-input class="borderNone" v-model="passwordInfo.username" placeholder="手机号" type="number"
+                @input="handlePhoneInput" :validate-event="false" :controls="false"></el-input>
+            </el-form-item>
+            <el-form-item prop="verifyCode">
+              <el-input v-model="passwordInfo.verifyCode" class=" borderNone code-input" type="number" placeholder="验证码">
+                <el-button slot="append" @click="getVerificationCode" :disabled="countdown > 0">{{
+                  countdown > 0 ?
+                  countdown +
+                  's 后重新获取' : '获取验证码' }}</el-button>
+              </el-input>
+            </el-form-item>
+            <el-form-item prop="newPassword">
+              <el-input class="borderNone" show-password v-model="passwordInfo.newPassword" placeholder="新密码"></el-input>
+            </el-form-item>
+            <el-form-item prop="repeatNewPassword">
+              <el-input class="borderNone" show-password v-model="passwordInfo.repeatNewPassword"
+                placeholder="确认密码"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" :loading="updatePasswordLoading"
+                @click="submitUpdatepasswordForm('passwordForm')">提交</el-button>
+            </el-form-item>
+            <el-form-item>
+              <span>更改完成？ <el-button type="text" @click="changestatus(1)">去登录 ></el-button></span>
             </el-form-item>
           </el-form>
         </div>
       </div>
     </el-dialog>
-
   </div>
 </template>
 <script>
+
+
+import { register } from '@/api/user'
+
 export default {
   data() {
     return {
       dialogVisible: false, // 控制弹窗显示与隐藏的变量
       labelPosition: 'right',
-      isregister: false,
+      isregister: 0,
+      updatePasswordLoading: false,
+      registerLoading: false,
+      loginLoading: false,
       formLabelAlign: {
         name: '',
         region: '',
@@ -111,35 +163,73 @@ export default {
         phone: '',
         code: ''
       },
+      // 注册
+      registerInfo: {
+        nickname: "1",
+        remark: "1",
+        username: "18301626898",
+        verifyCode: "1"
+      },
+      // 登录
       loginInfo: {
-        username: 'admin',
-        password: '11111',
-        model: "大动脉炎数据库",
-        center: "北京医院血管外科中心"
+        username: '18301626898',
+        password: '1',
+        templateId: "1",
+        centerId: "1"
+      },
+      //忘记密码
+      passwordInfo: {
+        newPassword: "",
+        repeatNewPassword: "",
+        templateId: 0,
+        username: "",
+        verifyCode: ""
       },
       countdown: 0, // 倒计时
       dialogLoginVisible: false,//d登录弹窗的显示隐藏变量
-      applyrules: {
-        name: [
-          { required: true, message: '请输入机构名称', trigger: 'blur' },
+      registerRules: {
+        remark: [
+          { required: true, message: '请输入备注', trigger: 'blur' },
         ],
-        region: [
+        nickname: [
           { required: true, message: '请输入名称', trigger: 'blur' },
         ],
-        phone: [
+        username: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
           { validator: this.validatePhone, trigger: 'blur' },
         ],
-        code: [
+        verifyCode: [
           { required: true, message: '请输入验证码', trigger: 'blur' },
         ],
       },
       loginrules: {
         username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { required: true, message: '请输入手机号', trigger: 'blur' },
+          { validator: this.validatePhone, trigger: 'blur' },
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
+        ],
+        centerId: [
+          { required: true, message: '请选择数据库中心', trigger: 'blur' },
+        ],
+        templateId: [
+          { required: true, message: '请选择数据库模版', trigger: 'blur' },
+        ],
+      },
+      passwordrules: {
+        username: [
+          { required: true, message: '请输入手机号', trigger: 'blur' },
+          { validator: this.validatePhone, trigger: 'blur' },
+        ],
+        repeatNewPassword: [
+          { required: true, message: '请再次输入新密码', trigger: 'blur' },
+        ],
+        verifyCode: [
+          { required: true, message: '请输入验证码', trigger: 'blur' },
+        ],
+        newPassword: [
+          { required: true, message: '请输入新密码', trigger: 'blur' },
         ],
       },
     };
@@ -161,7 +251,7 @@ export default {
       this.resetFormLabelAlignData();
       // 重置表单校验状态
       this.$nextTick(() => {
-        this.$refs.registrationForm.resetFields();
+        this.$refs.registrationLoginForm.resetFields();
       });
       // 执行关闭
       // done();
@@ -187,17 +277,24 @@ export default {
       console.log(parameter);
       this.dialogLoginVisible = true; // 点击按钮时显示弹窗
       this.isregister = parameter;
+      this.countdown = 0;
+      // this.$refs.registrationLoginForm.resetFields();
+      // this.$refs.LoginForm.resetFields();
+      // this.$refs.passwordForm.resetFields();
+
     },
     getVerificationCode() {
       // 模拟获取验证码的逻辑，这里可以调用后端接口获取验证码
       // 然后开始倒计时
       this.startCountdown();
     },
-    changestatus() {
-      this.isregister = !this.isregister
+    changestatus(flag) {
+      this.isregister = flag
       console.log(this.isregister + "-----")
-    }
-    ,
+    },
+    submitUpdatepasswordForm() {
+
+    },
     startCountdown() {
       this.countdown = 60;
       const timer = setInterval(() => {
@@ -242,6 +339,27 @@ export default {
           return false;
         }
       });
+    },
+    submitRegisterForm(formName) {
+
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.registerLoading = true;
+          this.getList();
+        } else {
+          console.log('error submit!!');
+          this.registerLoading = false;
+          return false;
+        }
+      });
+
+    },
+
+    async getList() {
+      const {data} = await register(this.registerInfo)
+      console.log(data + "-----")
+      this.registerLoading = false;
+
     },
   },
 };
@@ -385,14 +503,14 @@ export default {
 }
 
 .login-image {
-  width: 40%;
+  width: 35%;
   overflow: hidden;
   color: #ffffff;
   height: 100%;
 }
 
 .login-form {
-  width: 60%;
+  width: 65%;
   margin-left: 3%;
   background-color: white;
   border-top-left-radius: 20px;
@@ -427,7 +545,7 @@ export default {
 
 ::v-deep .el-input-group__append,
 ::v-deep .el-input-group__prepend {
-    border: none !important;
+  border: none !important;
 }
 
 ::v-deep .el-input {
