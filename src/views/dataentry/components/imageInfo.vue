@@ -9,7 +9,7 @@
         <div>
             <el-form label-width="150px" :model="imageInfo">
                 <el-row>
-                    <el-col :span="8">
+                    <el-col :lg="24" :xl="8">
                         <el-form-item label="影像手段:">
                             <el-input :disabled="editVis" style="width:200px" size="mini" v-model="patientInfo.name"></el-input>
                         </el-form-item>

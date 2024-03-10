@@ -4,24 +4,24 @@
       <el-tab-pane v-for="item in tabs" :key="item.name" :label="item.name">
         <el-row :gutter="20">
           <!-- :offset="6" -->
-          <el-col :span="4" :offset="6">
+          <el-col :lg="{span:8,offset:0}" :xl="{span:4,offset:6}" >
             <div class="statisticsNum">
-              <svg-icon style="font-size: 64px;" icon-class="centerIcon" />
+              <svg-icon style="font-size: 4rem;" icon-class="centerIcon" />
               <span style=""><span style="font-size: 18px;">🚩</span>{{ item.centerNum }}</span>
               <span>中心</span>
             </div>
           </el-col>
-          <el-col :span="4">
+          <el-col :lg="{span:8}" :xl="{span:4}">
             <div class="statisticsNum">
              
-              <svg-icon style="font-size: 64px;" icon-class="groupIcon" />
+              <svg-icon style="font-size: 4rem;" icon-class="groupIcon" />
               <span style="display: inline-block;">{{ item.groupNum }}</span>
               <span>小组</span>
             </div>
           </el-col>
-          <el-col :span="4">
+          <el-col :lg="{span:8}" :xl="{span:4}">
             <div class="statisticsNum">
-              <svg-icon style="font-size: 64px;" icon-class="doctorIcon" />
+              <svg-icon style="font-size: 4rem;" icon-class="doctorIcon" />
               <span style="display: inline-block;">{{ item.doctorNum }}</span>
               <span>医生</span>
             </div>
@@ -29,17 +29,16 @@
         </el-row>
         <el-divider content-position="left"><i class="el-icon-document"> &nbsp;中心列表</i></el-divider>
         <el-row :gutter="20" class="memberList">
-          <el-col :span="2" v-for="ite in item.centerList" :key="ite.url">
+          <el-col :lg="3" :xl="2" :md="4" v-for="ite in item.centerList" :key="ite.url">
             <div class="avatarImg">
               <img style="max-width: 100%;max-height: 100%;" :src="ite.url" alt="">
             </div>
             <p :title="ite.name">{{ ite.name }}</p>
             <el-button @click="editCenterInfo(ite)" icon="el-icon-edit" size="mini"></el-button>
             <br>
-            <el-tag style="margin-top: 10px;" size="mini">中心管理员-NAME</el-tag>
+            <el-tag class="eltag" size="mini">中心管理员-NAME</el-tag>
           </el-col>
           <el-col :span="2">
-
             <div class="avatarImg" @click="startModel">
               <img style="width:40px;height: 40px;margin-top: 12px;" src="@/assets/images/addBtn.png" alt="">
             </div>
@@ -64,7 +63,6 @@
             <el-input style="width: 100%;" size="mini" v-model="addCenterForm.name"></el-input>
           </el-form-item>
           <el-form-item style="margin-bottom:0px;width:100%;" label="中心管理员:">
-
             <el-select style="width: 100%;" size="mini" v-model="addCenterForm.userName" filterable placeholder="请选择">
               <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
               </el-option>
@@ -176,7 +174,7 @@ export default {
   .statisticsNum {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
     text-align: center;
-    height: 10vh;
+    min-height: 10vh;
     line-height: 10vh;
 
     :nth-child(1) {
@@ -218,6 +216,9 @@ export default {
       text-overflow: ellipsis;
       overflow: hidden;
       text-align: center;
+    }
+    .eltag{
+      margin-top: 10px;max-width: 100%; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
     }
   }
 }

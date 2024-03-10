@@ -186,7 +186,7 @@ export default {
 }
 
 .centralState {
-  height: 20vh;
+  min-height: 20vh;
 }
 
 .avatarImg {

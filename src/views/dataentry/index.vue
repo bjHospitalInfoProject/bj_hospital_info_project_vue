@@ -1,7 +1,7 @@
 <template>
     <div class="dataentry">
         <el-row class="rows" :gutter="20">
-            <el-col :span="5">
+            <el-col :lg="7" :xl="5">
                 <div class="left-tree">
                     <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false">
                         <div slot-scope="{ node, data }" :title="node.label"
@@ -21,7 +21,7 @@
                     </el-tree>
                 </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :lg="17" :xl="19" style="overflow: auto;">
                 <el-card class="box-card patientInfo">
                     <div slot="header" class="clearfix">
                         <span>病人一般情况</span>
@@ -40,9 +40,7 @@
                                     type="month" placeholder="选择月">
                                 </el-date-picker>
                             </el-form-item>
-                            <el-form-item label="有无微信?:">
-                                <el-checkbox :disabled="editVis" v-model="patientInfo.vchat"></el-checkbox>
-                            </el-form-item>
+                          
                             <el-form-item label="既往就诊医院:">
                                 <el-select :disabled="editVis" style="width:200px" size="mini" v-model="patientInfo.hospital" placeholder="请选择">
                                     <el-option v-for="item in options" :key="item.value" :label="item.label"
@@ -52,6 +50,9 @@
                             </el-form-item>
                             <el-form-item label="住院号:">
                                 <el-input :disabled="editVis" style="width:200px" size="mini" v-model="patientInfo.code"></el-input>
+                            </el-form-item>
+                            <el-form-item label="有无微信?:">
+                                <el-checkbox :disabled="editVis" v-model="patientInfo.vchat"></el-checkbox>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -336,11 +337,11 @@ export default {
 }
 
 .patientInfo {
-    height: 20%;
+    min-height: 20%;
 }
 
 .imageInfo {
-    height: calc(80% - 10px);
+    min-height: calc(80% - 10px);
     margin-top: 10px;
 
     .rowSelect {
