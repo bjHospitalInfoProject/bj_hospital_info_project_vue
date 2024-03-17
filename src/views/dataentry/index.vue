@@ -3,7 +3,7 @@
         <el-row class="rows" :gutter="20">
             <el-col :lg="7" :xl="5">
                 <div class="left-tree">
-                    <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false">
+                    <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false" @node-click="handleNodeClick">
                         <div slot-scope="{ node, data }" :title="node.label"
                             :class="'custom-tree-node tree-node-' + node.data.zindex">
                             <el-input class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
@@ -76,7 +76,7 @@ export default {
     data() {
         return {
             tree: [{
-                label: '病人一般情况 : 张三 - 20240101199812126666666666666666',
+                label: '病人一般情况 : 张三',
                 zindex: 0,
                 children: [{
                     label: '病例信息库',
@@ -87,6 +87,7 @@ export default {
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,
+                            
                         }],
                     }, {
                         label: '实验室检验结果',
@@ -186,6 +187,12 @@ export default {
         imageInfo
     },
     methods: {
+        handleNodeClick(data) {
+        //这里可以使用ajax请求后台，获取组织树的数据，转成json数组格式返回,result为返回的值
+        //this.data=result.data;
+        console.log(data);
+      },
+
         addTree(node) {
             node.data.children.push({
                 label: 'test',

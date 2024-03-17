@@ -35,7 +35,8 @@ const asyncRoutes = [
         path: 'follow_up_information',
         name: 'follow_up_information',
         component: 'dataoverview/follow_up_information',
-        meta: { title: '随访信息', icon: 'table' }
+        meta: { title: '随访信息', icon: 'table' },
+        
       },
       {
         path: 'disease_activity_core',
@@ -155,7 +156,8 @@ const asyncRoutes = [
         path: 'index',
         name: 'Notification',
         component: 'notification/index',
-        meta: { title: '审批通知', icon: 'message' }
+        meta: { title: '审批通知', icon: 'message' },
+
       }
     ]
   },
@@ -207,7 +209,8 @@ const asyncRoutes = [
         path: 'index',
         name: 'dataentryDetail',
         breadcrumb: true,
-        component: 'dataentry/index'
+        component: 'dataentry/index',
+        type: ''
       }
     ]
   }

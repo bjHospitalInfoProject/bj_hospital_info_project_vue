@@ -63,7 +63,7 @@
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
       @pagination="getList" />
 
-    <el-drawer title="结果详情" size="40%" :visible.sync="drawer" :direction="rtl" :before-close="handleClose">
+    <el-drawer title="结果详情" size="40%" :visible.sync="drawer" direction="rtl" :before-close="handleClose">
 
 
       <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
