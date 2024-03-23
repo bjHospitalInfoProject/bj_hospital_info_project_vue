@@ -13,13 +13,13 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织冻存样本ID:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                            <el-input :disabled="editVis" style="width:150px" size="mini"
                                 v-model="organizefrozenInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织样本采集时间:">
-                            <el-date-picker v-model="organizefrozenInfo.name" style="width:200px" size="mini"
+                            <el-date-picker v-model="organizefrozenInfo.name" style="width:150px" size="mini"
                                 type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -132,7 +132,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="当前保存位置:">
-                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                            <el-select :disabled="editVis" style="width:150px" size="mini"
                                 v-model="organizefrozenInfo.hospital" placeholder="请选择">
                                 <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -142,7 +142,7 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="来源住院手术信息ID:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                            <el-input :disabled="editVis" style="width:150px" size="mini"
                                 v-model="organizefrozenInfo.name"></el-input>
                         </el-form-item>
                     </el-col>

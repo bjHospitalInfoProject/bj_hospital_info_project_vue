@@ -199,7 +199,7 @@
                     <el-col :span="8" :lg="12" :xl="8">
 
                         <el-form-item label="首发表现：">
-                            <el-select :disabled="editVis" size="mini" style="width:600px" v-model="detailInfo.hospital"
+                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="detailInfo.hospital"
                                 multiple filterable allow-create placeholder="请选择">
                                 <el-option v-for="item in firstoptions" :key="item.value" :label="item.label"
                                     :value="item.value">

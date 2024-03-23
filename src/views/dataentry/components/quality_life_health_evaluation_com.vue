@@ -13,7 +13,7 @@
 
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="组织冻存样本ID:">
+                        <el-form-item label="生活质量健康评价ID:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="qualityInfo.name"></el-input>
                         </el-form-item>
