@@ -1,0 +1,530 @@
+<template>
+    <el-card class="box-card detailInfo">
+        <div slot="header" class="clearfix">
+            <span>病人详情信息</span>
+            <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
+                @click="editVis = false">编辑</el-button>
+            <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
+                @click="editVis = true">保存</el-button>
+
+        </div>
+        <div>
+            <el-form label-width="200px" :model="detailInfo">
+
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="出生日期：">
+                            <el-date-picker v-model="detailInfo.name" style="width:200px" size="mini" type="date"
+                                placeholder="选择日期">
+                            </el-date-picker>
+                        </el-form-item>
+
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="性别：">
+                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="detailInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in sexOptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="民族：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="地区：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="手术干预情况：">
+                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="detailInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in ganyuoptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="重建血管数：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+                <el-row>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="介入手术次数：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="支架植入次数：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="开刀手术次数：">
+                            <el-input :disabled="editVis" size="mini" style="width:200px"
+                                v-model="detailInfo.name"></el-input>
+                        </el-form-item>
+
+                    </el-col>
+
+                </el-row>
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="桥血管(人工血管)数：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="桥血管(自体血管)数：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="桥血管(人工、自体序贯)数：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="杂交手术次数：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="ABO血型：">
+                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="detailInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in ABOOptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="Rh血型：">
+                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="detailInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in RHoptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="随访电话1：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="随访电话2:">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="detailInfo.name"></el-input>
+
+                        </el-form-item>
+
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="随访情况：">
+                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="detailInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in suifangoptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="微信随访群：">
+                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="detailInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in WXsuifangoptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="首发表现：">
+                            <el-select :disabled="editVis" size="mini" style="width:600px" v-model="detailInfo.hospital"
+                                multiple filterable allow-create placeholder="请选择">
+                                <el-option v-for="item in firstoptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="首次表现时间:">
+                            <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="首次确诊时间:">
+                            <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="首次确诊医院:">
+                            <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="总体评价：">
+                            <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </el-form>
+        </div>
+    </el-card>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            options: [],
+            sexOptions: [
+                {
+                    label: "男",
+                    value: 1
+                }, {
+                    label: "女",
+                    value: 2
+                }],
+            ganyuoptions: [
+                {
+                    label: "NA",
+                    value: 0
+                }, {
+                    label: "未手术",
+                    value: 1
+                }, {
+                    label: "仅造影",
+                    value: 2
+                }, {
+                    label: "单一部位单次干预",
+                    value: 3
+                }, {
+                    label: "同一部位多次干预",
+                    value: 4
+                }, {
+                    label: "多部位同期干预",
+                    value: 5
+                }, {
+                    label: "其他复杂情况",
+                    value: 6
+                }],
+            ABOOptions: [
+                {
+                    label: "NA",
+                    value: 0
+                }, {
+                    label: "A型",
+                    value: 1
+                },
+                {
+                    label: "B型",
+                    value: 2
+                },
+                {
+                    label: "O型",
+                    value: 3
+
+                },
+                {
+                    label: "AB型",
+                    value: 4
+
+                }],
+            RHoptions: [
+                {
+                    label: "NA",
+                    value: 0
+
+                },
+                {
+                    label: "RH阳性",
+                    value: 1
+
+                }, {
+                    label: "RH阴性",
+                    value: 2
+
+                }],
+            WXsuifangoptions: [
+                {
+                    label: "无微信",
+                    value: 0
+
+                },
+                {
+                    label: "有微信",
+                    value: 1
+
+                }, {
+                    label: "已入群",
+                    value: 3
+
+                }, {
+                    label: "拒加微信",
+                    value: 4
+
+                }],
+            suifangoptions: [
+                {
+                    label: "无随访",
+                    value: 0
+
+                },
+                {
+                    label: "有随访",
+                    value: 1
+                },
+                {
+                    label: "失访",
+                    value: 2
+
+                },
+                {
+                    label: "死亡",
+                    value: 3
+                },
+                {
+                    label: "其他",
+                    value: 4
+
+                }],
+
+            firstoptions: [
+
+                {
+                    label: "NA",
+                    value: 0
+
+                },
+                {
+                    label: "发热",
+                    value: 1
+
+                },
+                {
+                    label: "全身乏力",
+                    value: 2
+
+                },
+                {
+                    label: "肌痛",
+                    value: 3
+
+                },
+                {
+                    label: "抽搐",
+                    value: 4
+
+                },
+                {
+                    label: "血压升高",
+                    value: 5
+
+                },
+                {
+                    label: "脉弱",
+                    value: 6
+
+                },
+                {
+                    label: "无脉",
+                    value: 7
+
+                },
+                {
+                    label: "头晕",
+                    value: 8
+
+                }, {
+                    label: "晕厥",
+                    value: 9
+
+                }, {
+                    label: "头痛",
+                    value: 10
+
+                }, {
+                    label: "视物模糊",
+                    value: 11
+
+                }, {
+                    label: "视力下降",
+                    value: 12
+
+                }, {
+                    label: "黒矇",
+                    value: 13
+
+                }, {
+                    label: "颈痛",
+                    value: 14
+
+                }, {
+                    label: "TIA",
+                    value: 15
+
+                }, {
+                    label: "癫痫",
+                    value: 16
+
+                }, {
+                    label: "脑卒中",
+                    value: 17
+
+                }, {
+                    label: "胸闷",
+                    value: 18
+
+                }, {
+                    label: "心绞痛",
+                    value: 19
+
+                }, {
+                    label: "心肌梗死",
+                    value: 20
+
+                }, {
+                    label: "心悸",
+                    value: 21
+
+                }, {
+                    label: "喘息",
+                    value: 22
+
+                }, {
+                    label: "咳嗽",
+                    value: 23
+                }, {
+                    label: "咯血",
+                    value: 24
+                }, {
+                    label: "端坐呼吸",
+                    value: 25
+                }, {
+                    label: "心脏杂音",
+                    value: 26
+                }, {
+                    label: "腹痛",
+                    value: 27
+                }, {
+                    label: "上肢跛行",
+                    value: 28
+                }, {
+                    label: "下肢跛行",
+                    value: 29
+                }, {
+                    label: "肾功能减退",
+                    value: 30
+                }, {
+                    label: "面部疼痛",
+                    value: 31
+                }, {
+                    label: "面部水肿",
+                    value: 32
+                }, {
+                    label: "下肢水肿",
+                    value: 33
+                },
+                {
+                    label: "下肢发冷无汗",
+                    value: 34
+                }
+            ],
+            editVis: true
+        }
+    },
+    props: {
+        detailInfo: Object
+    }
+}
+</script>
+
+<style scoped lang="less">
+.rowSelect {
+    .el-form-item__label {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .left .el-form-item {
+        text-align: right;
+    }
+}
+
+.el-row {
+    margin-bottom: 5px;
+}
+</style>

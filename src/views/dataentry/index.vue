@@ -3,7 +3,8 @@
         <el-row class="rows" :gutter="20">
             <el-col :lg="7" :xl="5">
                 <div class="left-tree">
-                    <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false" @node-click="handleNodeClick">
+                    <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false"
+                        @node-click="handleNodeClick">
                         <div slot-scope="{ node, data }" :title="node.label"
                             :class="'custom-tree-node tree-node-' + node.data.zindex">
                             <el-input class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
@@ -25,8 +26,8 @@
                 <el-card class="box-card patientInfo">
                     <div slot="header" class="clearfix">
                         <span>病人一般情况</span>
-                        <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
-                            @click="editVis = false">编辑</el-button>
+                        <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini"
+                            type="success" @click="editVis = false">编辑</el-button>
                         <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
                             @click="editVis = true">保存</el-button>
                     </div>
@@ -60,14 +61,63 @@
                         </el-form>
                     </div>
                 </el-card>
-                <imageInfo class="box-card imageInfo" :patientInfo="patientInfo" :imageInfo="imageInfo"></imageInfo>
+
+                <detailInfo v-if="defaultSelectId == -1" class="box-card imageInfo" :detailInfo="detailInfo" />
+
+                <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo"
+                    :InpatientInfo="InpatientInfo" />
+                <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo"
+                    :laboratoryInfo="laboratoryInfo" />
+
+                <imageInfo v-if="defaultSelectId == 3" class="box-card imageInfo" :patientInfo="patientInfo"
+                    :imageInfo="imageInfo" />
+                <diseaseInfo v-if="defaultSelectId == 4" class="box-card imageInfo" :diseaseInfo="diseaseInfo" />
+                <qualityInfo v-if="defaultSelectId == 5" class="box-card imageInfo" :qualityInfo="qualityInfo" />
+
+
+                <followInfo v-if="defaultSelectId == 6" class="box-card imageInfo" :followInfo="followInfo" />
+
+                <organizingparaffinInfo v-if="defaultSelectId == 7" class="box-card imageInfo"
+                    :organizingparaffinInfo="organizingparaffinInfo" />
+
+                <organizationalwhiteInfo v-if="defaultSelectId == 8" class="box-card imageInfo"
+                    :organizationalwhiteInfo="organizationalwhiteInfo" />
+
+
+                <HEInfo v-if="defaultSelectId == 9" class="box-card imageInfo" :HEInfo="HEInfo" />
+                <IHCInfo v-if="defaultSelectId == 10" class="box-card imageInfo" :IHCInfo="IHCInfo" />
+                <bloodInfo v-if="defaultSelectId == 11" class="box-card imageInfo" :bloodInfo="bloodInfo" />
+
+                <organizefrozenInfo v-if="defaultSelectId == 12" class="box-card imageInfo"
+                    :organizefrozenInfo="organizefrozenInfo" />
+
+                <IFInfo v-if="defaultSelectId == 13" class="box-card imageInfo" :IFInfo="IFInfo" />
+
+
+
             </el-col>
         </el-row>
     </div>
 </template>
-  
+
 <script>
 import imageInfo from "./components/Imaging_examination_results_com.vue"
+import detailInfo from "./components/detail_info_com.vue"
+import laboratoryInfo from "./components/laboratory_test_results_com.vue"
+import InpatientInfo from "./components/Inpatient_surgical_information_com.vue"
+import followInfo from "./components/follow_up_information_com.vue"
+import diseaseInfo from "./components/disease_activity_core_com.vue"
+import bloodInfo from "./components/blood_cryopreserved_samples_com.vue"
+import HEInfo from "./components/HE_stained_sections_com.vue"
+import IHCInfo from "./components/IHC_stained_sections_com.vue"
+import IFInfo from "./components/IF_stained_sections_com.vue"
+import organizationalwhiteInfo from "./components/organizational_white_patches_com.vue"
+import organizefrozenInfo from "./components/organize_frozen_samples_com.vue"
+import organizingparaffinInfo from "./components/organizing_paraffin_blocks_com.vue"
+import qualityInfo from "./components/quality_life_health_evaluation_com.vue"
+
+
+
 export default {
     mounted() {
         let userId = this.$route.query.name;
@@ -84,49 +134,63 @@ export default {
                     children: [{
                         label: '住院手术信息',
                         zindex: 2,
+                        id: 1,
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,
-                            
+                            parentId: 1
                         }],
                     }, {
                         label: '实验室检验结果',
                         zindex: 2,
+                        id: 2,
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,
+                            parentId: 2
+
                         }],
                     },
                     {
                         label: '影像学检查结果',
                         zindex: 2,
+                        id: 3,
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,
+                            parentId: 3
+
                         }],
                     },
                     {
                         label: '疾病活动性评分',
                         zindex: 2,
+                        id: 4,
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,
+                            parentId: 4
+
                         }],
                     },
                     {
                         label: '质量健康评价',
                         zindex: 2,
+                        id: 5,
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,
+                            parentId: 5
                         }],
                     },
                     {
                         label: '随访信息',
                         zindex: 2,
+                        id: 6,
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,
+                            parentId: 6
                         }],
                     }]
                 },
@@ -136,31 +200,71 @@ export default {
                     children: [{
                         label: '组织石蜡块',
                         zindex: 2,
-                        children: []
+                        id: 7,
+                        children: [{
+                            label: '手术信息-2024-01-01',
+                            zindex: 3,
+                            parentId: 7
+                        }],
                     }, {
                         label: '组织白片',
                         zindex: 2,
-                        children: []
+                        id: 8,
+                        children: [{
+                            label: '手术信息-2024-01-01',
+                            zindex: 3,
+                            parentId: 8
+                        }],
                     },
                     {
                         label: 'HE染色切片',
                         zindex: 2,
-                        children: []
+                        id: 9,
+                        children: [{
+                            label: '手术信息-2024-01-01',
+                            zindex: 3,
+                            parentId: 9
+                        }],
                     },
                     {
                         label: 'IHC染色切片',
                         zindex: 2,
-                        children: []
+                        id: 10,
+                        children: [{
+                            label: '手术信息-2024-01-01',
+                            zindex: 3,
+                            parentId: 10
+                        }],
+                    },
+                    {
+                        label: 'IF染色切片',
+                        zindex: 2,
+                        id: 13,
+                        children: [{
+                            label: '手术信息-2024-01-01',
+                            zindex: 3,
+                            parentId: 13
+                        }],
                     },
                     {
                         label: '血液冻存样本',
                         zindex: 2,
-                        children: []
+                        id: 11,
+                        children: [{
+                            label: '手术信息-2024-01-01',
+                            zindex: 3,
+                            parentId: 11
+                        }],
                     },
                     {
                         label: '组织冻存样本',
                         zindex: 2,
-                        children: []
+                        id: 12,
+                        children: [{
+                            label: '手术信息-2024-01-01',
+                            zindex: 3,
+                            parentId: 12
+                        }],
                     }]
                 }]
             }],
@@ -180,18 +284,120 @@ export default {
                 vchat: false,
                 hospital: '',
                 code: ''
-            }
+            },
+            qualityInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            detailInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            laboratoryInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            bloodInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            InpatientInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            followInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            diseaseInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            HEInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            IHCInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            IFInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            organizationalwhiteInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            organizefrozenInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            organizingparaffinInfo: {
+                name: '',
+                operativeTime: '',
+                vchat: false,
+                hospital: '',
+                code: ''
+            },
+            defaultSelectId: -1,
         };
     },
     components: {
-        imageInfo
+        imageInfo, detailInfo, diseaseInfo, HEInfo, IHCInfo, IFInfo, organizefrozenInfo,
+        laboratoryInfo, InpatientInfo, bloodInfo, followInfo, organizationalwhiteInfo,
+        organizingparaffinInfo, qualityInfo
     },
     methods: {
         handleNodeClick(data) {
-        //这里可以使用ajax请求后台，获取组织树的数据，转成json数组格式返回,result为返回的值
-        //this.data=result.data;
-        console.log(data);
-      },
+            //这里可以使用ajax请求后台，获取组织树的数据，转成json数组格式返回,result为返回的值
+            //this.data=result.data;
+            console.log(data);
+
+            if (data.zindex == 3) {
+
+                this.defaultSelectId = data.parentId
+            }
+            if (data.zindex == 0) {
+                this.defaultSelectId = -1
+            }
+        },
 
         addTree(node) {
             node.data.children.push({
@@ -225,8 +431,8 @@ export default {
     }
 };
 </script>
-  
-<style lang="less" scoped >
+
+<style lang="less" scoped>
 .dataentry {
     padding: 10px;
 

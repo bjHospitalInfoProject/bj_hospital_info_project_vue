@@ -41,7 +41,7 @@
 
           <!-- 注册 -->
           <el-form ref="registrationLoginForm" :rules="registerRules" :model="registerInfo" label-width="0px"
-            v-if="isregister == 0">
+            v-show="isregister == 0">
 
             <el-form-item prop="nickname">
               <el-input class="borderNone" v-model="registerInfo.nickname" placeholder="用户名"></el-input>
@@ -73,7 +73,7 @@
 
           <!-- 登录 -->
 
-          <el-form ref="LoginForm" :rules="loginrules" :model="loginInfo" label-width="0px" v-if="isregister == 1">
+          <el-form ref="LoginForm" :rules="loginrules" :model="loginInfo" label-width="0px" v-show="isregister == 1">
             <el-form-item prop="templateId">
               <el-select class="borderNone" v-model="loginInfo.templateId" placeholder="数据库选择/模板选择">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
@@ -108,7 +108,7 @@
 
           <!-- 忘记密码 -->
           <el-form ref="passwordForm" :rules="passwordrules" :model="passwordInfo" label-width="0px"
-            v-if="isregister == 2">
+            v-show="isregister == 2">
 
             <el-form-item prop="username">
               <el-input class="borderNone" v-model="passwordInfo.username" placeholder="手机号" type="number"
