@@ -10,7 +10,28 @@
         </div>
         <div>
             <el-form label-width="150px" :model="laboratoryInfo">
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="实验室检验结果ID：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="laboratoryInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="填报人：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="laboratoryInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="填报时间：">
+                            <el-date-picker v-model="laboratoryInfo.name" style="width:200px" size="mini" type="date"
+                                placeholder="选择日期">
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
 
+                </el-row>
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="检验日期：">
@@ -40,22 +61,6 @@
                             </el-select>
                         </el-form-item>
                     </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="填报人：">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="填报时间：">
-                            <el-date-picker v-model="laboratoryInfo.name" style="width:200px" size="mini" type="date"
-                                placeholder="选择日期">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-
                 </el-row>
                 <el-row>
                     <el-col :span="24">
