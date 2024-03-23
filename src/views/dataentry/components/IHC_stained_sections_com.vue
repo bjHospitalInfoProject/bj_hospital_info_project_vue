@@ -1,7 +1,7 @@
 <template>
     <el-card class="box-card patientInfo">
         <div slot="header" class="clearfix">
-            <span>影像学检查 - 2024-01-01-name</span>
+            <span>IHC染色切片</span>
             <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
                 @click="editVis = false">编辑</el-button>
             <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"

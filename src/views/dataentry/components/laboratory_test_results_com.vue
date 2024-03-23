@@ -14,12 +14,9 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="检验日期：">
-                            <el-select :disabled="editVis" style="width:200px" size="mini"
-                                v-model="laboratoryInfo.hospital" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-date-picker v-model="laboratoryInfo.name" style="width:200px" size="mini" type="date"
+                                placeholder="选择日期">
+                            </el-date-picker>
                         </el-form-item>
 
                     </el-col>
@@ -27,7 +24,7 @@
                         <el-form-item label="检验时期：">
                             <el-select :disabled="editVis" style="width:200px" size="mini"
                                 v-model="laboratoryInfo.hospital" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                <el-option v-for="item in jianyanoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
@@ -37,12 +34,28 @@
                         <el-form-item label="就诊方式：">
                             <el-select :disabled="editVis" style="width:200px" size="mini"
                                 v-model="laboratoryInfo.hospital" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                <el-option v-for="item in jiuzhenoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="填报人：">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="laboratoryInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="填报时间：">
+                            <el-date-picker v-model="laboratoryInfo.name" style="width:200px" size="mini" type="date"
+                                placeholder="选择日期">
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+
                 </el-row>
                 <el-row>
                     <el-col :span="24">
@@ -1140,7 +1153,7 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                
+
 
             </el-form>
         </div>
@@ -1151,7 +1164,42 @@
 export default {
     data() {
         return {
-            options: [],
+            jianyanoptions: [
+                {
+                    label: "术前",
+                    value: 1
+                },
+                {
+                    label: "术后",
+                    value: 2
+                },
+                {
+                    label: "随访",
+                    value: 3
+                },
+                {
+                    label: "其他",
+                    value: 4
+                }
+            ],
+            jiuzhenoptions: [
+                {
+                    label: "住院",
+                    value: 1
+                },
+                {
+                    label: "门诊",
+                    value: 2
+                },
+                {
+                    label: "体检",
+                    value: 3
+                },
+                {
+                    label: "其他",
+                    value: 4
+                }
+            ],
             editVis: true
         }
     },
