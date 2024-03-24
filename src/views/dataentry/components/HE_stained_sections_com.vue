@@ -48,8 +48,9 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="HE染色时间:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="HEInfo.name"></el-input>
+                            <el-date-picker v-model="HEInfo.name" style="width:200px" size="mini" type="date"
+                                placeholder="选择日期">
+                            </el-date-picker>
                         </el-form-item>
                     </el-col>
                 </el-row>
