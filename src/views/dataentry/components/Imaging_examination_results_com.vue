@@ -39,8 +39,8 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前影像手段：">
                             <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
-                                <el-option v-for="item in sexOptions" :key="item.value" :label="item.label"
+                                multiple placeholder="请选择">
+                                <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
@@ -49,8 +49,8 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前本院影像：">
                             <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
-                                <el-option v-for="item in sexOptions" :key="item.value" :label="item.label"
+                                multiple placeholder="请选择">
+                                <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
@@ -59,8 +59,8 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术后本院影像：">
                             <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
-                                <el-option v-for="item in sexOptions" :key="item.value" :label="item.label"
+                                multiple placeholder="请选择">
+                                <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
@@ -76,11 +76,11 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="8" :lg="12" :xl="8"> 
+                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="Numano影像分型：">
                             <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
                                 placeholder="请选择">
-                                <el-option v-for="item in sexOptions" :key="item.value" :label="item.label"
+                                <el-option v-for="item in fenxingOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
@@ -90,10 +90,18 @@
                         <el-form-item label="近3月新发/加重影像表现：">
                             <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
                                 placeholder="请选择">
-                                <el-option v-for="item in sexOptions" :key="item.value" :label="item.label"
+                                <el-option v-for="item in biaoxianptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
+                        </el-form-item>
+                    </el-col>
+
+                </el-row>
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="">
+                            <img style="width:90%" src="@/assets/images/Numano.png" alt="">
                         </el-form-item>
                     </el-col>
 
@@ -575,6 +583,137 @@ export default {
                 { label: '纤细', value: 11 },
                 { label: '斑块', value: 12 },
                 { label: '狭窄后改变', value: 13 }
+            ],
+            biaoxianptions: [
+                {
+                    label: "无",
+                    value: 0
+                },
+                {
+                    label: "有",
+                    value: 1
+                }
+            ],
+            fenxingOptions: [
+                {
+                    label: "I型",
+                    value: 1
+                },
+                {
+                    label: "IIa型",
+                    value: 2
+                },
+                {
+                    label: "IIb型",
+                    value: 3
+                },
+                {
+                    label: "III型",
+                    value: 4
+                },
+                {
+                    label: "IV型",
+                    value: 5
+                },
+                {
+                    label: "V型",
+                    value: 6
+                }
+            ],
+            yingxiangOptions: [
+                {
+                    label: "无",
+                    value: 0
+                },
+                {
+                    label: "造影",
+                    value: 1
+                },
+                {
+                    label: "头部CTA",
+                    value: 2
+                },
+                {
+                    label: "胸部CTA",
+                    value: 3
+                },
+                {
+                    label: "主动脉CTA",
+                    value: 4
+                },
+                {
+                    label: "腹部CTA",
+                    value: 5
+                }, {
+                    label: "盆腔CTA",
+                    value: 6
+                },
+                {
+                    label: "上肢CTA",
+                    value: 7
+                },
+                {
+                    label: "下肢CTA",
+                    value: 8
+                },
+                {
+                    label: "冠脉CTA",
+                    value: 9
+                },
+                {
+                    label: "TCD",
+                    value: 10
+                },
+                {
+                    label: "CTPA",
+                    value: 11
+                }, {
+                    label: "颈动脉DUS",
+                    value: 12
+                },
+                {
+                    label: "上肢DUS",
+                    value: 13
+                },
+                {
+                    label: "主动脉DUS",
+                    value: 14
+                },
+                {
+                    label: "腹部大血管DUS",
+                    value: 15
+                },
+                {
+                    label: "肾动脉DUS",
+                    value: 16
+                },
+                {
+                    label: "下肢DUS",
+                    value: 17
+                }, {
+                    label: "头部MRA",
+                    value: 18
+                },
+                {
+                    label: "颈部MRA",
+                    value: 19
+                },
+                {
+                    label: "胸部MRA",
+                    value: 20
+                },
+                {
+                    label: "腹部MRA",
+                    value: 21
+                },
+                {
+                    label: "下肢MRA",
+                    value: 22
+                },
+                {
+                    label: "PET-CT",
+                    value: 23
+                }
             ],
             editVis: true
         }
