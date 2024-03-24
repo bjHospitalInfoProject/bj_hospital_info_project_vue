@@ -48,8 +48,9 @@
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="包埋时间:">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.name"></el-input>
+                                <el-date-picker :disabled="editVis" v-model="organizingparaffinInfo.name" style="width:200px"
+                                    size="mini" type="date" placeholder="选择日期">
+                                </el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">

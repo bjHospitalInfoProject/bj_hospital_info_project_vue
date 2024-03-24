@@ -34,14 +34,22 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访人:">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
+                                 filterable allow-create placeholder="请选择">
+                                <el-option v-for="item in suifangrenoptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访方式:">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
+                                 filterable allow-create placeholder="请选择">
+                                <el-option v-for="item in suifangfangshioptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
@@ -63,7 +71,7 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="当前表现：">
                             <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                multiple filterable allow-create placeholder="请选择">
+                                multiple placeholder="请选择">
                                 <el-option v-for="item in firstoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -262,7 +270,7 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访PGA活动性评价:">
                             <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                 placeholder="请选择">
+                                placeholder="请选择">
                                 <el-option v-for="item in GPAOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -307,7 +315,48 @@
 export default {
     data() {
         return {
-            options: [],
+            suifangrenoptions: [
+                {
+                    label: "李拥军",
+                    value: 1
+                },
+                {
+                    label: "李晓璐",
+                    value: 2
+                }, {
+                    label: "高尚",
+                    value: 3
+                },
+                {
+                    label: "其他",
+                    value: 4
+                }
+            ],
+            suifangfangshioptions: [
+                {
+                    label: "NA",
+                    value: 0
+                },
+                {
+                    label: "微信",
+                    value: 1
+                }, {
+                    label: "电话",
+                    value: 2
+                },
+                {
+                    label: "门诊",
+                    value: 3
+                }, {
+                    label: "再入院",
+                    value: 4
+                },
+                {
+                    label: "其他",
+                    vvalue: 5
+                }
+            ],
+
             firstoptions: [
                 {
                     label: "NA",

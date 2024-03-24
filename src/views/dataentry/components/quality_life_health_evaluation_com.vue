@@ -26,7 +26,7 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报时间:">
-                            <el-date-picker v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker  :disabled="editVis" v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -35,7 +35,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="评价日期:">
-                            <el-date-picker v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker  :disabled="editVis" v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -48,7 +48,7 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="EQ-5D量表评价时间:">
-                            <el-date-picker v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker  :disabled="editVis" v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -64,14 +64,14 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="SF-36量表评价时间:">
-                            <el-date-picker v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker  :disabled="editVis" v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="SF-36量表评价时间:">
-                            <el-date-picker v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker  :disabled="editVis" v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -80,7 +80,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="焦虑自评量表(SAS)评价时间:">
-                            <el-date-picker v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker  :disabled="editVis" v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -93,7 +93,7 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="抑郁自评量表(SDS)评价时间:">
-                            <el-date-picker v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker  :disabled="editVis" v-model="qualityInfo.name" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
