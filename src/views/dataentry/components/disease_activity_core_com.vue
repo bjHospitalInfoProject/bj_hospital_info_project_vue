@@ -49,6 +49,17 @@
                 <el-row class="custom">
                     <el-col :offset="3" :span="14">
                         <div>
+                            NIH活动性评分得分:
+                        </div>
+                    </el-col>
+                    <el-col :span="5">
+                        <el-input :disabled="true" style="width:150px" size="mini"
+                            v-model="diseaseInfo.name"></el-input>
+                    </el-col>
+                </el-row>
+                <el-row class="custom">
+                    <el-col :offset="3" :span="14">
+                        <div>
                             1. 系统性症状：发热、骨骼、肌肉症状）:
                         </div>
                     </el-col>
@@ -104,6 +115,17 @@
                 <el-row class="custom">
                     <el-col :offset="3" :span="14">
                         <div>
+                            NIH活动性评分得分:
+                        </div>
+                    </el-col>
+                    <el-col :span="5">
+                        <el-input :disabled="true" style="width:150px" size="mini"
+                            v-model="diseaseInfo.name"></el-input>
+                    </el-col>
+                </el-row>
+                <el-row class="custom">
+                    <el-col :offset="3" :span="14">
+                        <div>
                             1. 系统性症状：发热、骨骼、肌肉症状）:
                         </div>
                     </el-col>
@@ -155,6 +177,30 @@
                 </el-row>
 
                 <el-divider content-position="left">ITAS 2010活动性评分(3个月内新发/加重)</el-divider>
+
+                <el-row class="custom">
+                    <el-col :offset="3" :span="14">
+                        <div>
+                            ITAS 2010活动性评分得分:
+                        </div>
+                    </el-col>
+                    <el-col :span="5">
+                        <el-input :disabled="true" style="width:150px" size="mini"
+                            v-model="diseaseInfo.name"></el-input>
+                    </el-col>
+                </el-row>
+
+                <el-row class="custom">
+                    <el-col :offset="3" :span="14">
+                        <div>
+                            ITAS-A活动性评分得分:
+                        </div>
+                    </el-col>
+                    <el-col :span="5">
+                        <el-input :disabled="true" style="width:150px" size="mini"
+                            v-model="diseaseInfo.name"></el-input>
+                    </el-col>
+                </el-row>
 
                 <el-row class="custom">
                     <el-col :offset="3" :span="14">

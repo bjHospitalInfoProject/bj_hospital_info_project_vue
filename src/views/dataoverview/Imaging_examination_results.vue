@@ -2,9 +2,9 @@
   <div class="app-container">
 
     <div class="filter-container">
-      <el-input v-model="listQuery.name" placeholder="姓名" style="width: 200px;" @keyup.enter.native="handleFilter" />
+      <el-input v-model="listQuery.name" placeholder="姓名" style="width: 150px;" @keyup.enter.native="handleFilter" />
 
-      <el-input v-model="listQuery.tel" placeholder="手机号" style="width: 200px;" class="filter-item"
+      <el-input v-model="listQuery.tel" placeholder="手机号" style="width: 150px;" class="filter-item"
         @keyup.enter.native="handleFilter" />
 
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
@@ -69,364 +69,514 @@
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
       @pagination="getList" />
 
-    <el-drawer title="结果详情" size="40%" :visible.sync="drawer" direction="rtl">
+    <el-drawer title="结果详情" size="50%" :visible.sync="drawer" direction="rtl">
+
+      <el-form label-width="150px" :model="imageInfo" style="padding-right: 20px;">
 
 
-      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane label="头颈胸部上肢影像" name="first">
-          <el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="影像学检查结果ID：">
+              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.name"></el-input>
+            </el-form-item>
 
-            <el-col :span="7">
-              <div>
-                红细胞沉降率(ESR,mm/h)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                C-反应蛋白(CRP,mg/L)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="填报人：">
+              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.name"></el-input>
+            </el-form-item>
+          </el-col>
 
-            <el-col :span="7">
-              <div>
-                超敏CRP (HsCRP,mg/L)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                IL-1β (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                IL-2 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                IL-4 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                IL-5 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                IL-6 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
+        </el-row>
 
-          <el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="填报时间：">
+              <el-date-picker v-model="imageInfo.name" style="width:150px" size="mini" type="date" placeholder="选择日期">
+              </el-date-picker>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="术前影像手段：">
+              <el-select :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.hospital" multiple
+                placeholder="请选择">
+                <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
 
-            <el-col :span="7">
-              <div>
-                IL-8 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                IL-10 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
+          <el-col :span="12">
+            <el-form-item label="术前本院影像：">
+              <el-select :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.hospital" multiple
+                placeholder="请选择">
+                <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="术后本院影像：">
+              <el-select :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.hospital" multiple
+                placeholder="请选择">
+                <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item label="影像学检查补充：">
+              <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+              </el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="Numano影像分型：">
+              <el-select :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.hospital"
+                placeholder="请选择">
+                <el-option v-for="item in fenxingOptions" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item class="custom" label="近3月新发/加重影像表现：">
+              <el-select :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.hospital"
+                placeholder="请选择">
+                <el-option v-for="item in biaoxianptions" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
 
-            <el-col :span="7">
-              <div>
-                IL-12p70 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                IL-17 (pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="">
+              <img style="width:90%" src="@/assets/images/Numano.png" alt="">
+            </el-form-item>
+          </el-col>
 
-            <el-col :span="7">
-              <div>
-                肿瘤坏死因子-α (TNF-α,pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                α-干扰素 (IFN-α,pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item class="custom" label="重度狭窄/闭塞血管好发部位(xx动脉-分叉起始段/中段/远段)：">
+              <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+              </el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <el-divider content-position="left">头颈胸部上肢影像</el-divider>
 
-            <el-col :span="7">
-              <div>
-                γ-干扰素 (IFN-γ,pg/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                血清淀粉样蛋白A (SAA,mg/L)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                降钙素原(PCT,ng/ml)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                铁蛋白(FER,ng/ml)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                转铁蛋白(TRF,mg/ml)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                补体C3 (g/L)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                补体C4 (g/L)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                补体CH50 (g/L)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                补体C1q (mg/L)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                IgG (g/L)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                IgA (g/L)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                IgM (g/L)： </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                IgE (IU/mL)：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                类风湿因子（RF）：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="7">
-              <div>
-                抗链球菌溶血素“O”（ASO）：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" plain size="mini">0.56</el-button>
-              </div>
-            </el-col>
-            <el-col :span="7">
-              <div>
-                阳性抗体：
-              </div>
-            </el-col>
-            <el-col :span="5">
-              <div>
-                <el-button type="info" size="mini" plain>1.45</el-button>
-              </div>
-            </el-col>
-          </el-row>
+      <el-form label-position="top" label-width="130px" :model="imageInfo" style="padding-right: 20px;">
+        <el-row class="rowSelect">
+          <el-col :span="10">
+            <el-row class="left">
+              <el-col :offset="12" :span="12">
+                <el-form-item label="右侧大脑前动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
 
-        </el-tab-pane>
-       
-        <el-tab-pane label="腹部下肢影像" name="six">
-
-          <el-row>
-            <el-col :span="5">
-              <div>
-                结核抗体快速卡试验：
-              </div>
-            </el-col>
-            <el-col :span="19">
-              <div>
-                <el-input disabled="true" type="textarea" :rows="3" placeholder="请输入内容" >
-                </el-input>
-
-              </div>
-            </el-col>
-          </el-row>
-
-        </el-tab-pane>
-        <el-tab-pane label="肿瘤标志物" name="s">定时任务补偿</el-tab-pane>
+              <el-col :offset="12" :span="12">
+                <el-form-item label="右侧大脑中动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="Willis环">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="右侧大脑后动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="基底动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="右椎动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="头臂干/无名动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="左颈外动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="右颅内动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="右颈内动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :offset="12" :span="12">
+                <el-form-item label="右颈总动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
 
 
-      </el-tabs>
+              <el-col :offset="12" :span="12">
+                <el-form-item label="右锁骨下动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :offset="12" :span="12">
+                <el-form-item label="右腋动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+            </el-row>
+          </el-col>
+          <el-col :span="4" style="text-align: center;margin-top: 100px;">
+            <img style="width:90%" src="@/assets/images/headInfo.png" alt="">
+          </el-col>
+          <el-col :span="10">
+            <el-row>
+              <el-col :span="12">
+                <el-form-item label="左侧大脑前动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左侧大脑中动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左侧大脑后动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左椎动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左颈外动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左颈内动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左颈总动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左锁骨下动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左腋动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label=" ">
+                  <br>
+                </el-form-item>
+
+                <el-form-item label=" ">
+                  <br>
+                </el-form-item>
+                <el-form-item label="升主动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="冠状动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+
+                <el-form-item label="肺动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="胸降主动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+
+              </el-col>
+            </el-row>
+          </el-col>
+        </el-row>
+      </el-form>
+      <el-divider content-position="left">腹部下肢影像</el-divider>
+
+      <el-form label-position="top" label-width="130px" :model="imageInfo" style="padding-right: 20px;">
+        <el-row class="rowSelect">
+          <el-col :span="10">
+            <el-row class="left">
+              <el-col :offset="12" :span="12">
+                <el-form-item label="右髂总动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+
+              <el-col :span="12">
+                <el-form-item label="肾下腹主动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="12">
+                <el-form-item label="右髂内动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="Riolan弓">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="12">
+                <el-form-item label="右髂外动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="腹腔干">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label="右股动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+
+              <el-col :offset="12" :span="12">
+                <el-form-item label="右肾动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+            </el-row>
+          </el-col>
+          <el-col :span="4" style="text-align: center;">
+            <img style="width:90%" src="@/assets/images/fubuxiazhi.jpg" alt="">
+          </el-col>
+          <el-col :span="10">
+            <el-row>
+              <el-col :span="12">
+                <el-form-item label="左髂总动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左髂内动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左髂外动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左股动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="左肾动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item label=" ">
+                  <br>
+                </el-form-item>
+
+                <el-form-item label="肾上腹主动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="肠系膜上动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+                <el-form-item label="肠系膜下动脉">
+                  <el-select style="width:130px" :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                    placeholder="请选择">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+
+              </el-col>
+            </el-row>
+          </el-col>
+        </el-row>
+      </el-form>
+
     </el-drawer>
 
   </div>
@@ -465,8 +615,11 @@ export default {
         user: '',
         region: ''
       },
-      activeName: 'first'
-
+      activeName: 'first',
+      imageInfo: {
+        name: '2',
+        hospital: '1'
+      },
     }
   },
   created() {
@@ -524,8 +677,24 @@ export default {
   margin-left: 20px;
 }
 
-.el-row {
 
-  margin-bottom: 15px;
+.rowSelect {
+  .el-form-item__label {
+    height: 20px;
+    line-height: 20px;
+  }
+
+  .left .el-form-item {
+    text-align: right;
+  }
+}
+
+
+::v-deep .custom .el-form-item__label {
+  line-height: 20px
+}
+
+.el-form-item {
+  margin-bottom: 5px;
 }
 </style>
