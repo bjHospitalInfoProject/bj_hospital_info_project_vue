@@ -80,6 +80,26 @@
                     </el-col>
                 </el-row>
                 <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="年龄(岁):">
+                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                                v-model="followInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="身高(cm):">
+                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                                v-model="followInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="体重(kg):">
+                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                                v-model="followInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
                     <el-col :span="24">
                         <el-form-item label="病情变化补充:">
                             <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
@@ -111,26 +131,7 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="年龄(岁):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="身高(cm):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="体重(kg):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
+                
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="激素 (药名-剂量-频次-给药方式默认p.o.):">
@@ -228,6 +229,9 @@
                                 v-model="followInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
+                    
+                </el-row>
+                <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="影像检查时间:">
                             <el-date-picker v-model="followInfo.name" style="width:200px" size="mini" type="date"
@@ -235,8 +239,6 @@
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
-                </el-row>
-                <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="影像手段:">
                             <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"

@@ -277,9 +277,9 @@
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+                    <el-col :span="16" :lg="12" :xl="16">
                         <el-form-item label="阳性抗体:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:calc(100% - 20px)" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
                     </el-col>

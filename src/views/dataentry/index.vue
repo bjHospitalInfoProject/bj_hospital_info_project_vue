@@ -64,8 +64,7 @@
 
                 <detailInfo v-if="defaultSelectId == -1" class="box-card imageInfo" :detailInfo="detailInfo" />
 
-                <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo"
-                    :InpatientInfo="InpatientInfo" />
+                <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo" :InpatientInfo="InpatientInfo" />
                 <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo"
                     :laboratoryInfo="laboratoryInfo" />
 
@@ -145,7 +144,7 @@ export default {
                         zindex: 2,
                         id: 2,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '实验室检验结果-2024-01-01',
                             zindex: 3,
                             parentId: 2
 
@@ -156,7 +155,7 @@ export default {
                         zindex: 2,
                         id: 3,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '影像学检查结果-2024-01-01',
                             zindex: 3,
                             parentId: 3
 
@@ -167,7 +166,7 @@ export default {
                         zindex: 2,
                         id: 4,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '疾病活动性评分-2024-01-01',
                             zindex: 3,
                             parentId: 4
 
@@ -178,7 +177,7 @@ export default {
                         zindex: 2,
                         id: 5,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '质量健康评价-2024-01-01',
                             zindex: 3,
                             parentId: 5
                         }],
@@ -188,7 +187,7 @@ export default {
                         zindex: 2,
                         id: 6,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '随访信息-2024-01-01',
                             zindex: 3,
                             parentId: 6
                         }],
@@ -202,7 +201,7 @@ export default {
                         zindex: 2,
                         id: 7,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '组织石蜡块-2024-01-01',
                             zindex: 3,
                             parentId: 7
                         }],
@@ -211,7 +210,7 @@ export default {
                         zindex: 2,
                         id: 8,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '组织白片-2024-01-01',
                             zindex: 3,
                             parentId: 8
                         }],
@@ -221,7 +220,7 @@ export default {
                         zindex: 2,
                         id: 9,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: 'HE染色切片-2024-01-01',
                             zindex: 3,
                             parentId: 9
                         }],
@@ -231,7 +230,7 @@ export default {
                         zindex: 2,
                         id: 10,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: 'IHC染色切片-2024-01-01',
                             zindex: 3,
                             parentId: 10
                         }],
@@ -241,7 +240,7 @@ export default {
                         zindex: 2,
                         id: 13,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: 'IF染色切片-2024-01-01',
                             zindex: 3,
                             parentId: 13
                         }],
@@ -251,7 +250,7 @@ export default {
                         zindex: 2,
                         id: 11,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '血液冻存样本-2024-01-01',
                             zindex: 3,
                             parentId: 11
                         }],
@@ -261,7 +260,7 @@ export default {
                         zindex: 2,
                         id: 12,
                         children: [{
-                            label: '手术信息-2024-01-01',
+                            label: '组织冻存样本-2024-01-01',
                             zindex: 3,
                             parentId: 12
                         }],
@@ -400,11 +399,43 @@ export default {
         },
 
         addTree(node) {
+            let str = node.label + ' - ' +this.getDate();
+            // node.data.children.push({
+            //     label: 'test',
+            //     zindex: 8
+            // })
+            // this.addTreeText = 
+            
             node.data.children.push({
-                label: 'test',
-                zindex: 8
+                label: str,
+                zindex: 3
             })
-            this.addTreeText = ""
+        },
+        getDate() {
+            // 获取当前日期
+            var date = new Date();
+
+            // 获取当前月份
+            var nowMonth = date.getMonth() + 1;
+
+            // 获取当前是几号
+            var strDate = date.getDate();
+
+            // 添加分隔符“-”
+            var seperator = "-";
+
+            // 对月份进行处理，1-9月在前面添加一个“0”
+            if (nowMonth >= 1 && nowMonth <= 9) {
+                nowMonth = "0" + nowMonth;
+            }
+
+            // 对月份进行处理，1-9号在前面添加一个“0”
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+
+            // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+            return date.getFullYear() + seperator + nowMonth + seperator + strDate;
         },
         delTree(node) {
             // 递归找到这个元素，在数组中移除
