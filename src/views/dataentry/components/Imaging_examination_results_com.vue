@@ -142,16 +142,7 @@
                                     </el-select>
                                 </el-form-item>
                             </el-col>
-                            <el-col :span="12">
-                                <el-form-item label="Willis环">
-                                    <el-select style="width:150px" :disabled="editVis" multiple size="mini"
-                                        v-model="imageInfo.hospital" placeholder="请选择">
-                                        <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                            :value="item.value">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
-                            </el-col>
+
                             <el-col :span="12">
                                 <el-form-item label="右侧大脑后动脉">
                                     <el-select style="width:150px" :disabled="editVis" multiple size="mini"
@@ -193,14 +184,7 @@
                                 </el-form-item>
                             </el-col>
                             <el-col :span="12">
-                                <el-form-item label="左颈外动脉">
-                                    <el-select style="width:150px" :disabled="editVis" multiple size="mini"
-                                        v-model="imageInfo.hospital" placeholder="请选择">
-                                        <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                            :value="item.value">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
+
                             </el-col>
                             <el-col :span="12">
                                 <el-form-item label="右颅内动脉">
@@ -213,14 +197,7 @@
                                 </el-form-item>
                             </el-col>
                             <el-col :span="12">
-                                <el-form-item label="右颈内动脉">
-                                    <el-select style="width:150px" :disabled="editVis" multiple size="mini"
-                                        v-model="imageInfo.hospital" placeholder="请选择">
-                                        <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                            :value="item.value">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
+
                             </el-col>
                             <el-col :offset="12" :span="12">
                                 <el-form-item label="右颈总动脉">
@@ -384,7 +361,88 @@
                 </el-row>
 
                 <div class="headInfo">
-                    <!-- <img style="width:90%" src="@/assets/images/headInfo.png" alt=""> -->
+                    <div style="left: 28%;" class="labelRight">
+                        <el-form-item label="颅内动脉">
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+                    <div style="left: 60%;">
+                        <el-form-item label="Willis环">
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+                    <div style="left: 28%;top: 15%;" class="labelRight">
+                        <el-form-item label="右颈内动脉">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.hospital" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+                    <div style="left: 13%;top: 15%;" class="labelRight">
+                        <el-form-item label="右颈外动脉">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.hospital" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+                    <div style="left: 60%;top: 15%;" class="">
+                        <el-form-item label="左颈内动脉">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.hospital" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+                    <div style="left: 75%;top: 15%;" class="">
+                        <el-form-item label="左颈外动脉">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.hospital" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+
+                    <div style="left: 20%;top: 30%;" class="labelRight">
+                        <el-form-item label="右颈总动脉">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.hospital" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+                    <div style="left: 68%;top: 30%;" class="">
+                        <el-form-item label="左颈总动脉">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.hospital" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </div>
+
                 </div>
             </el-form>
             <el-divider content-position="left">腹部下肢影像</el-divider>
@@ -745,10 +803,27 @@ export default {
     line-height: 20px
 }
 
-.headInfo{
+.headInfo {
     background: url("../../../assets/images/headInfo.png") center center no-repeat;
+    
     width: 100%;
     height: 50vh;
-    position:  relative;
+    position: relative;
+    background-size: 20% 100%;
+
+    ::v-deep .el-form-item__label {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    >div {
+        display: inline-block;
+        position: absolute;
+        width: 13%;
+    }
+
+    .labelRight {
+        text-align: right;
+    }
 }
 </style>
