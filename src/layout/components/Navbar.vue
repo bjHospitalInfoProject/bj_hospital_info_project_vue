@@ -11,12 +11,14 @@
         <svg-icon icon-class="notification" />
       </div>
 
-      <span class="right-menu-item hover-effect" style="color: #de1010;font-style: italic;">机构：{{ name }}</span>
+      <span class="right-menu-item hover-effect" style="font-style: italic;">机构：{{ name }}</span>
 
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar">
+          <!-- <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar"> -->
+          <img src="logo.png" class="user-avatar">
 
+          
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/user/usercenter">

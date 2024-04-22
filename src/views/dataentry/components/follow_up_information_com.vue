@@ -224,7 +224,14 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="肿瘤坏死因子-α (TNF-α,pg/mL):">
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    肿瘤坏死因子-α 
+                                    <br>
+                                    (TNF-α,pg/mL):
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:150px" size="mini"
                                 v-model="followInfo.name"></el-input>
                         </el-form-item>
@@ -659,5 +666,9 @@ export default {
 
 ::v-deep .custom .el-form-item__label {
     line-height: 20px
+}
+.labelTitle{
+    line-height: 20px;
+    display: inline-block
 }
 </style>

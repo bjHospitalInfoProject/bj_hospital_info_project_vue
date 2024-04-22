@@ -1,101 +1,98 @@
 <template>
     <div class="dataentry">
-        <el-row class="rows" :gutter="20">
-            <el-col :lg="7" :xl="5">
-                <div class="left-tree">
-                    <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false"
-                        @node-click="handleNodeClick">
-                        <div slot-scope="{ node, data }" :title="node.label"
-                            :class="'custom-tree-node tree-node-' + node.data.zindex">
-                            <el-input class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
-                                @change="treeInputChange(node)" v-model="addTreeText"></el-input>
-                            <!-- @blur="treeInputChange(node)" -->
-                            <p v-else class="custom-tree-node-text">{{ node.label }}</p>
-                            <span style="float:right;margin-right:30px">
-                                <i @click="addTree(node)"
-                                    :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
-                                <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children.length }}</span>
-                                <i @click="delTree(node)"
-                                    :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
-                            </span>
-                        </div>
-                    </el-tree>
+        <dragDiv style="display: inline-block;" @change="widthChange">
+            <div class="left-tree">
+                <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false"
+                    @node-click="handleNodeClick">
+                    <div slot-scope="{ node, data }" :title="node.label"
+                        :class="'custom-tree-node tree-node-' + node.data.zindex">
+                        <el-input class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
+                            @change="treeInputChange(node)" v-model="addTreeText"></el-input>
+                        <!-- @blur="treeInputChange(node)" -->
+                        <p v-else class="custom-tree-node-text">{{ node.label }}</p>
+                        <span style="float:right;">
+                            <i @click="addTree(node)"
+                                :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
+                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children.length }}</span>
+                            <i @click="delTree(node)"
+                                :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
+                        </span>
+                    </div>
+                </el-tree>
+            </div>
+        </dragDiv>
+        <div class="rightBody" :style="{
+            width: `calc(100% - ${dragDivWidth}px - 30px)`,
+            marginLeft: '30px'
+        }">
+            <el-card class="box-card patientInfo">
+                <div slot="header" class="clearfix">
+                    <span>病人一般情况</span>
+                    <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
+                        @click="editVis = false">编辑</el-button>
+                    <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
+                        @click="editVis = true">保存</el-button>
                 </div>
-            </el-col>
-            <el-col :lg="17" :xl="19" style="overflow: auto;">
-                <el-card class="box-card patientInfo">
-                    <div slot="header" class="clearfix">
-                        <span>病人一般情况</span>
-                        <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini"
-                            type="success" @click="editVis = false">编辑</el-button>
-                        <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                            @click="editVis = true">保存</el-button>
-                    </div>
-                    <div>
-                        <el-form :inline="true" label-width="150px" :model="patientInfo">
-                            <el-form-item label="姓名:">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="patientInfo.name"></el-input>
-                            </el-form-item>
-                            <el-form-item label="距离上次手术时间:">
-                                <el-date-picker :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="patientInfo.operativeTime" type="month" placeholder="选择月">
-                                </el-date-picker>
-                            </el-form-item>
+                <div>
+                    <el-form :inline="true" label-width="150px" :model="patientInfo">
+                        <el-form-item label="姓名:">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="patientInfo.name"></el-input>
+                        </el-form-item>
+                        <el-form-item label="距离上次手术时间:">
+                            <el-date-picker :disabled="editVis" style="width:200px" size="mini"
+                                v-model="patientInfo.operativeTime" type="month" placeholder="选择月">
+                            </el-date-picker>
+                        </el-form-item>
 
-                            <el-form-item label="既往就诊医院:">
-                                <el-select :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="patientInfo.hospital" placeholder="请选择">
-                                    <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                        :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                            <el-form-item label="住院号:">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="patientInfo.code"></el-input>
-                            </el-form-item>
-                            <el-form-item label="有无微信?:">
-                                <el-checkbox :disabled="editVis" v-model="patientInfo.vchat"></el-checkbox>
-                            </el-form-item>
-                        </el-form>
-                    </div>
-                </el-card>
+                        <el-form-item label="既往就诊医院:">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="patientInfo.hospital" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="住院号:">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="patientInfo.code"></el-input>
+                        </el-form-item>
+                        <el-form-item label="有无微信?:">
+                            <el-checkbox :disabled="editVis" v-model="patientInfo.vchat"></el-checkbox>
+                        </el-form-item>
+                    </el-form>
+                </div>
+            </el-card>
 
-                <detailInfo v-if="defaultSelectId == -1" class="box-card imageInfo" :detailInfo="detailInfo" />
+            <detailInfo v-if="defaultSelectId == -1" class="box-card imageInfo" :detailInfo="detailInfo" />
 
-                <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo" :InpatientInfo="InpatientInfo" />
-                <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo"
-                    :laboratoryInfo="laboratoryInfo" />
+            <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo" :InpatientInfo="InpatientInfo" />
+            <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo" :laboratoryInfo="laboratoryInfo" />
 
-                <imageInfo v-if="defaultSelectId == 3" class="box-card imageInfo" :patientInfo="patientInfo"
-                    :imageInfo="imageInfo" />
-                <diseaseInfo v-if="defaultSelectId == 4" class="box-card imageInfo" :diseaseInfo="diseaseInfo" />
-                <qualityInfo v-if="defaultSelectId == 5" class="box-card imageInfo" :qualityInfo="qualityInfo" />
+            <imageInfo v-if="defaultSelectId == 3" class="box-card imageInfo" :patientInfo="patientInfo"
+                :imageInfo="imageInfo" />
+            <diseaseInfo v-if="defaultSelectId == 4" class="box-card imageInfo" :diseaseInfo="diseaseInfo" />
+            <qualityInfo v-if="defaultSelectId == 5" class="box-card imageInfo" :qualityInfo="qualityInfo" />
 
 
-                <followInfo v-if="defaultSelectId == 6" class="box-card imageInfo" :followInfo="followInfo" />
+            <followInfo v-if="defaultSelectId == 6" class="box-card imageInfo" :followInfo="followInfo" />
 
-                <organizingparaffinInfo v-if="defaultSelectId == 7" class="box-card imageInfo"
-                    :organizingparaffinInfo="organizingparaffinInfo" />
+            <organizingparaffinInfo v-if="defaultSelectId == 7" class="box-card imageInfo"
+                :organizingparaffinInfo="organizingparaffinInfo" />
 
-                <organizationalwhiteInfo v-if="defaultSelectId == 8" class="box-card imageInfo"
-                    :organizationalwhiteInfo="organizationalwhiteInfo" />
-
-
-                <HEInfo v-if="defaultSelectId == 9" class="box-card imageInfo" :HEInfo="HEInfo" />
-                <IHCInfo v-if="defaultSelectId == 10" class="box-card imageInfo" :IHCInfo="IHCInfo" />
-                <bloodInfo v-if="defaultSelectId == 11" class="box-card imageInfo" :bloodInfo="bloodInfo" />
-
-                <organizefrozenInfo v-if="defaultSelectId == 12" class="box-card imageInfo"
-                    :organizefrozenInfo="organizefrozenInfo" />
-
-                <IFInfo v-if="defaultSelectId == 13" class="box-card imageInfo" :IFInfo="IFInfo" />
+            <organizationalwhiteInfo v-if="defaultSelectId == 8" class="box-card imageInfo"
+                :organizationalwhiteInfo="organizationalwhiteInfo" />
 
 
+            <HEInfo v-if="defaultSelectId == 9" class="box-card imageInfo" :HEInfo="HEInfo" />
+            <IHCInfo v-if="defaultSelectId == 10" class="box-card imageInfo" :IHCInfo="IHCInfo" />
+            <bloodInfo v-if="defaultSelectId == 11" class="box-card imageInfo" :bloodInfo="bloodInfo" />
 
-            </el-col>
-        </el-row>
+            <organizefrozenInfo v-if="defaultSelectId == 12" class="box-card imageInfo"
+                :organizefrozenInfo="organizefrozenInfo" />
+
+            <IFInfo v-if="defaultSelectId == 13" class="box-card imageInfo" :IFInfo="IFInfo" />
+        </div>
     </div>
 </template>
 
@@ -114,12 +111,13 @@ import organizationalwhiteInfo from "./components/organizational_white_patches_c
 import organizefrozenInfo from "./components/organize_frozen_samples_com.vue"
 import organizingparaffinInfo from "./components/organizing_paraffin_blocks_com.vue"
 import qualityInfo from "./components/quality_life_health_evaluation_com.vue"
-
+import dragDiv from "./components/dragDiv.vue"
 
 
 export default {
     mounted() {
         let userId = this.$route.query.name;
+        console.log(this.$refs.dragDiv?.defaultWidth)
         console.log('用户ID----:', userId); // 输出：用户ID: 123
     },
     data() {
@@ -376,12 +374,16 @@ export default {
                 code: ''
             },
             defaultSelectId: -1,
+
+            dragDivWidth: 240,
         };
+    },
+    computed: {
     },
     components: {
         imageInfo, detailInfo, diseaseInfo, HEInfo, IHCInfo, IFInfo, organizefrozenInfo,
         laboratoryInfo, InpatientInfo, bloodInfo, followInfo, organizationalwhiteInfo,
-        organizingparaffinInfo, qualityInfo
+        organizingparaffinInfo, qualityInfo, dragDiv
     },
     methods: {
         handleNodeClick(data) {
@@ -399,13 +401,13 @@ export default {
         },
 
         addTree(node) {
-            let str = node.label + ' - ' +this.getDate();
+            let str = node.label + ' - ' + this.getDate();
             // node.data.children.push({
             //     label: 'test',
             //     zindex: 8
             // })
             // this.addTreeText = 
-            
+
             node.data.children.push({
                 label: str,
                 zindex: 3
@@ -457,7 +459,12 @@ export default {
         treeInputChange(node) {
             node.data.label = this.addTreeText;
             node.data.zindex = 3
-        }
+        },
+        widthChange(width) {
+            console.log(width)
+            this.dragDivWidth = width;
+        },
+
 
     }
 };
@@ -477,8 +484,6 @@ export default {
     }
 
     .left-tree {
-        // background-color: rgba(217, 217, 217, 1);
-        // border: 1px solid rgba(217, 217, 217, 1);
         box-shadow: 0 0 15px 5px rgba(217, 217, 217, .5);
         height: 100%;
         overflow: auto;
@@ -493,8 +498,6 @@ export default {
     .el-card__header {
         height: 30px;
     }
-
-
 }
 </style>
 
@@ -606,5 +609,12 @@ export default {
         }
     }
 
+}
+
+.rightBody {
+    display: inline-block;
+    float: right;
+    height: calc(100vh - 70px);
+    overflow: auto;
 }
 </style>

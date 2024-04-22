@@ -382,6 +382,10 @@
                         </el-row>
                     </el-col>
                 </el-row>
+
+                <div class="headInfo">
+                    <!-- <img style="width:90%" src="@/assets/images/headInfo.png" alt=""> -->
+                </div>
             </el-form>
             <el-divider content-position="left">腹部下肢影像</el-divider>
 
@@ -739,5 +743,12 @@ export default {
 
 ::v-deep .custom .el-form-item__label {
     line-height: 20px
+}
+
+.headInfo{
+    background: url("../../../assets/images/headInfo.png") center center no-repeat;
+    width: 100%;
+    height: 50vh;
+    position:  relative;
 }
 </style>
