@@ -53,22 +53,18 @@
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
                         <el-form-item label="IF染色目的蛋白-颜色:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                            <el-input :disabled="editVis" style="width:100%" size="mini"
                                 v-model="IFInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
 
-                <el-row>
-                    <el-col :span="24">
-                        <el-form-item label="IF染色结果描述:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
-                            </el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
+                
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织性质:">
@@ -108,6 +104,14 @@
                         <el-form-item label="来源住院手术信息ID:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="IFInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="IF染色结果描述:">
+                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            </el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>

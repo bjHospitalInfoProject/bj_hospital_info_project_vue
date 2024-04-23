@@ -53,16 +53,19 @@
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
-                </el-row>
-
-                <el-row>
-                    <el-col :span="24">
-                        <el-form-item label="HE染色结果描述:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
-                            </el-input>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="当前保存位置:">
+                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="HEInfo.hospital"
+                                placeholder="请选择">
+                                <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                 </el-row>
+
+                
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织性质:">
@@ -80,16 +83,7 @@
                                 v-model="HEInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="当前保存位置:">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="HEInfo.hospital"
-                                placeholder="请选择">
-                                <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
+                    
                 </el-row>
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
@@ -102,6 +96,14 @@
                         <el-form-item label="来源住院手术信息ID:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="HEInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="HE染色结果描述:">
+                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            </el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>

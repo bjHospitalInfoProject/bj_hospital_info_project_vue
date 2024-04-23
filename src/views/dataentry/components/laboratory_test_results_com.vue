@@ -277,9 +277,9 @@
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+                    <el-col :span="16" :lg="12" :xl="16">
                         <el-form-item label="阳性抗体:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:calc(100% - 20px)" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
@@ -936,7 +936,7 @@
                 </el-row>
                 <el-divider content-position="left">结核检测</el-divider>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核抗体快速卡试验:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -945,7 +945,7 @@
                 </el-row>
 
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核抗38kd蛋白抗体:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -953,7 +953,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核抗16kd蛋白抗体:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -961,7 +961,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核抗LAM抗体:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -969,7 +969,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="淋巴细胞培养+干扰素A(SF/10^6M):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -977,7 +977,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="淋巴细胞培养+干扰素B(SF/10^6M):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -985,7 +985,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核杆菌γ-干扰素实验（T-N）(pg/ml):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -993,7 +993,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核杆菌γ-干扰素实验（P-N）(pg/ml):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1001,7 +1001,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核分枝杆菌特异性细胞免疫反应监测（QFT）:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1009,7 +1009,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核分枝杆菌核酸荧光检测:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1017,7 +1017,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="抗酸杆菌涂片:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1025,7 +1025,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="抗酸杆菌培养:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1033,7 +1033,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="结核菌素(PPD)试验:">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1046,7 +1046,7 @@
                 <el-divider content-position="left">肿瘤标志物</el-divider>
 
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="癌胚抗原(CEA, ng/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1054,7 +1054,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="甲胎蛋白(AFP, ng/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1062,7 +1062,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="糖类抗原125  (CA125, U/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1070,7 +1070,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="糖类抗原15-3 (CA15-3, U/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1079,7 +1079,7 @@
                 </el-row>
 
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="糖类抗原19-9 (CA19-9, U/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1087,7 +1087,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="糖类抗原72-4 (CA72-4, U/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1095,15 +1095,15 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
-                        <el-form-item label="糖类抗原24-2 (CA24-2, U/mL):">
+                    <el-col :span="12">
+                        <el-form-item label="糖类抗原12-2 (CA12-2, U/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="糖类抗原50 (CA50, U/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1111,7 +1111,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="前列腺特异抗原 (PSA, ng/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1119,7 +1119,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="鳞状细胞癌抗原 (SCC, ng/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1127,7 +1127,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="细胞角蛋白19片段 (CYFRA 21-1, ng/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1135,7 +1135,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="胃泌素释放肽前体 (ProGRP, pg/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1143,7 +1143,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="神经元特异性烯醇化酶(NSE, ng/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>
@@ -1151,7 +1151,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24">
+                    <el-col :span="12">
                         <el-form-item label="核基质蛋白-22 (NMP-22, kU/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2" placeholder="请输入内容">
                             </el-input>

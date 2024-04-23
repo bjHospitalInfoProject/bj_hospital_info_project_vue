@@ -424,8 +424,8 @@
                         <el-form-item label="2011年中国指南临床分型">
                             <el-select :disabled="editVis" size="mini" style="width:200px"
                                 v-model="InpatientInfo.hospital" placeholder="请选择">
-                                <el-option v-for="item in linhchuangfenxingoptions" :key="item.value" :label="item.label"
-                                    :value="item.value">
+                                <el-option v-for="item in linhchuangfenxingoptions" :key="item.value"
+                                    :label="item.label" :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-form-item>
@@ -1362,7 +1362,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术前Barthel指数量表-进食得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    进食得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1370,7 +1377,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术前Barthel指数量表-洗澡得分">
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    洗澡得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1378,33 +1392,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术前Barthel指数量表-修饰得分">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="InpatientInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-
-                    <el-col :span="8" :lg="12" :xl="8">
-
-                        <el-form-item label="术前Barthel指数量表-穿衣得分">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="InpatientInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-
-                    <el-col :span="8" :lg="12" :xl="8">
-
-                        <el-form-item label="术前Barthel指数量表-控制大便得分">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="InpatientInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-
-                    <el-col :span="8" :lg="12" :xl="8">
-
-                        <el-form-item label="术前Barthel指数量表-控制小便得分">
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    修饰得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1414,7 +1409,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术前Barthel指数量表-如厕得分">
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    穿衣得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1422,7 +1424,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术前Barthel指数量表-床椅转移得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    控制大便得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1430,33 +1439,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术前Barthel指数量表-平地行走得分">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="InpatientInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-
-                    <el-col :span="8" :lg="12" :xl="8">
-
-                        <el-form-item label="术前Barthel指数量表-上下楼梯得分">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="InpatientInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-
-                    <el-col :span="8" :lg="12" :xl="8">
-
-                        <el-form-item label="术后Barthel指数量表得分(术后7天/出院时)">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="InpatientInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-
-                    <el-col :span="8" :lg="12" :xl="8">
-
-                        <el-form-item label="术后Barthel指数量表-进食得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    控制小便得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1466,7 +1456,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-洗澡得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    如厕得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1474,7 +1471,108 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-修饰得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    床椅转移得分
+                                </span>
+                            </template>
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="InpatientInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    平地行走得分
+                                </span>
+                            </template>
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="InpatientInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术前Barthel指数量表-
+                                    <br>
+                                    上下楼梯得分
+                                </span>
+                            </template>
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="InpatientInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item label="">
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表得分
+                                    <br>
+                                    (术后7天/出院时)
+                                </span>
+                            </template>
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="InpatientInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    进食得分
+                                </span>
+                            </template>
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="InpatientInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    洗澡得分
+                                </span>
+                            </template>
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="InpatientInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+
+                    <el-col :span="8" :lg="12" :xl="8">
+
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    修饰得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini" v-model="InpatientInfo.name">
                             </el-input>
                         </el-form-item>
@@ -1482,7 +1580,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-穿衣得分">
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    穿衣得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1492,7 +1597,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-控制大便得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    控制大便得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini" v-model="InpatientInfo.name">
                             </el-input>
                         </el-form-item>
@@ -1500,7 +1612,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-控制小便得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    控制小便得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1508,7 +1627,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-如厕得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    如厕得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1518,7 +1644,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-床椅转移得分">
+                        <el-form-item >
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    床椅转移得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1526,7 +1659,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-平地行走得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    平地行走得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1534,7 +1674,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
 
-                        <el-form-item label="术后Barthel指数量表-上下楼梯得分">
+                        <el-form-item>
+                            <template #label>
+                                <span class="labelTitle">
+                                    术后Barthel指数量表-
+                                    <br>
+                                    上下楼梯得分
+                                </span>
+                            </template>
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="InpatientInfo.name"></el-input>
                         </el-form-item>
@@ -1763,7 +1910,7 @@ export default {
                 {
                     label: "桥本氏甲状腺炎",
                     value: 4
-                } ,
+                },
                 {
                     label: "其他",
                     value: 5
@@ -1839,7 +1986,7 @@ export default {
                 {
                     label: "心肌病",
                     value: 4
-                } ,
+                },
                 {
                     label: "心功能不全",
                     value: 5
@@ -1865,7 +2012,7 @@ export default {
                 {
                     label: "IV级",
                     value: 4
-                } ,
+                },
                 {
                     label: "有但分级不详",
                     value: 5
@@ -2200,9 +2347,9 @@ export default {
                     value: 34
                 }
             ],
-           
+
             linhchuangfenxingoptions: [
-                
+
                 {
                     label: "I型 [头臂动脉型]",
                     value: 1
@@ -2315,7 +2462,7 @@ export default {
                     label: "静脉全麻",
                     value: 3
                 }
-             
+
             ],
             ASAoptions: [
                 {
@@ -2861,5 +3008,9 @@ export default {
 
 .el-row {
     margin-bottom: 5px;
+}
+.labelTitle{
+    line-height: 20px;
+    display: inline-block
 }
 </style>

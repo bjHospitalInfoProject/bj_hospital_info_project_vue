@@ -28,15 +28,33 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="IHC染色时间:">
+                            <el-date-picker v-model="IHCInfo.name" style="width:200px" size="mini" type="date"
+                                placeholder="选择日期">
+                            </el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                    
+                </el-row>
+                <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IHC染色切片编号1:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="IHCInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="IHC染色切片编号2:">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="IHCInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    
+                    
                 </el-row>
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="IHC染色切片编号2:">
+                        <el-form-item label="IHC染色目的蛋白:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="IHCInfo.name"></el-input>
                         </el-form-item>
@@ -51,30 +69,8 @@
                             </el-select>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="IHC染色时间:">
-                            <el-date-picker v-model="IHCInfo.name" style="width:200px" size="mini" type="date"
-                                placeholder="选择日期">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
                 </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="IHC染色目的蛋白:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="IHCInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="24">
-                        <el-form-item label="IHC染色结果描述:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
-                            </el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
+                
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织性质:">
@@ -114,6 +110,14 @@
                         <el-form-item label="来源住院手术信息ID:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="IHCInfo.name"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="IHC染色结果描述:">
+                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            </el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>

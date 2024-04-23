@@ -18,28 +18,21 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item label="目前白片张数:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="organizationalwhiteInfo.name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="白片编号:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
                                 v-model="organizationalwhiteInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
-                </el-row>
-
-
-                <el-row>
-                    <el-col :span="24">
-                        <el-form-item label="出借情况:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
-                            </el-input>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="目前白片张数:">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="organizationalwhiteInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
+
+
+                
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织性质:">
@@ -68,6 +61,14 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="备注:">
+                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            </el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="出借情况:">
                             <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>

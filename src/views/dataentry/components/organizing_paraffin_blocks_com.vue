@@ -54,10 +54,10 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
-                            <el-form-item label="组织性质:">
+                            <el-form-item label="当前保存位置:">
                                 <el-select :disabled="editVis" style="width:200px" size="mini"
                                     v-model="organizingparaffinInfo.hospital" placeholder="请选择">
-                                    <el-option v-for="item in orgOptions" :key="item.value" :label="item.label"
+                                    <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
                                         :value="item.value">
                                     </el-option>
                                 </el-select>
@@ -72,15 +72,16 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
-                            <el-form-item label="当前保存位置:">
+                            <el-form-item label="组织性质:">
                                 <el-select :disabled="editVis" style="width:200px" size="mini"
                                     v-model="organizingparaffinInfo.hospital" placeholder="请选择">
-                                    <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
+                                    <el-option v-for="item in orgOptions" :key="item.value" :label="item.label"
                                         :value="item.value">
                                     </el-option>
                                 </el-select>
                             </el-form-item>
                         </el-col>
+                        
 
                     </el-row>
                     <el-row>
