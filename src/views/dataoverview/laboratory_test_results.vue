@@ -2,14 +2,17 @@
   <div class="app-container">
 
     <div class="filter-container">
-      <el-input v-model="listQuery.name" placeholder="姓名" style="width: 200px;" @keyup.enter.native="handleFilter" />
-
-      <el-input v-model="listQuery.tel" placeholder="手机号" style="width: 200px;" class="filter-item"
-        @keyup.enter.native="handleFilter" />
-
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-        搜索
-      </el-button>
+      <el-form :inline="true" :model="listQuery" class="demo-form-inline">
+        <el-form-item label="姓名">
+          <el-input v-model="listQuery.name"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="listQuery.phone"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="getList">查询</el-button>
+        </el-form-item>
+      </el-form>
 
     </div>
 
@@ -60,8 +63,9 @@
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
+    <pagination v-show="total > 0" :total="total" :pageNo.sync="listQuery.pageNo" :pageSize.sync="listQuery.pageSize"
       @pagination="getList" />
+
 
     <el-drawer title="结果详情" size="40%" :visible.sync="drawer" direction="rtl" :before-close="handleClose">
 
@@ -1658,7 +1662,7 @@
           <el-row>
             <el-col :span="5">
               <div class="centerInfo">
-                糖类抗原125  (CA125, U/mL)：
+                糖类抗原125 (CA125, U/mL)：
               </div>
             </el-col>
             <el-col :span="19">
@@ -1840,13 +1844,18 @@ export default {
         name: "",
         phone: "",
         centerId: ''
-      }
+      },
+      drawer: false,
+
     }
   },
   created() {
     this.getList()
   },
   methods: {
+    getDetailInfoOption() {
+      this.drawer = true;
+    },
     async getList() {
       this.listLoading = true
       this.listQuery.centerId = this.centerId

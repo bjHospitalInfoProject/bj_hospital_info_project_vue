@@ -337,7 +337,7 @@
 </template>
 
 <script>
-import { getFollowUpPageInfo } from '@/api/dataquery'
+import { getPatientPageInfoList } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
 import { mapGetters } from 'vuex'
 
@@ -374,7 +374,7 @@ export default {
     async getList() {
       this.listLoading = true
       this.listQuery.centerId = this.centerId
-      const { data } = await getFollowUpPageInfo(this.listQuery)
+      const { data } = await getPatientPageInfoList(this.listQuery)
       const items = data.data
       this.total = data.totalCount
       this.list = items.map(v => {

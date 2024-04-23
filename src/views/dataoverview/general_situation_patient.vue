@@ -4,10 +4,10 @@
     <div class="filter-container">
       <el-form :inline="true" :model="listQuery" class="demo-form-inline">
         <el-form-item label="姓名">
-          <el-input v-model="listQuery.user"></el-input>
+          <el-input v-model="listQuery.name"></el-input>
         </el-form-item>
         <el-form-item label="手机号">
-          <el-input v-model="listQuery.tel"></el-input>
+          <el-input v-model="listQuery.phone"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="getList">查询</el-button>
@@ -57,7 +57,7 @@
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
+    <pagination v-show="total > 0" :total="total" :pageNo.sync="listQuery.pageNo" :pageSize.sync="listQuery.pageSize"
       @pagination="getList" />
 
     <el-drawer title="详情信息" size="50%" :visible.sync="drawer" direction="rtl">
@@ -293,41 +293,29 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/article'
+
+import { getPatientPageInfoList } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
+import { mapGetters } from 'vuex'
 
 
 export default {
   name: 'InlineEditTable',
   components: { Pagination },
-
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   data() {
     return {
       list: null,
       listLoading: true,
       total: 0,
       listQuery: {
-        page: 1,
-        limit: 10,
-        user: "",
-        tel: "",
-        centerCode: 1001
+        pageNo: 1,
+        pageSize: 10,
+        name: "",
+        phone: "",
+        centerId: ''
       },
       drawer: false,
-      detailInfo: {
-        name: '2',
-        hospital: '1'
-      },
+      detailInfo: {}
     }
   },
   created() {
@@ -339,32 +327,29 @@ export default {
     },
     async getList() {
       this.listLoading = true
-      const { data } = await fetchList(this.listQuery)
-      const items = data.items
-      this.total = data.total
+      this.listQuery.centerId = this.centerId
+      const { data } = await getPatientPageInfoList(this.listQuery)
+      const items = data.data
+      this.total = data.totalCount
       this.list = items.map(v => {
-        this.$set(v, 'edit', false) // https://vuejs.org/v2/guide/reactivity.html
-        v.originalTitle = v.title //  will be used when user click the cancel botton
         return v
       })
       this.listLoading = false
     },
-    cancelEdit(row) {
-      row.title = row.originalTitle
-      row.edit = false
-      this.$message({
-        message: 'The title has been restored to the original value',
-        type: 'warning'
-      })
-    },
-    confirmEdit(row) {
-      row.edit = false
-      row.originalTitle = row.title
-      this.$message({
-        message: 'The title has been edited',
-        type: 'success'
-      })
+    getLabelFromValue(options, value) {
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].value === value) {
+          return options[i].label;
+        }
+      }
+      // 如果没有找到匹配的值，则返回空字符串或者其他你觉得合适的值
+      return "";
     }
+  },
+  computed: {
+    ...mapGetters([
+      'centerId'
+    ])
   }
 }
 </script>
@@ -377,7 +362,8 @@ export default {
     margin-left: 20px;
   }
 }
-.el-form-item{
+
+.el-form-item {
   margin-bottom: 5px;
 }
 </style>
