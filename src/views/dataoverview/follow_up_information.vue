@@ -4,10 +4,10 @@
     <div class="filter-container">
       <el-form :inline="true" :model="listQuery" class="demo-form-inline">
         <el-form-item label="姓名">
-          <el-input v-model="listQuery.user"></el-input>
+          <el-input v-model="listQuery.name"></el-input>
         </el-form-item>
         <el-form-item label="手机号">
-          <el-input v-model="listQuery.tel"></el-input>
+          <el-input v-model="listQuery.phone"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="getList">查询</el-button>
@@ -19,34 +19,34 @@
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" label="随访信息ID">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.followUpInfoId }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="填报人">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.reporter }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="填报时间">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.reportTime }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="随访人">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.followUpPerson }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="随访方式">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.followUpMethod }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="随访日期">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.followUpDate }}</span>
         </template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="80">
@@ -57,7 +57,7 @@
 
     </el-table>
 
-    <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
+    <pagination v-show="total > 0" :total="total" :pageNo.sync="listQuery.pageNo" :pageSize.sync="listQuery.pageSize"
       @pagination="getList" />
 
     <el-drawer title="随访详情信息" size="50%" :visible.sync="drawer" direction="rtl">
@@ -337,35 +337,25 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/article'
+import { getFollowUpPageInfo } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
+import { mapGetters } from 'vuex'
 
 
 export default {
   name: 'InlineEditTable',
   components: { Pagination },
-
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   data() {
     return {
       list: null,
       listLoading: true,
       total: 0,
       listQuery: {
-        page: 1,
-        limit: 10,
-        user: "",
-        tel: "",
-        centerCode: 1001
+        pageNo: 1,
+        pageSize: 10,
+        name: "",
+        phone: "",
+        centerId: ''
       },
       drawer: false,
       followInfo: {
@@ -383,16 +373,20 @@ export default {
     },
     async getList() {
       this.listLoading = true
-      const { data } = await fetchList(this.listQuery)
-      const items = data.items
-      this.total = data.total
+      this.listQuery.centerId = this.centerId
+      const { data } = await getFollowUpPageInfo(this.listQuery)
+      const items = data.data
+      this.total = data.totalCount
       this.list = items.map(v => {
-        this.$set(v, 'edit', false) // https://vuejs.org/v2/guide/reactivity.html
-        v.originalTitle = v.title //  will be used when user click the cancel botton
         return v
       })
       this.listLoading = false
     }
+  },
+  computed: {
+    ...mapGetters([
+      'centerId'
+    ])
   }
 }
 </script>
@@ -405,6 +399,7 @@ export default {
     margin-left: 20px;
   }
 }
+
 ::v-deep .custom .el-form-item__label {
   line-height: 20px
 }

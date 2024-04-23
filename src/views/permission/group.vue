@@ -9,13 +9,10 @@
           <div class="avatarImg" @click="dialogvis = true">
             <img style="width: 100%;height: 100%;" src="/logo.png" alt="">
           </div>
-          <p style="text-align: center;font-size: 12px;" title="北京医院血液外科">北京医院血液外科</p>
+          <p style="text-align: center;font-size: 12px;">{{ centerName }}</p>
         </el-col>
 
         <el-col :span="6">
-          <br>
-          更新时间:2023-01-01 15:00:00
-          <br>
           <br>
           <svg-icon style="font-size: 24px;" icon-class="runIcon" />
           正常运行
@@ -33,29 +30,26 @@
       <el-table :data="grouplist" border fit highlight-current-row style="width: 100%">
         <el-table-column align="center" label="名称">
           <template slot-scope="{row}">
-            <span>{{ row.id }}</span>
+            <span>{{ row.groupName }}</span>
           </template>
         </el-table-column>
 
         <el-table-column align="center" label="状态">
           <template slot-scope="{row}">
-            <span>{{ row.id }}</span>
+            <div v-if="row.status == 1"><el-tag type="success">启用</el-tag></div>
+            <div v-else><el-tag type="danger">删除</el-tag></div>
           </template>
         </el-table-column>
 
         <el-table-column align="center" label="创建时间">
           <template slot-scope="{row}">
-            <span>{{ row.author }}</span>
+            <span>{{ row.createTime }}</span>
           </template>
         </el-table-column>
-        <el-table-column align="center" label="更新时间">
-          <template slot-scope="{row}">
-            <span>{{ row.author }}</span>
-          </template>
-        </el-table-column>
+
         <el-table-column align="center" label="医生数量">
           <template slot-scope="{row}">
-            <span>{{ row.author }}</span>
+            <span>{{ row.userCount }}</span>
           </template>
         </el-table-column>
 
@@ -63,13 +57,16 @@
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" type="text" size="small">详情</el-button>
             <el-button @click="editList(scope.row)" type="text" size="small">编辑</el-button>
-            <el-button type="text" size="small">删除</el-button>
+            <el-button type="text" @click="deleteoption(scope.row)" size="small">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
+
+      <pagination v-show="total > 0" :total="total" :pageNo.sync="listQuery.pageNo" :pageSize.sync="listQuery.pageSize"
+        @pagination="getList" />
     </el-card>
 
-    <el-dialog :title="addGroupForm.id ? '编辑小组' : '创建小组'" :visible.sync="dialogvis" width="50%">
+    <el-dialog :title="addGroupForm.id ? '编辑小组' : '创建小组'" :visible.sync="dialogvis" width="60%" height="30%">
       <div class="dialogBdoy">
         <el-row :gutter="20">
           <el-col :span="14">
@@ -82,34 +79,45 @@
             <p>初始权限</p>
 
             <el-table size="mini" :data="authlist" border fit highlight-current-row style="width: 100%">
-              <el-table-column align="center" label="">
+              <el-table-column align="center" label="模版名称">
                 <template slot-scope="{row}">
-                  <span>{{ row.name }}</span>
+                  <span>{{ row.dataType }}</span>
                 </template>
               </el-table-column>
               <el-table-column align="center" width="80" label="预览">
-                <template slot-scope="{row}">
-                  <el-checkbox v-model="row.preview"></el-checkbox>
+                <template slot-scope="scope">
+                  <el-checkbox :true-label="findOpId(scope.row, 'query')" :false-label="null"
+                    :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'query')"
+                    @change="handleCheckChange($event, scope.row, 'query')">
+                  </el-checkbox>
                 </template>
               </el-table-column>
               <el-table-column align="center" width="80" label="编辑">
-                <template slot-scope="{row}">
-                  <el-checkbox @change="authEditChange(row)" v-model="row.edit"></el-checkbox>
+                <template slot-scope="scope">
+                  <el-checkbox :true-label="findOpId(scope.row, 'edit')" :false-label="null"
+                    :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'edit')"
+                    @change="handleCheckChange($event, scope.row, 'edit')">
+                  </el-checkbox>
+
                 </template>
               </el-table-column>
               <el-table-column align="center" width="80" label="删除">
-                <template slot-scope="{row}">
-                  <el-checkbox v-model="row.del"></el-checkbox>
+                <template slot-scope="scope">
+                  <el-checkbox :true-label="findOpId(scope.row, 'delete')" :false-label="null"
+                    :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'delete')"
+                    @change="handleCheckChange($event, scope.row, 'delete')">
+                  </el-checkbox>
                 </template>
               </el-table-column>
             </el-table>
           </el-col>
           <el-col :span="10">
-            <el-table size="mini" :data="userlist" border fit highlight-current-row style="width: 100%">
+            <el-table size="mini" :data="userlist" border fit highlight-current-row style="width: 100%"
+              @selection-change="handleSelectionChange">
               <el-table-column align="center" width="40" type="selection">
               </el-table-column>
               <el-table-column align="center" label="姓名">
-                <template slot="header" slot-scope="scope">
+                <!-- <template slot="header" slot-scope="scope">
                   <el-popover placement="top">
                     <template slot="reference">
                       <el-button type="text" style="padding:0;color: #515a6e;font-weight: 600;">姓名
@@ -120,15 +128,15 @@
                     &nbsp;
                     <el-button type="primary" size="mini" @click="onSearch">确定</el-button>
                   </el-popover>
-                </template>
+                </template> -->
 
                 <template slot-scope="{row}">
-                  <span>{{ row.id }}</span>
+                  <span>{{ row.nickname }}</span>
                 </template>
               </el-table-column>
               <el-table-column align="center" label="手机号">
                 <template slot-scope="{row}">
-                  <span>{{ row.id }}</span>
+                  <span>{{ row.username }}</span>
                 </template>
               </el-table-column>
             </el-table>
@@ -137,44 +145,160 @@
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button size="small" @click="dialogvis = false">取 消</el-button>
-        <el-button size="small" type="primary" @click="dialogvis = false">保 存</el-button>
+        <el-button size="small" type="primary" @click="addGroupInfo()">保 存</el-button>
       </span>
     </el-dialog>
   </div>
 </template>
 
+
 <script>
+
+import { getCenterGroupList, createGroupInfo, delGroupInfo, updateGroupInfo } from '@/api/group'
+import { mapGetters } from 'vuex'
+import Pagination from '@/components/Pagination'
+import { getTempletePermissionInfo, getCenterDoctorList } from '@/api/permission'
+
 export default {
   data() {
     return {
-      grouplist: [{}],
-      addGroupForm: {},
+      grouplist: [],
+      addGroupForm: {
+        id: ''
+      },
+      total: 0,
       dialogvis: false,
       userlist: [],
-      authlist: [
-        {
-          name: '手术信息 | 模板名',
-          // auth:['preview','edit','del'],
-          preview: 0,
-          edit: 0,
-          del: 0
-        }
-      ]
+      authlist: [],
+      listQuery: {
+        pageNo: 1,
+        pageSize: 10,
+        centerId: ''
+      },
+      selectedIds: [],
+      users: []
     }
   },
+  created() {
+    this.getList()
+  },
+  computed: {
+    ...mapGetters([
+      'centerId',
+      'templateId',
+      'centerName'
+    ]),
+  },
   methods: {
+    isChecked(row, type) {
+      return row.operateTypes.some(op => op.operateType === type);
+    },
+    findOpId(row, type) {
+      let found = row.operateTypes.find(op => op.operateType === type);
+      console.log(found)
+      return found ? found.id : null;
+    },
+    handleCheckChange(checkedId, row, type) {
+      console.log(checkedId)
+      if (checkedId) {
+        // Add the id to selectedIds if it's not already included
+        if (!this.selectedIds.includes(checkedId)) {
+          this.selectedIds.push(checkedId);
+        }
+      } else {
+        // Remove the id from selectedIds
+        this.selectedIds = this.selectedIds.filter(id => id !== this.findOpId(row, type));
+      }
+      console.log('Selected IDs:', this.selectedIds);
+    },
+
+    handleSelectionChange(selection) {
+      this.users = selection.map(item => item.id);
+      console.log('选中行的id:', this.users);
+    },
     addGroup() {
       this.dialogvis = true;
+      this.getPermissionList()
+      this.getCenterDoctorList()
+    },
+
+    async addGroupInfo() {
+      const { data } = await createGroupInfo({
+        centerId: this.centerId, groupName: this.addGroupForm.name,
+        users: this.users, dataPermissions: this.selectedIds
+      })
+      console.log(data)
+      if (data) {
+        this.dialogvis = false
+        this.$message({
+          type: 'success',
+          message: '操作成功!'
+        });
+        this.getList()
+      }
+
+    },
+    //获取当前模板的所有权限
+    async getPermissionList() {
+      const { data } = await getTempletePermissionInfo({ templateId: this.templateId })
+      console.log(data)
+      this.authlist = data
+    },
+
+    //获取当中心下的所有医生列表
+    async getCenterDoctorList() {
+      const { data } = await getCenterDoctorList({
+        pageNo: 1,
+        pageSize: 1000,
+        centerId: this.centerId
+      },)
+      console.log(data)
+      this.userlist = data.data
     },
     authEditChange(data) {
       if (data.edit) {
         data.preview = true
       }
     },
-    editList() {
+    editList(row) {
       this.dialogvis = true;
-      this.addGroupForm.id = 1;
-    }
+      this.addGroupForm = { ...row }
+    },
+    async getList() {
+      this.listLoading = true
+      this.listQuery.centerId = this.centerId
+      console.log(this.listQuery)
+      const { data } = await getCenterGroupList(this.listQuery)
+      const items = data.data
+      this.total = data.totalCount
+      this.grouplist = items.map(v => {
+        return v
+      })
+      this.listLoading = false
+    },
+    deleteoption(row) {
+      this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.delGroupInfoOption(row.id)
+      }).catch(() => {
+
+      });
+    },
+    //删除小组的网络请求
+    async delGroupInfoOption(groupId) {
+      const { data } = await delGroupInfo({ groupId: groupId })
+      console.log(data)
+      if (data) {
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        });
+        this.getList()
+      }
+    },
   }
 }
 </script>
@@ -199,4 +323,3 @@ export default {
   border-radius: 8px;
 }
 </style>
-

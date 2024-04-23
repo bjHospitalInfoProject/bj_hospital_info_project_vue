@@ -135,6 +135,7 @@ export default {
                         label: '住院手术信息',
                         zindex: 2,
                         id: 1,
+                        permission:["add","delete","update"],
                         children: [{
                             label: '手术信息-2024-01-01',
                             zindex: 3,

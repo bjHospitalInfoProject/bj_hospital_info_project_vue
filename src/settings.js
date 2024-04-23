@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '北京医院血管外科',
+  title: '大动脉炎外科治疗数据平台',
 
   /**
    * @type {boolean} true | false

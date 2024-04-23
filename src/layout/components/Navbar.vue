@@ -11,11 +11,11 @@
         <svg-icon icon-class="notification" />
       </div>
 
-      <span class="right-menu-item hover-effect" style="color: #de1010;font-style: italic;">机构：{{ name }}</span>
+      <span class="right-menu-item hover-effect">当前用户：{{ name }}</span>
 
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar">
+          <img src="@/assets/images/user.png" class="user-avatar">
 
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -49,7 +49,19 @@ export default {
     Screenfull,
 
   },
-
+  data() {
+    return {
+      intervalId: null,
+    };
+  },
+  created() {
+    this.intervalId = setInterval(this.fetchData, 30000); // 五分钟后执行一次
+  },
+  destroyed() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar',
@@ -64,6 +76,12 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    async fetchData() {
+      this.$store.dispatch('user/resetToken').then(() => {
+
+      }).catch(() => {
+      })
     }
   }
 }
@@ -133,7 +151,6 @@ export default {
           cursor: pointer;
           width: 40px;
           height: 40px;
-          border-radius: 10px;
         }
 
         .el-icon-caret-bottom {

@@ -1,0 +1,281 @@
+Date : 2024-04-10 23:14:50
+Directory : /Users/chenyi/VueProject/bj_hospital_info_project
+Total : 190 files,  22070 codes, 349 comments, 1899 blanks, all 24318 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| vue                |         64 |     19,099 |         13 |      1,487 |     20,599 |
+| JavaScript         |         53 |      2,389 |        303 |        305 |      2,997 |
+| SCSS               |          6 |        346 |         19 |         82 |        447 |
+| XML                |         61 |         99 |          0 |          0 |         99 |
+| JSON               |          1 |         72 |          0 |          1 |         73 |
+| Markdown           |          1 |         30 |          0 |         16 |         46 |
+| HTML               |          1 |         16 |          1 |          1 |         18 |
+| YAML               |          2 |         10 |         13 |          6 |         29 |
+| JSON with Comments |          1 |          9 |          0 |          1 |         10 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                       |        190 |     22,070 |        349 |      1,899 |     24,318 |
+| . (Files)                                                                                                               |          9 |        444 |         33 |         34 |        511 |
+| build                                                                                                                   |          1 |         28 |          0 |          8 |         36 |
+| mock                                                                                                                    |          8 |        599 |         30 |         61 |        690 |
+| mock (Files)                                                                                                            |          6 |        359 |         29 |         51 |        439 |
+| mock/role                                                                                                               |          2 |        240 |          1 |         10 |        251 |
+| public                                                                                                                  |          1 |         16 |          1 |          1 |         18 |
+| src                                                                                                                     |        161 |     20,566 |        255 |      1,749 |     22,570 |
+| src (Files)                                                                                                             |          4 |         81 |         37 |         28 |        146 |
+| src/api                                                                                                                 |          6 |        130 |         10 |         17 |        157 |
+| src/components                                                                                                          |          5 |        317 |          0 |         26 |        343 |
+| src/components/Breadcrumb                                                                                               |          1 |         71 |          0 |          7 |         78 |
+| src/components/Hamburger                                                                                                |          1 |         41 |          0 |          4 |         45 |
+| src/components/Pagination                                                                                               |          1 |         91 |          0 |          6 |         97 |
+| src/components/Screenfull                                                                                               |          1 |         57 |          0 |          4 |         61 |
+| src/components/SvgIcon                                                                                                  |          1 |         57 |          0 |          5 |         62 |
+| src/icons                                                                                                               |         63 |        110 |         14 |          8 |        132 |
+| src/icons (Files)                                                                                                       |          2 |         11 |         14 |          8 |         33 |
+| src/icons/svg                                                                                                           |         61 |         99 |          0 |          0 |         99 |
+| src/layout                                                                                                              |         11 |        614 |          4 |         70 |        688 |
+| src/layout (Files)                                                                                                      |          1 |         86 |          0 |          8 |         94 |
+| src/layout/components                                                                                                   |          9 |        488 |          2 |         58 |        548 |
+| src/layout/components (Files)                                                                                           |          3 |        166 |          0 |         29 |        195 |
+| src/layout/components/Sidebar                                                                                           |          6 |        322 |          2 |         29 |        353 |
+| src/layout/mixin                                                                                                        |          1 |         40 |          2 |          4 |         46 |
+| src/mixins                                                                                                              |          1 |         82 |         12 |         10 |        104 |
+| src/mixins/read-xlsx-file                                                                                               |          1 |         82 |         12 |         10 |        104 |
+| src/router                                                                                                              |          1 |         62 |         30 |         14 |        106 |
+| src/store                                                                                                               |          6 |        299 |         14 |         55 |        368 |
+| src/store (Files)                                                                                                       |          2 |         33 |          4 |          7 |         44 |
+| src/store/modules                                                                                                       |          4 |        266 |         10 |         48 |        324 |
+| src/styles                                                                                                              |          6 |        346 |         19 |         82 |        447 |
+| src/utils                                                                                                               |          6 |        242 |         98 |         40 |        380 |
+| src/views                                                                                                               |         52 |     18,283 |         17 |      1,399 |     19,699 |
+| src/views/center                                                                                                        |          2 |        287 |          2 |         27 |        316 |
+| src/views/dashboard                                                                                                     |          7 |        523 |          4 |         70 |        597 |
+| src/views/dashboard (Files)                                                                                             |          1 |         18 |          0 |          3 |         21 |
+| src/views/dashboard/admin                                                                                               |          5 |        442 |          4 |         61 |        507 |
+| src/views/dashboard/admin (Files)                                                                                       |          1 |         59 |          0 |         15 |         74 |
+| src/views/dashboard/admin/components                                                                                    |          4 |        383 |          4 |         46 |        433 |
+| src/views/dashboard/admin/components (Files)                                                                            |          3 |        333 |          0 |         44 |        377 |
+| src/views/dashboard/admin/components/mixins                                                                             |          1 |         50 |          4 |          2 |         56 |
+| src/views/dashboard/editor                                                                                              |          1 |         63 |          0 |          6 |         69 |
+| src/views/dataentry                                                                                                     |         16 |      8,465 |          1 |        512 |      8,978 |
+| src/views/dataentry (Files)                                                                                             |          2 |        648 |          1 |         70 |        719 |
+| src/views/dataentry/components                                                                                          |         14 |      7,817 |          0 |        442 |      8,259 |
+| src/views/dataoverview                                                                                                  |         14 |      6,682 |          0 |        559 |      7,241 |
+| src/views/doctor                                                                                                        |          1 |        164 |          0 |         23 |        187 |
+| src/views/error-page                                                                                                    |          2 |        318 |          0 |          9 |        327 |
+| src/views/inportexport                                                                                                  |          3 |        357 |          0 |         38 |        395 |
+| src/views/login                                                                                                         |          1 |        554 |          3 |         50 |        607 |
+| src/views/notification                                                                                                  |          1 |        182 |          0 |         29 |        211 |
+| src/views/permission                                                                                                    |          4 |        594 |          7 |         61 |        662 |
+| src/views/user                                                                                                          |          1 |        157 |          0 |         21 |        178 |
+| tests                                                                                                                   |          8 |        215 |         14 |         18 |        247 |
+| tests/unit                                                                                                              |          8 |        215 |         14 |         18 |        247 |
+| tests/unit (Files)                                                                                                      |          1 |          5 |          0 |          1 |          6 |
+| tests/unit/components                                                                                                   |          3 |        120 |         14 |          7 |        141 |
+| tests/unit/utils                                                                                                        |          4 |         90 |          0 |         10 |        100 |
+| vendor                                                                                                                  |          2 |        202 |         16 |         28 |        246 |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                                | language           | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /Users/chenyi/VueProject/bj_hospital_info_project/.eslintrc.js                                                          | JavaScript         |        195 |          2 |          2 |        199 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/.travis.yml                                                           | YAML               |          5 |          0 |          1 |          6 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/README.md                                                             | Markdown           |         30 |          0 |         16 |         46 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/babel.config.js                                                       | JavaScript         |         10 |          4 |          1 |         15 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/build/index.js                                                        | JavaScript         |         28 |          0 |          8 |         36 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/jest.config.js                                                        | JavaScript         |         23 |          1 |          1 |         25 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/jsconfig.json                                                         | JSON with Comments |          9 |          0 |          1 |         10 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/article.js                                                       | JavaScript         |        103 |          0 |         14 |        117 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/index.js                                                         | JavaScript         |         47 |          6 |          9 |         62 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/mock-server.js                                                   | JavaScript         |         65 |          6 |         11 |         82 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/role/index.js                                                    | JavaScript         |         23 |          1 |          5 |         29 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/role/routes.js                                                   | JavaScript         |        217 |          0 |          5 |        222 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/table.js                                                         | JavaScript         |         27 |          0 |          3 |         30 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/user.js                                                          | JavaScript         |         82 |          6 |         10 |         98 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/mock/utils.js                                                         | JavaScript         |         35 |         11 |          4 |         50 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/package.json                                                          | JSON               |         72 |          0 |          1 |         73 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/postcss.config.js                                                     | JavaScript         |          5 |          2 |          2 |          9 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/public/index.html                                                     | HTML               |         16 |          1 |          1 |         18 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/App.vue                                                           | vue                |         10 |          0 |          2 |         12 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/api/article.js                                                    | JavaScript         |         36 |          0 |          6 |         42 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/api/center.js                                                     | JavaScript         |         15 |          2 |          1 |         18 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/api/doctor.js                                                     | JavaScript         |          8 |          0 |          2 |         10 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/api/permission.js                                                 | JavaScript         |          8 |          0 |          2 |         10 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/api/table.js                                                      | JavaScript         |          8 |          0 |          2 |         10 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/api/user.js                                                       | JavaScript         |         55 |          8 |          4 |         67 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/components/Breadcrumb/index.vue                                   | vue                |         71 |          0 |          7 |         78 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/components/Hamburger/index.vue                                    | vue                |         41 |          0 |          4 |         45 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/components/Pagination/index.vue                                   | vue                |         91 |          0 |          6 |         97 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/components/Screenfull/index.vue                                   | vue                |         57 |          0 |          4 |         61 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/components/SvgIcon/index.vue                                      | vue                |         57 |          0 |          5 |         62 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/index.js                                                    | JavaScript         |          6 |          1 |          3 |         10 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/404.svg                                                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/biological.svg                                          | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/bug.svg                                                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/center.svg                                              | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/centerIcon.svg                                          | XML                |         11 |          0 |          0 |         11 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/chart.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/clipboard.svg                                           | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/component.svg                                           | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/dashboard.svg                                           | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/datainsert.svg                                          | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/doctor.svg                                              | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/doctorIcon.svg                                          | XML                |         11 |          0 |          0 |         11 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/documentation.svg                                       | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/drag.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/edit.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/education.svg                                           | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/email.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/example.svg                                             | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/excel.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/exit-fullscreen.svg                                     | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/eye-open.svg                                            | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/eye.svg                                                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/form.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/fullscreen.svg                                          | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/group.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/groupIcon.svg                                           | XML                |         14 |          0 |          0 |         14 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/guide.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/icon.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/importexport.svg                                        | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/international.svg                                       | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/language.svg                                            | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/link.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/list.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/lock.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/loginicon.svg                                           | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/message.svg                                             | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/money.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/nested.svg                                              | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/notification.svg                                        | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/number.svg                                              | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/password.svg                                            | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/pdf.svg                                                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/people.svg                                              | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/peoples.svg                                             | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/qq.svg                                                  | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/quanxianshezhi.svg                                      | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/runIcon.svg                                             | XML                |          6 |          0 |          0 |          6 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/search.svg                                              | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/set.svg                                                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/shopping.svg                                            | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/size.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/skill.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/star.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/tab.svg                                                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/table.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/theme.svg                                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/tree-table.svg                                          | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/tree.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/user.svg                                                | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/wechat.svg                                              | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svg/zip.svg                                                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/icons/svgo.yml                                                    | YAML               |          5 |         13 |          5 |         23 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/AppMain.vue                                     | vue                |         37 |          0 |          4 |         41 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/Navbar.vue                                      | vue                |        126 |          0 |         24 |        150 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/Sidebar/FixiOSBug.js                            | JavaScript         |         24 |          2 |          1 |         27 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/Sidebar/Item.vue                                | vue                |         38 |          0 |          4 |         42 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/Sidebar/Link.vue                                | vue                |         41 |          0 |          3 |         44 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/Sidebar/Logo.vue                                | vue                |         75 |          0 |         11 |         86 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/Sidebar/SidebarItem.vue                         | vue                |         89 |          0 |          7 |         96 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/Sidebar/index.vue                               | vue                |         55 |          0 |          3 |         58 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/components/index.js                                        | JavaScript         |          3 |          0 |          1 |          4 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/index.vue                                                  | vue                |         86 |          0 |          8 |         94 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/layout/mixin/ResizeHandler.js                                     | JavaScript         |         40 |          2 |          4 |         46 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/main.js                                                           | JavaScript         |         18 |         15 |         10 |         43 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/mixins/read-xlsx-file/index.js                                    | JavaScript         |         82 |         12 |         10 |        104 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/permission.js                                                     | JavaScript         |         48 |         14 |         12 |         74 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/router/index.js                                                   | JavaScript         |         62 |         30 |         14 |        106 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/settings.js                                                       | JavaScript         |          5 |          8 |          4 |         17 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/store/getters.js                                                  | JavaScript         |         17 |          0 |          1 |         18 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/store/index.js                                                    | JavaScript         |         16 |          4 |          6 |         26 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/store/modules/app.js                                              | JavaScript         |         44 |          0 |          5 |         49 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/store/modules/permission.js                                       | JavaScript         |         78 |          5 |         21 |        104 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/store/modules/settings.js                                         | JavaScript         |         25 |          1 |          7 |         33 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/store/modules/user.js                                             | JavaScript         |        119 |          4 |         15 |        138 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/styles/element-ui.scss                                            | SCSS               |         35 |          5 |         10 |         50 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/styles/index.scss                                                 | SCSS               |         54 |          1 |         11 |         66 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/styles/mixin.scss                                                 | SCSS               |         24 |          0 |          5 |         29 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/styles/sidebar.scss                                               | SCSS               |        180 |          6 |         41 |        227 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/styles/transition.scss                                            | SCSS               |         35 |          4 |         10 |         49 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/styles/variables.scss                                             | SCSS               |         18 |          3 |          5 |         26 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/utils/auth.js                                                     | JavaScript         |         11 |          0 |          5 |         16 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/utils/getpagetitle.js                                             | JavaScript         |          8 |          0 |          4 |         12 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/utils/index.js                                                    | JavaScript         |        114 |         33 |         10 |        157 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/utils/permission.js                                               | JavaScript         |         14 |          5 |          3 |         22 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/utils/request.js                                                  | JavaScript         |         56 |         21 |          8 |         85 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/utils/validate.js                                                 | JavaScript         |         39 |         39 |         10 |         88 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/center/index copy.vue                                       | vue                |         82 |          0 |          4 |         86 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/center/index.vue                                            | vue                |        205 |          2 |         23 |        230 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dashboard/admin/components/BarChart.vue                     | vue                |         87 |          0 |          5 |         92 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dashboard/admin/components/PanelGroup.vue                   | vue                |        140 |          0 |         24 |        164 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dashboard/admin/components/PieChart.vue                     | vue                |        106 |          0 |         15 |        121 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dashboard/admin/components/mixins/resize.js                 | JavaScript         |         50 |          4 |          2 |         56 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dashboard/admin/index.vue                                   | vue                |         59 |          0 |         15 |         74 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dashboard/editor/index.vue                                  | vue                |         63 |          0 |          6 |         69 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dashboard/index.vue                                         | vue                |         18 |          0 |          3 |         21 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/HE_stained_sections_com.vue            | vue                |        189 |          0 |          6 |        195 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/IF_stained_sections_com.vue            | vue                |        196 |          0 |          6 |        202 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/IHC_stained_sections_com.vue           | vue                |        203 |          0 |          4 |        207 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/Imaging_examination_results_com.vue    | vue                |        714 |          0 |         29 |        743 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/Inpatient_surgical_information_com.vue | vue                |      2,662 |          0 |        203 |      2,865 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/blood_cryopreserved_samples_com.vue    | vue                |        121 |          0 |          5 |        126 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/detail_info_com.vue                    | vue                |        453 |          0 |         77 |        530 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/disease_activity_core_com.vue          | vue                |        840 |          0 |         18 |        858 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/follow_up_information_com.vue          | vue                |        625 |          0 |         36 |        661 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/laboratory_test_results_com.vue        | vue                |      1,195 |          0 |         33 |      1,228 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/organizational_white_patches_com.vue   | vue                |        120 |          0 |          7 |        127 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/organize_frozen_samples_com.vue        | vue                |        202 |          0 |          6 |        208 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/organizing_paraffin_blocks_com.vue     | vue                |        170 |          0 |          5 |        175 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/components/quality_life_health_evaluation_com.vue | vue                |        127 |          0 |          7 |        134 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/index.vue                                         | vue                |        525 |          1 |         54 |        580 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataentry/indexlist.vue                                     | vue                |        123 |          0 |         16 |        139 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/HE_stained_sections.vue                        | vue                |        143 |          0 |         15 |        158 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/IF_stained_sections.vue                        | vue                |        143 |          0 |         15 |        158 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/IHC_stained_sections.vue                       | vue                |        143 |          0 |         15 |        158 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/Imaging_examination_results.vue                | vue                |        646 |          0 |         55 |        701 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/Inpatient_surgical_information.vue             | vue                |      1,446 |          0 |        221 |      1,667 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/blood_cryopreserved_samples.vue                | vue                |        118 |          0 |         14 |        132 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/disease_activity_core.vue                      | vue                |        883 |          0 |         32 |        915 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/follow_up_information.vue                      | vue                |        391 |          0 |         25 |        416 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/general_situation_patient.vue                  | vue                |        325 |          0 |         59 |        384 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/laboratory_test_results.vue                    | vue                |      1,877 |          0 |         47 |      1,924 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/organizational_white_patches.vue               | vue                |        123 |          0 |         15 |        138 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/organize_frozen_samples.vue                    | vue                |        178 |          0 |         14 |        192 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/organizing_paraffin_blocks.vue                 | vue                |        128 |          0 |         16 |        144 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/dataoverview/quality_life_health_evaluation.vue             | vue                |        138 |          0 |         16 |        154 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/doctor/index.vue                                            | vue                |        164 |          0 |         23 |        187 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/error-page/401.vue                                          | vue                |         96 |          0 |          4 |        100 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/error-page/404.vue                                          | vue                |        222 |          0 |          5 |        227 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/inportexport/dict.js                                        | JavaScript         |          8 |          0 |          2 |         10 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/inportexport/export.vue                                     | vue                |        204 |          0 |         11 |        215 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/inportexport/import.vue                                     | vue                |        145 |          0 |         25 |        170 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/login/index.vue                                             | vue                |        554 |          3 |         50 |        607 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/notification/index.vue                                      | vue                |        182 |          0 |         29 |        211 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/permission/center.vue                                       | vue                |        244 |          7 |         33 |        284 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/permission/doctor.vue                                       | vue                |         82 |          0 |          4 |         86 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/permission/group copy.vue                                   | vue                |         82 |          0 |          7 |         89 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/permission/group.vue                                        | vue                |        186 |          0 |         17 |        203 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/src/views/user/usercenter.vue                                         | vue                |        157 |          0 |         21 |        178 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/.eslintrc.js                                               | JavaScript         |          5 |          0 |          1 |          6 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/components/Breadcrumb.spec.js                              | JavaScript         |         80 |         14 |          5 |         99 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/components/Hamburger.spec.js                               | JavaScript         |         18 |          0 |          1 |         19 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/components/SvgIcon.spec.js                                 | JavaScript         |         22 |          0 |          1 |         23 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/utils/formatTime.spec.js                                   | JavaScript         |         28 |          0 |          3 |         31 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/utils/param2Obj.spec.js                                    | JavaScript         |         13 |          0 |          2 |         15 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/utils/parseTime.spec.js                                    | JavaScript         |         33 |          0 |          3 |         36 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/tests/unit/utils/validate.spec.js                                     | JavaScript         |         16 |          0 |          2 |         18 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/vendor/Export2Excel.js                                                | JavaScript         |        180 |         15 |         26 |        221 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/vendor/Export2Zip.js                                                  | JavaScript         |         22 |          1 |          2 |         25 |
+| /Users/chenyi/VueProject/bj_hospital_info_project/vue.config.js                                                         | JavaScript         |         95 |         24 |          9 |        128 |
+| Total                                                                                                                   |                    |     22,070 |        349 |      1,899 |     24,318 |
++-------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

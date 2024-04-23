@@ -4,10 +4,10 @@
     <div class="filter-container">
       <el-form :inline="true" :model="listQuery" class="demo-form-inline">
         <el-form-item label="姓名">
-          <el-input v-model="listQuery.user"></el-input>
+          <el-input v-model="listQuery.name"></el-input>
         </el-form-item>
         <el-form-item label="手机号">
-          <el-input v-model="listQuery.tel"></el-input>
+          <el-input v-model="listQuery.phone"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="getList">查询</el-button>
@@ -19,39 +19,44 @@
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" label="疾病活动性评分ID">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.diseaseActivityScoreId }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="填报人">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.reporter }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="填报时间">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.reportTime }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="评分时期">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.evaluationPeriod }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="NIH活动性评分得分">
+      <el-table-column align="center" label="NIH活动性评分得分1">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.nihScore1 }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="NIH活动性评分得分2">
+        <template slot-scope="{row}">
+          <span>{{ row.nihScore2 }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="ITAS 2010活动性评分得分">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.itasScore }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="ITAS-A活动性评分得分">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.itasAScore }}</span>
         </template>
       </el-table-column>
 
@@ -62,7 +67,7 @@
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total > 0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
+    <pagination v-show="total > 0" :total="total" :pageNo.sync="listQuery.pageNo" :pageSize.sync="listQuery.pageSize"
       @pagination="getList" />
 
     <el-drawer title="评分详情" size="40%" :visible.sync="drawer" direction="rtl">
@@ -78,7 +83,7 @@
           </div>
         </el-col>
         <el-col :span="5">
-          <el-input :disabled="true" style="width:150px" size="mini" v-model="diseaseInfo.name"></el-input>
+          <el-input :disabled="true" style="width:150px" size="mini" v-model="diseaseInfo.nihScore1"></el-input>
         </el-col>
       </el-row>
       <el-row class="custom">
@@ -142,7 +147,7 @@
           </div>
         </el-col>
         <el-col :span="5">
-          <el-input :disabled="true" style="width:150px" size="mini" v-model="diseaseInfo.name"></el-input>
+          <el-input :disabled="true" style="width:150px" size="mini" v-model="diseaseInfo.nihScore2"></el-input>
         </el-col>
       </el-row>
       <el-row class="custom">
@@ -829,66 +834,49 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/article'
+import { getDiseaseActivityScorePageInfo } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
-
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'InlineEditTable',
   components: { Pagination },
-
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   data() {
     return {
       list: null,
-      drawer: false,
-      activeName: 'first',
       listLoading: true,
       total: 0,
-      diseaseInfo: {
-        name: '2',
-        resource: '1'
-      },
+      drawer: false,
       listQuery: {
-        page: 1,
-        limit: 10,
-        user: "",
-        tel: "",
-        centerCode: 1001
-      }
+        pageNo: 1,
+        pageSize: 10,
+        name: "",
+        phone: "",
+        centerId: ''
+      },
+      diseaseInfo: {}
     }
   },
   created() {
     this.getList()
   },
   methods: {
-    getDetailInfoOption() {
-      this.drawer = true;
-    },
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
     async getList() {
       this.listLoading = true
-      const { data } = await fetchList(this.listQuery)
-      const items = data.items
-      this.total = data.total
+      this.listQuery.centerId = this.centerId
+      const { data } = await getDiseaseActivityScorePageInfo(this.listQuery)
+      const items = data.data
+      this.total = data.totalCount
       this.list = items.map(v => {
-        this.$set(v, 'edit', false) // https://vuejs.org/v2/guide/reactivity.html
-        v.originalTitle = v.title //  will be used when user click the cancel botton
         return v
       })
       this.listLoading = false
     }
+  },
+  computed: {
+    ...mapGetters([
+      'centerId'
+    ])
   }
 }
 </script>

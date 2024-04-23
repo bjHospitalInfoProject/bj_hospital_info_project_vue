@@ -51,11 +51,13 @@
                 @input="handlePhoneInput" :validate-event="false" :controls="false"></el-input>
             </el-form-item>
             <el-form-item prop="verifyCode">
-              <el-input v-model="registerInfo.verifyCode" class=" borderNone code-input" type="number" placeholder="验证码">
-                <el-button slot="append" @click="getVerificationCode" :disabled="countdown > 0">{{
-                  countdown > 0 ?
-                  countdown +
-                  's 后重新获取' : '获取验证码' }}</el-button>
+              <el-input v-model="registerInfo.verifyCode" class=" borderNone code-input" type="number"
+                placeholder="验证码">
+                <el-button slot="append" @click="getVerificationCode(registerInfo.username, 'REGISTER')"
+                  :disabled="countdown > 0">{{
+            countdown > 0 ?
+              countdown +
+              's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
             </el-form-item>
             <el-form-item prop="remark">
@@ -75,14 +77,15 @@
 
           <el-form ref="LoginForm" :rules="loginrules" :model="loginInfo" label-width="0px" v-show="isregister == 1">
             <el-form-item prop="templateId">
-              <el-select class="borderNone" v-model="loginInfo.templateId" placeholder="数据库选择/模板选择">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+              <el-select class="borderNone" v-model="loginInfo.templateId" @change="getCenterIdInfo"
+                placeholder="数据库选择/模板选择">
+                <el-option v-for="item in options" :key="item.id" :label="item.templateName" :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
             <el-form-item prop="centerId">
               <el-select class="borderNone" v-model="loginInfo.centerId" placeholder="中心选择">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                <el-option v-for="item in sysCenters" :key="item.id" :label="item.centerName" :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -115,15 +118,18 @@
                 @input="handlePhoneInput" :validate-event="false" :controls="false"></el-input>
             </el-form-item>
             <el-form-item prop="verifyCode">
-              <el-input v-model="passwordInfo.verifyCode" class=" borderNone code-input" type="number" placeholder="验证码">
-                <el-button slot="append" @click="getVerificationCode" :disabled="countdown > 0">{{
-                  countdown > 0 ?
-                  countdown +
-                  's 后重新获取' : '获取验证码' }}</el-button>
+              <el-input v-model="passwordInfo.verifyCode" class=" borderNone code-input" type="number"
+                placeholder="验证码">
+                <el-button slot="append" @click="getVerificationCode(passwordInfo.username, 'FORGET_PASSWORD')"
+                  :disabled="countdown > 0">{{
+            countdown > 0 ?
+              countdown +
+              's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
             </el-form-item>
             <el-form-item prop="newPassword">
-              <el-input class="borderNone" show-password v-model="passwordInfo.newPassword" placeholder="新密码"></el-input>
+              <el-input class="borderNone" show-password v-model="passwordInfo.newPassword"
+                placeholder="新密码"></el-input>
             </el-form-item>
             <el-form-item prop="repeatNewPassword">
               <el-input class="borderNone" show-password v-model="passwordInfo.repeatNewPassword"
@@ -145,9 +151,13 @@
 <script>
 
 
-import { register } from '@/api/user'
+import { register, forgetPassword, getTempleteIdInfo, getCenterIdInfo, getVerifyCodeInfo } from '@/api/user'
+
 
 export default {
+  mounted() {
+    this.getTempleteIdInfothis()
+  },
   data() {
     return {
       dialogVisible: false, // 控制弹窗显示与隐藏的变量
@@ -156,6 +166,8 @@ export default {
       updatePasswordLoading: false,
       registerLoading: false,
       loginLoading: false,
+      options: [],
+      sysCenters: [],
       formLabelAlign: {
         name: '',
         region: '',
@@ -165,17 +177,17 @@ export default {
       },
       // 注册
       registerInfo: {
-        nickname: "1",
-        remark: "1",
-        username: "18301626898",
-        verifyCode: "1"
+        nickname: "",
+        remark: "",
+        username: "",
+        verifyCode: ""
       },
       // 登录
       loginInfo: {
-        username: '18301626898',
-        password: '1',
-        templateId: "1",
-        centerId: "1"
+        username: '',
+        password: '',
+        templateId: "",
+        centerId: ""
       },
       //忘记密码
       passwordInfo: {
@@ -205,7 +217,7 @@ export default {
       loginrules: {
         username: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
-          { validator: this.validatePhone, trigger: 'blur' },
+          // { validator: this.validatePhone, trigger: 'blur' },
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
@@ -235,66 +247,80 @@ export default {
     };
   },
   methods: {
-    // 重置数据
-    resetFormLabelAlignData() {
-      this.formLabelAlign = {
-        name: '',
-        region: '',
-        phone: '',
-        code: '',
-      };
-      this.countdown = 0;
-    },
-    // 对话框关闭前的处理
-    handleFormLabelAlignData() {
-      // 重置数据
-      this.resetFormLabelAlignData();
-      // 重置表单校验状态
-      this.$nextTick(() => {
-        this.$refs.registrationLoginForm.resetFields();
-      });
-      // 执行关闭
-      // done();
-    },
-    // handleLoginBeforeClose(done) {
-    //   // 重置数据
-    //   this.resetLoginData();
-    //   // 重置表单校验状态
-    //   this.$nextTick(() => {
-    //     this.$refs.registrationLoginForm.resetFields();
-    //   });
-    //   // 执行关闭
-    //   done();
-    // },
-    resetLoginData() {
-      this.loginInfo = {
-        userInfo: '',
-        password: ''
-      };
-    },
     showLoginDialog(parameter) {
       // 在这里访问传递的参数 parameter
       console.log(parameter);
       this.dialogLoginVisible = true; // 点击按钮时显示弹窗
       this.isregister = parameter;
       this.countdown = 0;
-      // this.$refs.registrationLoginForm.resetFields();
-      // this.$refs.LoginForm.resetFields();
-      // this.$refs.passwordForm.resetFields();
-
+      this.$refs.registrationLoginForm.resetFields();
+      this.$refs.LoginForm.resetFields();
+      this.$refs.passwordForm.resetFields();
     },
-    getVerificationCode() {
+    //获取验证码并开始倒计时
+    async getVerificationCode(phone, params) {
       // 模拟获取验证码的逻辑，这里可以调用后端接口获取验证码
-      // 然后开始倒计时
-      this.startCountdown();
+      console.log(params)
+
+      const reg = /^1[3456789]\d{9}$/;
+      if (!reg.test(phone)) {
+        this.$message({
+          message: '手机号格式不正确',
+          type: 'error'
+        });
+        return
+      }
+      var responce = await getVerifyCodeInfo({
+        "phone": phone,
+        "verifyCodeType": params
+      });
+      console.log(responce)
+      if (responce.code != 0) {
+        // this.$message.error(responce.msg);
+      } else {
+        // 然后开始倒计时
+        this.startCountdown();
+      }
     },
+    //切换状态来控制显示哪个表单
     changestatus(flag) {
       this.isregister = flag
       console.log(this.isregister + "-----")
     },
-    submitUpdatepasswordForm() {
+    //提交忘记密码的表单验证
+    submitUpdatepasswordForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
 
+          if (this.passwordInfo.repeatNewPassword != this.passwordInfo.newPassword) {
+            this.$message({
+              message: '密码不一致！',
+              type: 'error'
+            });
+            return;
+          }
+          this.submitforgetPasswordInfo();
+        } else {
+          console.log('error submit!!');
+          this.updatePasswordLoading = false;
+          return false;
+        }
+      });
     },
+    //提交忘记密码的网络请求
+    async submitforgetPasswordInfo() {
+      const { data } = await forgetPassword(this.passwordInfo)
+      console.log(data)
+      this.updatePasswordLoading = false;
+      if (data) {
+        this.$message({
+          message: '密码重置成功',
+          type: 'success'
+        });
+        this.changestatus(1)
+      }
+    },
+    //开始倒计时
     startCountdown() {
       this.countdown = 60;
       const timer = setInterval(() => {
@@ -305,6 +331,7 @@ export default {
         }
       }, 1000);
     },
+    //验证手机号
     validatePhone(rule, value, callback) {
       const reg = /^1[3456789]\d{9}$/;
       if (!reg.test(value)) {
@@ -313,17 +340,15 @@ export default {
         callback();
       }
     },
+    //处理手机号的输入情况
     handlePhoneInput(value) {
       // 处理手机号输入，移除非数字字符
       this.formLabelAlign.phone = value.replace(/\D/g, '');
     },
-    submitForm() {
-      // 提交表单的逻辑，可以在这里调用后端接口
-      console.log('Form submitted:', this.formLabelAlign);
-    },
+    //登录提交和验证
     submitLoginForm(formName) {
       // 提交登录表单的逻辑，可以在这里调用后端接口
-      console.log('Form submitted:', this.resetLoginData);
+      console.log('Form submitted:', this.loginInfo);
 
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -335,31 +360,47 @@ export default {
             this.loading = false
           })
         } else {
-          console.log('error submit!!');
           return false;
         }
       });
     },
+    //提交注册表单验证信息
     submitRegisterForm(formName) {
-
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.registerLoading = true;
-          this.getList();
+          this.submitRegisterInfo();
         } else {
           console.log('error submit!!');
           this.registerLoading = false;
           return false;
         }
       });
-
     },
-
-    async getList() {
-      const {data} = await register(this.registerInfo)
-      console.log(data + "-----")
+    //提交注册信息
+    async submitRegisterInfo() {
+      const { data } = await register(this.registerInfo)
+      console.log(data)
       this.registerLoading = false;
-
+      if (data.code == 0) {
+        this.$message({
+          message: '注册成功',
+          type: 'success'
+        });
+        this.changestatus(1)
+      }
+    },
+    //获取模板列表信息
+    async getTempleteIdInfothis() {
+      const { data } = await getTempleteIdInfo()
+      console.log(data)
+      this.options = data
+    },
+    //根据模板 id 获取中心列表
+    async getCenterIdInfo() {
+      const { data } = await getCenterIdInfo({ templateId: this.loginInfo.templateId })
+      console.log(data)
+      this.sysCenters = data
     },
   },
 };

@@ -1822,39 +1822,25 @@
 
 <script>
 import { fetchList } from '@/api/article'
+import { getIFInfoList } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
-
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'InlineEditTable',
   components: { Pagination },
-
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   data() {
     return {
-      drawer: false,
       list: null,
       listLoading: true,
       total: 0,
       listQuery: {
-        page: 1,
-        limit: 10
-      },
-      formInline: {
-        user: '',
-        region: ''
-      },
-      activeName: 'first'
-
+        pageNo: 1,
+        pageSize: 10,
+        name: "",
+        phone: "",
+        centerId: ''
+      }
     }
   },
   created() {
@@ -1863,38 +1849,20 @@ export default {
   methods: {
     async getList() {
       this.listLoading = true
-      const { data } = await fetchList(this.listQuery)
-      const items = data.items
-      this.total = data.total
+      this.listQuery.centerId = this.centerId
+      const { data } = await getIFInfoList(this.listQuery)
+      const items = data.data
+      this.total = data.totalCount
       this.list = items.map(v => {
-        this.$set(v, 'edit', false) // https://vuejs.org/v2/guide/reactivity.html
-        v.originalTitle = v.title //  will be used when user click the cancel botton
         return v
       })
       this.listLoading = false
-    },
-    cancelEdit(row) {
-      row.title = row.originalTitle
-      row.edit = false
-      this.$message({
-        message: 'The title has been restored to the original value',
-        type: 'warning'
-      })
-    },
-    confirmEdit(row) {
-      row.edit = false
-      row.originalTitle = row.title
-      this.$message({
-        message: 'The title has been edited',
-        type: 'success'
-      })
-    },
-    getDetailInfoOption() {
-      this.drawer = true;
-    },
-    handleClick(tab, event) {
-      console.log(tab, event);
     }
+  },
+  computed: {
+    ...mapGetters([
+      'centerId'
+    ])
   }
 }
 </script>

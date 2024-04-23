@@ -72,8 +72,9 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/article'
+import { getIFInfoList } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
+import { mapGetters } from 'vuex'
 
 
 export default {
@@ -96,11 +97,11 @@ export default {
       listLoading: true,
       total: 0,
       listQuery: {
-        page: 1,
-        limit: 10,
-        user: "",
-        tel: "",
-        centerCode: 1001
+        pageNo: 1,
+        pageSize: 10,
+        name: "",
+        phone: "",
+        centerId: ''
       }
     }
   },
@@ -110,19 +111,25 @@ export default {
   methods: {
     async getList() {
       this.listLoading = true
-      const { data } = await fetchList(this.listQuery)
-      const items = data.items
-      this.total = data.total
+      this.listQuery.centerId = this.centerId
+      const { data } = await getIFInfoList(this.listQuery)
+      const items = data.data
+      this.total = data.totalCount
       this.list = items.map(v => {
         return v
       })
       this.listLoading = false
     },
-    goToDetailInfoOption(row){
+    goToDetailInfoOption(row) {
       console.log(row)
-      this.$router.push({ path: '/dataentry/index' ,query: {name: "1"}})
+      this.$router.push({ path: '/dataentry/index', query: { name: "1" } })
 
     }
+  },
+  computed: {
+    ...mapGetters([
+      'centerId'
+    ])
   }
 }
 </script>

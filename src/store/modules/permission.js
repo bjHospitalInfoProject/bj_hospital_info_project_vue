@@ -2,7 +2,8 @@ import { constantRoutes } from '@/router'
 
 import Layout from '@/layout' //导入
 
-import { getRoles } from '@/api/role'
+import { getRouteInfoRoles } from '@/api/permission'
+import store from '@/store';
 
 
 // 加载路由
@@ -75,12 +76,15 @@ const mutations = {
 
 
 const actions = {
+  //生成路由地址信息
   generateRoutes({ commit }) {
     return new Promise((resolve, reject) => {
-      getRoles(state.token).then(response => {
-
+      getRouteInfoRoles({ templateId: store.state.user.templateId, groupId: store.state.user.groupId }).then(response => {
         const { data } = response
-        const accessedRoutes = convertMenus(data.routes)
+        console.log("data")
+
+        console.log(data)
+        const accessedRoutes = convertMenus(data)
         commit('SET_ROUTES', accessedRoutes)
         resolve(accessedRoutes)
       }).catch(error => {
