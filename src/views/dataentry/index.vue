@@ -63,7 +63,7 @@
                     </el-form>
                 </div>
             </el-card>
-            
+
             <!-- v-if="defaultSelectId == -1" -->
             <detailInfo  class="box-card imageInfo" :detailInfo="detailInfo" />
 
@@ -596,7 +596,7 @@ export default {
 }
 
 .imageInfo {
-    min-height: calc(80% - 10px);
+    // min-height: calc(80% - 10px);
     margin-top: 10px;
 
     .rowSelect {
