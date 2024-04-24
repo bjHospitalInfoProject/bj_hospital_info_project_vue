@@ -19,40 +19,40 @@
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" label="病人ID">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.patientCode }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="姓名缩写">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.nameInitials }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="出生日期">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.birth }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="性别">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.genderStr }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="名族">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.ethnicityStr }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="地区">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.district }}</span>
         </template>
       </el-table-column>
 
       <el-table-column fixed="right" label="操作" width="80">
         <template slot-scope="scope">
-          <el-button type="text" @click="getDetailInfoOption" size="small">详情</el-button>
+          <el-button type="text" @click="getDetailInfoOption(scope.row)" size="small">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -67,198 +67,150 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="出生日期：">
-              <el-date-picker v-model="detailInfo.name" style="width:150px" size="mini" type="date" placeholder="选择日期">
-              </el-date-picker>
+              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.birth"></el-input>
             </el-form-item>
-
           </el-col>
           <el-col :span="12">
             <el-form-item label="性别：">
-              <el-select :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.hospital"
-                placeholder="请选择">
-                <el-option v-for="item in sexOptions" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
+              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.genderStr"></el-input>
             </el-form-item>
           </el-col>
-
         </el-row>
-
         <el-row>
-
           <el-col :span="12">
             <el-form-item label="民族：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.ethnicityStr"></el-input>
             </el-form-item>
           </el-col>
-
           <el-col :span="12">
             <el-form-item label="地区：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
+              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.district"></el-input>
             </el-form-item>
           </el-col>
-
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="手术干预情况：">
-              <el-select :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.hospital"
-                placeholder="请选择">
-                <el-option v-for="item in ganyuoptions" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.surgicalInterventionStr"></el-input>
             </el-form-item>
-
           </el-col>
           <el-col :span="12">
-
             <el-form-item label="重建血管数：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.vascularReconstructionCount"></el-input>
             </el-form-item>
           </el-col>
 
         </el-row>
         <el-row>
-
           <el-col :span="12">
-
             <el-form-item label="介入手术次数：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.interventionSurgeryCount"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-
             <el-form-item label="支架植入次数：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.stentImplantationCount"></el-input>
             </el-form-item>
           </el-col>
-
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="开刀手术次数：">
-              <el-input :disabled="editVis" size="mini" style="width:150px" v-model="detailInfo.name"></el-input>
+              <el-input :disabled="editVis" size="mini" style="width:150px"
+                v-model="detailInfo.surgicalCount"></el-input>
             </el-form-item>
-
           </el-col>
-
           <el-col :span="12">
-
             <el-form-item label="桥血管(人工血管)数：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.artificialBloodVesselCount"></el-input>
             </el-form-item>
           </el-col>
-
         </el-row>
         <el-row>
           <el-col :span="12">
-
             <el-form-item label="桥血管(自体血管)数：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.autologousBloodVesselCount"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-
             <el-form-item label="桥血管(人工、自体序贯)数：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.bloodVesselCount"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="杂交手术次数：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.hybridSurgeryCount"></el-input>
             </el-form-item>
-
           </el-col>
           <el-col :span="12">
-
             <el-form-item label="ABO血型：">
-              <el-select :disabled="editVis" size="mini" style="width:150px" v-model="detailInfo.hospital"
-                placeholder="请选择">
-                <el-option v-for="item in ABOOptions" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.aboBloodTypeStr"></el-input>
             </el-form-item>
           </el-col>
-
-
         </el-row>
         <el-row>
-
           <el-col :span="12">
-
             <el-form-item label="Rh血型：">
-              <el-select :disabled="editVis" size="mini" style="width:150px" v-model="detailInfo.hospital"
-                placeholder="请选择">
-                <el-option v-for="item in RHoptions" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.rhBloodTypeStr"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-
             <el-form-item label="随访电话1：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.followUpPhone1"></el-input>
             </el-form-item>
           </el-col>
-
         </el-row>
 
         <el-row>
           <el-col :span="12">
             <el-form-item label="随访电话2:">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.name"></el-input>
-
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.followUpPhone2"></el-input>
             </el-form-item>
 
           </el-col>
           <el-col :span="12">
-
             <el-form-item label="随访情况：">
-              <el-select :disabled="editVis" size="mini" style="width:150px" v-model="detailInfo.hospital"
-                placeholder="请选择">
-                <el-option v-for="item in suifangoptions" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.followUpStatusStr"></el-input>
             </el-form-item>
           </el-col>
 
         </el-row>
         <el-row>
           <el-col :span="12">
-
             <el-form-item label="微信随访群：">
-              <el-select :disabled="editVis" size="mini" style="width:150px" v-model="detailInfo.hospital"
-                placeholder="请选择">
-                <el-option v-for="item in WXsuifangoptions" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.wechatFollowUpGroupStr"></el-input>
             </el-form-item>
           </el-col>
 
           <el-col :span="12">
-
             <el-form-item label="首发表现：">
-              <el-select :disabled="editVis" size="mini" style="width:150px" v-model="detailInfo.hospital" multiple
-                filterable allow-create placeholder="请选择">
-                <el-option v-for="item in firstoptions" :key="item.value" :label="item.label" :value="item.value">
-                </el-option>
-              </el-select>
+              <el-input :disabled="editVis" style="width:150px" size="mini"
+                v-model="detailInfo.initialSymptomsStr"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="24">
             <el-form-item label="首次表现时间:">
-              <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+              <el-input :disabled="editVis" type="textarea" v-model="detailInfo.initialSymptomsDate" :rows="3"
+                placeholder="请输入内容">
               </el-input>
             </el-form-item>
           </el-col>
@@ -266,7 +218,8 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="首次确诊时间:">
-              <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+              <el-input :disabled="editVis" type="textarea" v-model="detailInfo.initialDiagnosisDate" :rows="3"
+                placeholder="请输入内容">
               </el-input>
             </el-form-item>
           </el-col>
@@ -274,7 +227,8 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="首次确诊医院:">
-              <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+              <el-input :disabled="editVis" type="textarea" v-model="detailInfo.initialDiagnosisHospital" :rows="3"
+                placeholder="请输入内容">
               </el-input>
             </el-form-item>
           </el-col>
@@ -282,7 +236,8 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="总体评价：">
-              <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+              <el-input :disabled="editVis" type="textarea" v-model="detailInfo.overallEvaluation" :rows="3"
+                placeholder="请输入内容">
               </el-input>
             </el-form-item>
           </el-col>
@@ -315,15 +270,17 @@ export default {
         centerId: ''
       },
       drawer: false,
-      detailInfo: {}
+      detailInfo: {},
+      editVis: true
     }
   },
   created() {
     this.getList()
   },
   methods: {
-    getDetailInfoOption() {
+    getDetailInfoOption(row) {
       this.drawer = true;
+      this.detailInfo = { ...row }
     },
     async getList() {
       this.listLoading = true

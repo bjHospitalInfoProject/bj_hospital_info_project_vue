@@ -58,7 +58,7 @@
 
       <el-table-column fixed="right" label="操作" width="80">
         <template slot-scope="scope">
-          <el-button type="text" @click="getDetailInfoOption(scope.row)" size="small">详情}}</el-button>
+          <el-button type="text" @click="getDetailInfoOption(scope.row)" size="small">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -81,7 +81,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.esr}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.esr }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -91,7 +91,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.crp}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.crp }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -104,7 +104,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -114,7 +114,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.il1b}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.il1b }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -126,7 +126,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.il2}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.il2 }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -136,7 +136,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.il4}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.il4 }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -148,7 +148,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.il5}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.il5 }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -158,7 +158,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.il6}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.il6 }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -172,7 +172,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.il8}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.il8 }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -182,7 +182,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.il10}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.il10 }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -195,7 +195,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.il12p70}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.il12p70 }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -205,7 +205,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.il17}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.il17 }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -218,7 +218,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.tnfAlpha}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.tnfAlpha }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -228,7 +228,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ifnAlpha}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ifnAlpha }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -241,7 +241,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ifnGamma}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ifnGamma }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -251,7 +251,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.saa}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.saa }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -262,7 +262,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.pct}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.pct }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -271,7 +271,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.fer}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.fer }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -282,7 +282,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.trf}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.trf }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -291,7 +291,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.c3}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.c3 }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -303,7 +303,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.c4}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.c4 }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -312,7 +312,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ch50}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ch50 }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -323,7 +323,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.c1q}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.c1q }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -332,7 +332,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.igG}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.igG }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -343,7 +343,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.igA}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.igA }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -352,7 +352,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.igM}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.igM }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -364,7 +364,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.igE}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.igE }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -374,7 +374,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.rf}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.rf }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -386,7 +386,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.aso}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.aso }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -396,7 +396,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.positiveAntibody}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.positiveAntibody }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -411,7 +411,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.wbc}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.wbc }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -421,7 +421,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.rbc}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.rbc }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -434,7 +434,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.hgb}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.hgb }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -444,7 +444,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.hct}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.hct }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -455,7 +455,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.mcv}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.mcv }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -465,7 +465,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.mch}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.mch }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -477,7 +477,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.mchc}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.mchc }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -487,7 +487,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.rdwCv}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.rdwCv }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -499,7 +499,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.rdwSd}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.rdwSd }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -509,7 +509,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.plt}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.plt }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -521,7 +521,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.mpv}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.mpv }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -531,7 +531,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.pdw}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.pdw }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -543,7 +543,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.eso}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.eso }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -553,7 +553,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.baso}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.baso }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -565,7 +565,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.neut}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.neut }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -575,7 +575,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.lymph}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.lymph }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -587,7 +587,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.mono}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.mono }}</el-button>
               </div>
             </el-col>
 
@@ -603,7 +603,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.tp}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.tp }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -613,7 +613,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.pa}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.pa }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -625,7 +625,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.alb}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.alb }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -635,7 +635,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.globulin}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.globulin }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -646,7 +646,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.alt}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.alt }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -655,7 +655,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ast}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ast }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -667,7 +667,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.alp}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.alp }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -677,7 +677,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.cgt}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.cgt }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -689,7 +689,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.hcy}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.hcy }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -699,7 +699,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.creatinine}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.creatinine }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -711,7 +711,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ckdEpi}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ckdEpi }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -721,7 +721,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.uricAcid}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.uricAcid }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -733,7 +733,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.fastingGlucose}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.fastingGlucose }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -743,7 +743,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.urea}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.urea }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -755,7 +755,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ck}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ck }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -765,7 +765,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ldh}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ldh }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -777,7 +777,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.hbgh}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.hbgh }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -787,7 +787,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ca}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ca }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -799,7 +799,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.p}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.p }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -809,7 +809,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.mg}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.mg }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -821,7 +821,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.tc}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.tc }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -831,7 +831,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.tg}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.tg }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -843,7 +843,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ldlC}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ldlC }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -853,7 +853,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.hdlC}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.hdlC }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -865,7 +865,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.lpA}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.lpA }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -875,7 +875,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -887,7 +887,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.apoB}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.apoB }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -897,7 +897,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.d3h}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.d3h }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -909,7 +909,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.nffa}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.nffa }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -919,7 +919,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.sldl}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.sldl }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -931,7 +931,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.vldl}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.vldl }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -941,7 +941,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.rbp}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.rbp }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -953,7 +953,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.bnp}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.bnp }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -963,7 +963,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ntProbnp}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ntProbnp }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -975,7 +975,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -985,7 +985,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.hsCtn}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.hsCtn }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -997,7 +997,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ckMb}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ckMb }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1007,7 +1007,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.myo}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.myo }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1024,7 +1024,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1033,7 +1033,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.pt}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.pt }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1045,7 +1045,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ptActivity}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ptActivity }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1055,7 +1055,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.inr}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.inr }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1067,7 +1067,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.fib}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.fib }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1077,7 +1077,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.aptt}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.aptt }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1089,7 +1089,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.tt}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.tt }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1099,7 +1099,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.proteinCActivity}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.proteinCActivity }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1111,7 +1111,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.proteinSActivity}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.proteinSActivity }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1121,7 +1121,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.antithrombinIiiActivity}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.antithrombinIiiActivity }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1138,7 +1138,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.baselineAngiotensinIi}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.baselineAngiotensinIi }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1148,7 +1148,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.baselineRenin}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.baselineRenin }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1160,7 +1160,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.baselineAldosterone}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.baselineAldosterone }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1170,7 +1170,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.baselineAldosteroneReninRatio}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.baselineAldosteroneReninRatio }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1181,7 +1181,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.stimulatedAngiotensinIi}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.stimulatedAngiotensinIi }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1191,7 +1191,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.stimulatedRenin}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.stimulatedRenin }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1203,7 +1203,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.stimulatedAldosterone}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.stimulatedAldosterone }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1213,7 +1213,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.stimulatedAldosteroneReninRatio}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.stimulatedAldosteroneReninRatio }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1225,7 +1225,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.leftRenalArteryAngiotensinIi}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.leftRenalArteryAngiotensinIi }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1235,7 +1235,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1247,7 +1247,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1257,7 +1257,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1269,7 +1269,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1278,7 +1278,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1290,7 +1290,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1300,7 +1300,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1312,7 +1312,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1322,7 +1322,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1334,7 +1334,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1344,7 +1344,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1356,7 +1356,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1366,7 +1366,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1378,7 +1378,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.ss}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1388,7 +1388,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.ss}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1400,7 +1400,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.fsh}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.fsh }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1410,7 +1410,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.lh}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.lh }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1422,7 +1422,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.e2}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.e2 }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1432,7 +1432,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.prl}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.prl }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1444,7 +1444,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{labortyInfo.progesterone}}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.progesterone }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1454,7 +1454,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{labortyInfo.testosterone}}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.testosterone }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1469,7 +1469,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibodyRapidCardTest"
+                  rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1482,7 +1483,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibody38kdProtein"
+                  :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1495,7 +1497,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibody16kdProtein"
+                  :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1508,7 +1511,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibodyLam" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1521,7 +1524,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.lymphocyteCultureInterferonA" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1534,7 +1537,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.lymphocyteCultureInterferonB" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1547,7 +1550,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisGammaInterferonExperimentTN"
+                  :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1560,7 +1564,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisGammaInterferonExperimentPN"
+                  :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1573,7 +1578,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea"
+                  v-model="labortyInfo.tuberculosisSpecificCellImmunityReactionMonitoringQft" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1586,7 +1592,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea"
+                  v-model="labortyInfo.tuberculosisBacillusNucleicAcidFluorescenceDetection" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1599,7 +1606,8 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.acidFastBacillusSmear" :rows="3">
+
                 </el-input>
               </div>
             </el-col>
@@ -1612,7 +1620,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.acidFastBacillusCulture" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1625,7 +1633,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisSkinTestPpd" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1641,7 +1649,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.carcinoembryonicAntigen" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1654,7 +1662,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.alphaFetoprotein" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1667,7 +1675,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen125" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1680,7 +1688,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen153" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1693,7 +1701,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen199" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1706,7 +1714,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen724" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1719,7 +1727,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen242" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1732,7 +1740,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen50" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1745,7 +1753,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.prostateSpecificAntigen" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1758,7 +1766,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.squamousCellCarcinomaAntigen" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1771,7 +1779,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.cytokeratin19Fragment" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1784,7 +1792,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.gastrinReleasingPeptidePrecursor" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1797,7 +1805,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.neuronSpecificEnolase" :rows="3">
                 </el-input>
               </div>
             </el-col>
@@ -1810,7 +1818,7 @@
             </el-col>
             <el-col :span="19">
               <div>
-                <el-input disabled="true" type="textarea" :rows="3">
+                <el-input disabled="true" type="textarea" v-model="labortyInfo.nuclearMatrixProtein22" :rows="3">
                 </el-input>
               </div>
             </el-col>
