@@ -66,7 +66,7 @@
             <el-input style="width: 100%;" size="mini" v-model="addCenterForm.centerName"></el-input>
           </el-form-item>
           <el-form-item style="margin-bottom:0px;width:100%;" label="中心管理员:">
-            <el-select style="width: 100%;" size="mini" v-model="addCenterForm.centerManageUserIds" filterable multiple
+            <el-select style="width: 100%;" size="mini" v-model="addCenterForm.centerManageUserIds" @change="centerManageUserIdsChange" filterable multiple
               placeholder="请选择">
               <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
               </el-option>
@@ -230,8 +230,10 @@ export default {
         value: item.id,
         label: item.nickname,
       }));
+    },
+    centerManageUserIdsChange(){
+      this.$forceUpdate()
     }
-
   },
   mounted() {
     this.getCenterList()

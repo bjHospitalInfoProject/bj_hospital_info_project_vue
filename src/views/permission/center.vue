@@ -53,7 +53,7 @@
       @pagination="getList" />
 
 
-    <el-dialog title="移动小组" :visible.sync="dialogvis" width="70%">
+    <el-dialog title="移动小组" :visible.sync="dialogvis" width="70%" top="5%">
       <div class="dialogBdoy">
         <el-row :gutter="20">
           <el-col :span="11">
@@ -68,7 +68,7 @@
               </el-form-item>
 
               <el-form-item style="margin-top: 20px;">
-                <el-table size="mini" :data="addGroupInfoForm.permissions" border fit highlight-current-row
+                <el-table size="mini" :height="400" :data="addGroupInfoForm.permissions" border fit highlight-current-row
                   style="width: 100%">
                   <el-table-column align="center" label="模版名称">
                     <template slot-scope="{row}">
@@ -98,7 +98,7 @@
 
           </el-col>
 
-          <el-col :span="2" style="display: flex; align-items: center; justify-content: center; height: 300px">
+          <el-col :span="2" style="display: flex; align-items: center; justify-content: center; height: 400px">
             <img style="width:90%" src="@/assets/images/jiantou.png" alt="">
           </el-col>
           <el-col :span="11">
@@ -107,7 +107,7 @@
                 <span style="color: rgb(43, 226, 110);font-weight: 1000;">目标小组</span>
               </div>
               <el-form-item style="margin: 0px 0;width:100%;" label="">
-                <el-select class="borderNone" size="mini" v-model="updateGroupId" @change="getGroupPermissionInfo()"
+                <el-select class="borderNone" size="mini" style="width: 100%;"v-model="updateGroupId" @change="getGroupPermissionInfo()"
                   placeholder="请选择目标小组">
                   <el-option v-for="item in grouplist" :key="item.id" :label="item.description" :value="item.id">
                   </el-option>
@@ -115,7 +115,7 @@
               </el-form-item>
 
               <el-form-item style="margin-top: 20px;">
-                <el-table size="mini" :data="updatePermissionList" border fit highlight-current-row style="width: 100%">
+                <el-table size="mini" :height="400" :data="updatePermissionList" border fit highlight-current-row style="width: 100%">
                   <el-table-column align="center" label="模版名称">
                     <template slot-scope="{row}">
                       <span>{{ row.dataType }}</span>

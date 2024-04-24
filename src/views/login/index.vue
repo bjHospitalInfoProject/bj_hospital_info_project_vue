@@ -35,7 +35,9 @@
           <div class="image-wrapper">
             <img src="logo.png" alt="图片描述">
           </div>
-          <h2 class="image-title"> <i class="el-icon-phone-outline"></i>400-110-0000</h2>
+          <!-- <h2 class="image-title"> <i class="el-icon-phone-outline"></i>400-110-0000</h2> -->
+          <h2 class="image-phone"> <i class="el-icon-phone-outline" style="color: rgba(100, 133, 223, 1);margin-right: 10px;"></i>400-110-0000</h2>
+
         </div>
         <div class="login-form">
 
@@ -405,7 +407,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="less">
 .login-container {
   height: 100vh;
   background: url(~@/assets/images/defaultbackground.jpg);
@@ -538,16 +540,37 @@ export default {
 
 .login-dialog-container {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   overflow: hidden;
   background-color: #ABC1F2;
+}
+.image-wrapper{
+  margin-top: 10vh;
+}
+
+::v-deep .noborderBottom .el-input{
+  border-bottom: 0px solid !important;
 }
 
 .login-image {
   width: 35%;
   overflow: hidden;
   color: #ffffff;
+  padding-top: 14vh;
   height: 100%;
+  .image-title{
+    color: rgba(100, 133, 223, 1);
+  }
+  .image-phone{
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    left: 0;
+    width: 35%;
+  }
 }
 
 .login-form {

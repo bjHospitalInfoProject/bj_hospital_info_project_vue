@@ -66,7 +66,7 @@
         @pagination="getList" />
     </el-card>
 
-    <el-dialog :title="addGroupForm.id ? '编辑小组' : '创建小组'" :visible.sync="dialogvis" width="60%" height="30%">
+    <el-dialog :title="addGroupForm.id ? '编辑小组' : '创建小组'" :visible.sync="dialogvis" width="60%" height="30%" top="5%">
       <div class="dialogBdoy">
         <el-row :gutter="20">
           <el-col :span="14">
@@ -75,10 +75,13 @@
                 <el-input style="width: 100%;" size="mini" v-model="addGroupForm.name"></el-input>
               </el-form-item>
             </el-form>
-
             <p>初始权限</p>
+          </el-col>
+        </el-row>
 
-            <el-table size="mini" :data="authlist" border fit highlight-current-row style="width: 100%">
+        <el-row :gutter="20">
+          <el-col :span="14">
+            <el-table size="mini" :height="400" :data="authlist" border fit highlight-current-row style="width: 100%">
               <el-table-column align="center" label="模版名称">
                 <template slot-scope="{row}">
                   <span>{{ row.dataType }}</span>
@@ -112,7 +115,7 @@
             </el-table>
           </el-col>
           <el-col :span="10">
-            <el-table size="mini" :data="userlist" border fit highlight-current-row style="width: 100%"
+            <el-table :height="400" size="mini" :data="userlist" border fit highlight-current-row style="width: 100%"
               @selection-change="handleSelectionChange">
               <el-table-column align="center" width="40" type="selection">
               </el-table-column>
