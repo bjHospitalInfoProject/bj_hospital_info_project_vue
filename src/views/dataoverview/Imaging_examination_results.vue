@@ -504,7 +504,7 @@ export default {
   components: { Pagination },
   data() {
     return {
-      list: null,
+      list: [],
       listLoading: true,
       total: 0,
       listQuery: {
@@ -593,7 +593,7 @@ export default {
 .fubuxiazhi {
   background: url("../../assets/images/headInfo.png") center top no-repeat;
   width: 100%;
-  height: 60vh;
+  height: 40vh;
   position: relative;
   background-size: 16% 85%;
 
@@ -615,7 +615,7 @@ export default {
 
 .fubuxiazhi {
   background: url("../../assets/images/fubuxiazhi.jpg") center top no-repeat;
-  height: 50vh;
+  height: 45vh;
   background-size: 16% 90%;
   background-position: center 3vh;
 }
