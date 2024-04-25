@@ -520,10 +520,13 @@ export default {
 .detailInfo{
     border-left: 1px solid #EBEEF5;
     border-right: 1px solid #EBEEF5;
+    position: relative;
     .clearfix{
         padding:0 10px;
+        padding-left: 30px;
         width: 100%;
         line-height: 40px;
+        font-size: 16px;
     }
 }
 
@@ -543,7 +546,9 @@ export default {
     margin-bottom: 5px;
 }
 ::v-deep .el-collapse-item__arrow{
-    display: none;
+    // display: none;
+    position: absolute;
+    margin-left: 8px;
 }
 </style>
 
