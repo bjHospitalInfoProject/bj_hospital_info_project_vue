@@ -592,7 +592,6 @@ export default {
 .headInfo,
 .fubuxiazhi {
   background: url("../../assets/images/headInfo.png") center top no-repeat;
-  // background-position:center -20%;
   width: 100%;
   height: 60vh;
   position: relative;
