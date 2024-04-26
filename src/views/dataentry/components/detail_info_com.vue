@@ -1,13 +1,13 @@
 <template>
-    <el-collapse class="box-card detailInfo" accordion>
-        <el-collapse-item>
+    <el-collapse :value="collapseShow?'1':'0'" class="box-card detailInfo" accordion>
+        <el-collapse-item name="1">
             <template slot="title">
                 <div slot="header" class="clearfix">
                     <span>病人详情信息</span>
                     <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
-                        @click="editVis = false">编辑</el-button>
+                        @click.stop="editVis = false">编辑</el-button>
                     <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                        @click="saveOptions()">保存</el-button>
+                        @click.stop="saveOptions()">保存</el-button>
                 </div>
             </template>
             <div>
@@ -606,7 +606,8 @@ export default {
         },
     },
     props: {
-        detailInfo: Object
+        detailInfo: Object,
+        collapseShow:Boolean
     },
     computed: {
         ...mapGetters([

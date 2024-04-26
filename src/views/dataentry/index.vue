@@ -2,8 +2,8 @@
     <div class="dataentry">
         <dragDiv style="display: inline-block;" @change="widthChange">
             <div class="left-tree">
-                <el-tree :data="tree" node-key="label" default-expand-all :expand-on-click-node="false"
-                    @node-click="handleNodeClick">
+                <el-tree highlight-current ref="elTree" check-on-click-node :current-node-key="currentKey" :data="tree"
+                    node-key="label" default-expand-all :expand-on-click-node="false" @node-click="handleNodeClick">
                     <div slot-scope="{ node, data }" :title="node.label"
                         :class="'custom-tree-node tree-node-' + node.data.zindex">
                         <el-input class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
@@ -11,10 +11,10 @@
                         <!-- @blur="treeInputChange(node)" -->
                         <p v-else class="custom-tree-node-text">{{ node.label }}</p>
                         <span style="float:right;">
-                            <i @click="addTree(node)"
+                            <i @click.stop="addTree(node)"
                                 :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
                             <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children.length }}</span>
-                            <i @click="delTree(node)"
+                            <i @click.stop="delTree(node)"
                                 :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
                         </span>
                     </div>
@@ -65,7 +65,7 @@
             </el-card> -->
 
             <!-- v-if="defaultSelectId == -1" -->
-            <detailInfo class="box-card imageInfo" :detailInfo="detailInfo" />
+            <detailInfo class="box-card imageInfo" :detailInfo="detailInfo" :collapseShow="collapseShow" />
 
             <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo" :InpatientInfo="InpatientInfo" />
             <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo" :laboratoryInfo="laboratoryInfo" />
@@ -119,13 +119,15 @@ export default {
     mounted() {
         let userId = this.$route.query.name;
         console.log(this.$refs.dragDiv?.defaultWidth)
-        console.log('用户ID----:', userId); // 输出：用户ID: 123
+        console.log('用户ID----:', userId); // 输出：用户ID: 123.
+        // this.currentKey= this.tree[0].label
     },
     data() {
         return {
             tree: [{
                 label: '病人一般情况 : 张三',
                 zindex: 0,
+                id: 0,
                 children: [{
                     label: '病例信息库',
                     zindex: 1,
@@ -302,6 +304,9 @@ export default {
             defaultSelectId: -1,
 
             dragDivWidth: 240,
+
+            currentKey: "病人一般情况 : 张三",
+            collapseShow: true
         };
     },
     computed: {
@@ -315,17 +320,19 @@ export default {
         handleNodeClick(data) {
             //这里可以使用ajax请求后台，获取组织树的数据，转成json数组格式返回,result为返回的值
             //this.data=result.data;
-            console.log(data);
-
             if (data.zindex == 3) {
-
-                this.defaultSelectId = data.parentId
+                this.defaultSelectId = data.parentId;
+                this.collapseShow = false
             }
             if (data.zindex == 0) {
-                this.defaultSelectId = -1
+                this.checkNode()
             }
         },
-
+        // 选中最外层节点
+        checkNode() {
+            this.defaultSelectId = -1
+            this.collapseShow = true
+        },
         addTree(node) {
             let str = node.label + ' - ' + this.getDate();
             // node.data.children.push({
@@ -336,34 +343,25 @@ export default {
 
             node.data.children.push({
                 label: str,
-                zindex: 3
+                zindex: 3,
+                parentId: node.data.id
+            })
+            this.$nextTick(() => {
+                this.$refs.elTree.setCurrentKey(str, true);
+                this.collapseShow = false
+                this.defaultSelectId = node.data.id
             })
         },
         getDate() {
-            // 获取当前日期
-            var date = new Date();
-
-            // 获取当前月份
-            var nowMonth = date.getMonth() + 1;
-
-            // 获取当前是几号
-            var strDate = date.getDate();
-
-            // 添加分隔符“-”
-            var seperator = "-";
-
-            // 对月份进行处理，1-9月在前面添加一个“0”
-            if (nowMonth >= 1 && nowMonth <= 9) {
-                nowMonth = "0" + nowMonth;
-            }
-
-            // 对月份进行处理，1-9号在前面添加一个“0”
-            if (strDate >= 0 && strDate <= 9) {
-                strDate = "0" + strDate;
-            }
-
-            // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
-            return date.getFullYear() + seperator + nowMonth + seperator + strDate;
+            const date = new Date();
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const strDate = date.getDate().toString().padStart(2, '0');
+            const starHours = date.getHours().toString().padStart(2, '0');
+            const starMinutes = date.getMinutes().toString().padStart(2, '0');
+            const starSeconds = date.getSeconds().toString().padStart(2, '0');
+            let format = `${date.getFullYear()}-${month}-${strDate} 
+                        ${starHours}:${starMinutes}:${starSeconds}`;
+            return format
         },
         delTree(node) {
             // 递归找到这个元素，在数组中移除
@@ -377,8 +375,9 @@ export default {
                 })
                 return newData
             }
-
             this.tree = groupEach(this.tree, node.data.label)
+
+            this.checkNode()
             this.$forceUpdate()
         },
 
@@ -387,7 +386,6 @@ export default {
             node.data.zindex = 3
         },
         widthChange(width) {
-            console.log(width)
             this.dragDivWidth = width;
         },
 

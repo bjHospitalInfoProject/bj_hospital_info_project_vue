@@ -79,14 +79,14 @@
 
           <el-form ref="LoginForm" :rules="loginrules" :model="loginInfo" label-width="0px" v-show="isregister == 1">
             <el-form-item prop="templateId">
-              <el-select class="borderNone" v-model="loginInfo.templateId" @change="getCenterIdInfo"
+              <el-select class="borderSelect" v-model="loginInfo.templateId" @change="getCenterIdInfo"
                 placeholder="数据库选择/模板选择">
                 <el-option v-for="item in options" :key="item.id" :label="item.templateName" :value="item.id">
                 </el-option>
               </el-select>
             </el-form-item>
             <el-form-item prop="centerId">
-              <el-select class="borderNone" v-model="loginInfo.centerId" placeholder="中心选择">
+              <el-select class="borderSelect" v-model="loginInfo.centerId" placeholder="中心选择">
                 <el-option v-for="item in sysCenters" :key="item.id" :label="item.centerName" :value="item.id">
                 </el-option>
               </el-select>
@@ -600,6 +600,14 @@ export default {
 ::v-deep .borderNone .el-input__inner {
   border: none;
   border-bottom: #1681d3;
+}
+
+::v-deep .borderSelect .el-input__inner {
+  // border: none;
+  // border-bottom: none;
+}
+::v-deep .borderSelect .el-input{
+  border-bottom: none;
 }
 
 ::v-deep .el-button.btnborderNone {

@@ -121,15 +121,7 @@
             </el-form-item>
           </el-col>
         </el-row>
-        <el-row>
-          <el-col :span="24">
-            <el-form-item label="影像学检查补充：">
-              <el-input :disabled="editVis" type="textarea" v-model="imageInfo.additionalImaging" :rows="3"
-                placeholder="请输入内容">
-              </el-input>
-            </el-form-item>
-          </el-col>
-        </el-row>
+        
         <el-row>
           <el-col :span="12">
             <el-form-item label="Numano影像分型：">
@@ -157,6 +149,15 @@
         </el-row>
         <el-row>
           <el-col :span="24">
+            <el-form-item label="影像学检查补充：">
+              <el-input :disabled="editVis" type="textarea" v-model="imageInfo.additionalImaging" :rows="3"
+                placeholder="请输入内容">
+              </el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
             <el-form-item class="custom" label="重度狭窄/闭塞血管好发部位(xx动脉-分叉起始段/中段/远段)：">
               <el-input :disabled="editVis" type="textarea" v-model="imageInfo.severeNarrowingLocation" :rows="3"
                 placeholder="请输入内容">
@@ -168,147 +169,147 @@
       <el-divider content-position="left">头颈胸部上肢影像</el-divider>
       <el-form label-position="top" label-width="130px" :model="imageInfo" style="padding-right: 20px;">
         <div class="headInfo">
-          <div style="left: 28%;" class="labelRight">
+          <div style="left: 26%;" class="labelRight">
             <el-form-item label="颅内动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.intracranialArteriesStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 60%;">
+          <div style="right: 26%;">
             <el-form-item label="Willis环">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.willisRingStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 28%;top: 15%;" class="labelRight">
+          <div style="left: 26%;top: 15%;" class="labelRight">
             <el-form-item label="右颈内动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightInternalCarotidArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 13%;top: 15%;" class="labelRight">
+          <div style="left: 11%;top: 15%;" class="labelRight">
             <el-form-item label="右颈外动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightExternalCarotidArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 60%;top: 15%;" class="">
+          <div style="right: 26%;top: 15%;" class="">
             <el-form-item label="左颈内动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftInternalCarotidArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 75%;top: 15%;" class="">
+          <div style="right: 11%;top: 15%;" class="">
             <el-form-item label="左颈外动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftExternalCarotidArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div style="left: 20%;top: 30%;" class="labelRight">
+          <div style="left: 18%;top: 30%;" class="labelRight">
             <el-form-item label="右颈总动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightCommonCarotidArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 68%;top: 30%;" class="">
+          <div style="right: 18%;top: 30%;" class="">
             <el-form-item label="左颈总动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftCommonCarotidArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div style="left: 28%;top: 45%;" class="labelRight">
+          <div style="left: 26%;top: 45%;" class="labelRight">
             <el-form-item label="右椎动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightVertebralArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div style="left: 60%;top: 45%;" class="">
+          <div style="right: 26%;top: 45%;" class="">
             <el-form-item label="左椎动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftVertebralArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 18%;top: 55%;" class="labelRight">
+          <div style="left: 14%;top: 55%;" class="labelRight">
             <el-form-item label="右腋动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightAxillaryArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 31%;top: 55%;" class="labelRight">
+          <div style="left: 29%;top: 55%;" class="labelRight">
             <el-form-item label="右锁骨下动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightSubclavianArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div style="left: 57%;top: 55%;" class="">
+          <div style="right: 14%;top: 55%;" class="">
             <el-form-item label="左锁骨下动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftSubclavianArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 70%;top: 55%;" class="">
+          <div style="right: 27%;top: 55%;" class="">
             <el-form-item label="左腋动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftAxillaryArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div style="left: 33.5%;top: 65%;" class="labelRight">
+          <div style="left: 31.5%;top: 65%;" class="labelRight">
             <el-form-item label="头臂干">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.name"></el-input>
+              <el-input :disabled="editVis"  size="mini" v-model="imageInfo.name"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 55%;top: 65%;" class="">
+          <div style="right:29%;top: 65%;" class="">
             <el-form-item label="主动脉弓">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.aorticArchStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 35%;top: 75%;" class="labelRight">
+          <div style="left: 33%;top: 75%;" class="labelRight">
             <el-form-item label="升主动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.ascendingAortaStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 54%;top: 75%;" class="">
+          <div style="right: 29%;top: 75%;" class="">
             <el-form-item label="胸降主动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.descendingAortaStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div style="left: 37%;top: 85%;" class="labelRight">
+          <div style="left: 35%;top: 85%;" class="labelRight">
             <el-form-item label="肺动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.pulmonaryArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div style="left: 52%;top: 85%;" class="">
+          <div style="right: 35%;top: 85%;" class="">
             <el-form-item label="管状动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="imageInfo.name"></el-input>
+              <el-input :disabled="editVis"  size="mini" v-model="imageInfo.name"></el-input>
 
             </el-form-item>
           </div>
@@ -318,115 +319,115 @@
 
       <el-form label-position="top" label-width="130px" :model="imageInfo" style="padding-right: 20px;">
         <div class="fubuxiazhi">
-          <div class="" style="right:33%;top:0">
+          <div class="" style="right:31%;top:0">
             <el-form-item label="肾上腹主动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.suprarenalAbdominalAortaStr"></el-input>
             </el-form-item>
           </div>
-          <div class="labelRight" style="left:34%;top:10%">
+          <div class="labelRight" style="left:32%;top:10%">
             <el-form-item label="腹腔干">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.celiacTrunkStr"></el-input>
 
             </el-form-item>
           </div>
-          <div class="" style="right:34%;top:17%">
+          <div class="" style="right:32%;top:17%">
             <el-form-item label="左肾动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftRenalArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div class="labelRight" style="left:34%;top:25%">
+          <div class="labelRight" style="left:32%;top:25%">
             <el-form-item label="右肾动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightRenalArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div class="" style="right:35%;top:30%">
+          <div class="" style="right:32%;top:30%">
             <el-form-item label="肠系膜上动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.superiorMesentericArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div class="" style="right:35%;top:43%">
+          <div class="" style="right:33%;top:43%">
             <el-form-item label="肠系膜下动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.inferiorMesentericArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div class="labelRight" style="left:35%;top:38%">
+          <div class="labelRight" style="left:33%;top:38%">
             <el-form-item label="肾下腹主动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.infrarenalAbdominalAortaStr"></el-input>
 
             </el-form-item>
           </div>
-          <div class="labelRight" style="left:33%;top:55%">
+          <div class="labelRight" style="left:31%;top:55%">
             <el-form-item label="右髂总动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightIliacArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
 
-          <div class="" style="right:33%;top:53%">
+          <div class="" style="right:31%;top:53%">
             <el-form-item label="左髂总动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftIliacArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div class="labelRight" style="left:30%;top:70%">
+          <div class="labelRight" style="left:28%;top:70%">
             <el-form-item label="右髂外动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightExternalIliacArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
 
-          <div class="" style="right:30%;top:68%">
+          <div class="" style="right:28%;top:68%">
             <el-form-item label="左髂外动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftExternalIliacArteryStr"></el-input>
 
             </el-form-item>
           </div>
 
-          <div class="labelRight" style="left:36.5%;top:93%">
+          <div class="labelRight" style="left:34.5%;top:93%">
             <el-form-item label="右髂内动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightInternalIliacArteryStr"></el-input>
             </el-form-item>
           </div>
 
 
-          <div class="" style="right:36.5%;top:93%">
+          <div class="" style="right:34.5%;top:93%">
             <el-form-item label="左髂内动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftInternalIliacArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div class="labelRight" style="left:30%;top:85%">
+          <div class="labelRight" style="left:26%;top:81%">
             <el-form-item label="右股动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.rightFemoralArteryStr"></el-input>
 
             </el-form-item>
           </div>
-          <div class="" style="right:30%;top:85%">
+          <div class="" style="right:26%;top:81%">
             <el-form-item label="左股动脉">
-              <el-input :disabled="editVis" style="width:150px" size="mini"
+              <el-input :disabled="editVis"  size="mini"
                 v-model="imageInfo.leftFemoralArteryStr"></el-input>
 
             </el-form-item>
@@ -541,9 +542,9 @@ export default {
 .fubuxiazhi {
   background: url("../../assets/images/headInfo.png") center top no-repeat;
   width: 100%;
-  height: 40vh;
+  height: 60vh;
   position: relative;
-  background-size: 16% 85%;
+  background-size: 25% 85%;
 
   ::v-deep .el-form-item__label {
     height: 20px;
@@ -563,8 +564,8 @@ export default {
 
 .fubuxiazhi {
   background: url("../../assets/images/fubuxiazhi.jpg") center top no-repeat;
-  height: 45vh;
-  background-size: 16% 90%;
+  height: 50vh;
+  background-size: 25% 90%;
   background-position: center 3vh;
 }
 </style>

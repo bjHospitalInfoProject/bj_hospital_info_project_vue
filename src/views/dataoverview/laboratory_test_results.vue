@@ -1462,12 +1462,12 @@
         <el-tab-pane label="结核检测" name="six">
 
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核抗体快速卡试验：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibodyRapidCardTest"
                   rows="3">
@@ -1476,12 +1476,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核抗38kd蛋白抗体：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibody38kdProtein"
                   :rows="3">
@@ -1490,12 +1490,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核抗16kd蛋白抗体：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibody16kdProtein"
                   :rows="3">
@@ -1504,12 +1504,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核抗LAM抗体：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisAntibodyLam" :rows="3">
                 </el-input>
@@ -1517,12 +1517,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 淋巴细胞培养+干扰素A(SF/10^6M)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.lymphocyteCultureInterferonA" :rows="3">
                 </el-input>
@@ -1530,12 +1530,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 淋巴细胞培养+干扰素B(SF/10^6M)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.lymphocyteCultureInterferonB" :rows="3">
                 </el-input>
@@ -1543,12 +1543,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核杆菌γ-干扰素实验（T-N）(pg/ml)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisGammaInterferonExperimentTN"
                   :rows="3">
@@ -1557,12 +1557,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核杆菌γ-干扰素实验（P-N）(pg/ml)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisGammaInterferonExperimentPN"
                   :rows="3">
@@ -1571,12 +1571,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核分枝杆菌特异性细胞免疫反应监测（QFT）：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea"
                   v-model="labortyInfo.tuberculosisSpecificCellImmunityReactionMonitoringQft" :rows="3">
@@ -1585,12 +1585,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核分枝杆菌核酸荧光检测：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea"
                   v-model="labortyInfo.tuberculosisBacillusNucleicAcidFluorescenceDetection" :rows="3">
@@ -1599,12 +1599,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 抗酸杆菌涂片：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.acidFastBacillusSmear" :rows="3">
 
@@ -1613,12 +1613,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 抗酸杆菌培养：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.acidFastBacillusCulture" :rows="3">
                 </el-input>
@@ -1626,12 +1626,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 结核菌素(PPD)试验：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.tuberculosisSkinTestPpd" :rows="3">
                 </el-input>
@@ -1642,12 +1642,12 @@
         </el-tab-pane>
         <el-tab-pane label="肿瘤标志物" name="s">
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 癌胚抗原(CEA, ng/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.carcinoembryonicAntigen" :rows="3">
                 </el-input>
@@ -1655,12 +1655,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 甲胎蛋白(AFP, ng/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.alphaFetoprotein" :rows="3">
                 </el-input>
@@ -1668,12 +1668,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 糖类抗原125 (CA125, U/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen125" :rows="3">
                 </el-input>
@@ -1681,12 +1681,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 糖类抗原15-3 (CA15-3, U/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen153" :rows="3">
                 </el-input>
@@ -1694,12 +1694,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 糖类抗原19-9 (CA19-9, U/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen199" :rows="3">
                 </el-input>
@@ -1707,12 +1707,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 糖类抗原72-4 (CA72-4, U/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen724" :rows="3">
                 </el-input>
@@ -1720,12 +1720,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 糖类抗原24-2 (CA24-2, U/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen242" :rows="3">
                 </el-input>
@@ -1733,12 +1733,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 糖类抗原50 (CA50, U/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.carbohydrateAntigen50" :rows="3">
                 </el-input>
@@ -1746,12 +1746,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 前列腺特异抗原 (PSA, ng/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.prostateSpecificAntigen" :rows="3">
                 </el-input>
@@ -1759,12 +1759,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 鳞状细胞癌抗原 (SCC, ng/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.squamousCellCarcinomaAntigen" :rows="3">
                 </el-input>
@@ -1772,12 +1772,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 细胞角蛋白19片段 (CYFRA 21-1, ng/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.cytokeratin19Fragment" :rows="3">
                 </el-input>
@@ -1785,12 +1785,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 胃泌素释放肽前体 (ProGRP, pg/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.gastrinReleasingPeptidePrecursor" :rows="3">
                 </el-input>
@@ -1798,12 +1798,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 神经元特异性烯醇化酶(NSE, ng/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.neuronSpecificEnolase" :rows="3">
                 </el-input>
@@ -1811,12 +1811,12 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <div class="centerInfo">
                 核基质蛋白-22 (NMP-22, kU/mL)：
               </div>
             </el-col>
-            <el-col :span="19">
+            <el-col :span="12">
               <div>
                 <el-input disabled="true" type="textarea" v-model="labortyInfo.nuclearMatrixProtein22" :rows="3">
                 </el-input>
