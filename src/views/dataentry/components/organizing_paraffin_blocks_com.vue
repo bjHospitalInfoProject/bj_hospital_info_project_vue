@@ -5,7 +5,7 @@
             <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
                 @click="editVis = false">编辑</el-button>
             <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                @click="editVis = true">保存</el-button>
+                @click="saveOptionsApi()">保存</el-button>
 
         </div>
         <div>
@@ -14,14 +14,14 @@
                     <el-row>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="组织石蜡块ID:">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.name"></el-input>
+                                <el-input :disabled="true" style="width:200px" size="mini"
+                                    v-model="organizingparaffinInfo.tissueParaffinBlockId"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="目前有无蜡块:">
                                 <el-select :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.hospital" placeholder="请选择">
+                                    v-model="organizingparaffinInfo.hasBlock" placeholder="请选择">
                                     <el-option v-for="item in Options" :key="item.value" :label="item.label"
                                         :value="item.value">
                                     </el-option>
@@ -31,7 +31,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="石蜡块编号:">
                                 <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.name"></el-input>
+                                    v-model="organizingparaffinInfo.blockNumber"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -39,7 +39,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="是否已切白片:">
                                 <el-select :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.hospital" placeholder="请选择">
+                                    v-model="organizingparaffinInfo.hasSlide" placeholder="请选择">
                                     <el-option v-for="item in Options" :key="item.value" :label="item.label"
                                         :value="item.value">
                                     </el-option>
@@ -48,15 +48,15 @@
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="包埋时间:">
-                                <el-date-picker :disabled="editVis" v-model="organizingparaffinInfo.name" style="width:200px"
-                                    size="mini" type="date" placeholder="选择日期">
+                                <el-date-picker :disabled="editVis" v-model="organizingparaffinInfo.embeddingTime"
+                                    style="width:200px" size="mini" type="date" placeholder="选择日期">
                                 </el-date-picker>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="当前保存位置:">
                                 <el-select :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.hospital" placeholder="请选择">
+                                    v-model="organizingparaffinInfo.storageLocation" placeholder="请选择">
                                     <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
                                         :value="item.value">
                                     </el-option>
@@ -68,26 +68,27 @@
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="组织来源 (x动脉/周围x组织):">
                                 <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.name"></el-input>
+                                    v-model="organizingparaffinInfo.tissueSource"></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="组织性质:">
                                 <el-select :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="organizingparaffinInfo.hospital" placeholder="请选择">
+                                    v-model="organizingparaffinInfo.tissueProperty" placeholder="请选择">
                                     <el-option v-for="item in orgOptions" :key="item.value" :label="item.label"
                                         :value="item.value">
                                     </el-option>
                                 </el-select>
                             </el-form-item>
                         </el-col>
-                        
+
 
                     </el-row>
                     <el-row>
                         <el-col :span="24">
                             <el-form-item label="备注:">
-                                <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                                <el-input :disabled="editVis" v-model="organizingparaffinInfo.notes" type="textarea"
+                                    :rows="4" placeholder="请输入内容">
                                 </el-input>
                             </el-form-item>
                         </el-col>
@@ -99,6 +100,11 @@
 </template>
 
 <script>
+
+
+import { addOrUpdateTissueParaffin } from '@/api/dataentry'
+import { mapGetters } from 'vuex'
+
 export default {
     data() {
         return {
@@ -158,6 +164,21 @@ export default {
     props: {
         patientInfo: Object,
         organizingparaffinInfo: Object
+    },
+    methods: {
+        async saveOptionsApi() {
+            this.organizingparaffinInfo.centerId = this.centerId
+            const { data } = await addOrUpdateTissueParaffin(this.organizingparaffinInfo)
+            console.log(data)
+            if (data) {
+                this.editVis = true
+            }
+        },
+    },
+    computed: {
+        ...mapGetters([
+            'centerId'
+        ])
     }
 }
 </script>

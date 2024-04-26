@@ -9,7 +9,7 @@
           <div class="card-panel-text">
             随访量
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="suifangliang" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -22,7 +22,7 @@
           <div class="card-panel-text">
             外科手术量
           </div>
-          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="waikeshoushu" :duration="3000" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -35,23 +35,50 @@
           <div class="card-panel-text">
             生物标本
           </div>
-          <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="shengwubiaoben" :duration="3200" class="card-panel-num" />
         </div>
       </div>
     </el-col>
-   
+
   </el-row>
 </template>
 
 <script>
 import CountTo from 'vue-count-to'
+import { mapGetters } from 'vuex'
+import { getScreen } from '@/api/dashboard'
 
 export default {
+  data() {
+    return {
+      shengwubiaoben: 0,
+      waikeshoushu: 0,
+      suifangliang: 0,
+
+    }
+  },
   components: {
     CountTo
   },
+  computed: {
+    ...mapGetters([
+      'templateId'
+    ])
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.getList()
+    })
+  },
   methods: {
-   
+    async getList() {
+      var { data } = await getScreen({ templateId: this.templateId })
+      console.log(data)
+      this.suifangliang = data.followUpCount
+      this.shengwubiaoben = data.biologicalSamplesCount
+      this.waikeshoushu = data.surgicalOperationCount
+
+    },
   }
 }
 </script>

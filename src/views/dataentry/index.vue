@@ -25,7 +25,7 @@
             width: `calc(100% - ${dragDivWidth}px - 30px)`,
             marginLeft: '30px'
         }">
-            <el-card class="box-card patientInfo">
+            <!-- <el-card class="box-card patientInfo">
                 <div slot="header" class="clearfix">
                     <span>病人一般情况</span>
                     <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
@@ -62,10 +62,10 @@
                         </el-form-item>
                     </el-form>
                 </div>
-            </el-card>
+            </el-card> -->
 
             <!-- v-if="defaultSelectId == -1" -->
-            <detailInfo  class="box-card imageInfo" :detailInfo="detailInfo" />
+            <detailInfo class="box-card imageInfo" :detailInfo="detailInfo" />
 
             <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo" :InpatientInfo="InpatientInfo" />
             <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo" :laboratoryInfo="laboratoryInfo" />
@@ -268,111 +268,36 @@ export default {
             }],
             addTreeText: '',
             patientInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             editVis: true,
             options: [],
             imageInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             qualityInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             detailInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             laboratoryInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             bloodInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             InpatientInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             followInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             diseaseInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             HEInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             IHCInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             IFInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             organizationalwhiteInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             organizefrozenInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             organizingparaffinInfo: {
-                name: '',
-                operativeTime: '',
-                vchat: false,
-                hospital: '',
-                code: ''
             },
             defaultSelectId: -1,
 

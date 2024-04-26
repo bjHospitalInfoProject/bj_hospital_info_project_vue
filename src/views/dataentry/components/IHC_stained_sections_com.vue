@@ -5,7 +5,7 @@
             <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
                 @click="editVis = false">编辑</el-button>
             <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                @click="editVis = true">保存</el-button>
+                @click="saveOptionsApi()">保存</el-button>
 
         </div>
         <div>
@@ -13,13 +13,13 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IHC染色ID:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                            <el-input :disabled="true" style="width:200px" size="mini"
                                 v-model="IHCInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前有无IHC染色切片:">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="IHCInfo.hospital"
+                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="IHCInfo.hasSlice"
                                 placeholder="请选择">
                                 <el-option v-for="item in Options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -29,39 +29,39 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IHC染色时间:">
-                            <el-date-picker v-model="IHCInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker v-model="IHCInfo.stainingTime" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
-                    
+
                 </el-row>
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IHC染色切片编号1:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="IHCInfo.name"></el-input>
+                                v-model="IHCInfo.sliceNumber1"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IHC染色切片编号2:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="IHCInfo.name"></el-input>
+                                v-model="IHCInfo.sliceNumber2"></el-input>
                         </el-form-item>
                     </el-col>
-                    
-                    
+
+
                 </el-row>
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IHC染色目的蛋白:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="IHCInfo.name"></el-input>
+                                v-model="IHCInfo.targetProtein"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IHC染色切片扫描图像:">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="IHCInfo.hospital"
+                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="IHCInfo.hasImage"
                                 placeholder="请选择">
                                 <el-option v-for="item in Options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -70,12 +70,12 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                
+
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织性质:">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="IHCInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="IHCInfo.tissueProperty" placeholder="请选择">
                                 <el-option v-for="item in orgOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -85,13 +85,13 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织来源 (x动脉/周围x组织):">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="IHCInfo.name"></el-input>
+                                v-model="IHCInfo.tissueSource"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="当前保存位置:">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="IHCInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="IHCInfo.storageLocation" placeholder="请选择">
                                 <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -103,20 +103,21 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="来源组织石蜡块ID:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="IHCInfo.name"></el-input>
+                                v-model="IHCInfo.tissueParaffinBlockId"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="来源住院手术信息ID:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="IHCInfo.name"></el-input>
+                                v-model="IHCInfo.surgeryInfoId"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="IHC染色结果描述:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" v-model="IHCInfo.resultDescription" type="textarea" :rows="4"
+                                placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -124,7 +125,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="备注:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" v-model="IHCInfo.notes" type="textarea" :rows="4"
+                                placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -135,6 +137,9 @@
 </template>
 
 <script>
+import { addOrUpdateIhcSlice } from '@/api/dataentry'
+import { mapGetters } from 'vuex'
+
 export default {
     data() {
         return {
@@ -193,6 +198,21 @@ export default {
     },
     props: {
         IHCInfo: Object
+    },
+    methods: {
+        async saveOptionsApi() {
+            this.IHCInfo.centerId = this.centerId
+            const { data } = await addOrUpdateIhcSlice(this.IHCInfo)
+            console.log(data)
+            if (data) {
+                this.editVis = true
+            }
+        },
+    },
+    computed: {
+        ...mapGetters([
+            'centerId'
+        ])
     }
 }
 </script>

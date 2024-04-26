@@ -5,7 +5,7 @@
             <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
                 @click="editVis = false">编辑</el-button>
             <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                @click="editVis = true">保存</el-button>
+                @click="saveOptionsApi()">保存</el-button>
 
         </div>
         <div>
@@ -13,14 +13,14 @@
                 <el-row>
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="血液冻存样本ID:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="bloodInfo.name"></el-input>
+                            <el-input :disabled="true" style="width:200px" size="mini"
+                                v-model="bloodInfo.bloodSampleId"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="血液样本采集时间:">
-                            <el-date-picker v-model="bloodInfo.name" style="width:200px" size="mini" type="date"
-                                placeholder="选择日期">
+                            <el-date-picker v-model="bloodInfo.collectionTime" style="width:200px" size="mini"
+                                type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -29,20 +29,21 @@
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="目前血浆样本管数:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="bloodInfo.name"></el-input>
+                                v-model="bloodInfo.plasmaTubeCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="目前白膜层样本管数:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="bloodInfo.name"></el-input>
+                                v-model="bloodInfo.membraneTubeCount"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="已有实验结果:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" v-model="bloodInfo.experimentResults" type="textarea"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -50,8 +51,8 @@
                 <el-row>
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="当前保存位置:">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="bloodInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="bloodInfo.storageLocation" placeholder="请选择">
                                 <el-option v-for="item in saveOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -61,14 +62,15 @@
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="来源住院手术信息ID:">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="bloodInfo.name"></el-input>
+                                v-model="bloodInfo.surgeryInfoId"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="备注:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" v-model="bloodInfo.notes" type="textarea" :rows="4"
+                                placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -80,6 +82,10 @@
 </template>
 
 <script>
+
+import { addOrUpdateBloodSample } from '@/api/dataentry'
+import { mapGetters } from 'vuex'
+
 export default {
     data() {
         return {
@@ -108,6 +114,21 @@ export default {
     props: {
         patientInfo: Object,
         bloodInfo: Object
+    },
+    methods: {
+        async saveOptionsApi() {
+            this.bloodInfo.centerId = this.centerId
+            const { data } = await addOrUpdateBloodSample(this.bloodInfo)
+            console.log(data)
+            if (data) {
+                this.editVis = true
+            }
+        },
+    },
+    computed: {
+        ...mapGetters([
+            'centerId'
+        ])
     }
 }
 </script>

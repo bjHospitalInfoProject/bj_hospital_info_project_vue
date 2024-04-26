@@ -7,7 +7,8 @@ import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
 
-const animationDuration = 6000
+import { mapGetters } from 'vuex'
+import { getSurgicalOperationMonthCount } from '@/api/dashboard'
 
 export default {
   mixins: [resize],
@@ -32,7 +33,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.initChart()
+      this.getList()
     })
   },
   beforeDestroy() {
@@ -42,8 +43,18 @@ export default {
     this.chart.dispose()
     this.chart = null
   },
+  computed: {
+    ...mapGetters([
+      'templateId'
+    ])
+  },
   methods: {
-    initChart() {
+    async getList() {
+      var { data } = await getSurgicalOperationMonthCount({ templateId: this.templateId })
+      console.log(data)
+      this.initChart(data)
+    },
+    initChart(data) {
       this.chart = echarts.init(this.$el, 'macarons')
 
       this.chart.setOption({
@@ -65,7 +76,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月','8月', '9月', '10月', '11月', '12月'],
             axisTick: {
               alignWithLabel: true
             }
@@ -81,7 +92,7 @@ export default {
             name: 'Direct',
             type: 'bar',
             barWidth: '60%',
-            data: [10, 52, 200, 334, 390, 330, 220]
+            data: data
           }
         ]
       })

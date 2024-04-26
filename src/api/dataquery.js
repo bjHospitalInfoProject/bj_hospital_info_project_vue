@@ -131,3 +131,12 @@ export function getFollowUpPageInfo(data) {
     data
   })
 }
+
+//病人一般情况统计分页查询
+export function getPatientStaticPageInfo(data) {
+  return request({
+    url: '/arteritis/patient/patientStaticPageInfo',
+    method: 'post',
+    data
+  })
+}

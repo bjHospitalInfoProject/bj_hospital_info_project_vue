@@ -7,9 +7,9 @@
     <div class="right-menu">
       <screenfull id="screenfull" class="right-menu-item hover-effect" />
 
-      <div class="right-menu-item hover-effect">
+      <!-- <div class="right-menu-item hover-effect">
         <svg-icon icon-class="notification" />
-      </div>
+      </div> -->
 
       <span class="right-menu-item hover-effect">当前用户：{{ name }}</span>
 
@@ -24,9 +24,9 @@
               个人信息
             </el-dropdown-item>
           </router-link>
-          <el-dropdown-item>
+          <!-- <el-dropdown-item>
             修改密码
-          </el-dropdown-item>
+          </el-dropdown-item> -->
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">退出登录</span>
           </el-dropdown-item>
