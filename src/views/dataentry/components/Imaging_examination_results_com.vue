@@ -5,7 +5,7 @@
             <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
                 @click="editVis = false">编辑</el-button>
             <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                @click="editVis = true">保存</el-button>
+                @click="saveOptionsApi()">保存</el-button>
 
         </div>
         <div>
@@ -15,20 +15,20 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="影像学检查结果ID：">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="imageInfo.name"></el-input>
+                            <el-input :disabled="true" style="width:200px" size="mini"
+                                v-model="imageInfo.imagingExamResultId"></el-input>
                         </el-form-item>
 
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报人：">
                             <el-input :disabled="editVis" style="width:200px" size="mini"
-                                v-model="imageInfo.name"></el-input>
+                                v-model="imageInfo.reporter"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报时间：">
-                            <el-date-picker v-model="imageInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker v-model="imageInfo.reportTime" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -38,8 +38,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前影像手段：">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                multiple placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="imageInfo.preImagingMethodsList" multiple placeholder="请选择">
                                 <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -48,8 +48,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前本院影像：">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                multiple placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="imageInfo.preHospitalImagingList" multiple placeholder="请选择">
                                 <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -58,8 +58,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术后本院影像：">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                multiple placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="imageInfo.postHospitalImagingList" multiple placeholder="请选择">
                                 <el-option v-for="item in yingxiangOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -70,7 +70,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="影像学检查补充：">
-                            <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="imageInfo.additionalImaging"
+                                :rows="3" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -78,8 +79,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="Numano影像分型：">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="imageInfo.numanoClassification" placeholder="请选择">
                                 <el-option v-for="item in fenxingOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -88,8 +89,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="近3月新发/加重影像表现：">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" style="width:200px" size="mini"
+                                v-model="imageInfo.recentChanges" placeholder="请选择">
                                 <el-option v-for="item in biaoxianptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -109,7 +110,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item class="custom" label="重度狭窄/闭塞血管好发部位(xx动脉-分叉起始段/中段/远段)：">
-                            <el-input :disabled="editVis" type="textarea" :rows="3" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="imageInfo.severeNarrowingLocation"
+                                :rows="3" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -122,8 +124,8 @@
                 <div class="headInfo">
                     <div style="left: 28%;" class="labelRight">
                         <el-form-item label="颅内动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.intracranialArteriesList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -132,7 +134,7 @@
                     </div>
                     <div style="left: 60%;">
                         <el-form-item label="Willis环">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.willisRingList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -142,8 +144,8 @@
                     </div>
                     <div style="left: 28%;top: 15%;" class="labelRight">
                         <el-form-item label="右颈内动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightInternalCarotidArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -152,8 +154,8 @@
                     </div>
                     <div style="left: 13%;top: 15%;" class="labelRight">
                         <el-form-item label="右颈外动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightExternalCarotidArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -162,8 +164,8 @@
                     </div>
                     <div style="left: 60%;top: 15%;" class="">
                         <el-form-item label="左颈内动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftInternalCarotidArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -172,8 +174,8 @@
                     </div>
                     <div style="left: 75%;top: 15%;" class="">
                         <el-form-item label="左颈外动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftExternalCarotidArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -183,8 +185,8 @@
 
                     <div style="left: 20%;top: 30%;" class="labelRight">
                         <el-form-item label="右颈总动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightCommonCarotidArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -193,8 +195,8 @@
                     </div>
                     <div style="left: 68%;top: 30%;" class="">
                         <el-form-item label="左颈总动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftCommonCarotidArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -204,8 +206,8 @@
 
                     <div style="left: 28%;top: 45%;" class="labelRight">
                         <el-form-item label="右椎动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightVertebralArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -215,8 +217,8 @@
 
                     <div style="left: 60%;top: 45%;" class="">
                         <el-form-item label="左椎动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftVertebralArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -225,8 +227,8 @@
                     </div>
                     <div style="left: 18%;top: 55%;" class="labelRight">
                         <el-form-item label="右腋动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightAxillaryArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -235,8 +237,8 @@
                     </div>
                     <div style="left: 31%;top: 55%;" class="labelRight">
                         <el-form-item label="右锁骨下动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightSubclavianArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -246,8 +248,8 @@
 
                     <div style="left: 57%;top: 55%;" class="">
                         <el-form-item label="左锁骨下动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftSubclavianArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -256,8 +258,8 @@
                     </div>
                     <div style="left: 70%;top: 55%;" class="">
                         <el-form-item label="左腋动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftAxillaryArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -277,7 +279,7 @@
                     </div>
                     <div style="left: 55%;top: 65%;" class="">
                         <el-form-item label="主动脉弓">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.aorticArchList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -287,7 +289,7 @@
                     </div>
                     <div style="left: 35%;top: 75%;" class="labelRight">
                         <el-form-item label="升主动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.ascendingAortaList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -297,7 +299,7 @@
                     </div>
                     <div style="left: 54%;top: 75%;" class="">
                         <el-form-item label="胸降主动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.descendingAortaList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -308,7 +310,7 @@
 
                     <div style="left: 37%;top: 85%;" class="labelRight">
                         <el-form-item label="肺动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.pulmonaryArteryList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -508,8 +510,8 @@
                 <div class="fubuxiazhi">
                     <div class="" style="right:33%;top:0">
                         <el-form-item label="肾上腹主动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.suprarenalAbdominalAortaList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -518,7 +520,7 @@
                     </div>
                     <div class="labelRight" style="left:34%;top:10%">
                         <el-form-item label="腹腔干">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.celiacTrunkList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -528,7 +530,7 @@
                     </div>
                     <div class="" style="right:34%;top:17%">
                         <el-form-item label="左肾动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.leftRenalArteryList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -538,7 +540,7 @@
                     </div>
                     <div class="labelRight" style="left:34%;top:25%">
                         <el-form-item label="右肾动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.rightRenalArteryList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -549,8 +551,8 @@
 
                     <div class="" style="right:35%;top:30%">
                         <el-form-item label="肠系膜上动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.superiorMesentericArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -560,8 +562,8 @@
 
                     <div class="" style="right:35%;top:43%">
                         <el-form-item label="肠系膜下动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.inferiorMesentericArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -570,8 +572,8 @@
                     </div>
                     <div class="labelRight" style="left:35%;top:38%">
                         <el-form-item label="肾下腹主动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.infrarenalAbdominalAortaList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -580,7 +582,7 @@
                     </div>
                     <div class="labelRight" style="left:33%;top:55%">
                         <el-form-item label="右髂总动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.rightIliacArteryList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -588,11 +590,11 @@
                             </el-select>
                         </el-form-item>
                     </div>
-                    
-                    
+
+
                     <div class="" style="right:33%;top:53%">
                         <el-form-item label="左髂总动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
+                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.leftIliacArteryList"
                                 placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -603,20 +605,20 @@
 
                     <div class="labelRight" style="left:30%;top:70%">
                         <el-form-item label="右髂外动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightExternalIliacArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-form-item>
                     </div>
-                    
-                    
+
+
                     <div class="" style="right:30%;top:68%">
                         <el-form-item label="左髂外动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftExternalIliacArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -626,20 +628,20 @@
 
                     <div class="labelRight" style="left:36.5%;top:93%">
                         <el-form-item label="右髂内动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightInternalIliacArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-form-item>
                     </div>
-                    
-                    
+
+
                     <div class="" style="right:36.5%;top:93%">
                         <el-form-item label="左髂内动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftInternalIliacArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -648,27 +650,27 @@
                     </div>
                     <div class="labelRight" style="left:30%;top:85%">
                         <el-form-item label="右股动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.rightFemoralArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-form-item>
                     </div>
-                    
-                    
+
+
                     <div class="" style="right:30%;top:85%">
                         <el-form-item label="左股动脉">
-                            <el-select :disabled="editVis" multiple size="mini" v-model="imageInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" multiple size="mini"
+                                v-model="imageInfo.leftFemoralArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
                             </el-select>
                         </el-form-item>
                     </div>
-                    
+
                 </div>
             </el-form>
 
@@ -677,6 +679,12 @@
 </template>
 
 <script>
+
+
+import { addOrUpdateImagingExam } from '@/api/dataentry'
+import { mapGetters } from 'vuex'
+
+
 export default {
     data() {
         return {
@@ -833,6 +841,21 @@ export default {
     props: {
         patientInfo: Object,
         imageInfo: Object
+    },
+    methods: {
+        async saveOptionsApi() {
+            this.imageInfo.centerId = this.centerId
+            const { data } = await addOrUpdateImagingExam(this.imageInfo)
+            console.log(data)
+            if (data) {
+                this.editVis = true
+            }
+        },
+    },
+    computed: {
+        ...mapGetters([
+            'centerId'
+        ])
     }
 }
 </script>

@@ -86,7 +86,7 @@ export function addOrUpdateTissueParaffin(data) {
 
 
 //组织白片新增或修改
-export function getTissueSlidePageInfoInfo(data) {
+export function addOrUpdateTissueSlide(data) {
   return request({
     url: '/arteritis/tissueSlide/addOrUpdateTissueSlide',
     method: 'post',
@@ -96,7 +96,7 @@ export function getTissueSlidePageInfoInfo(data) {
 
 
 //住院手术信息新增或修改
-export function getHospitalSurgeryPageInfo(data) {
+export function addOrUpdateHospitalSurgery(data) {
   return request({
     url: '/arteritis/hospitalSurgery/addOrUpdateHospitalSurgery',
     method: 'post',
@@ -105,7 +105,7 @@ export function getHospitalSurgeryPageInfo(data) {
 }
 
 //实验室检查结果新增或修改
-export function getLabTestResultPageInfo(data) {
+export function addOrUpdateLabTestResult(data) {
   return request({
     url: '/arteritis/labTestResult/addOrUpdateLabTestResult',
     method: 'post',

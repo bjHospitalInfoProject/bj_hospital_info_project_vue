@@ -5,7 +5,7 @@
             <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
                 @click="editVis = false">编辑</el-button>
             <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                @click="editVis = true">保存</el-button>
+                @click="saveOptionsApi()">保存</el-button>
 
         </div>
         <div>
@@ -13,19 +13,19 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访信息ID:">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                            <el-input :disabled="true" style="width:150px" size="mini"
+                                v-model="followInfo.followUpInfoId"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报人:">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.reporter"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报时间:">
-                            <el-date-picker v-model="followInfo.name" style="width:150px" size="mini" type="date"
+                            <el-date-picker v-model="followInfo.reportTime" style="width:150px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -34,8 +34,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访人:">
-                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                 filterable allow-create placeholder="请选择">
+                            <el-select :disabled="editVis" size="mini" style="width:200px"
+                                v-model="followInfo.followUpPerson" filterable allow-create placeholder="请选择">
                                 <el-option v-for="item in suifangrenoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -44,8 +44,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访方式:">
-                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                 filterable allow-create placeholder="请选择">
+                            <el-select :disabled="editVis" size="mini" style="width:200px"
+                                v-model="followInfo.followUpMethod" filterable allow-create placeholder="请选择">
                                 <el-option v-for="item in suifangfangshioptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -54,8 +54,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访日期:">
-                            <el-date-picker v-model="followInfo.name" style="width:150px" size="mini" type="date"
-                                placeholder="选择日期">
+                            <el-date-picker v-model="followInfo.followUpDate" style="width:150px" size="mini"
+                                type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -65,13 +65,13 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术后时长(月):">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.postoperativeDuration"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="当前表现：">
-                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                multiple placeholder="请选择">
+                            <el-select :disabled="editVis" size="mini" style="width:200px"
+                                v-model="followInfo.currentConditionList" multiple placeholder="请选择">
                                 <el-option v-for="item in firstoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -83,26 +83,27 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="年龄(岁):">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.age"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="身高(cm):">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.height"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="体重(kg):">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.weight"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="病情变化补充:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" v-model="followInfo.diseaseProgressionSupplement"
+                                type="textarea" :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -110,7 +111,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item class="custom" label="脑相关不良事件情况（脑梗、脑出血等）:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.neurologicalEvents"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -118,7 +120,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item class="custom" label="心血管不良事件情况（心梗、心衰等）:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.cardiovascularEvents"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -126,16 +129,18 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="结核病情:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.tuberculosisStatus"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-                
+
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="激素 (药名-剂量-频次-给药方式默认p.o.):">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.steroid" :rows="4"
+                                placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -143,7 +148,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="免疫抑制剂 (药名-剂量-频次-给药方式默认p.o.):">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.immunosuppressant"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -151,7 +157,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="生物制剂 (药名-剂量-频次-给药方式默认i.v.):">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.biologics" :rows="4"
+                                placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -159,7 +166,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="降压药 (药名-剂量-频次-给药方式默认p.o.):">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.antihypertensive"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -167,7 +175,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="降脂药 (药名-剂量-频次-给药方式默认p.o.):">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.lipidLowering" :rows="4"
+                                placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -175,7 +184,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="抗栓药 (药名-剂量-频次-给药方式默认p.o.):">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.anticoagulant" :rows="4"
+                                placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -183,7 +193,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="用药补充:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.medicationSupplement"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -191,7 +202,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="手术干预:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.surgicalIntervention"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -200,19 +212,19 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访实验室检验结果ID:">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.followUpLabResultsId"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="红细胞沉降率(ESR,mm/h):">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.esr"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="C-反应蛋白(CRP,mg/L):">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.crp"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -220,36 +232,36 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-6 (pg/mL):">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.il6"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
-                        <el-form-item >
+                        <el-form-item>
                             <template #label>
                                 <span class="labelTitle">
-                                    肿瘤坏死因子-α 
+                                    肿瘤坏死因子-α
                                     <br>
                                     (TNF-α,pg/mL):
                                 </span>
                             </template>
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.tnfAlpha"></el-input>
                         </el-form-item>
                     </el-col>
-                    
+
                 </el-row>
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="影像检查时间:">
-                            <el-date-picker v-model="followInfo.name" style="width:200px" size="mini" type="date"
+                            <el-date-picker v-model="followInfo.imagingDate" style="width:200px" size="mini" type="date"
                                 placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="影像手段:">
-                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                multiple placeholder="请选择">
+                            <el-select :disabled="editVis" size="mini" style="width:200px"
+                                v-model="followInfo.imagingMethodList" multiple placeholder="请选择">
                                 <el-option v-for="item in yingxiangtoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -258,8 +270,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="靶血管情况:">
-                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                multiple placeholder="请选择">
+                            <el-select :disabled="editVis" size="mini" style="width:200px"
+                                v-model="followInfo.targetVesselStatusList" multiple placeholder="请选择">
                                 <el-option v-for="item in baxuetoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -270,7 +282,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="具体影像结果(靶血管/新发/加重):">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.specificImagingResults"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -278,8 +291,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访PGA活动性评价:">
-                            <el-select :disabled="editVis" size="mini" style="width:200px" v-model="followInfo.hospital"
-                                placeholder="请选择">
+                            <el-select :disabled="editVis" size="mini" style="width:200px"
+                                v-model="followInfo.pgaActivityEvaluation" placeholder="请选择">
                                 <el-option v-for="item in GPAOptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -289,20 +302,21 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="本次随访疾病活动性评分ID:">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.diseaseActivityScoreId"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="本次随访生活质量健康评价ID:">
                             <el-input :disabled="editVis" style="width:150px" size="mini"
-                                v-model="followInfo.name"></el-input>
+                                v-model="followInfo.healthQualityEvaluationId"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="其他评价补充:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.otherEvaluationSupplement"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -310,7 +324,8 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="随访补充:">
-                            <el-input :disabled="editVis" type="textarea" :rows="4" placeholder="请输入内容">
+                            <el-input :disabled="editVis" type="textarea" v-model="followInfo.followUpSupplement"
+                                :rows="4" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>
@@ -321,6 +336,10 @@
 </template>
 
 <script>
+
+import { addOrUpdatefollowUp } from '@/api/dataentry'
+import { mapGetters } from 'vuex'
+
 export default {
     data() {
         return {
@@ -648,9 +667,25 @@ export default {
     },
     props: {
         followInfo: Object
+    },
+    methods: {
+        async saveOptionsApi() {
+            this.followInfo.centerId = this.centerId
+            const { data } = await addOrUpdatefollowUp(this.followInfo)
+            console.log(data)
+            if (data) {
+                this.editVis = true
+            }
+        },
+    },
+    computed: {
+        ...mapGetters([
+            'centerId'
+        ])
     }
 }
 </script>
+
 
 <style scoped lang="less">
 .rowSelect {
@@ -667,7 +702,8 @@ export default {
 ::v-deep .custom .el-form-item__label {
     line-height: 20px
 }
-.labelTitle{
+
+.labelTitle {
     line-height: 20px;
     display: inline-block
 }

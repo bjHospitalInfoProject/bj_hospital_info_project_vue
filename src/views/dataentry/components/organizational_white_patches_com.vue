@@ -80,7 +80,7 @@
 
 <script>
 
-import { getTissueSlidePageInfoInfo } from '@/api/dataentry'
+import { addOrUpdateTissueSlide } from '@/api/dataentry'
 import { mapGetters } from 'vuex'
 
 
@@ -118,7 +118,7 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.organizationalwhiteInfo.centerId = this.centerId
-            const { data } = await getTissueSlidePageInfoInfo(this.organizationalwhiteInfo)
+            const { data } = await addOrUpdateTissueSlide(this.organizationalwhiteInfo)
             console.log(data)
             if (data) {
                 this.editVis = true
