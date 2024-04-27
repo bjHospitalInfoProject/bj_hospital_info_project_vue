@@ -28,8 +28,7 @@
           </el-col>
         </el-row>
         <el-divider content-position="left"><i class="el-icon-document"> &nbsp;中心列表</i></el-divider>
-        <el-row :gutter="20" class="memberList">
-
+        <el-row :gutter="20" class="memberList" >
           <el-col :lg="3" :xl="2" :md="4" v-for="ite in item.centerList" :key="ite.id">
             <div class="avatarImg">
               <img class="avatarImg" :src="ite.iconUrl" alt="">
@@ -37,8 +36,10 @@
             <p :title="ite.centerName">{{ ite.centerName }}</p>
             <el-button @click="editCenterInfo(ite)" icon="el-icon-edit" size="mini"></el-button>
             <br>
-            <div v-for="admin in ite.userDtos">
-              <el-tag class="eltag" size="mini">{{ admin.nickname }}</el-tag>
+            <div >
+              <el-tag class="eltag" size="mini">
+                <span  v-for="(admin,index) in ite.userDtos" :key="admin.nickname" >{{ admin.nickname }} {{ ite.userDtos.length-1 == index ?'':',' }}</span>
+              </el-tag>
             </div>
           </el-col>
           <el-col :span="2">
