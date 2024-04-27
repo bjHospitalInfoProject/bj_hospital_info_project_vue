@@ -93,64 +93,38 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.esr"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="C-反应蛋白(CRP,mg/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.crp"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-1β (pg/mL)：">
                             <el-input :disabled="editVis" size="mini" style="width:100px"
                                 v-model="laboratoryInfo.il1b"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-2 (pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il2"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-4 (pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il4"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-5 (pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il5"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-6 (pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il6"></el-input>
                         </el-form-item>
-
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-8 (pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il8"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-10 (pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il10"></el-input>
                         </el-form-item>
-                    </el-col>
-
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-12p70 (pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il12p70"></el-input>
@@ -161,131 +135,81 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.il17"></el-input>
                         </el-form-item>
-
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="肿瘤坏死因子-α(TNF-α,pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.tnfAlpha"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="α-干扰素(IFN-α,pg/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ifnAlpha"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="γ-干扰素(IFN-γ,pg/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ifnGamma"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="血清淀粉样蛋白A (SAA,mg/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.saa"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="降钙素原(PCT,ng/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.pct"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="铁蛋白(FER,ng/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.fer"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="转铁蛋白(TRF,mg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.trf"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="补体C3 (g/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.c3"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="补体C4 (g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.c4"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="补体CH50 (g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ch50"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="补体C1q (mg/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.c1q"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IgG (g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.igG"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="IgA (g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.IgA"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IgM (g/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.igM"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IgE (IU/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.igE"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="类风湿因子（RF）:">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rf"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="抗链球菌溶血素“O”（ASO）：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.aso"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="16" :lg="12" :xl="16">
                         <el-form-item label="阳性抗体:">
                             <el-input :disabled="editVis" style="width:calc(100% - 20px)" size="mini"
                                 v-model="laboratoryInfo.positiveAntibody"></el-input>
                         </el-form-item>
                     </el-col>
-
                 </el-row>
 
                 <el-divider content-position="left">血常规</el-divider>
@@ -296,199 +220,180 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="红细胞(RBC,10^12/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.esr"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="血红蛋白(HGB,g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.hgb"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
                         <el-form-item label="红细胞压积(HCT,%)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.hct"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="平均红细胞体积(MCV,fL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.mcv"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="平均红细胞血红蛋白量(MCH,pg):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.mch"></el-input>
                         </el-form-item>
                     </el-col>
-                </el-row>
-                <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="平均红细胞血红蛋白浓度(MCHC,g/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.mchc"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="红细胞分布宽度CV(RDW-CV,%):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rdwCv"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="红细胞分布宽度SD(RDW-SD,fL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rdwSd"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="血小板计数(PLT,10^9/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.plt"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="血小板平均体积(MPV,fL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.mpv"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="血小板分布宽度(PDW,%):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.pdw"></el-input>
                         </el-form-item>
                     </el-col>
-                </el-row>
-                <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="嗜酸性细胞计数(ESO.,10^9/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.eso"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="嗜碱性细胞计数(BASO.,10^9/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.baso"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="中性粒细胞计数(NEUT.,10^9/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.neut"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="淋巴细胞计数(LYMPH.,10^9/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.lymph"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="单核细胞计数(MONO.,10^9/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.mono"></el-input>
                         </el-form-item>
                     </el-col>
-
                 </el-row>
+
                 <el-divider content-position="left">血生化</el-divider>
 
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="总蛋白(TP,g/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.tp"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="前白蛋白(PA,mg/dL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.pa"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="白蛋白(ALB,g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.alb"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="球蛋白(g/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.globulin"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="谷丙转氨酶(ALT,U/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.alt"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="谷草转氨酶(AST,U/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ast"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="碱性磷酸酶(ALP,U/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.alp"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="γ--谷氨酰基转移酶(GGT,U/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ggt"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="同型半胱氨酸(HCY,umol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.hcy"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="肌酐（umol/L）：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.creatinine"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="肾小球滤过率(CKD-EPI):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ckdEpi"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="尿酸(umol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.uricAcid"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="空腹血糖（mmol/L）：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.fastingGlucose"></el-input>
@@ -499,169 +404,162 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.urea"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="肌酸激酶(CK,U/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ck"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="乳酸脱氢酶(LDH,U/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ldh"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="α-羟丁酸脱氢酶(HBDH,U/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.hbdh"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="钙(Ca,mmol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ca"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="磷(P,mmol/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.p"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="镁(Mg,mmol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.mg"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="总胆固醇(TC,mmol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.tc"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="甘油三酯(TG,mmol/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.tg"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="低密度脂蛋白胆固醇(LDL-C,mmol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ldlC"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="高密度脂蛋白胆固醇(HDL-C,mmol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.hdlC"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="脂蛋白(a)(LP(a),mg/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.lpA"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="载脂蛋白A1(APO-A1,g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.apoA1"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="8" :lg="12" :xl="8">
+
                         <el-form-item label="载脂蛋白B(APO-B,g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.apoB"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="D-3羟丁酸(D-3H,mmol/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.d3h"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="游离脂肪酸(NFFA,mmol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.nffa"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="小而密低密度脂蛋白胆固醇(SLDL,mmol/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.sldl"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="极低密度脂蛋白胆固醇(VLDL,mmol/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.vldl"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="视黄醇结合蛋白(RBP,mg/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rbp"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="BNP (pg/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.bnp"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="NT-proBNP (pg/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ntProbnp"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="肌钙蛋白T (TNT,ng/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="超敏肌钙蛋白（Hs-cTn）:">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.hsCtn"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="肌酸激酶同工酶 (CK-MB,ng/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ckMb"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="肌红蛋白(MYO,ng/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
-
                 </el-row>
+
 
                 <el-divider content-position="left">凝血指标</el-divider>
 
@@ -671,22 +569,18 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="凝血酶原时间(PT,s):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.pt"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="凝血酶原活动度(%):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.ptActivity"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="凝血酶原时间国际标准化比值(INR)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.inr"></el-input>
@@ -697,43 +591,36 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.fib"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="活化部分凝血活酶时间(APTT,s):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.aptt"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="凝血酶时间(TT,s)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.tt"></el-input>
                         </el-form-item>
+
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="蛋白C活性(%):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.proteinCActivity"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="蛋白S活性(%):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.proteinSActivity"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="抗凝血酶Ⅲ(AT-Ⅲ)活性(%)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.antithrombinIiiActivity"></el-input>
                         </el-form-item>
                     </el-col>
-
                 </el-row>
+
+
+
                 <el-divider content-position="left">内分泌检测</el-divider>
 
                 <el-row>
@@ -742,62 +629,62 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.baselineAngiotensinIi"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="基础肾素(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.baselineRenin"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="基础醛固酮(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.baselineAldosterone"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="基础 醛固酮/肾素：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.baselineAldosteroneReninRatio"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="激发血管紧张素Ⅱ(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.stimulatedAngiotensinIi"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="激发肾素(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.stimulatedRenin"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="激发醛固酮(pg/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.stimulatedAldosterone"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="激发 醛固酮/肾素:">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.stimulatedAldosteroneReninRatio"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="左肾动脉取血-基础血管紧张素Ⅱ(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.leftRenalArteryAngiotensinIi"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="左肾动脉取血-基础肾素(pg/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.leftRenalArteryRenin"></el-input>
@@ -808,134 +695,119 @@
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.leftRenalArteryAldosterone"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="左肾动脉取血-基础 醛固酮/肾素:">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.leftRenalArteryAldosteroneReninRatio"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="右肾动脉取血-基础血管紧张素Ⅱ(pg/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.leftRenalArteryAngiotensinIi"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="右肾动脉取血-基础肾素(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="右肾动脉取血-基础醛固酮(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rightRenalArteryAldosterone"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="右肾动脉取血-基础 醛固酮/肾素：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rightRenalArteryAldosteroneReninRatio"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="肾上腹主动脉取血-基础血管紧张素Ⅱ(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.suprarenalAortaAngiotensinIi"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="肾上腹主动脉取血-基础肾素(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.suprarenalAortaRenin"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
+
+
                         <el-form-item label="肾上腹主动脉取血-基础醛固酮(pg/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.suprarenalAortaAldosterone"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="肾上腹主动脉取血-基础 醛固酮/肾素:">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="肾下腹主动脉取血-基础血管紧张素Ⅱ(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.infrarenalAortaAngiotensinIi"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
+
                         <el-form-item label="肾下腹主动脉取血-基础肾素(pg/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.infrarenalAortaRenin"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="肾下腹主动脉取血-基础醛固酮(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.infrarenalAortaAldosterone"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
+
+
                         <el-form-item label="肾下腹主动脉取血-基础 醛固酮/肾素:">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.name"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="卵泡刺激素(FSH,mIU/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.fsh"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
+
+
                         <el-form-item label="促黄体生成素(LH,mIU/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.lh"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="雌二醇(E2,pg/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.e2"></el-input>
                         </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="泌乳素(PRL,ng/mL)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.prl"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="孕酮(P,ng/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.progesterone"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
                         <el-form-item label="睾酮(T,ng/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.testosterone"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
+
+
                 <el-divider content-position="left">结核检测</el-divider>
                 <el-row>
                     <el-col :span="12">
