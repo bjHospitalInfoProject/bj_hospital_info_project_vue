@@ -197,11 +197,13 @@ export default {
         }
     },
     props: {
+        patientInfo: Object,
         IHCInfo: Object
     },
     methods: {
         async saveOptionsApi() {
             this.IHCInfo.centerId = this.centerId
+            this.IHCInfo.patientCode = this.patientInfo.code
             const { data } = await addOrUpdateIhcSlice(this.IHCInfo)
             console.log(data)
             if (data) {

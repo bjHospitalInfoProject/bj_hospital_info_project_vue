@@ -846,6 +846,7 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.imageInfo.centerId = this.centerId
+            this.imageInfo.patientCode=this.patientInfo.code
             const { data } = await addOrUpdateImagingExam(this.imageInfo)
             console.log(data)
             if (data) {

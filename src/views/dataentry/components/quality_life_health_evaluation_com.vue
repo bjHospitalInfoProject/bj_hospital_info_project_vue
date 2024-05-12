@@ -125,6 +125,7 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.qualityInfo.centerId = this.centerId
+            this.qualityInfo.patientCode = this.patientInfo.code
             const { data } = await addOrUpdateHealthQuality(this.qualityInfo)
             console.log(data)
             if (data) {

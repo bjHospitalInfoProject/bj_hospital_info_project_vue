@@ -118,6 +118,7 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.bloodInfo.centerId = this.centerId
+            this.bloodInfo.patientCode = this.patientInfo.code
             const { data } = await addOrUpdateBloodSample(this.bloodInfo)
             console.log(data)
             if (data) {

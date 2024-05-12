@@ -188,6 +188,8 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.HEInfo.centerId = this.centerId
+            this.HEInfo.patientCode = this.patientInfo.code
+
             const { data } = await addOrUpdateHeSlice(this.HEInfo)
             console.log(data)
             if (data) {

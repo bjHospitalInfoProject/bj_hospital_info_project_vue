@@ -666,11 +666,15 @@ export default {
         }
     },
     props: {
-        followInfo: Object
+        followInfo: Object,
+        patientInfo: Object,
+
     },
     methods: {
         async saveOptionsApi() {
             this.followInfo.centerId = this.centerId
+            this.followInfo.patientCode = this.patientInfo.code
+
             const { data } = await addOrUpdatefollowUp(this.followInfo)
             console.log(data)
             if (data) {

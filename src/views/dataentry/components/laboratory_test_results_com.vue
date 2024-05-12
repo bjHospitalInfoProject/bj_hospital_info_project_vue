@@ -1119,11 +1119,14 @@ export default {
         }
     },
     props: {
+        patientInfo: Object,
         laboratoryInfo: Object
     },
     methods: {
         async saveOptionsApi() {
             this.laboratoryInfo.centerId = this.centerId
+            this.laboratoryInfo.patientCode = this.patientInfo.code
+
             const { data } = await addOrUpdateLabTestResult(this.laboratoryInfo)
             console.log(data)
             if (data) {

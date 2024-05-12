@@ -55,7 +55,7 @@ export default {
     };
   },
   created() {
-    this.intervalId = setInterval(this.fetchData, 30000); // 五分钟后执行一次
+    this.intervalId = setInterval(this.fetchData, 180000); // 五分钟后执行一次
   },
   destroyed() {
     if (this.intervalId) {

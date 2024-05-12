@@ -65,34 +65,44 @@
             </el-card> -->
 
             <!-- v-if="defaultSelectId == -1" -->
-            <detailInfo class="box-card imageInfo" :detailInfo="detailInfo" :collapseShow="collapseShow" />
+            <detailInfo class="box-card imageInfo" :detailInfo="detailInfo" :collapseShow="collapseShow"
+                :patientInfo="patientInfo" />
 
-            <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo" :InpatientInfo="InpatientInfo" />
-            <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo" :laboratoryInfo="laboratoryInfo" />
+            <InpatientInfo v-if="defaultSelectId == 1" class="box-card imageInfo" :InpatientInfo="InpatientInfo"
+                :patientInfo="patientInfo" />
+            <laboratoryInfo v-if="defaultSelectId == 2" class="box-card imageInfo" :laboratoryInfo="laboratoryInfo"
+                :patientInfo="patientInfo" />
 
             <imageInfo v-if="defaultSelectId == 3" class="box-card imageInfo" :patientInfo="patientInfo"
                 :imageInfo="imageInfo" />
-            <diseaseInfo v-if="defaultSelectId == 4" class="box-card imageInfo" :diseaseInfo="diseaseInfo" />
-            <qualityInfo v-if="defaultSelectId == 5" class="box-card imageInfo" :qualityInfo="qualityInfo" />
+            <diseaseInfo v-if="defaultSelectId == 4" class="box-card imageInfo" :diseaseInfo="diseaseInfo"
+                :patientInfo="patientInfo" />
+            <qualityInfo v-if="defaultSelectId == 5" class="box-card imageInfo" :qualityInfo="qualityInfo"
+                :patientInfo="patientInfo" />
 
 
-            <followInfo v-if="defaultSelectId == 6" class="box-card imageInfo" :followInfo="followInfo" />
+            <followInfo v-if="defaultSelectId == 6" class="box-card imageInfo" :followInfo="followInfo"
+                :patientInfo="patientInfo" />
 
             <organizingparaffinInfo v-if="defaultSelectId == 7" class="box-card imageInfo"
-                :organizingparaffinInfo="organizingparaffinInfo" />
+                :organizingparaffinInfo="organizingparaffinInfo" :patientInfo="patientInfo" />
 
             <organizationalwhiteInfo v-if="defaultSelectId == 8" class="box-card imageInfo"
-                :organizationalwhiteInfo="organizationalwhiteInfo" />
+                :organizationalwhiteInfo="organizationalwhiteInfo" :patientInfo="patientInfo" />
 
 
-            <HEInfo v-if="defaultSelectId == 9" class="box-card imageInfo" :HEInfo="HEInfo" />
-            <IHCInfo v-if="defaultSelectId == 10" class="box-card imageInfo" :IHCInfo="IHCInfo" />
-            <bloodInfo v-if="defaultSelectId == 11" class="box-card imageInfo" :bloodInfo="bloodInfo" />
+            <HEInfo v-if="defaultSelectId == 9" class="box-card imageInfo" :HEInfo="HEInfo"
+                :patientInfo="patientInfo" />
+            <IHCInfo v-if="defaultSelectId == 10" class="box-card imageInfo" :IHCInfo="IHCInfo"
+                :patientInfo="patientInfo" />
+            <bloodInfo v-if="defaultSelectId == 11" class="box-card imageInfo" :bloodInfo="bloodInfo"
+                :patientInfo="patientInfo" />
 
             <organizefrozenInfo v-if="defaultSelectId == 12" class="box-card imageInfo"
-                :organizefrozenInfo="organizefrozenInfo" />
+                :organizefrozenInfo="organizefrozenInfo" :patientInfo="patientInfo" />
 
-            <IFInfo v-if="defaultSelectId == 13" class="box-card imageInfo" :IFInfo="IFInfo" />
+            <IFInfo v-if="defaultSelectId == 13" class="box-card imageInfo" :IFInfo="IFInfo"
+                :patientInfo="patientInfo" />
         </div>
     </div>
 </template>
@@ -117,15 +127,21 @@ import dragDiv from "./components/dragDiv.vue"
 
 export default {
     mounted() {
-        let userId = this.$route.query.name;
+        let userId = this.$route.query.code;
         console.log(this.$refs.dragDiv?.defaultWidth)
-        console.log('用户ID----:', userId); // 输出：用户ID: 123.
-        // this.currentKey= this.tree[0].label
+        console.log('用户ID----:', userId);
+        this.currentKey = this.tree[0].label
+    },
+    created() {
+        let userId = this.$route.query.code;
+        console.log(this.$refs.dragDiv?.defaultWidth)
+        this.code = userId;
+        console.log('用户ID----:', userId);
     },
     data() {
         return {
             tree: [{
-                label: '病人一般情况 : 张三',
+                label: '病人一般情况',
                 zindex: 0,
                 id: 0,
                 children: [{
@@ -270,6 +286,7 @@ export default {
             }],
             addTreeText: '',
             patientInfo: {
+                code: this.$route.query.code
             },
             editVis: true,
             options: [],
@@ -302,10 +319,8 @@ export default {
             organizingparaffinInfo: {
             },
             defaultSelectId: -1,
-
             dragDivWidth: 240,
-
-            currentKey: "病人一般情况 : 张三",
+            currentKey: "病人一般情况",
             collapseShow: true
         };
     },

@@ -196,6 +196,8 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.IFInfo.centerId = this.centerId
+            this.IFInfo.patientCode = this.patientInfo.code
+
             const { data } = await addOrUpdateIfSlice(this.IFInfo)
             console.log(data)
             this.editVis = true

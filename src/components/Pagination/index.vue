@@ -3,7 +3,7 @@
     <el-pagination
       :background="background"
       :current-page.sync="currentPage"
-      :page-size.sync="pageSize"
+      :page-size.sync="pageSize1"
       :layout="layout"
       :page-sizes="pageSizes"
       :total="total"
@@ -23,13 +23,13 @@ export default {
       required: true,
       type: Number
     },
-    page: {
+    pageNo: {
       type: Number,
       default: 1
     },
-    limit: {
+    pageSize: {
       type: Number,
-      default: 20
+      default: 10
     },
     pageSizes: {
       type: Array,
@@ -57,28 +57,28 @@ export default {
   computed: {
     currentPage: {
       get() {
-        return this.page
+        return this.pageNo
       },
       set(val) {
-        this.$emit('update:page', val)
+        this.$emit('update:pageNo', val)
       }
     },
-    pageSize: {
+    pageSize1: {
       get() {
-        return this.limit
+        return this.pageSize
       },
       set(val) {
-        this.$emit('update:limit', val)
+        this.$emit('update:pageSize', val)
       }
     }
   },
   methods: {
     handleSizeChange(val) {
-      this.$emit('pagination', { page: this.currentPage, limit: val })
+      this.$emit('pagination', { pageNo: this.currentPage, pageSize: val })
       
     },
     handleCurrentChange(val) {
-      this.$emit('pagination', { page: val, limit: this.pageSize })
+      this.$emit('pagination', { pageNo: val, pageSize: this.pageSize1 })
       
     }
   }

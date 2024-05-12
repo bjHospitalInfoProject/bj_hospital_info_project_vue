@@ -168,6 +168,8 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.organizingparaffinInfo.centerId = this.centerId
+            this.organizingparaffinInfo.patientCode = this.patientInfo.code
+
             const { data } = await addOrUpdateTissueParaffin(this.organizingparaffinInfo)
             console.log(data)
             if (data) {

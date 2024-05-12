@@ -600,12 +600,14 @@ export default {
     methods: {
         async saveOptions() {
             this.detailInfo.centerId = this.centerId
+            this.detailInfo.patientCode=this.patientInfo.code
             const { data } = await addOrUpdatePatientPageInfo(this.detailInfo)
             console.log(data)
             editVis = true
         },
     },
     props: {
+        patientInfo: Object,
         detailInfo: Object,
         collapseShow:Boolean
     },

@@ -118,6 +118,8 @@ export default {
     methods: {
         async saveOptionsApi() {
             this.organizationalwhiteInfo.centerId = this.centerId
+            this.organizationalwhiteInfo.patientCode = this.patientInfo.code
+
             const { data } = await addOrUpdateTissueSlide(this.organizationalwhiteInfo)
             console.log(data)
             if (data) {

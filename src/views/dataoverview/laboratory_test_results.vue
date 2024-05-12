@@ -1833,7 +1833,7 @@
 </template>
 
 <script>
-import { getIFInfoList } from '@/api/dataquery'
+import { getLabTestResultPageInfo } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
 import { mapGetters } from 'vuex'
 
@@ -1868,7 +1868,7 @@ export default {
     async getList() {
       this.listLoading = true
       this.listQuery.centerId = this.centerId
-      const { data } = await getIFInfoList(this.listQuery)
+      const { data } = await getLabTestResultPageInfo(this.listQuery)
       const items = data.data
       this.total = data.totalCount
       this.list = items.map(v => {

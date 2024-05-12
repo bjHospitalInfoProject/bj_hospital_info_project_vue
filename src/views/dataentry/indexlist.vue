@@ -21,13 +21,13 @@
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" label="ID">
         <template slot-scope="{row}">
-          <span>{{ row.name }}</span>
+          <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="姓名">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.name }}</span>
         </template>
       </el-table-column>
 
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { getPatientStaticPageInfo, getIFInfoList } from '@/api/dataquery'
+import { getPatientStaticPageInfo } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
 import { mapGetters } from 'vuex'
 
@@ -111,7 +111,7 @@ export default {
     async getList() {
       this.listLoading = true
       this.listQuery.centerId = this.centerId
-      const { data } = await getIFInfoList(this.listQuery)
+      const { data } = await getPatientStaticPageInfo(this.listQuery)
       const items = data.data
       this.total = data.totalCount
       this.list = items.map(v => {
@@ -121,7 +121,7 @@ export default {
     },
     goToDetailInfoOption(row) {
       console.log(row)
-      this.$router.push({ path: '/dataentry/index', query: { name: "1" } })
+      this.$router.push({ path: '/dataentry/index', query: { code: row.patientCode } })
     },
     goToCreateInfoOption() {
       this.$router.push({ path: '/dataentry/index' })

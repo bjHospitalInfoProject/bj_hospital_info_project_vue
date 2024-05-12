@@ -198,11 +198,14 @@ export default {
         }
     },
     props: {
+        patientInfo: Object,
         organizefrozenInfo: Object
     },
     methods: {
         async saveOptionsApi() {
             this.organizefrozenInfo.centerId = this.centerId
+            this.organizefrozenInfo.patientCode = this.patientInfo.code
+
             const { data } = await addOrUpdateOrganizeSample(this.organizefrozenInfo)
             console.log(data)
             if (data) {

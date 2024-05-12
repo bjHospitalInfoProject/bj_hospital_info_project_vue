@@ -840,11 +840,14 @@ export default {
         }
     },
     props: {
-        diseaseInfo: Object
+        diseaseInfo: Object,
+        patientInfo: Object,
+
     },
     methods: {
         async saveOptionsApi() {
             this.diseaseInfo.centerId = this.centerId
+            this.diseaseInfo.patientCode = this.patientInfo.code
             const { data } = await addOrUpdateDiseaseActivityScore(this.diseaseInfo)
             console.log(data)
             if (data) {
