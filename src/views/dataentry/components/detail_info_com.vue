@@ -1,5 +1,5 @@
 <template>
-    <el-collapse :value="collapseShow?'1':'0'" class="box-card detailInfo" accordion>
+    <el-collapse :value="collapseShow ? '1' : '0'" class="box-card detailInfo" accordion>
         <el-collapse-item name="1">
             <template slot="title">
                 <div slot="header" class="clearfix">
@@ -600,16 +600,21 @@ export default {
     methods: {
         async saveOptions() {
             this.detailInfo.centerId = this.centerId
-            this.detailInfo.patientCode=this.patientInfo.code
+            this.detailInfo.patientCode = this.patientInfo.code
             const { data } = await addOrUpdatePatientPageInfo(this.detailInfo)
             console.log(data)
-            editVis = true
+            if (data) {
+                this.editVis = true
+            }
+            // this.$router.push({ path: '/dataentry/index', query: { code: "2222" } })
+            // console.log(this.$route.query.code)
+            this.$parent.patientInfo.code = data.patientCode
         },
     },
     props: {
         patientInfo: Object,
         detailInfo: Object,
-        collapseShow:Boolean
+        collapseShow: Boolean
     },
     computed: {
         ...mapGetters([

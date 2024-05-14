@@ -5,7 +5,7 @@
             <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
                 @click="editVis = false">编辑</el-button>
             <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
-                @click="editVis = true">保存</el-button>
+                @click="saveOptionsApi()">保存</el-button>
 
         </div>
         <div>
@@ -287,7 +287,7 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="并发心力衰竭NYHA分级">
-                            <el-select :disabled="editVis" style="width:200px" size="mini" multiple
+                            <el-select :disabled="editVis" style="width:200px" size="mini" 
                                 v-model="InpatientInfo.nyhaClassificationOfCongestiveHeartFailure" placeholder="请选择">
                                 <el-option v-for="item in xinlioptions" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -1780,6 +1780,10 @@
 </template>
 
 <script>
+
+import { addOrUpdateHospitalSurgery } from '@/api/dataentry'
+import { mapGetters } from 'vuex'
+
 export default {
     data() {
         return {
@@ -3029,6 +3033,22 @@ export default {
     props: {
         patientInfo: Object,
         InpatientInfo: Object
+    },
+    methods: {
+        async saveOptionsApi() {
+            this.InpatientInfo.centerId = this.centerId
+            this.InpatientInfo.patientCode = this.patientInfo.code
+            const { data } = await addOrUpdateHospitalSurgery(this.InpatientInfo)
+            console.log(data)
+            if (data) {
+                this.editVis = true
+            }
+        },
+    },
+    computed: {
+        ...mapGetters([
+            'centerId'
+        ])
     }
 }
 </script>

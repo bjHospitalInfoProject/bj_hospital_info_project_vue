@@ -130,3 +130,13 @@ export function addOrUpdatefollowUp(data) {
     data
   })
 }
+
+//数据录入的权限接口
+
+export function queryUserDataEntryPermission(data) {
+  return request({
+    url: '/user/queryUserDataEntryPermission',
+    method: 'get',
+    params: data
+  })
+}

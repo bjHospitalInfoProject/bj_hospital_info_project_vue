@@ -13,7 +13,8 @@
                         <span style="float:right;">
                             <i @click.stop="addTree(node)"
                                 :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
-                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children.length }}</span>
+                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children ?
+            node.data.children.length : 0 }}</span>
                             <i @click.stop="delTree(node)"
                                 :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
                         </span>
@@ -125,168 +126,50 @@ import qualityInfo from "./components/quality_life_health_evaluation_com.vue"
 import dragDiv from "./components/dragDiv.vue"
 
 
+import { queryUserDataEntryPermission } from '@/api/dataentry'
+import { mapGetters } from 'vuex'
+import {
+    getBloodSamplePageInfoList, getIFInfoList, getIHCInfoList, getHEInfoList, getPatientPageInfoList,
+    getOrganizeSamplePageInfoList, getImagingExamPageInfoList, getHealthQualityPageInfoList, getTissueParaffinPageInfo, getTissueSlidePageInfoInfo
+    , getHospitalSurgeryPageInfo, getLabTestResultPageInfo, getDiseaseActivityScorePageInfo, getFollowUpPageInfo
+} from '@/api/dataquery'
+import { title } from "@/settings"
+
 export default {
     mounted() {
+        this.getPermissionsInfo()
         let userId = this.$route.query.code;
-        console.log(this.$refs.dragDiv?.defaultWidth)
-        console.log('用户ID----:', userId);
-        this.currentKey = this.tree[0].label
+        if (userId) {
+            this.patientInfo.code = userId
+            this.getPaintDetalInfo()
+        }
     },
     created() {
-        let userId = this.$route.query.code;
+        let userId = this.patientInfo.code;
         console.log(this.$refs.dragDiv?.defaultWidth)
         this.code = userId;
         console.log('用户ID----:', userId);
     },
+    watch: {
+        // $route(to, from) {
+        //     console.log(from.query.code);//从哪来
+        //     console.log(to.query.code);//到哪去
+        // },
+        patientInfo: {
+            handler: function (newVal, oldVal) {
+                // 这里可以执行你需要的任何操作
+                console.log('Object changed!');
+                console.log(this.patientInfo)
+            },
+            deep: true // 确保深度监听
+        }
+    },
     data() {
         return {
-            tree: [{
-                label: '病人一般情况',
-                zindex: 0,
-                id: 0,
-                children: [{
-                    label: '病例信息库',
-                    zindex: 1,
-                    children: [{
-                        label: '住院手术信息',
-                        zindex: 2,
-                        id: 1,
-                        children: [{
-                            label: '手术信息-2024-01-01',
-                            zindex: 3,
-                            parentId: 1
-                        }],
-                    }, {
-                        label: '实验室检验结果',
-                        zindex: 2,
-                        id: 2,
-                        children: [{
-                            label: '实验室检验结果-2024-01-01',
-                            zindex: 3,
-                            parentId: 2
-
-                        }],
-                    },
-                    {
-                        label: '影像学检查结果',
-                        zindex: 2,
-                        id: 3,
-                        children: [{
-                            label: '影像学检查结果-2024-01-01',
-                            zindex: 3,
-                            parentId: 3
-
-                        }],
-                    },
-                    {
-                        label: '疾病活动性评分',
-                        zindex: 2,
-                        id: 4,
-                        children: [{
-                            label: '疾病活动性评分-2024-01-01',
-                            zindex: 3,
-                            parentId: 4
-
-                        }],
-                    },
-                    {
-                        label: '质量健康评价',
-                        zindex: 2,
-                        id: 5,
-                        children: [{
-                            label: '质量健康评价-2024-01-01',
-                            zindex: 3,
-                            parentId: 5
-                        }],
-                    },
-                    {
-                        label: '随访信息',
-                        zindex: 2,
-                        id: 6,
-                        children: [{
-                            label: '随访信息-2024-01-01',
-                            zindex: 3,
-                            parentId: 6
-                        }],
-                    }]
-                },
-                {
-                    label: '生物样本库',
-                    zindex: 1,
-                    children: [{
-                        label: '组织石蜡块',
-                        zindex: 2,
-                        id: 7,
-                        children: [{
-                            label: '组织石蜡块-2024-01-01',
-                            zindex: 3,
-                            parentId: 7
-                        }],
-                    }, {
-                        label: '组织白片',
-                        zindex: 2,
-                        id: 8,
-                        children: [{
-                            label: '组织白片-2024-01-01',
-                            zindex: 3,
-                            parentId: 8
-                        }],
-                    },
-                    {
-                        label: 'HE染色切片',
-                        zindex: 2,
-                        id: 9,
-                        children: [{
-                            label: 'HE染色切片-2024-01-01',
-                            zindex: 3,
-                            parentId: 9
-                        }],
-                    },
-                    {
-                        label: 'IHC染色切片',
-                        zindex: 2,
-                        id: 10,
-                        children: [{
-                            label: 'IHC染色切片-2024-01-01',
-                            zindex: 3,
-                            parentId: 10
-                        }],
-                    },
-                    {
-                        label: 'IF染色切片',
-                        zindex: 2,
-                        id: 13,
-                        children: [{
-                            label: 'IF染色切片-2024-01-01',
-                            zindex: 3,
-                            parentId: 13
-                        }],
-                    },
-                    {
-                        label: '血液冻存样本',
-                        zindex: 2,
-                        id: 11,
-                        children: [{
-                            label: '血液冻存样本-2024-01-01',
-                            zindex: 3,
-                            parentId: 11
-                        }],
-                    },
-                    {
-                        label: '组织冻存样本',
-                        zindex: 2,
-                        id: 12,
-                        children: [{
-                            label: '组织冻存样本-2024-01-01',
-                            zindex: 3,
-                            parentId: 12
-                        }],
-                    }]
-                }]
-            }],
+            tree: [],
             addTreeText: '',
             patientInfo: {
-                code: this.$route.query.code
+                code: ''
             },
             editVis: true,
             options: [],
@@ -332,16 +215,380 @@ export default {
         organizingparaffinInfo, qualityInfo, dragDiv
     },
     methods: {
-        handleNodeClick(data) {
+        async handleNodeClick(node) {
             //这里可以使用ajax请求后台，获取组织树的数据，转成json数组格式返回,result为返回的值
             //this.data=result.data;
-            if (data.zindex == 3) {
-                this.defaultSelectId = data.parentId;
+
+            if (node.zindex == 3) {
+                console.log(node)
+                this.defaultSelectId = node.parentId;
                 this.collapseShow = false
             }
-            if (data.zindex == 0) {
+            if (node.zindex == 0) {
                 this.checkNode()
             }
+            if (node.zindex == 2) {
+                if (this.patientInfo.code == undefined) {
+                    this.$message({
+                        type: 'error',
+                        message: '请先创建病人基本信息!'
+                    });
+                    return;
+                }
+                console.log(node)
+                if (node.id == 1) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getHospitalSurgeryPageInfo({
+                        pageNo: 1,
+                        pageSize: 1000,
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 2) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getLabTestResultPageInfo({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 3) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getImagingExamPageInfoList({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 4) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getDiseaseActivityScorePageInfo({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 5) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getHealthQualityPageInfoList({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 6) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getFollowUpPageInfo({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 7) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getTissueParaffinPageInfo({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 8) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getTissueSlidePageInfoInfo({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 9) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getHEInfoList({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 10) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getIHCInfoList({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 11) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getBloodSamplePageInfoList({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 12) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getOrganizeSamplePageInfoList({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else if (node.id == 13) {
+                    this.$set(node, 'children', []);
+                    const { data } = await getIFInfoList({
+                        pageNo: 1,
+                        pageSize: 1000,
+
+                        patientCode: this.patientInfo.code,
+                        centerId: this.centerId
+                    });
+                    // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    data.data.forEach(obj => {
+                        console.log(obj);
+                        const newLabResult = {
+                            label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                            zindex: 3,
+                            id: obj.id,
+                            parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                        };
+                        // 将新的实验室检验结果对象添加到当前节点的children数组中
+                        if (!node.children) {
+                            // 如果当前节点没有children数组，创建一个新数组
+                            this.$set(node, 'children', []);
+                        }
+                        node.children.push(newLabResult);
+                    });
+                } else {
+                    // this.$set(node, 'children', []);
+                    // const { data } = await getBloodSamplePageInfoList({
+                    //     pageNo: 1,
+                    //     pageSize: 1000,
+                    //     name: "",
+                    //     phone: "",
+                    //patientCode: this.patientInfo.code,
+                    //     centerId: this.centerId
+                    // });
+                    // // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
+                    // data.data.forEach(obj => {
+                    //     console.log(obj);
+                    //     const newLabResult = {
+                    //         label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
+                    //         zindex: 3,
+                    //         id: obj.id,
+                    //         parentId: node.id // 这里可能需要根据您的数据结构进行调整
+                    //     };
+                    //     // 将新的实验室检验结果对象添加到当前节点的children数组中
+                    //     if (!node.children) {
+                    //         // 如果当前节点没有children数组，创建一个新数组
+                    //         this.$set(node, 'children', []);
+                    //     }
+                    //     node.children.push(newLabResult);
+                    // });
+                }
+            }
+
         },
         // 选中最外层节点
         checkNode() {
@@ -349,12 +596,25 @@ export default {
             this.collapseShow = true
         },
         addTree(node) {
+            console.log(this.patientInfo.code)
+            if (!this.patientInfo.code) {
+                this.$message({
+                    type: 'error',
+                    message: '请先创建病人基本信息!'
+                });
+                return;
+            }
             let str = node.label + ' - ' + this.getDate();
             // node.data.children.push({
             //     label: 'test',
             //     zindex: 8
             // })
             // this.addTreeText = 
+            console.log(node.data.id)
+            if (!node.data.children) {
+                this.$set(node.data, 'children', []);
+
+            }
 
             node.data.children.push({
                 label: str,
@@ -403,8 +663,30 @@ export default {
         widthChange(width) {
             this.dragDivWidth = width;
         },
+        async getPermissionsInfo() {
+            const { data } = await queryUserDataEntryPermission({ templateId: this.templateId, groupId: this.groupId })
+            this.tree = data
+        },
+        async getPaintDetalInfo() {
+            const { data } = await getPatientPageInfoList({
+                pageNo: 1,
+                pageSize: 1,
+                name: "",
+                phone: "",
+                patientCode: this.patientInfo.code,
+                centerId: this.centerId
+            });
+            console.log(data)
+            this.detailInfo = data.data[0];
+        }
 
-
+    },
+    computed: {
+        ...mapGetters([
+            'templateId',
+            'groupId',
+            'centerId'
+        ])
     }
 };
 </script>
