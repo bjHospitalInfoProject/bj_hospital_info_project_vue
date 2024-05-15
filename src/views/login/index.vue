@@ -3,7 +3,7 @@
     <div class="login-container">
       <div class="headInfo">
         <span class="left-text"><img class="custom-icon" src="logo.png" alt="医院图标">北京医院血管外科</span>
-        <span class="right-text"><i class="el-icon-phone-outline"></i>400-110-0000</span>
+        <span class="right-text"><i class="el-icon-phone-outline"></i>010-85132994</span>
       </div>
       <div class="content">
         <h1 style="font-size: 45px;margin-block-end: 0em;text-shadow: 2px 2px 2px black;">周围血管疾病数据平台</h1>
@@ -24,6 +24,9 @@
           <el-button type="primary" @click="showLoginDialog(1)" icon="el-icon-user-solid">登录</el-button>
         </el-row>
       </div>
+      <div style="text-align: center; position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);">
+        <span class="bottomInfo" style="font-size: 13px;color: white;">京ICP-备2024063843号-1</span>
+      </div>
     </div>
 
     <el-dialog :visible.sync="dialogLoginVisible" width="55%" center :show-close="false">
@@ -36,7 +39,8 @@
             <img src="logo.png" alt="图片描述">
           </div>
           <!-- <h2 class="image-title"> <i class="el-icon-phone-outline"></i>400-110-0000</h2> -->
-          <h2 class="image-phone"> <i class="el-icon-phone-outline" style="color: rgba(100, 133, 223, 1);margin-right: 10px;"></i>400-110-0000</h2>
+          <h2 class="image-phone"> <i class="el-icon-phone-outline"
+              style="color: rgba(100, 133, 223, 1);margin-right: 10px;padding-right: 10px;"></i>010-85132994</h2>
 
         </div>
         <div class="login-form">
@@ -434,6 +438,12 @@ export default {
   /* 防止内边距撑大容器 */
 }
 
+.bottomInfo {
+
+  width: 100%;
+  height: 100vh;
+}
+
 .content {
   text-align: left;
   width: 100%;
@@ -544,11 +554,12 @@ export default {
   overflow: hidden;
   background-color: #ABC1F2;
 }
-.image-wrapper{
+
+.image-wrapper {
   margin-top: 10vh;
 }
 
-::v-deep .noborderBottom .el-input{
+::v-deep .noborderBottom .el-input {
   border-bottom: 0px solid !important;
 }
 
@@ -558,10 +569,12 @@ export default {
   color: #ffffff;
   padding-top: 14vh;
   height: 100%;
-  .image-title{
+
+  .image-title {
     color: rgba(100, 133, 223, 1);
   }
-  .image-phone{
+
+  .image-phone {
     position: absolute;
     bottom: 20px;
     font-size: 14px;
@@ -606,7 +619,8 @@ export default {
   // border: none;
   // border-bottom: none;
 }
-::v-deep .borderSelect .el-input{
+
+::v-deep .borderSelect .el-input {
   border-bottom: none;
 }
 
