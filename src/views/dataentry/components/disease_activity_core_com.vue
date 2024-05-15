@@ -27,8 +27,8 @@
                 <el-row>
                     <el-col :span="12">
                         <el-form-item label="填报时间:">
-                            <el-date-picker v-model="diseaseInfo.reportTime" style="width:200px" size="mini" type="date"
-                                placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="diseaseInfo.reportTime" style="width:200px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>

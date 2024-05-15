@@ -72,7 +72,7 @@
           <el-col :span="14">
             <el-form label-width="80px" :model="addGroupForm">
               <el-form-item style="margin: 10px 0;width:100%;" label="小组名称:">
-                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.name"></el-input>
+                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.groupName"></el-input>
               </el-form-item>
             </el-form>
             <p>初始权限</p>
@@ -264,6 +264,7 @@ export default {
       }
     },
     editList(row) {
+      console.log(row)
       this.dialogvis = true;
       this.addGroupForm = { ...row }
     },

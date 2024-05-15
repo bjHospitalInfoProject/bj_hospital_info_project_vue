@@ -25,8 +25,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报时间:">
-                            <el-date-picker v-model="followInfo.reportTime" style="width:150px" size="mini" type="date"
-                                placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="followInfo.reportTime" style="width:150px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -54,8 +54,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访日期:">
-                            <el-date-picker v-model="followInfo.followUpDate" style="width:150px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="followInfo.followUpDate" style="width:150px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -253,8 +253,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="影像检查时间:">
-                            <el-date-picker v-model="followInfo.imagingDate" style="width:200px" size="mini" type="date"
-                                placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="followInfo.imagingDate" style="width:200px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>

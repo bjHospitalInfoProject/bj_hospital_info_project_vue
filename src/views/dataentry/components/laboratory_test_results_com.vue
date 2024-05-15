@@ -25,7 +25,7 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报时间：">
-                            <el-date-picker v-model="laboratoryInfo.reportTime" style="width:200px" size="mini"
+                            <el-date-picker :disabled="editVis" v-model="laboratoryInfo.reportTime" style="width:200px" size="mini"
                                 type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -35,7 +35,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="检验日期：">
-                            <el-date-picker v-model="laboratoryInfo.testDate" style="width:200px" size="mini"
+                            <el-date-picker :disabled="editVis" v-model="laboratoryInfo.testDate" style="width:200px" size="mini"
                                 type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>

@@ -27,15 +27,15 @@
                 <el-row>
                     <el-col :span="12">
                         <el-form-item label="填报日期:">
-                            <el-date-picker v-model="InpatientInfo.reportTime" style="width:220px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.reportTime" style="width:220px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
                         <el-form-item label="更新日期">
-                            <el-date-picker v-model="InpatientInfo.name" style="width:220px" size="mini" type="date"
-                                placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.name" style="width:220px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -72,8 +72,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="入院日期：">
-                            <el-date-picker v-model="InpatientInfo.admissionDate" style="width:220px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.admissionDate"
+                                style="width:220px" size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -287,7 +287,7 @@
                 <el-row>
                     <el-col :span="8">
                         <el-form-item label="并发心力衰竭NYHA分级">
-                            <el-select :disabled="editVis" style="width:220px" size="mini" 
+                            <el-select :disabled="editVis" style="width:220px" size="mini"
                                 v-model="InpatientInfo.nyhaClassificationOfCongestiveHeartFailure" placeholder="请选择">
                                 <el-option v-for="item in xinlioptions" :key="item.value" :label="item.label"
                                     :value="item.value">
@@ -766,8 +766,8 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="手术日期">
-                            <el-date-picker v-model="InpatientInfo.surgeryDate" style="width:220px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.surgeryDate" style="width:220px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -1745,22 +1745,22 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术后症状复发时间">
-                            <el-date-picker v-model="InpatientInfo.symptomRecurrenceTime" style="width:220px"
-                                size="mini" type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.symptomRecurrenceTime"
+                                style="width:220px" size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术后靶血管再狭窄时间">
-                            <el-date-picker v-model="InpatientInfo.targetVesselRestenosisTime" style="width:220px"
-                                size="mini" type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.targetVesselRestenosisTime"
+                                style="width:220px" size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术后再干预时间">
-                            <el-date-picker v-model="InpatientInfo.reinterventionTime" style="width:220px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.reinterventionTime"
+                                style="width:220px" size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>

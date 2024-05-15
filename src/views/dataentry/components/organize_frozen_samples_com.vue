@@ -19,8 +19,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="组织样本采集时间:">
-                            <el-date-picker v-model="organizefrozenInfo.collectionTime" style="width:150px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="organizefrozenInfo.collectionTime"
+                                style="width:150px" size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>

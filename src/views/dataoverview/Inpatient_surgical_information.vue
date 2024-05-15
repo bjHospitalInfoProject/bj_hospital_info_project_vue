@@ -1593,7 +1593,8 @@ export default {
         centerId: ''
       },
       drawer: false,
-      InpatientInfo: {}
+      InpatientInfo: {},
+      editVis: true
     }
   },
   created() {

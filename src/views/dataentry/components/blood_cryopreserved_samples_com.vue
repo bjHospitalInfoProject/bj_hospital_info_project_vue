@@ -19,8 +19,8 @@
                     </el-col>
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="血液样本采集时间:">
-                            <el-date-picker v-model="bloodInfo.collectionTime" style="width:200px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="bloodInfo.collectionTime" style="width:200px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
