@@ -223,6 +223,217 @@ export default {
                 console.log(node)
                 this.defaultSelectId = node.parentId;
                 this.collapseShow = false
+
+                if (node.parentId == 1) {
+                    if (node.detailId) {
+                        const { data } = await getHospitalSurgeryPageInfo({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            hospitalSurgeryInfoId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.InpatientInfo = data.data[0];
+                    } else {
+                        this.InpatientInfo = {}
+                    }
+                } else if (node.parentId == 2) {
+                    if (node.detailId) {
+                        const { data } = await getLabTestResultPageInfo({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            labTestResultId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.laboratoryInfo = data.data[0];
+                    } else {
+                        this.laboratoryInfo = {}
+                    }
+                } else if (node.parentId == 3) {
+                    if (node.detailId) {
+                        const { data } = await getImagingExamPageInfoList({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            imagingExamResultId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.imageInfo = data.data[0];
+                    } else {
+                        this.imageInfo = {}
+                    }
+                } else if (node.parentId == 4) {
+                    if (node.detailId) {
+                        const { data } = await getDiseaseActivityScorePageInfo({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            diseaseActivityScoreId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.diseaseInfo = data.data[0];
+                    } else {
+                        this.diseaseInfo = {}
+                    }
+                } else if (node.parentId == 5) {
+                    if (node.detailId) {
+                        const { data } = await getHealthQualityPageInfoList({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            healthQualityEvaluationId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.qualityInfo = data.data[0];
+                    } else {
+                        this.qualityInfo = {}
+                    }
+                } else if (node.parentId == 6) {
+                    if (node.detailId) {
+                        const { data } = await getFollowUpPageInfo({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            followUpInfoId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.followInfo = data.data[0];
+                    } else {
+                        this.followInfo = {}
+                    }
+                } else if (node.parentId == 7) {
+                    if (node.detailId) {
+                        const { data } = await getTissueParaffinPageInfo({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            tissueParaffinBlockId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.organizingparaffinInfo = data.data[0];
+                    } else {
+                        this.organizingparaffinInfo = {}
+                    }
+                } else if (node.parentId == 8) {
+                    if (node.detailId) {
+                        const { data } = await getTissueSlidePageInfoInfo({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            tissueSlideId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.organizationalwhiteInfo = data.data[0];
+                    } else {
+                        this.organizationalwhiteInfo = {}
+                    }
+                } else if (node.parentId == 9) {
+                    if (node.detailId) {
+                        const { data } = await getHEInfoList({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            heStainingSliceId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.HEInfo = data.data[0];
+                    } else {
+                        this.HEInfo = {}
+                    }
+                } else if (node.parentId == 10) {
+                    if (node.detailId) {
+                        const { data } = await getIHCInfoList({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            ihcStainingSliceId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.IHCInfo = data.data[0];
+                    } else {
+                        this.IHCInfo = {}
+                    }
+                } else if (node.parentId == 11) {
+                    if (node.detailId) {
+                        const { data } = await getBloodSamplePageInfoList({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            bloodSampleId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.BloodInfo = data.data[0];
+                    } else {
+                        this.BloodInfo = {}
+                    }
+                } else if (node.parentId == 12) {
+                    if (node.detailId) {
+                        const { data } = await getOrganizeSamplePageInfoList({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            organizeSampleId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.organizefrozenInfo = data.data[0];
+                    } else {
+                        this.organizefrozenInfo = {}
+                    }
+                } else if (node.parentId == 13) {
+                    if (node.detailId) {
+                        const { data } = await getIFInfoList({
+                            pageNo: 1,
+                            pageSize: 1,
+                            name: "",
+                            phone: "",
+                            ifStainingSliceId: node.detailId,
+                            patientCode: this.patientInfo.code,
+                            centerId: this.centerId
+                        });
+                        console.log(data)
+                        this.IFInfo = data.data[0];
+                    } else {
+                        this.IFInfo = {}
+                    }
+                }
+
             }
             if (node.zindex == 0) {
                 this.checkNode()
@@ -251,6 +462,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.hospitalSurgeryInfoId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -265,7 +477,6 @@ export default {
                     const { data } = await getLabTestResultPageInfo({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -276,6 +487,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.labTestResultId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -290,7 +502,6 @@ export default {
                     const { data } = await getImagingExamPageInfoList({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -301,6 +512,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.imagingExamResultId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -315,7 +527,6 @@ export default {
                     const { data } = await getDiseaseActivityScorePageInfo({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -326,6 +537,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.diseaseActivityScoreId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -340,7 +552,6 @@ export default {
                     const { data } = await getHealthQualityPageInfoList({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -351,6 +562,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.healthQualityEvaluationId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -365,7 +577,6 @@ export default {
                     const { data } = await getFollowUpPageInfo({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -376,6 +587,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.followUpInfoId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -390,7 +602,6 @@ export default {
                     const { data } = await getTissueParaffinPageInfo({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -401,6 +612,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.tissueParaffinBlockId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -415,7 +627,6 @@ export default {
                     const { data } = await getTissueSlidePageInfoInfo({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -426,6 +637,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.tissueSlideId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -440,7 +652,6 @@ export default {
                     const { data } = await getHEInfoList({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -451,6 +662,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.heStainingSliceId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -465,7 +677,6 @@ export default {
                     const { data } = await getIHCInfoList({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -476,6 +687,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.ihcStainingSliceId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -490,7 +702,6 @@ export default {
                     const { data } = await getBloodSamplePageInfoList({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -501,6 +712,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.bloodSampleId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -515,7 +727,6 @@ export default {
                     const { data } = await getOrganizeSamplePageInfoList({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -526,6 +737,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.organizeSampleId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
@@ -540,7 +752,6 @@ export default {
                     const { data } = await getIFInfoList({
                         pageNo: 1,
                         pageSize: 1000,
-
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
@@ -551,6 +762,7 @@ export default {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
                             id: obj.id,
+                            detailId: obj.ifStainingSliceId,
                             parentId: node.id // 这里可能需要根据您的数据结构进行调整
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中

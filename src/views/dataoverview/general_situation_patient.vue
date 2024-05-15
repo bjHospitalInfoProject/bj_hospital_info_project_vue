@@ -39,7 +39,7 @@
           <span>{{ row.genderStr }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="名族">
+      <el-table-column align="center" label="民族">
         <template slot-scope="{row}">
           <span>{{ row.ethnicityStr }}</span>
         </template>
