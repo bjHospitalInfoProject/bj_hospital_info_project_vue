@@ -56,6 +56,15 @@
                 </el-row>
 
                 <el-row>
+                    <el-col :span="8" :lg="12" :xl="8">
+                        <el-form-item label="组织来源 (x动脉/周围x组织):">
+                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                                v-model="organizationalwhiteInfo.tissueSource"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+
+                <el-row>
                     <el-col :span="24">
                         <el-form-item label="备注:">
                             <el-input :disabled="editVis" v-model="organizationalwhiteInfo.notes" type="textarea"

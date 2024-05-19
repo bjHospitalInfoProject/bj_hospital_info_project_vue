@@ -2,6 +2,7 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
+import router from '@/router' // 导入路由实例，用于跳转页面
 
 // create an axios instance
 const service = axios.create({
@@ -26,6 +27,8 @@ service.interceptors.request.use(
   error => {
     // do something with request error
     console.log(error) // for debug
+    router.push(`/login?redirect=${this.$route.fullPath}`)
+
     return Promise.reject(error)
   }
 )
@@ -44,7 +47,7 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-    
+
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 0) {
       Message({
@@ -53,7 +56,13 @@ service.interceptors.response.use(
         duration: 5 * 1000
       })
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.code === 201 || res.code === 401 || res.code === 403 || res.code === 404) {
+      if (res.code === 201 || res.code === 401 || res.code === 403 || res.code === 404 || res.code == 20012) {
+
+        if (res.code === 20012) {
+          store.dispatch('user/logout').then(() => {
+            router.push(`/login?redirect=${this.$route.fullPath}`)
+          })
+        }
         // to re-login
         MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
           confirmButtonText: 'Re-Login',
@@ -77,6 +86,8 @@ service.interceptors.response.use(
       type: 'error',
       duration: 5 * 1000
     })
+    router.push(`/login?redirect=${this.$route.fullPath}`)
+
     return Promise.reject(error)
   }
 )

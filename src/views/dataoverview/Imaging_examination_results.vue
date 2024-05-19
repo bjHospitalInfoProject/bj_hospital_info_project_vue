@@ -59,7 +59,7 @@
 
       <el-table-column fixed="right" label="操作" width="80">
         <template slot-scope="scope">
-          <el-button type="text" @click="getDetailInfoOption" size="small">详情</el-button>
+          <el-button type="text" @click="getDetailInfoOption(scope.row)" size="small">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -471,8 +471,9 @@ export default {
     this.getList()
   },
   methods: {
-    getDetailInfoOption() {
+    getDetailInfoOption(row) {
       this.drawer = true;
+      this.imageInfo = { ...row }
     },
     async getList() {
       this.listLoading = true

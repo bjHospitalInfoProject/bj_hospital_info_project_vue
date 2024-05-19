@@ -36,7 +36,7 @@
       </el-table-column>
       <el-table-column align="center" label="目前白膜层样本管数">
         <template slot-scope="{row}">
-          <span>{{ row.experimentResults }}</span>
+          <span>{{ row.membraneTubeCount }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="已有实验结果">

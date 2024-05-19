@@ -320,9 +320,9 @@
                         </el-form-item>
                     </div>
                     <div style="left: 52%;top: 85%;" class="">
-                        <el-form-item label="管状动脉">
+                        <el-form-item label="冠状动脉">
                             <el-select collapse-tags :disabled="editVis" multiple size="mini"
-                                v-model="imageInfo.hospital" placeholder="请选择">
+                                v-model="imageInfo.coronaryArteriesList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>

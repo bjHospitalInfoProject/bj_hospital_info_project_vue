@@ -34,7 +34,7 @@
                     </el-col>
                     <el-col :span="12">
                         <el-form-item label="更新日期">
-                            <el-date-picker :disabled="editVis" v-model="InpatientInfo.name" style="width:220px"
+                            <el-date-picker :disabled="true" v-model="InpatientInfo.updateTime" style="width:220px"
                                 size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
@@ -184,7 +184,7 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="个人信息补充:">
-                            <el-input :disabled="editVis" type="textarea" v-mdel="InpatientInfo.personalInfoSupplement"
+                            <el-input :disabled="editVis" v-model="InpatientInfo.personalInfoSupplement" type="textarea"
                                 :rows="3" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
@@ -203,7 +203,7 @@
 
                         <el-form-item label="并发结核病史">
                             <el-select :disabled="editVis" style="width:220px" size="mini" multiple
-                                v-model="InpatientInfo.historyOfComplicatedTuberculosis" placeholder="请选择">
+                                v-model="InpatientInfo.historyOfComplicatedTuberculosisList" placeholder="请选择">
                                 <el-option v-for="item in jieheoptions" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>
@@ -536,12 +536,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="入院呼吸频率(次/min)">
-                            <el-select :disabled="editVis" size="mini" style="width:220px"
-                                v-model="InpatientInfo.admissionRespiratoryRate" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                                v-model="InpatientInfo.admissionRespiratoryRate"></el-input>
                         </el-form-item>
                     </el-col>
 
@@ -617,34 +613,25 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前右侧ABI">
-                            <el-select :disabled="editVis" size="mini" style="width:220px"
-                                v-model="InpatientInfo.preoperativeRightAbi" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                                v-model="InpatientInfo.preoperativeRightAbi">
+                            </el-input>
                         </el-form-item>
                     </el-col>
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前左侧ABI">
-                            <el-select :disabled="editVis" size="mini" style="width:220px"
-                                v-model="InpatientInfo.preoperativeLeftAbi" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                                v-model="InpatientInfo.preoperativeLeftAbi">
+                            </el-input>
                         </el-form-item>
                     </el-col>
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前总eGFR">
-                            <el-select :disabled="editVis" size="mini" style="width:220px"
-                                v-model="InpatientInfo.preoperativeTotalEgfr" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                                v-model="InpatientInfo.preoperativeTotalEgfr">
+                            </el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -652,27 +639,20 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前右eGFR">
-                            <el-select :disabled="editVis" size="mini" style="width:220px"
-                                v-model="InpatientInfo.preoperativeRightEgfr" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                                v-model="InpatientInfo.preoperativeRightEgfr">
+                            </el-input>
                         </el-form-item>
                     </el-col>
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前左eGFR">
-                            <el-select :disabled="editVis" size="mini" style="width:220px"
-                                v-model="InpatientInfo.preoperativeLeftEgfr" placeholder="请选择">
-                                <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                                v-model="InpatientInfo.preoperativeLeftEgfr">
+                            </el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-
 
                 <el-row>
                     <el-col :span="24">
@@ -703,7 +683,7 @@
                     <el-col :span="8" :lg="12" :xl="8">
 
                         <el-form-item label="术前Numano影像分型">
-                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                            <el-input :disabled="true" style="width:220px" size="mini"
                                 v-model="InpatientInfo.preoperativeNumanoImagingClassification"></el-input>
                         </el-form-item>
                     </el-col>
@@ -719,14 +699,14 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前NIH活动性评分得分">
-                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                            <el-input :disabled="true" style="width:220px" size="mini"
                                 v-model="InpatientInfo.preoperativeNihActivityScore"></el-input>
                         </el-form-item>
                     </el-col>
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前改良NIH活动性评分得分">
-                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                            <el-input :disabled="true" style="width:220px" size="mini"
                                 v-model="InpatientInfo.preoperativeImprovedNihActivityScore"></el-input>
                         </el-form-item>
                     </el-col>
@@ -735,13 +715,13 @@
 
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前ITAS 2010活动性评分得分">
-                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                            <el-input :disabled="true" style="width:220px" size="mini"
                                 v-model="InpatientInfo.preoperativeItas2010ActivityScore"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术前ITAS-A活动性评分得分">
-                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                            <el-input :disabled="true" style="width:220px" size="mini"
                                 v-model="InpatientInfo.preoperativeItasAActivityScore"></el-input>
                         </el-form-item>
                     </el-col>
@@ -895,7 +875,7 @@
 
                 </el-row>
 
-                <rl-row>
+                <el-row>
                     <el-col :span="24">
 
                         <el-form-item label="手术测压情况">
@@ -904,8 +884,8 @@
                             </el-input>
                         </el-form-item>
                     </el-col>
-                </rl-row>
-                <rl-row>
+                </el-row>
+                <el-row>
                     <el-col :span="24">
 
                         <el-form-item label="手术内容补充">
@@ -914,7 +894,7 @@
                             </el-input>
                         </el-form-item>
                     </el-col>
-                </rl-row>
+                </el-row>
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="造影剂用量">
@@ -1347,8 +1327,9 @@
                     <el-col :span="8" :lg="12" :xl="8">
 
                         <el-form-item label="术后并发症发生日期">
-                            <el-date-picker v-model="InpatientInfo.dateOfComplicationsAfterOperation"
-                                style="width:220px" size="mini" type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis"
+                                v-model="InpatientInfo.dateOfComplicationsAfterOperation" style="width:220px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -1791,15 +1772,15 @@ export default {
             yiyuanoptions: [
                 {
                     label: "北京医院",
-                    value: 1
+                    value: "1"
                 },
                 {
                     label: "协和医院",
-                    value: 2
+                    value: "2"
                 },
                 {
                     label: "其他",
-                    value: 3
+                    value: "3"
                 }
             ],
             smokeoptions: [

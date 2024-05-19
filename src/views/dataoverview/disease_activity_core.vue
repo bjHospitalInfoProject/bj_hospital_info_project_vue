@@ -36,7 +36,7 @@
       </el-table-column>
       <el-table-column align="center" label="评分时期">
         <template slot-scope="{row}">
-          <span>{{ row.evaluationPeriod }}</span>
+          <span>{{ row.evaluationPeriodStr }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="NIH活动性评分得分1">
@@ -79,7 +79,7 @@
       <el-row class="custom">
         <el-col :offset="1" :span="14">
           <div>
-            NIH活动性评分得分:
+            改良NIH活动性评分得分:
           </div>
         </el-col>
         <el-col :span="5">
@@ -94,8 +94,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.systemicSymptoms1">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio label="无"></el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="无"></el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -107,8 +107,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularCharacteristics1">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -120,8 +120,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.esrElevated1">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -133,8 +133,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularImaging1">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -158,8 +158,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.systemicSymptoms2">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio label="无"></el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" label="无"></el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -171,8 +171,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularCharacteristics2">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -184,8 +184,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.esrElevated2">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -197,8 +197,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularImaging2">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -234,9 +234,9 @@
           </div>
         </el-col>
         <el-col :span="5">
-          <el-radio-group v-model="diseaseInfo.fatigueWeightLoss">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+          <el-radio-group v-model="diseaseInfo.fatigueWeightLoss" @change="calculateITASAScore">
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -247,9 +247,9 @@
           </div>
         </el-col>
         <el-col :span="5">
-          <el-radio-group v-model="diseaseInfo.muscleJointPain">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+          <el-radio-group v-model="diseaseInfo.muscleJointPain" @change="calculateITASAScore">
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -261,8 +261,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.headache">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -274,8 +274,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.dizzinessHeadache">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -287,8 +287,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.syncope">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -300,8 +300,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.seizure">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -313,8 +313,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.stroke">
-            <el-radio :label="1">有 +2</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +2</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -326,8 +326,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.hypertensionDiastolic">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -339,8 +339,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.hypertensionSystolic">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -352,8 +352,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.carotidArteryPain">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -365,8 +365,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.aorticValveInsufficiency">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -378,8 +378,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.miAngina">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -391,8 +391,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.cardiomyopathy">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -405,8 +405,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.severeAbdominalPain">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -418,8 +418,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.miscarriage">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -431,8 +431,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularMurmur">
-            <el-radio :label="1">有 +2</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +2</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -444,8 +444,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularMurmurRightCarotid">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -457,8 +457,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularMurmurLeftCarotid">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -470,8 +470,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularMurmurRightSubclavian">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -483,8 +483,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularMurmurLeftSubclavian">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -497,8 +497,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularMurmurRightRenal">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -510,8 +510,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.vascularMurmurLeftRenal">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -523,8 +523,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseAsymmetry">
-            <el-radio :label="1">有 +2</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +2</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -536,8 +536,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.bloodPressureAsymmetry">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -549,8 +549,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearance">
-            <el-radio :label="1">有 +2</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +2</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -562,8 +562,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightCarotid">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -575,8 +575,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftCarotid">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -588,8 +588,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightSubclavian">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -601,8 +601,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftSubclavian">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -614,8 +614,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightBrachial">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -627,8 +627,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftBrachial">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -640,8 +640,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightRadial">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -653,8 +653,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftRadial">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -666,8 +666,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightFemoral">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -679,8 +679,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftFemoral">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -692,8 +692,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightPopliteal">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -705,8 +705,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftPopliteal">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -718,8 +718,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightPosteriorTibial">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -731,8 +731,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftPosteriorTibial">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -744,8 +744,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceRightDorsalisPedal">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -757,8 +757,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.pulseDisappearanceLeftDorsalisPedal">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -770,8 +770,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.limbMovementDisorder">
-            <el-radio :label="1">有 +2</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +2</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -783,8 +783,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.limbMovementDisorderUpper">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -796,8 +796,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.limbMovementDisorderLower">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -809,8 +809,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.esrScore">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -822,8 +822,8 @@
         </el-col>
         <el-col :span="5">
           <el-radio-group v-model="diseaseInfo.crpScore">
-            <el-radio :label="1">有 +1</el-radio>
-            <el-radio :label="0">无</el-radio>
+            <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
+            <el-radio :disabled="editVis" :label="0">无</el-radio>
           </el-radio-group>
         </el-col>
       </el-row>
@@ -834,7 +834,7 @@
 </template>
 
 <script>
-import { getDiseaseActivityScorePageInfo} from '@/api/dataquery'
+import { getDiseaseActivityScorePageInfo } from '@/api/dataquery'
 import Pagination from '@/components/Pagination'
 import { mapGetters } from 'vuex'
 
@@ -854,6 +854,7 @@ export default {
         phone: "",
         centerId: ''
       },
+      editVis: true,
       diseaseInfo: {}
     }
   },
@@ -876,6 +877,9 @@ export default {
       this.drawer = true;
       this.diseaseInfo = { ...row }
     },
+    calculateITASAScore() {
+      this.diseaseInfo.itasAScore = this.diseaseInfo.fatigueWeightLoss + this.diseaseInfo.muscleJointPain;
+    }
   },
   computed: {
     ...mapGetters([

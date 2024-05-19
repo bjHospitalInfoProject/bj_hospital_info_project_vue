@@ -25,8 +25,8 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="填报时间：">
-                            <el-date-picker :disabled="editVis" v-model="laboratoryInfo.reportTime" style="width:200px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="laboratoryInfo.reportTime" style="width:200px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>
@@ -35,8 +35,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="检验日期：">
-                            <el-date-picker :disabled="editVis" v-model="laboratoryInfo.testDate" style="width:200px" size="mini"
-                                type="date" placeholder="选择日期">
+                            <el-date-picker :disabled="editVis" v-model="laboratoryInfo.testDate" style="width:200px"
+                                size="mini" type="date" placeholder="选择日期">
                             </el-date-picker>
                         </el-form-item>
 
@@ -187,7 +187,7 @@
                         </el-form-item>
                         <el-form-item label="IgA (g/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.IgA"></el-input>
+                                v-model="laboratoryInfo.igA"></el-input>
                         </el-form-item>
                         <el-form-item label="IgM (g/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
@@ -218,7 +218,7 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="wbc(WBC,10^9/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
+                                v-model="laboratoryInfo.wbc"></el-input>
                         </el-form-item>
                         <el-form-item label="红细胞(RBC,10^12/L):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
@@ -541,7 +541,7 @@
                         </el-form-item>
                         <el-form-item label="肌钙蛋白T (TNT,ng/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
+                                v-model="laboratoryInfo.cTNT"></el-input>
                         </el-form-item>
                         <el-form-item label="超敏肌钙蛋白（Hs-cTn）:">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
@@ -555,7 +555,7 @@
 
                         <el-form-item label="肌红蛋白(MYO,ng/mL):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
+                                v-model="laboratoryInfo.myo"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -567,7 +567,7 @@
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="D-二聚体(ng/ml)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
+                                v-model="laboratoryInfo.dDimer"></el-input>
                         </el-form-item>
 
 
@@ -672,7 +672,7 @@
 
 
                         <el-form-item label="激发 醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.stimulatedAldosteroneReninRatio"></el-input>
                         </el-form-item>
 
@@ -698,7 +698,7 @@
 
 
                         <el-form-item label="左肾动脉取血-基础 醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.leftRenalArteryAldosteroneReninRatio"></el-input>
                         </el-form-item>
 
@@ -713,7 +713,7 @@
 
                         <el-form-item label="右肾动脉取血-基础肾素(pg/ml):">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
+                                v-model="laboratoryInfo.baselineRenin"></el-input>
                         </el-form-item>
 
 
@@ -726,7 +726,7 @@
 
 
                         <el-form-item label="右肾动脉取血-基础 醛固酮/肾素：">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rightRenalArteryAldosteroneReninRatio"></el-input>
                         </el-form-item>
 
@@ -751,9 +751,9 @@
                         </el-form-item>
 
 
-                        <el-form-item label="肾上腹主动脉取血-基础 醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
+                        <el-form-item label="肾上腹主动脉取血-醛固酮/肾素:">
+                            <el-input :disabled="true" style="width:100px" size="mini"
+                                v-model="laboratoryInfo.suprarenalAortaAldosteroneReninRatio"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
@@ -775,8 +775,8 @@
 
 
                         <el-form-item label="肾下腹主动脉取血-基础 醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
-                                v-model="laboratoryInfo.name"></el-input>
+                            <el-input :disabled="true" style="width:100px" size="mini"
+                                v-model="laboratoryInfo.infrarenalAortaAldosteroneReninRatio"></el-input>
                         </el-form-item>
                         <el-form-item label="卵泡刺激素(FSH,mIU/L)：">
                             <el-input :disabled="editVis" style="width:100px" size="mini"
@@ -994,9 +994,9 @@
                 </el-row>
                 <el-row>
                     <el-col :span="12">
-                        <el-form-item label="糖类抗原12-2 (CA12-2, U/mL):">
+                        <el-form-item label="糖类抗原24-2 (CA24-2, U/mL):">
                             <el-input :disabled="editVis" type="textarea" :rows="2"
-                                v-model="laboratoryInfo.testosterone" placeholder="请输入内容">
+                                v-model="laboratoryInfo.carbohydrateAntigen242" placeholder="请输入内容">
                             </el-input>
                         </el-form-item>
                     </el-col>

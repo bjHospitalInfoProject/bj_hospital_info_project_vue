@@ -34,12 +34,8 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="随访人:">
-                            <el-select :disabled="editVis" size="mini" style="width:200px"
-                                v-model="followInfo.followUpPerson" filterable allow-create placeholder="请选择">
-                                <el-option v-for="item in suifangrenoptions" :key="item.value" :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
+                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                                v-model="followInfo.followUpPerson"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
@@ -64,7 +60,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="术后时长(月):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                            <el-input :disabled="true" style="width:150px" size="mini"
                                 v-model="followInfo.postoperativeDuration"></el-input>
                         </el-form-item>
                     </el-col>
@@ -82,7 +78,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="年龄(岁):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                            <el-input :disabled="true" style="width:150px" size="mini"
                                 v-model="followInfo.age"></el-input>
                         </el-form-item>
                     </el-col>
@@ -217,13 +213,13 @@
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="红细胞沉降率(ESR,mm/h):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                            <el-input :disabled="true" style="width:150px" size="mini"
                                 v-model="followInfo.esr"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="C-反应蛋白(CRP,mg/L):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                            <el-input :disabled="true" style="width:150px" size="mini"
                                 v-model="followInfo.crp"></el-input>
                         </el-form-item>
                     </el-col>
@@ -231,7 +227,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="IL-6 (pg/mL):">
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                            <el-input :disabled="true" style="width:150px" size="mini"
                                 v-model="followInfo.il6"></el-input>
                         </el-form-item>
                     </el-col>
@@ -244,7 +240,7 @@
                                     (TNF-α,pg/mL):
                                 </span>
                             </template>
-                            <el-input :disabled="editVis" style="width:150px" size="mini"
+                            <el-input :disabled="true" style="width:150px" size="mini"
                                 v-model="followInfo.tnfAlpha"></el-input>
                         </el-form-item>
                     </el-col>

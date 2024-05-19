@@ -18,54 +18,54 @@
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" label="住院手术信息ID">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.hospitalSurgeryInfoId }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="填报人">
         <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
+          <span>{{ row.reporter }}</span>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="填报日期">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.reportTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="更新日期">
+      <!-- <el-table-column align="center" label="更新日期">
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column align="center" label="就诊医院">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.hospitalName }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="住院号">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.nursingHomeNumber }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="本院住院次数">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.hospitalizationNumber }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="入院日期">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.admissionDate }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="住院时长(天)">
         <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
+          <span>{{ row.hospitalizationDuration }}</span>
         </template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="80">
         <template slot-scope="scope">
-          <el-button type="text" @click="getDetailInfoOption" size="small">详情</el-button>
+          <el-button type="text"  @click="getDetailInfoOption(scope.row)" size="small">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -1601,8 +1601,9 @@ export default {
     this.getList()
   },
   methods: {
-    getDetailInfoOption() {
+    getDetailInfoOption(row) {
       this.drawer = true;
+      this.InpatientInfo = { ...row }
     },
     async getList() {
       this.listLoading = true

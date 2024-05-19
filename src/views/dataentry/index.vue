@@ -13,8 +13,8 @@
                         <span style="float:right;">
                             <i @click.stop="addTree(node)"
                                 :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
-                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children ?
-            node.data.children.length : 0 }}</span>
+                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.childrenCount ?
+            node.data.childrenCount : 0 }}</span>
                             <i @click.stop="delTree(node)"
                                 :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
                         </span>
@@ -396,9 +396,9 @@ export default {
                             centerId: this.centerId
                         });
                         console.log(data)
-                        this.BloodInfo = data.data[0];
+                        this.bloodInfo = data.data[0];
                     } else {
-                        this.BloodInfo = {}
+                        this.bloodInfo = {}
                     }
                 } else if (node.parentId == 12) {
                     if (node.detailId) {
@@ -828,6 +828,7 @@ export default {
 
             }
 
+            node.data.childrenCount = node.data.childrenCount + 1
             node.data.children.push({
                 label: str,
                 zindex: 3,
@@ -876,7 +877,10 @@ export default {
             this.dragDivWidth = width;
         },
         async getPermissionsInfo() {
-            const { data } = await queryUserDataEntryPermission({ templateId: this.templateId, groupId: this.groupId })
+            const { data } = await queryUserDataEntryPermission({
+                templateId: this.templateId, groupId: this.groupId, centerId: this.centerId,
+                patientCode: this.$route.query.code
+            })
             this.tree = data
         },
         async getPaintDetalInfo() {
@@ -890,6 +894,7 @@ export default {
             });
             console.log(data)
             this.detailInfo = data.data[0];
+            this.detailInfo.birth_place = [this.detailInfo.country, this.detailInfo.city, this.detailInfo.district]
         }
 
     },

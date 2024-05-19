@@ -81,7 +81,12 @@
                                 </el-select>
                             </el-form-item>
                         </el-col>
-
+                        <el-col :span="8" :lg="12" :xl="8">
+                            <el-form-item label="来源住院手术信息ID:">
+                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                    v-model="organizingparaffinInfo.surgeryInfoId"></el-input>
+                            </el-form-item>
+                        </el-col>
 
                     </el-row>
                     <el-row>

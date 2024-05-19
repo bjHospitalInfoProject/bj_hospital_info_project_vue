@@ -21,6 +21,28 @@
                             </el-form-item>
 
                         </el-col>
+
+                        <el-col :span="8" :lg="12" :xl="8">
+                            <el-form-item label="住院号">
+                                <el-input :disabled="true" style="width:200px" size="mini"
+                                    v-model="detailInfo.code"></el-input>
+                            </el-form-item>
+
+                        </el-col>
+                        <el-col :span="8" :lg="12" :xl="8">
+                            <el-form-item label="入组医院">
+                                <el-select :disabled="editVis" style="width:200px" size="mini"
+                                    v-model="detailInfo.joiningHospitalNum" placeholder="请选择">
+                                    <el-option v-for="item in yiyuanOptions" :key="item.value" :label="item.label"
+                                        :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+
+
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="姓名：">
                                 <el-input :disabled="editVis" style="width:200px" size="mini"
@@ -31,36 +53,8 @@
 
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="距离上次手术时间：">
-                                <el-date-picker :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="detailInfo.operativeTime" type="month" placeholder="选择月">
-                                </el-date-picker>
-                            </el-form-item>
-                        </el-col>
-
-
-                    </el-row>
-                    <el-row>
-                        <el-col :span="8" :lg="12" :xl="8">
-                            <el-form-item label="既往就诊医院">
-                                <el-select :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="detailInfo.hospital" placeholder="请选择">
-                                    <el-option v-for="item in options" :key="item.value" :label="item.label"
-                                        :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="8" :lg="12" :xl="8">
-                            <el-form-item label="住院号">
                                 <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="detailInfo.code"></el-input>
-                            </el-form-item>
-
-                        </el-col>
-                        <el-col :span="8" :lg="12" :xl="8">
-                            <el-form-item label="有无微信：">
-
-                                <el-checkbox :disabled="editVis" v-model="detailInfo.vchat"></el-checkbox>
+                                    v-model="detailInfo.operativeTime"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -87,7 +81,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="民族：">
                                 <el-input :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="detailInfo.ethnicityType"></el-input>
+                                    v-model="detailInfo.ethnicityStr"></el-input>
                             </el-form-item>
                         </el-col>
 
@@ -96,8 +90,8 @@
                     <el-row>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="地区：">
-                                <el-cascader :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="detailInfo.birth_place" :options="regionData" />
+                                <el-cascader :disabled="editVis" style="width:200px" size="mini" @change="handleChange"
+                                    v-model="detailInfo.birth_place" :options="pcaTextArr" />
 
                             </el-form-item>
                         </el-col>
@@ -255,7 +249,7 @@
 
                             <el-form-item label="首发表现：">
                                 <el-select :disabled="editVis" size="mini" style="width:200px"
-                                    v-model="detailInfo.initialSymptoms" multiple filterable allow-create
+                                    v-model="detailInfo.initialSymptomList" multiple filterable allow-create
                                     placeholder="请选择">
                                     <el-option v-for="item in firstoptions" :key="item.value" :label="item.label"
                                         :value="item.value">
@@ -264,16 +258,7 @@
                             </el-form-item>
                         </el-col>
 
-                        <el-col :span="8" :lg="12" :xl="8">
-                            <el-form-item label="入组医院">
-                                <el-select :disabled="editVis" style="width:200px" size="mini"
-                                    v-model="detailInfo.joiningHospitalNum" placeholder="请选择">
-                                    <el-option v-for="item in yiyuanOptions" :key="item.value" :label="item.label"
-                                        :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </el-form-item>
-                        </el-col>
+
                     </el-row>
                     <el-row>
                         <el-col :span="24">
@@ -331,7 +316,11 @@ import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
+            provinceAndCityData,
+            pcaTextArr,
+            pcTextArr,
             regionData,
+            codeToText,
             options: [],
             sexOptions: [
                 {
@@ -610,6 +599,17 @@ export default {
             // console.log(this.$route.query.code)
             this.$parent.patientInfo.code = data.patientCode
         },
+        handleChange(value) {
+            // console.log(value)
+            console.log(value[0])
+            console.log(value[1])
+            console.log(value[2])
+
+            this.detailInfo.country = value[0]
+            this.detailInfo.city = value[1]
+            this.detailInfo.district = value[2]
+
+        }
     },
     props: {
         patientInfo: Object,

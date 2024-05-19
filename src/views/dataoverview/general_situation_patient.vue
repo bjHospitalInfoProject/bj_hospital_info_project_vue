@@ -31,7 +31,7 @@
 
       <el-table-column align="center" label="出生日期">
         <template slot-scope="{row}">
-          <span>{{ row.birth }}</span>
+          <span>{{ formatBirth(row.birth) }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="性别">
@@ -46,7 +46,14 @@
       </el-table-column>
       <el-table-column align="center" label="地区">
         <template slot-scope="{row}">
+          <span v-if="row.country || row.city">
+            <span>{{ row.country }}</span>
+            <span v-if="row.country && row.city">/</span>
+            <span>{{ row.city }}</span>
+            <span v-if="row.country || row.city">/</span>
+          </span>
           <span>{{ row.district }}</span>
+
         </template>
       </el-table-column>
 
@@ -67,7 +74,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="出生日期：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.birth"></el-input>
+              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="truncatedGenderStr"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -85,7 +92,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="地区：">
-              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="detailInfo.district"></el-input>
+              <el-input :disabled="editVis" style="width:150px" size="mini" v-model="combinedValue"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -278,6 +285,21 @@ export default {
     this.getList()
   },
   methods: {
+    formatBirth(birth) {
+      // 假设 birth 是一个字符串，如 "1990-01-01"
+      if (birth) {
+        // 使用 substring() 方法截取年份部分
+        return birth.substring(0, 10); // 返回 "1990"
+      } else {
+        return '';
+      }
+    },
+    combirthValue() {
+      // 当读取combinedValue时，返回拼接后的字符串
+
+      return this.detailInfo.birth.substring(0, 10)
+
+    },
     getDetailInfoOption(row) {
       this.drawer = true;
       this.detailInfo = { ...row }
@@ -306,7 +328,22 @@ export default {
   computed: {
     ...mapGetters([
       'centerId'
-    ])
+    ]),
+    combinedValue: {
+      // 当读取combinedValue时，返回拼接后的字符串
+      get() {
+        return this.detailInfo.country + this.detailInfo.city + this.detailInfo.district
+      },
+    },
+    truncatedGenderStr() {
+      // 截取 detailInfo.genderStr 的前150个字符
+      if (this.detailInfo && typeof this.detailInfo.birth === 'string') {
+        // 截取 detailInfo.genderStr 的前150个字符
+        return this.detailInfo.birth.slice(0, 10);
+      } else {
+        return '';
+      }
+    }
   }
 }
 </script>

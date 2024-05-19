@@ -97,7 +97,7 @@
           </el-row>
           <el-row>
 
-            <el-col :span="7">
+            <!-- <el-col :span="7">
               <div>
                 超敏CRP (HsCRP,mg/L)：
               </div>
@@ -106,7 +106,7 @@
               <div>
                 <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
               </div>
-            </el-col>
+            </el-col> -->
             <el-col :span="7">
               <div>
                 IL-1β (pg/mL)：
@@ -677,7 +677,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.cgt }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.ggt }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -777,7 +777,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.hbgh }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.hbdh }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -875,7 +875,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.apoA1 }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -975,7 +975,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.cTNT }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1024,7 +1024,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.dDimer }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1235,7 +1235,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.leftRenalArteryRenin }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1247,7 +1247,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.leftRenalArteryAldosterone }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1257,7 +1257,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.leftRenalArteryAldosteroneReninRatio }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1269,7 +1269,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.rightRenalArteryAngiotensinIi }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1278,7 +1278,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.rightRenalArteryRenin }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1290,7 +1290,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.rightRenalArteryAldosterone }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1300,7 +1300,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.rightRenalArteryAldosteroneReninRatio }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1312,7 +1312,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.suprarenalAortaAngiotensinIi }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1322,7 +1322,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.suprarenalAortaRenin }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1334,7 +1334,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.suprarenalAortaAldosterone }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1344,7 +1344,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.suprarenalAortaAldosteroneReninRatio }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1356,7 +1356,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.infrarenalAortaAngiotensinIi }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1366,7 +1366,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.infrarenalAortaRenin }}</el-button>
               </div>
             </el-col>
           </el-row>
@@ -1378,7 +1378,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" plain size="mini">{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" plain size="mini">{{ labortyInfo.infrarenalAortaAldosterone }}</el-button>
               </div>
             </el-col>
             <el-col :span="7">
@@ -1388,7 +1388,7 @@
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.ss }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.infrarenalAortaAldosteroneReninRatio }}</el-button>
               </div>
             </el-col>
           </el-row>
