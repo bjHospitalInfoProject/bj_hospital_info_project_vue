@@ -980,16 +980,27 @@
             </el-col>
             <el-col :span="7">
               <div>
-                超敏肌钙蛋白（Hs-cTn）：
+                肌钙蛋白I (cTNI,ng/ml)
               </div>
             </el-col>
             <el-col :span="5">
               <div>
-                <el-button type="info" size="mini" plain>{{ labortyInfo.hsCtn }}</el-button>
+                <el-button type="info" size="mini" plain>{{ labortyInfo.cTNI }}</el-button>
               </div>
             </el-col>
           </el-row>
+
           <el-row>
+            <el-col :span="7">
+              <div>
+                超敏肌钙蛋白（Hs-cTn）:
+              </div>
+            </el-col>
+            <el-col :span="5">
+              <div>
+                <el-button type="info" plain size="mini">{{ labortyInfo.ckMb }}</el-button>
+              </div>
+            </el-col>
             <el-col :span="7">
               <div>
                 肌酸激酶同工酶 (CK-MB,ng/ml)：
@@ -1000,6 +1011,8 @@
                 <el-button type="info" plain size="mini">{{ labortyInfo.ckMb }}</el-button>
               </div>
             </el-col>
+          </el-row>
+          <el-row>
             <el-col :span="7">
               <div>
                 肌红蛋白(MYO,ng/mL)：
