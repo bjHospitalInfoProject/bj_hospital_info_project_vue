@@ -25,7 +25,7 @@
 
       <el-table-column align="center" label="姓名缩写">
         <template slot-scope="{row}">
-          <span>{{ row.nameInitials }}</span>
+          <span>{{ row.name }}</span>
         </template>
       </el-table-column>
 

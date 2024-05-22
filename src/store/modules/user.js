@@ -73,6 +73,8 @@ const actions = {
         centerId: centerId, templateId: templateId
       }).then(response => {
         const { data } = response
+        removeToken() // must remove  token  first
+
         commit('SET_TOKEN', data.token)
         commit('SET_USER_USER_NAME', username.trim())
 

@@ -77,7 +77,7 @@
                         </div>
                     </el-col>
                     <el-col :span="5">
-                        <el-radio-group v-model="diseaseInfo.vascularCharacteristics1">
+                        <el-radio-group v-model="diseaseInfo.vascularCharacteristics1" @change="getInfo">
                             <el-radio :disabled="editVis" :label="1">有 +1</el-radio>
                             <el-radio :disabled="editVis" :label="0">无</el-radio>
                         </el-radio-group>
@@ -852,8 +852,15 @@ export default {
             console.log(data)
             if (data) {
                 this.editVis = true
+                this.$parent.diseaseInfo = data
             }
         },
+
+        getInfo(value){
+            console.log(value)
+            console.log(this.diseaseInfo.vascularCharacteristics1)
+
+        }
     },
     computed: {
         ...mapGetters([

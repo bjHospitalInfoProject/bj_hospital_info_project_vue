@@ -4,8 +4,8 @@
             <template slot="title">
                 <div slot="header" class="clearfix">
                     <span>病人详情信息</span>
-                    <el-button v-if="editVis == true" style="float: right;margin-top: 5px;" size="mini" type="success"
-                        @click.stop="editVis = false">编辑</el-button>
+                    <el-button :disabled="!collapseShow" v-if="editVis == true" style="float: right;margin-top: 5px;"
+                        size="mini" type="success" @click.stop="editVis = false">编辑{{collapseShow}}</el-button>
                     <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
                         @click.stop="saveOptions()">保存</el-button>
                 </div>

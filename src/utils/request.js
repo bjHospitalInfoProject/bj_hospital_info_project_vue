@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import { getToken, removeToken } from '@/utils/auth'
 import router from '@/router' // 导入路由实例，用于跳转页面
 
 // create an axios instance
@@ -86,8 +86,9 @@ service.interceptors.response.use(
       type: 'error',
       duration: 5 * 1000
     })
-    router.push(`/login?redirect=${this.$route.fullPath}`)
-
+    removeToken() // must remove  token  first
+    console.log("7777777")
+    // location.reload()
     return Promise.reject(error)
   }
 )

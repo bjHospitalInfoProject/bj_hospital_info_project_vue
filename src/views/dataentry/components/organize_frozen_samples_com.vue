@@ -210,6 +210,8 @@ export default {
             console.log(data)
             if (data) {
                 this.editVis = true
+                this.$parent.organizefrozenInfo = data
+
             }
         },
     },

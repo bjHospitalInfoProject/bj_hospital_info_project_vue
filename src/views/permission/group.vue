@@ -72,7 +72,7 @@
           <el-col :span="14">
             <el-form label-width="80px" :model="addGroupForm">
               <el-form-item style="margin: 10px 0;width:100%;" label="小组名称:">
-                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.groupName"></el-input>
+                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.name"></el-input>
               </el-form-item>
             </el-form>
             <p>初始权限</p>
@@ -198,7 +198,7 @@ export default {
     },
     findOpId(row, type) {
       let found = row.operateTypes.find(op => op.operateType === type);
-      console.log(found)
+      // console.log(found)
       return found ? found.id : null;
     },
     handleCheckChange(checkedId, row, type) {

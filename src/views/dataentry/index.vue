@@ -13,8 +13,9 @@
                         <span style="float:right;">
                             <i @click.stop="addTree(node)"
                                 :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
-                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.childrenCount ?
-            node.data.childrenCount : 0 }}</span>
+                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children
+            ? node.data.children.length :
+            node.data.childrenCount }}</span>
                             <i @click.stop="delTree(node)"
                                 :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
                         </span>
@@ -826,14 +827,38 @@ export default {
             if (!node.data.children) {
                 this.$set(node.data, 'children', []);
 
+            } else {
+                console.log(node.data.children.length)
+                console.log(node.data.children[node.data.children.length - 1].detailId)
+                if (!node.data.children[node.data.children.length - 1].detailId) {
+                    this.$message({
+                        type: 'error',
+                        message: '请先提交为保存的信息!'
+                    });
+                    return;
+                }
             }
 
-            node.data.childrenCount = node.data.childrenCount + 1
             node.data.children.push({
                 label: str,
                 zindex: 3,
                 parentId: node.data.id
             })
+
+            this.imageInfo = {}
+            this.qualityInfo = {}
+            this.laboratoryInfo = {}
+            this.bloodInfo = {}
+            this.InpatientInfo = {}
+            this.followInfo = {}
+            this.diseaseInfo = {}
+            this.HEInfo = {}
+            this.IHCInfo = {}
+            this.IFInfo = {}
+            this.organizationalwhiteInfo = {}
+            this.organizefrozenInfo = {}
+            this.organizingparaffinInfo = {}
+
             this.$nextTick(() => {
                 this.$refs.elTree.setCurrentKey(str, true);
                 this.collapseShow = false
@@ -852,6 +877,8 @@ export default {
             return format
         },
         delTree(node) {
+
+            console.log(node)
             // 递归找到这个元素，在数组中移除
             const groupEach = (arr, key) => {
                 let newData = []

@@ -200,7 +200,10 @@ export default {
 
             const { data } = await addOrUpdateIfSlice(this.IFInfo)
             console.log(data)
-            this.editVis = true
+            if (data) {
+                this.editVis = true
+                this.$parent.IFInfo = data
+            }
         },
     },
     computed: {
