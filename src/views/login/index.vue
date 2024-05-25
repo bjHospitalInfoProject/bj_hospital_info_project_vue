@@ -48,7 +48,7 @@
           <h1 class="image-title">云端数据库</h1>
 
           <div class="image-wrapper">
-            <img src="logo.png" alt="图片描述">
+            <img style="width:80px;border-radius: 10px;" src="loginlogo.png" alt="图片描述">
           </div>
           <!-- <h2 class="image-title"> <i class="el-icon-phone-outline"></i>400-110-0000</h2> -->
           <p class="image-phone">
