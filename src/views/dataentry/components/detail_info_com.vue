@@ -1,11 +1,11 @@
 <template>
-    <el-collapse :value="collapseShow ? '1' : '0'" class="box-card detailInfo" accordion>
+    <el-collapse :value="collapseShow ? '1' : '0'" class="box-card detailInfo" accordion @change="activeCollChange">
         <el-collapse-item name="1">
             <template slot="title">
                 <div slot="header" class="clearfix">
                     <span>病人详情信息</span>
-                    <el-button :disabled="!collapseShow" v-if="editVis == true" style="float: right;margin-top: 5px;"
-                        size="mini" type="success" @click.stop="editVis = false">编辑{{collapseShow}}</el-button>
+                    <el-button :disabled="!activeColl" v-if="editVis == true" style="float: right;margin-top: 5px;"
+                        size="mini" type="success" @click.stop="editVis = false">编辑</el-button>
                     <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
                         @click.stop="saveOptions()">保存</el-button>
                 </div>
@@ -322,6 +322,7 @@ export default {
             regionData,
             codeToText,
             options: [],
+            activeColl:this.collapseShow?true:false,
             sexOptions: [
                 {
                     label: "男",
@@ -609,6 +610,14 @@ export default {
             this.detailInfo.city = value[1]
             this.detailInfo.district = value[2]
 
+        },
+        activeCollChange(e){
+            console.log(e)
+            if(e == '1'){
+                this.activeColl = true
+            }else{
+                this.activeColl = false
+            }
         }
     },
     props: {
@@ -616,6 +625,7 @@ export default {
         detailInfo: Object,
         collapseShow: Boolean
     },
+   
     computed: {
         ...mapGetters([
             'centerId'

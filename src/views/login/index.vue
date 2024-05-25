@@ -51,8 +51,12 @@
             <img src="logo.png" alt="图片描述">
           </div>
           <!-- <h2 class="image-title"> <i class="el-icon-phone-outline"></i>400-110-0000</h2> -->
-          <h2 class="image-phone"> <i class="el-icon-phone-outline"
-              style="color: rgba(100, 133, 223, 1);margin-right: 10px;padding-right: 10px;"></i>010-85132994</h2>
+          <p class="image-phone">
+            <span style="background: rgba(119, 180, 212, 1);margin-right: 10px;text-align: center;padding:5px;border-radius: 30px;">
+              <i class="el-icon-phone-outline" style="color: #fff;"></i>
+            </span>
+            010-85132994
+          </p>
 
         </div>
         <div class="login-form">
@@ -73,16 +77,16 @@
                 placeholder="验证码">
                 <el-button slot="append" @click="getVerificationCode(registerInfo.username, 'REGISTER')"
                   :disabled="countdown > 0">{{
-            countdown > 0 ?
-              countdown +
-              's 后重新获取' : '获取验证码' }}</el-button>
+                    countdown > 0 ?
+                      countdown +
+                      's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
             </el-form-item>
             <el-form-item prop="remark">
               <el-input class="borderNone" v-model="registerInfo.remark" placeholder="备注"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" :loading="registerLoading"
+              <el-button style="background:rgba(91,134,229)" type="primary" :loading="registerLoading"
                 @click="submitRegisterForm('registrationLoginForm')">注册</el-button>
             </el-form-item>
             <el-form-item>
@@ -115,12 +119,15 @@
               <el-input class="borderNone" type="password" v-model="loginInfo.password" placeholder="请输入密码"></el-input>
             </el-form-item>
             <el-form-item>
-              <div style="display: flex; justify-content: right; align-items: center;">
-                <el-button type="text" @click="showLoginDialog(2)">忘记密码?</el-button>
+              <div style="">
+                <!-- @change="savePasswordChange"  -->
+                <el-checkbox style="float: left;" v-model="savePassword">记住密码</el-checkbox>
+                <el-button style="float: right;" type="text" @click="showLoginDialog(2)">忘记密码?</el-button>
               </div>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" :loading="loginLoading" @click="submitLoginForm('LoginForm')">登录</el-button>
+              <el-button style="background:rgba(91,134,229)" type="primary" :loading="loginLoading"
+                @click="submitLoginForm('LoginForm')">登录</el-button>
             </el-form-item>
             <el-form-item>
               <span>还没有账号？ <el-button type="text" @click="changestatus(0)">立即注册></el-button></span>
@@ -140,9 +147,9 @@
                 placeholder="验证码">
                 <el-button slot="append" @click="getVerificationCode(passwordInfo.username, 'FORGET_PASSWORD')"
                   :disabled="countdown > 0">{{
-            countdown > 0 ?
-              countdown +
-              's 后重新获取' : '获取验证码' }}</el-button>
+                    countdown > 0 ?
+                      countdown +
+                      's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
             </el-form-item>
             <el-form-item prop="newPassword">
@@ -154,7 +161,7 @@
                 placeholder="确认密码"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" :loading="updatePasswordLoading"
+              <el-button style="background:rgba(91,134,229)" type="primary" :loading="updatePasswordLoading"
                 @click="submitUpdatepasswordForm('passwordForm')">提交</el-button>
             </el-form-item>
             <el-form-item>
@@ -175,6 +182,13 @@ import { register, forgetPassword, getTempleteIdInfo, getCenterIdInfo, getVerify
 export default {
   mounted() {
     this.getTempleteIdInfothis()
+    // 从本地拿出记住密码的信息
+    const loginInfo =  localStorage.getItem("loginInfo")
+    if(loginInfo){
+      this.loginInfo = JSON.parse(loginInfo)
+      this.getCenterIdInfo()
+      this.savePassword = true
+    }
   },
   data() {
     return {
@@ -215,6 +229,7 @@ export default {
         username: "",
         verifyCode: ""
       },
+      savePassword:false,
       countdown: 0, // 倒计时
       dialogLoginVisible: false,//d登录弹窗的显示隐藏变量
       registerRules: {
@@ -370,6 +385,7 @@ export default {
 
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          this.savePasswordChange()
           this.dialogLoginVisible = false;
           this.$store.dispatch('user/login', this.loginInfo).then(() => {
             this.$router.push({ path: this.redirect || '/' })
@@ -411,7 +427,6 @@ export default {
     //获取模板列表信息
     async getTempleteIdInfothis() {
       const { data } = await getTempleteIdInfo()
-      console.log(data)
       this.options = data
     },
     //根据模板 id 获取中心列表
@@ -420,6 +435,16 @@ export default {
       console.log(data)
       this.sysCenters = data
     },
+    // 记住密码状态改变后
+    savePasswordChange(e){
+      if(this.savePassword){
+        localStorage.setItem("loginInfo",JSON.stringify({
+          ...this.loginInfo
+        }))
+      }else{
+        localStorage.removeItem("loginInfo")
+      }
+    }
   },
 };
 </script>
@@ -589,12 +614,13 @@ export default {
   .image-phone {
     position: absolute;
     bottom: 20px;
-    font-size: 14px;
+    font-size: 16px;
     color: #fff;
     text-align: center;
     display: inline-block;
     left: 0;
     width: 35%;
+    letter-spacing: 1px;
   }
 }
 
@@ -628,12 +654,16 @@ export default {
 }
 
 ::v-deep .borderSelect .el-input__inner {
-  // border: none;
+  border: none;
+  background: rgba(246, 246, 246, 1);
   // border-bottom: none;
 }
 
+
 ::v-deep .borderSelect .el-input {
   border-bottom: none;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
 ::v-deep .el-button.btnborderNone {

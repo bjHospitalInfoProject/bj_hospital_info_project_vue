@@ -14,8 +14,8 @@
                             <i @click.stop="addTree(node)"
                                 :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
                             <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children
-            ? node.data.children.length :
-            node.data.childrenCount }}</span>
+                                ? node.data.children.length :
+                                node.data.childrenCount }}</span>
                             <i @click.stop="delTree(node)"
                                 :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
                         </span>
