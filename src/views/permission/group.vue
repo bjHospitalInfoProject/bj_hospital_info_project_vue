@@ -66,13 +66,14 @@
         @pagination="getList" />
     </el-card>
 
-    <el-dialog :title="addGroupForm.id ? '编辑小组' : '创建小组'" :visible.sync="dialogvis" width="60%" height="30%" top="5%">
+    <el-dialog :title="addGroupForm.id ? (!editvis ? '小组详情' : '编辑小组') : '创建小组'" :visible.sync="dialogvis" width="60%"
+      height="30%" top="5%">
       <div class="dialogBdoy">
         <el-row :gutter="20">
           <el-col :span="14">
             <el-form label-width="80px" :model="addGroupForm">
               <el-form-item style="margin: 10px 0;width:100%;" label="小组名称:">
-                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.name"></el-input>
+                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.groupName"></el-input>
               </el-form-item>
             </el-form>
             <p>初始权限</p>
@@ -89,7 +90,7 @@
               </el-table-column>
               <el-table-column align="center" width="80" label="预览">
                 <template slot-scope="scope">
-                  <el-checkbox :true-label="findOpId(scope.row, 'query')" :false-label="null"
+                  <el-checkbox :disable="editvis = false" :true-label="findOpId(scope.row, 'query')" :false-label="null"
                     :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'query')"
                     @change="handleCheckChange($event, scope.row, 'query')">
                   </el-checkbox>
@@ -97,7 +98,7 @@
               </el-table-column>
               <el-table-column align="center" width="80" label="编辑">
                 <template slot-scope="scope">
-                  <el-checkbox :true-label="findOpId(scope.row, 'edit')" :false-label="null"
+                  <el-checkbox :disable="editvis = false" :true-label="findOpId(scope.row, 'edit')" :false-label="null"
                     :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'edit')"
                     @change="handleCheckChange($event, scope.row, 'edit')">
                   </el-checkbox>
@@ -106,8 +107,8 @@
               </el-table-column>
               <el-table-column align="center" width="80" label="删除">
                 <template slot-scope="scope">
-                  <el-checkbox :true-label="findOpId(scope.row, 'delete')" :false-label="null"
-                    :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'delete')"
+                  <el-checkbox :disable="editvis = false" :true-label="findOpId(scope.row, 'delete')"
+                    :false-label="null" :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'delete')"
                     @change="handleCheckChange($event, scope.row, 'delete')">
                   </el-checkbox>
                 </template>
@@ -115,8 +116,8 @@
             </el-table>
           </el-col>
           <el-col :span="10">
-            <el-table :height="400" size="mini" :data="userlist" border fit highlight-current-row style="width: 100%"
-              @selection-change="handleSelectionChange">
+            <el-table :disable="editvis = false" :height="400" size="mini" :data="userlist" border fit
+              highlight-current-row style="width: 100%" @selection-change="handleSelectionChange">
               <el-table-column align="center" width="40" type="selection">
               </el-table-column>
               <el-table-column align="center" label="姓名">
@@ -146,18 +147,19 @@
           </el-col>
         </el-row>
       </div>
-      <span slot="footer" class="dialog-footer">
+      <span slot="footer" class="dialog-footer" v-if="editvis">
         <el-button size="small" @click="dialogvis = false">取 消</el-button>
         <el-button size="small" type="primary" @click="addGroupInfo()">保 存</el-button>
       </span>
     </el-dialog>
+
   </div>
 </template>
 
 
 <script>
 
-import { getCenterGroupList, createGroupInfo, delGroupInfo, updateGroupInfo } from '@/api/group'
+import { getCenterGroupList, createGroupInfo, delGroupInfo, updateGroupInfo, getGroupDetailInfo } from '@/api/group'
 import { mapGetters } from 'vuex'
 import Pagination from '@/components/Pagination'
 import { getTempletePermissionInfo, getCenterDoctorList } from '@/api/permission'
@@ -178,6 +180,7 @@ export default {
         pageSize: 10,
         centerId: ''
       },
+      editvis: true,
       selectedIds: [],
       users: []
     }
@@ -194,6 +197,9 @@ export default {
   },
   methods: {
     isChecked(row, type) {
+      console.log(row)
+      console.log(1111111)
+
       return row.operateTypes.some(op => op.operateType === type);
     },
     findOpId(row, type) {
@@ -220,6 +226,13 @@ export default {
       console.log('选中行的id:', this.users);
     },
     addGroup() {
+      this.addGroupForm = {
+        id: ''
+      }
+      this.editvis = true
+
+      this.selectedIds = []
+      this.users = []
       this.dialogvis = true;
       this.getPermissionList()
       this.getCenterDoctorList()
@@ -227,7 +240,7 @@ export default {
 
     async addGroupInfo() {
       const { data } = await createGroupInfo({
-        centerId: this.centerId, groupName: this.addGroupForm.name,
+        centerId: this.centerId, groupName: this.addGroupForm.groupName,
         users: this.users, dataPermissions: this.selectedIds
       })
       console.log(data)
@@ -266,7 +279,19 @@ export default {
     editList(row) {
       console.log(row)
       this.dialogvis = true;
-      this.addGroupForm = { ...row }
+      this.editvis = true
+
+      this.getPermissionList()
+      this.getCenterDoctorList()
+      this.getGroupDetailInfoAPI(row.id)
+    },
+    handleClick(row) {
+      console.log(row)
+      this.dialogvis = true;
+      this.editvis = false
+      this.getPermissionList()
+      this.getCenterDoctorList()
+      this.getGroupDetailInfoAPI(row.id)
     },
     async getList() {
       this.listLoading = true
@@ -290,6 +315,13 @@ export default {
       }).catch(() => {
 
       });
+    },
+
+    async getGroupDetailInfoAPI(groupId) {
+      const { data } = await getGroupDetailInfo({ groupId: groupId })
+      console.log(data)
+      this.addGroupForm.id = groupId
+      this.addGroupForm.groupName = data.groupName
     },
     //删除小组的网络请求
     async delGroupInfoOption(groupId) {

@@ -21,9 +21,9 @@
         <el-form-item label="所在小组">
           <el-input v-model="formLabelAlign.groupName" :disabled="true"></el-input>
         </el-form-item>
-        <el-form-item style="display: flex; justify-content: center; align-items: center;">
+        <!-- <el-form-item style="display: flex; justify-content: center; align-items: center;">
           <span>中心管理员：xxxxx | 13345679088<br> 超级管理员：xxxxx | 13345679088</span>
-        </el-form-item>
+        </el-form-item> -->
       </el-form>
     </el-card>
 

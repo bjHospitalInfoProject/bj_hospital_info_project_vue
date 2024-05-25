@@ -136,7 +136,7 @@ export default {
       const formData = new FormData();
       formData.append('file', file); // 与后端约定的字段名
 
-      axios.post('http://39.105.54.128:8080/oss/uploadFile', formData, {
+      axios.post('https://vascularimprovement.com/medical/oss/uploadFile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

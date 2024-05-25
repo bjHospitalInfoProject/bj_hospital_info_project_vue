@@ -120,7 +120,7 @@
                     </el-col>
                     <el-col :span="5">
                         <el-input :disabled="true" style="width:150px" size="mini"
-                            v-model="diseaseInfo.nihScore2"></el-input>
+                            v-model="nihScore2"></el-input>
                     </el-col>
                 </el-row>
                 <el-row class="custom">
@@ -188,7 +188,7 @@
                     </el-col>
                     <el-col :span="5">
                         <el-input :disabled="true" style="width:150px" size="mini"
-                            v-model="itasScore"></el-input>
+                            v-model="itasScore19"></el-input>
                     </el-col>
                 </el-row>
 
@@ -200,7 +200,7 @@
                     </el-col>
                     <el-col :span="5">
                         <el-input :disabled="true" style="width:150px" size="mini"
-                            v-model="diseaseInfo.itasAScore"></el-input>
+                            v-model="itasScore"></el-input>
                     </el-col>
                 </el-row>
 
@@ -924,6 +924,54 @@ export default {
                 + this.diseaseInfo.limbMovementDisorderLower
                 + this.diseaseInfo.esrScore
                 + this.diseaseInfo.crpScore
+            ) || 0
+        },
+        itasScore19() {
+            return (
+                this.diseaseInfo.fatigueWeightLoss
+                + this.diseaseInfo.muscleJointPain
+                + this.diseaseInfo.headache
+                + this.diseaseInfo.dizzinessHeadache
+                + this.diseaseInfo.syncope
+                + this.diseaseInfo.seizure
+                + this.diseaseInfo.stroke
+                + this.diseaseInfo.hypertensionDiastolic
+                + this.diseaseInfo.hypertensionSystolic
+                + this.diseaseInfo.carotidArteryPain
+                + this.diseaseInfo.aorticValveInsufficiency
+                + this.diseaseInfo.miAngina
+                + this.diseaseInfo.cardiomyopathy
+                + this.diseaseInfo.severeAbdominalPain
+                + this.diseaseInfo.miscarriage
+                + this.diseaseInfo.vascularMurmur
+                + this.diseaseInfo.vascularMurmurRightCarotid
+                + this.diseaseInfo.vascularMurmurLeftCarotid
+                + this.diseaseInfo.vascularMurmurRightSubclavian
+                + this.diseaseInfo.vascularMurmurLeftSubclavian
+                + this.diseaseInfo.vascularMurmurRightRenal
+                + this.diseaseInfo.vascularMurmurLeftRenal
+                + this.diseaseInfo.pulseAsymmetry
+                + this.diseaseInfo.bloodPressureAsymmetry
+                + this.diseaseInfo.pulseDisappearance
+                + this.diseaseInfo.pulseDisappearanceRightCarotid
+                + this.diseaseInfo.pulseDisappearanceLeftCarotid
+                + this.diseaseInfo.pulseDisappearanceRightSubclavian
+                + this.diseaseInfo.pulseDisappearanceLeftSubclavian
+                + this.diseaseInfo.pulseDisappearanceRightBrachial
+                + this.diseaseInfo.pulseDisappearanceLeftBrachial
+                + this.diseaseInfo.pulseDisappearanceRightRadial
+                + this.diseaseInfo.pulseDisappearanceLeftRadial
+                + this.diseaseInfo.pulseDisappearanceRightFemoral
+                + this.diseaseInfo.pulseDisappearanceLeftFemoral
+                + this.diseaseInfo.pulseDisappearanceRightPopliteal
+                + this.diseaseInfo.pulseDisappearanceLeftPopliteal
+                + this.diseaseInfo.pulseDisappearanceRightPosteriorTibial
+                + this.diseaseInfo.pulseDisappearanceLeftPosteriorTibial
+                + this.diseaseInfo.pulseDisappearanceRightDorsalisPedal
+                + this.diseaseInfo.pulseDisappearanceLeftDorsalisPedal
+                + this.diseaseInfo.limbMovementDisorder
+                + this.diseaseInfo.limbMovementDisorderUpper
+                + this.diseaseInfo.limbMovementDisorderLower
             ) || 0
         },
     }

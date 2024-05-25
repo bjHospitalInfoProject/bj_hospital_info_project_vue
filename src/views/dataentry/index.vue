@@ -14,8 +14,8 @@
                             <i @click.stop="addTree(node)"
                                 :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
                             <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children
-                                ? node.data.children.length :
-                                node.data.childrenCount }}</span>
+            ? node.data.children.length :
+            node.data.childrenCount }}</span>
                             <i @click.stop="delTree(node)"
                                 :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
                         </span>
@@ -127,13 +127,18 @@ import qualityInfo from "./components/quality_life_health_evaluation_com.vue"
 import dragDiv from "./components/dragDiv.vue"
 
 
-import { queryUserDataEntryPermission } from '@/api/dataentry'
 import { mapGetters } from 'vuex'
 import {
     getBloodSamplePageInfoList, getIFInfoList, getIHCInfoList, getHEInfoList, getPatientPageInfoList,
     getOrganizeSamplePageInfoList, getImagingExamPageInfoList, getHealthQualityPageInfoList, getTissueParaffinPageInfo, getTissueSlidePageInfoInfo
     , getHospitalSurgeryPageInfo, getLabTestResultPageInfo, getDiseaseActivityScorePageInfo, getFollowUpPageInfo
 } from '@/api/dataquery'
+import {
+    queryUserDataEntryPermission,
+    deleteIfSlice, deleteIhcSlice, deleteHeSlice, deleteBloodSample, deleteOrganizeSample,
+    deleteImagingExam, deleteHealthQuality, deleteTissueParaffin, deleteTissueSlide, deleteHospitalSurgery
+    , deleteLabTestResult, deleteDiseaseActivityScore, deletefollowUp
+} from '@/api/dataentry'
 import { title } from "@/settings"
 
 export default {
@@ -440,7 +445,7 @@ export default {
                 this.checkNode()
             }
             if (node.zindex == 2) {
-                if (this.patientInfo.code == undefined) {
+                if (!this.patientInfo.code) {
                     this.$message({
                         type: 'error',
                         message: '请先创建病人基本信息!'
@@ -456,6 +461,10 @@ export default {
                         patientCode: this.patientInfo.code,
                         centerId: this.centerId
                     });
+                    console.log(data)
+                    if (data.data.size == 0) {
+                        return
+                    }
                     // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
                     data.data.forEach(obj => {
                         console.log(obj);
@@ -829,14 +838,17 @@ export default {
 
             } else {
                 console.log(node.data.children.length)
-                console.log(node.data.children[node.data.children.length - 1].detailId)
-                if (!node.data.children[node.data.children.length - 1].detailId) {
-                    this.$message({
-                        type: 'error',
-                        message: '请先提交为保存的信息!'
-                    });
-                    return;
+                if (node.data.children.length != 0) {
+                    console.log(node.data.children[node.data.children.length - 1].detailId)
+                    if (!node.data.children[node.data.children.length - 1].detailId) {
+                        this.$message({
+                            type: 'error',
+                            message: '请先提交为保存的信息!'
+                        });
+                        return;
+                    }
                 }
+
             }
 
             node.data.children.push({
@@ -876,9 +888,129 @@ export default {
                         ${starHours}:${starMinutes}:${starSeconds}`;
             return format
         },
-        delTree(node) {
-
+        async delTree(node) {
             console.log(node)
+            if (node.data.detailId) {
+                console.log("2222")
+                if (node.data.parentId == 1) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteHospitalSurgery({
+                        hospitalSurgeryInfoId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 2) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteLabTestResult({
+                        labTestResultId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 3) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteImagingExam({
+                        imagingExamResultId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 4) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteDiseaseActivityScore({
+                        diseaseActivityScoreId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 5) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteHealthQuality({
+                        healthQualityEvaluationId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 6) {
+                    console.log(node.data.detailId)
+                    const { data } = await deletefollowUp({
+                        followUpInfoId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 7) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteTissueParaffin({
+                        tissueParaffinBlockId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 8) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteTissueSlide({
+                        tissueSlideId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 9) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteHeSlice({
+                        heStainingSliceId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 10) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteIhcSlice({
+                        ihcStainingSliceId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 11) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteBloodSample({
+                        bloodSampleId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 12) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteOrganizeSample({
+                        organizeSampleId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                } else if (node.data.parentId == 13) {
+                    console.log(node.data.detailId)
+                    const { data } = await deleteIfSlice({
+                        ifStainingSliceId: node.data.detailId,
+                        centerId: this.centerId
+                    });
+                    if (!data) {
+                        return
+                    }
+                }
+            }
             // 递归找到这个元素，在数组中移除
             const groupEach = (arr, key) => {
                 let newData = []
