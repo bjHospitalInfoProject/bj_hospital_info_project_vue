@@ -173,7 +173,8 @@ export default {
   computed: {
     ...mapGetters([
       'groupId',
-      'templateId'
+      'templateId',
+      'centerId'
     ])
   },
   methods: {
