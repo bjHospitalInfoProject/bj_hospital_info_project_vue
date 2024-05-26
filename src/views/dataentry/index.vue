@@ -819,6 +819,9 @@ export default {
         },
         addTree(node) {
             console.log(this.patientInfo.code)
+            console.log(node)
+
+            this.handleNodeClick(node.data)
             if (!this.patientInfo.code) {
                 this.$message({
                     type: 'error',

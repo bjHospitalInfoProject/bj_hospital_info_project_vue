@@ -66,59 +66,69 @@
         @pagination="getList" />
     </el-card>
 
-    <el-dialog :title="addGroupForm.id ? (!editvis ? '小组详情' : '编辑小组') : '创建小组'" :visible.sync="dialogvis" width="60%"
-      height="30%" top="5%">
+    <el-dialog :title="changeState" :visible.sync="dialogvis" width="60%" height="30%" top="5%">
       <div class="dialogBdoy">
         <el-row :gutter="20">
           <el-col :span="14">
-            <el-form label-width="80px" :model="addGroupForm">
+            <el-form label-width="80px">
               <el-form-item style="margin: 10px 0;width:100%;" label="小组名称:">
-                <el-input style="width: 100%;" size="mini" v-model="addGroupForm.groupName"></el-input>
+                <el-input :disabled="editvis == false" style="width: 100%;" size="mini" v-model="groupName"></el-input>
               </el-form-item>
             </el-form>
-            <p>初始权限</p>
+            <p>初始权限
+            </p>
           </el-col>
         </el-row>
 
         <el-row :gutter="20">
           <el-col :span="14">
-            <el-table size="mini" :height="400" :data="authlist" border fit highlight-current-row style="width: 100%">
-              <el-table-column align="center" label="模版名称">
-                <template slot-scope="{row}">
-                  <span>{{ row.dataType }}</span>
-                </template>
-              </el-table-column>
-              <el-table-column align="center" width="80" label="预览">
-                <template slot-scope="scope">
-                  <el-checkbox :disable="editvis = false" :true-label="findOpId(scope.row, 'query')" :false-label="null"
-                    :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'query')"
-                    @change="handleCheckChange($event, scope.row, 'query')">
-                  </el-checkbox>
-                </template>
-              </el-table-column>
-              <el-table-column align="center" width="80" label="编辑">
-                <template slot-scope="scope">
-                  <el-checkbox :disable="editvis = false" :true-label="findOpId(scope.row, 'edit')" :false-label="null"
-                    :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'edit')"
-                    @change="handleCheckChange($event, scope.row, 'edit')">
-                  </el-checkbox>
+            <el-checkbox-group :disabled="editvis == false" v-model="strArr">
+              <el-table size="mini" :height="400" :data="authlist" border fit highlight-current-row style="width: 100%">
+                <el-table-column align="center" label="模版名称">
+                  <template slot-scope="{row}">
+                    <span>{{ row.dataType }}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column align="center" width="80" label="预览">
+                  <template slot-scope="scope">
+                    <!-- <el-checkbox :disabled="editvis == false" :true-label="findOpId(scope.row, 'query')"
+                      :false-label="null" :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'query')"
+                      @change="handleCheckChange($event, scope.row, 'query')">
+                    </el-checkbox> -->
+                    <el-checkbox :label="findOpId(scope.row, 'query')"> <span></span>
+                    </el-checkbox>
 
-                </template>
-              </el-table-column>
-              <el-table-column align="center" width="80" label="删除">
-                <template slot-scope="scope">
-                  <el-checkbox :disable="editvis = false" :true-label="findOpId(scope.row, 'delete')"
-                    :false-label="null" :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'delete')"
-                    @change="handleCheckChange($event, scope.row, 'delete')">
-                  </el-checkbox>
-                </template>
-              </el-table-column>
-            </el-table>
+                  </template>
+                </el-table-column>
+                <el-table-column align="center" width="80" label="编辑">
+                  <template slot-scope="scope">
+                    <!-- <el-checkbox :disabled="editvis == false" :true-label="findOpId(scope.row, 'edit')"
+                      :false-label="null" :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'edit')"
+                      @change="handleCheckChange($event, scope.row, 'edit')">
+                    </el-checkbox> -->
+                    <el-checkbox :label="findOpId(scope.row, 'edit')"> <span></span>
+                    </el-checkbox>
+                  </template>
+                </el-table-column>
+                <el-table-column align="center" width="80" label="删除">
+                  <template slot-scope="scope">
+                    <!-- <el-checkbox :disabled="editvis == false" :true-label="findOpId(scope.row, 'delete')"
+                      :false-label="null" :checked="addGroupForm.id == '' ? false : isChecked(scope.row, 'delete')"
+                      @change="handleCheckChange($event, scope.row, 'delete')">
+                    </el-checkbox> -->
+                    <el-checkbox :label="findOpId(scope.row, 'delete')"> <span></span>
+                    </el-checkbox>
+
+                  </template>
+                </el-table-column>
+              </el-table>
+            </el-checkbox-group>
+
           </el-col>
           <el-col :span="10">
-            <el-table :disable="editvis = false" :height="400" size="mini" :data="userlist" border fit
-              highlight-current-row style="width: 100%" @selection-change="handleSelectionChange">
-              <el-table-column align="center" width="40" type="selection">
+            <el-table :disabled="editvis == false" :height="400" size="mini" ref="multipleTable" :data="userlist" border
+              fit highlight-current-row style="width: 100%" @selection-change="handleSelectionChange">
+              <el-table-column align="center" width="40" type="selection" :disabled="editvis == false">
               </el-table-column>
               <el-table-column align="center" label="姓名">
                 <!-- <template slot="header" slot-scope="scope">
@@ -171,6 +181,7 @@ export default {
       addGroupForm: {
         id: ''
       },
+      strArr: [],
       total: 0,
       dialogvis: false,
       userlist: [],
@@ -182,7 +193,8 @@ export default {
       },
       editvis: true,
       selectedIds: [],
-      users: []
+      users: [],
+      groupName: '',
     }
   },
   created() {
@@ -194,11 +206,31 @@ export default {
       'templateId',
       'centerName'
     ]),
+    changeState() {
+      if (this.addGroupForm.id == '') {
+        return "创建小组"
+      } else {
+        console.log('4444444')
+        console.log(this.editvis)
+        if (this.editvis) {
+          return "编辑小组"
+        } else {
+          return "小组详情"
+        }
+      }
+    }
   },
   methods: {
     isChecked(row, type) {
-      console.log(row)
-      console.log(1111111)
+
+      if (
+        this.addGroupForm.id == ''
+      ) {
+        return false
+      }
+      // console.log(row)
+      // console.log(1111111)
+      // console.log(row.operateTypes.some(op => op.operateType === type))
 
       return row.operateTypes.some(op => op.operateType === type);
     },
@@ -207,19 +239,19 @@ export default {
       // console.log(found)
       return found ? found.id : null;
     },
-    handleCheckChange(checkedId, row, type) {
-      console.log(checkedId)
-      if (checkedId) {
-        // Add the id to selectedIds if it's not already included
-        if (!this.selectedIds.includes(checkedId)) {
-          this.selectedIds.push(checkedId);
-        }
-      } else {
-        // Remove the id from selectedIds
-        this.selectedIds = this.selectedIds.filter(id => id !== this.findOpId(row, type));
-      }
-      console.log('Selected IDs:', this.selectedIds);
-    },
+    // handleCheckChange(checkedId, row, type) {
+    //   console.log(checkedId)
+    //   if (checkedId) {
+    //     // Add the id to selectedIds if it's not already included
+    //     if (!this.selectedIds.includes(checkedId)) {
+    //       this.selectedIds.push(checkedId);
+    //     }
+    //   } else {
+    //     // Remove the id from selectedIds
+    //     this.selectedIds = this.selectedIds.filter(id => id !== this.findOpId(row, type));
+    //   }
+    //   console.log('Selected IDs:', this.selectedIds);
+    // },
 
     handleSelectionChange(selection) {
       this.users = selection.map(item => item.id);
@@ -229,8 +261,10 @@ export default {
       this.addGroupForm = {
         id: ''
       }
+      this.strArr = []
+      this.$forceUpdate()
       this.editvis = true
-
+      this.groupName = ""
       this.selectedIds = []
       this.users = []
       this.dialogvis = true;
@@ -239,19 +273,37 @@ export default {
     },
 
     async addGroupInfo() {
-      const { data } = await createGroupInfo({
-        centerId: this.centerId, groupName: this.addGroupForm.groupName,
-        users: this.users, dataPermissions: this.selectedIds
-      })
-      console.log(data)
-      if (data) {
-        this.dialogvis = false
-        this.$message({
-          type: 'success',
-          message: '操作成功!'
-        });
-        this.getList()
+      if (this.addGroupForm.id == '') {
+        const { data } = await createGroupInfo({
+          centerId: this.centerId, groupName: this.groupName,
+          users: this.users, dataPermissions: this.strArr
+        })
+        console.log(data)
+        if (data) {
+          this.dialogvis = false
+          this.$message({
+            type: 'success',
+            message: '操作成功!'
+          });
+          this.getList()
+        }
+      } else {
+        const { data } = await updateGroupInfo({
+          groupId: this.addGroupForm.id,
+          centerId: this.centerId, groupName: this.groupName,
+          users: this.users, dataPermissions: this.strArr
+        })
+        console.log(data)
+        if (data) {
+          this.dialogvis = false
+          this.$message({
+            type: 'success',
+            message: '操作成功!'
+          });
+          this.getList()
+        }
       }
+
 
     },
     //获取当前模板的所有权限
@@ -271,27 +323,34 @@ export default {
       console.log(data)
       this.userlist = data.data
     },
+    //获取当中心下的所有医生列表
+    async getCenterDoctorListNew(id) {
+      const { data } = await getCenterDoctorList({
+        pageNo: 1,
+        pageSize: 1000,
+        centerId: this.centerId
+      },)
+      console.log(data)
+      this.userlist = data.data
+      this.getGroupDetailInfoAPI(id)
+
+    },
     authEditChange(data) {
       if (data.edit) {
         data.preview = true
       }
     },
     editList(row) {
-      console.log(row)
       this.dialogvis = true;
       this.editvis = true
-
       this.getPermissionList()
-      this.getCenterDoctorList()
-      this.getGroupDetailInfoAPI(row.id)
+      this.getCenterDoctorListNew(row.id)
     },
     handleClick(row) {
-      console.log(row)
       this.dialogvis = true;
       this.editvis = false
       this.getPermissionList()
-      this.getCenterDoctorList()
-      this.getGroupDetailInfoAPI(row.id)
+      this.getCenterDoctorListNew(row.id)
     },
     async getList() {
       this.listLoading = true
@@ -316,12 +375,43 @@ export default {
 
       });
     },
-
     async getGroupDetailInfoAPI(groupId) {
       const { data } = await getGroupDetailInfo({ groupId: groupId })
       console.log(data)
       this.addGroupForm.id = groupId
-      this.addGroupForm.groupName = data.groupName
+      this.groupName = data.groupName
+      // 遍历dataList，提取operateTypes中的id放入extractedIds数组中
+      this.strArr = []
+      data.permissions.forEach(item => {
+        item.operateTypes.forEach(operateType => {
+          this.strArr.push(operateType.id);
+        });
+      });
+      this.users = []
+      data.users.forEach(item => {
+        this.users.push(item.id);
+      });
+      console.log("xuanz")
+
+      console.log(this.users)
+
+      this.users.forEach(item => {
+        console.log("item")
+
+        console.log(item)
+        console.log(this.userlist)
+        const index = this.userlist.filter(user => user.id === item);
+        this.toggleSelection(index)
+      });
+    },
+    toggleSelection(rows) {
+      if (rows) {
+        rows.forEach(row => {
+          this.$refs.multipleTable.toggleRowSelection(row);
+        });
+      } else {
+        this.$refs.multipleTable.clearSelection();
+      }
     },
     //删除小组的网络请求
     async delGroupInfoOption(groupId) {

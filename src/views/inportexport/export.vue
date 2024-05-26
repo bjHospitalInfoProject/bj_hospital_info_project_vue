@@ -29,7 +29,7 @@
 
 <script>
 import dict from './dict'
-import { getTableList } from '@/api/dataexport'
+import { getTableList, getExportInfo } from '@/api/dataexport'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Export',
@@ -179,10 +179,10 @@ export default {
   methods: {
     switchData(value) {
       // this.excelData.header = dict[value]
-      // console.log(this.excelData)
+      console.log(this.fileTemplate)
     },
 
-    exportFile() {
+    async exportFile() {
       // import('/vendor/Export2Excel').then(excel => {
       //   const { header, results } = this.excelData
       //   const filename = this.templateOptions.find(item => item.value === this.fileTemplate).label
@@ -195,6 +195,35 @@ export default {
       //     bookType: 'xlsx'
       //   })
       // })
+
+      const { data } = await getExportInfo({
+        dataType: this.fileTemplate,
+        centerId: this.centerId
+      });
+
+
+      if (data) {
+
+        const timestamp = Date.now();
+
+        const link = document.createElement('a');
+        link.style.display = 'none';
+        document.body.appendChild(link);
+
+        // 设置 <a> 元素的 href 属性为返回的文件地址
+        link.href = response;
+
+        // 如果需要，设置下载的文件名
+        link.download = `${this.fileTemplate}_${timestamp}`;
+
+        // 模拟点击 <a> 元素来触发文件下载
+        link.click();
+
+        // 移除 <a> 元素
+        document.body.removeChild(link);
+      }
+
+
     },
     async getList() {
 
@@ -203,7 +232,7 @@ export default {
       console.log(items)
       items.forEach((value, key) => {
         console.log(key, value);
-        this.templateOptions.push({ label: value, value: key })
+        this.templateOptions.push({ label: value, value: value })
       });
     },
   }

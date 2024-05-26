@@ -19,3 +19,12 @@ export function getExportFiles(data) {
 }
 
 
+//导出数据表
+export function getExportInfo(data) {
+  return request({
+    url: '/export/exportData',
+    method: 'post',
+    data
+  })
+}
+
