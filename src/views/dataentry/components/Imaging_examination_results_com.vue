@@ -271,7 +271,7 @@
                     <div style="left: 33.5%;top: 65%;" class="labelRight">
                         <el-form-item label="头臂干">
                             <el-select collapse-tags :disabled="editVis" multiple size="mini"
-                                v-model="imageInfo.hospital" placeholder="请选择">
+                                v-model="imageInfo.brachiocephalicTrunkArteryList" placeholder="请选择">
                                 <el-option v-for="item in options" :key="item.value" :label="item.label"
                                     :value="item.value">
                                 </el-option>

@@ -274,7 +274,7 @@
 
           <div style="left: 31.5%;top: 65%;" class="labelRight">
             <el-form-item label="头臂干">
-              <el-input :disabled="editVis"  size="mini" v-model="imageInfo.name"></el-input>
+              <el-input :disabled="editVis"  size="mini" v-model="imageInfo.brachiocephalicTrunkArteryStr"></el-input>
 
             </el-form-item>
           </div>
