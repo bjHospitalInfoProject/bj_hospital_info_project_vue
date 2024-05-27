@@ -48,11 +48,12 @@
           <h1 class="image-title">云端数据库</h1>
 
           <div class="image-wrapper">
-            <img style="width:80px;border-radius: 10px;" src="loginlogo.png" alt="图片描述">
+            <img style="width:100px;border-radius: 30px;" class="shadowed-image" src="loginlogo.png" alt="图片描述">
           </div>
           <!-- <h2 class="image-title"> <i class="el-icon-phone-outline"></i>400-110-0000</h2> -->
           <p class="image-phone">
-            <span style="background: rgba(119, 180, 212, 1);margin-right: 10px;text-align: center;padding:5px;border-radius: 30px;">
+            <span
+              style="background: rgba(119, 180, 212, 1);margin-right: 10px;text-align: center;padding:5px;border-radius: 30px;">
               <i class="el-icon-phone-outline" style="color: #fff;"></i>
             </span>
             010-85132994
@@ -77,9 +78,9 @@
                 placeholder="验证码">
                 <el-button slot="append" @click="getVerificationCode(registerInfo.username, 'REGISTER')"
                   :disabled="countdown > 0">{{
-                    countdown > 0 ?
-                      countdown +
-                      's 后重新获取' : '获取验证码' }}</el-button>
+            countdown > 0 ?
+              countdown +
+              's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
             </el-form-item>
             <el-form-item prop="remark">
@@ -147,9 +148,9 @@
                 placeholder="验证码">
                 <el-button slot="append" @click="getVerificationCode(passwordInfo.username, 'FORGET_PASSWORD')"
                   :disabled="countdown > 0">{{
-                    countdown > 0 ?
-                      countdown +
-                      's 后重新获取' : '获取验证码' }}</el-button>
+            countdown > 0 ?
+              countdown +
+              's 后重新获取' : '获取验证码' }}</el-button>
               </el-input>
             </el-form-item>
             <el-form-item prop="newPassword">
@@ -183,8 +184,8 @@ export default {
   mounted() {
     this.getTempleteIdInfothis()
     // 从本地拿出记住密码的信息
-    const loginInfo =  localStorage.getItem("loginInfo")
-    if(loginInfo){
+    const loginInfo = localStorage.getItem("loginInfo")
+    if (loginInfo) {
       this.loginInfo = JSON.parse(loginInfo)
       this.getCenterIdInfo()
       this.savePassword = true
@@ -229,7 +230,7 @@ export default {
         username: "",
         verifyCode: ""
       },
-      savePassword:false,
+      savePassword: false,
       countdown: 0, // 倒计时
       dialogLoginVisible: false,//d登录弹窗的显示隐藏变量
       registerRules: {
@@ -436,12 +437,12 @@ export default {
       this.sysCenters = data
     },
     // 记住密码状态改变后
-    savePasswordChange(e){
-      if(this.savePassword){
-        localStorage.setItem("loginInfo",JSON.stringify({
+    savePasswordChange(e) {
+      if (this.savePassword) {
+        localStorage.setItem("loginInfo", JSON.stringify({
           ...this.loginInfo
         }))
-      }else{
+      } else {
         localStorage.removeItem("loginInfo")
       }
     }
@@ -485,7 +486,7 @@ export default {
   text-align: left;
   width: 100%;
   padding: 5px;
-  transform: translateY(45%);
+  transform: translateY(30%);
   box-sizing: border-box;
   /* 防止内边距撑大容器 */
   padding-left: 15%;
@@ -604,11 +605,16 @@ export default {
   width: 35%;
   overflow: hidden;
   color: #ffffff;
-  padding-top: 14vh;
+  padding-top: 8vh;
   height: 100%;
 
   .image-title {
     color: rgba(100, 133, 223, 1);
+  }
+
+  .shadowed-image {
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
+    /* 水平偏移 垂直偏移 模糊半径 颜色 */
   }
 
   .image-phone {
