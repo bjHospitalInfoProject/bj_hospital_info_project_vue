@@ -38,7 +38,6 @@ export default {
     return {
       fileTemplate: '',
       templateOptions: [
-        { label: '模板1-数据', value: 'template' }
       ],
       excelData: {
         // header: null,
