@@ -210,16 +210,13 @@ export default {
         const link = document.createElement('a');
         link.style.display = 'none';
         document.body.appendChild(link);
-
         // 设置 <a> 元素的 href 属性为返回的文件地址
-        link.href = response;
-
+        link.href = data;
+        console.log(this.fileTemplate)
         // 如果需要，设置下载的文件名
         link.download = `${this.fileTemplate}_${timestamp}`;
-
         // 模拟点击 <a> 元素来触发文件下载
         link.click();
-
         // 移除 <a> 元素
         document.body.removeChild(link);
       }
