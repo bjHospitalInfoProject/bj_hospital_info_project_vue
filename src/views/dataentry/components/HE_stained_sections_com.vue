@@ -13,7 +13,7 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="HE染色ID:">
-                            <el-input :disabled="true" style="width:200px" size="mini" v-model="HEInfo.name"></el-input>
+                            <el-input :disabled="true" style="width:200px" size="mini" v-model="HEInfo.heStainingSliceId"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
