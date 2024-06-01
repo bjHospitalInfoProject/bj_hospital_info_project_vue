@@ -4,7 +4,7 @@
             <template slot="title">
                 <div slot="header" class="clearfix">
                     <span>病人详情信息</span>
-                    <el-button :disabled="!activeColl" v-if="editVis == true" style="float: right;margin-top: 5px;"
+                    <el-button :disabled="!collapseShow" v-if="editVis == true" style="float: right;margin-top: 5px;"
                         size="mini" type="success" @click.stop="editVis = false">编辑</el-button>
                     <el-button v-else style="float: right;margin-top: 5px;" size="mini" type="success"
                         @click.stop="saveOptions()">保存</el-button>
@@ -322,7 +322,6 @@ export default {
             regionData,
             codeToText,
             options: [],
-            activeColl:this.collapseShow?true:false,
             sexOptions: [
                 {
                     label: "男",
@@ -611,12 +610,12 @@ export default {
             this.detailInfo.district = value[2]
 
         },
-        activeCollChange(e){
-            console.log(e)
-            if(e == '1'){
-                this.activeColl = true
-            }else{
-                this.activeColl = false
+        activeCollChange(e) {
+            if (e == '1') {
+                this.$parent.collapseShow = true
+            } else {
+                this.$parent.collapseShow = false
+
             }
         }
     },
@@ -625,7 +624,7 @@ export default {
         detailInfo: Object,
         collapseShow: Boolean
     },
-   
+
     computed: {
         ...mapGetters([
             'centerId'
