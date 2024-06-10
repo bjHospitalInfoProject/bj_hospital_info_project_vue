@@ -148,6 +148,14 @@ const actions = {
 
 
     })
+  },
+  // remove token
+  refreshToken({commit},response) {
+
+    const { data } = response
+    removeToken() // must remove  token  first
+    commit('SET_TOKEN', data.token)
+    commit('RESET_STATE')
   }
 }
 

@@ -62,6 +62,7 @@ service.interceptors.response.use(
           store.dispatch('user/logout').then(() => {
             router.push(`/login?redirect=${this.$route.fullPath}`)
           })
+          return
         }
         // to re-login
         MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {

@@ -41,6 +41,8 @@ import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import Screenfull from '@/components/Screenfull'
+import { getToken, removeToken } from '@/utils/auth'
+import axios from 'axios';
 
 export default {
   components: {
@@ -55,7 +57,7 @@ export default {
     };
   },
   created() {
-    this.intervalId = setInterval(this.fetchData, 180000); // 五分钟后执行一次
+    this.intervalId = setInterval(this.fetchData, 30000); // 五分钟后执行一次
   },
   destroyed() {
     if (this.intervalId) {
@@ -78,10 +80,29 @@ export default {
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
     async fetchData() {
-      this.$store.dispatch('user/resetToken').then(() => {
-
-      }).catch(() => {
+      axios.get('https://vascularimprovement.com/medical/user/refreshToken', {
+        headers: {
+          'token': getToken()
+        }
       })
+        .then(response => {
+          console.log(response.data.data)
+          if (response.data.code != 0) {
+            logout()
+            removeToken()
+            return 
+          }
+          document.cookie = `token=${response.data.data}`
+          // document.cookie = `token2=123`
+          console.log(document.cookie)
+        })
+        .catch(error => {
+          console.error('Upload failed:', error);
+          // this.$message.error('图片上传失败！');
+          removeToken()
+          logout()
+        });
+
     }
   }
 }

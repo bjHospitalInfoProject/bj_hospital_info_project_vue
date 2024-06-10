@@ -645,7 +645,7 @@
 
 
                         <el-form-item label="基础 醛固酮/肾素：">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.baselineAldosteroneReninRatio"></el-input>
                         </el-form-item>
 
@@ -671,7 +671,7 @@
 
 
                         <el-form-item label="激发 醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.stimulatedAldosteroneReninRatio"></el-input>
                         </el-form-item>
 
@@ -697,7 +697,7 @@
 
 
                         <el-form-item label="左肾动脉取血-基础 醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.leftRenalArteryAldosteroneReninRatio"></el-input>
                         </el-form-item>
 
@@ -725,7 +725,7 @@
 
 
                         <el-form-item label="右肾动脉取血-基础 醛固酮/肾素：">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.rightRenalArteryAldosteroneReninRatio"></el-input>
                         </el-form-item>
 
@@ -751,7 +751,7 @@
 
 
                         <el-form-item label="肾上腹主动脉取血-醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.suprarenalAortaAldosteroneReninRatio"></el-input>
                         </el-form-item>
                     </el-col>
@@ -774,7 +774,7 @@
 
 
                         <el-form-item label="肾下腹主动脉取血-基础 醛固酮/肾素:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="true" style="width:100px" size="mini"
                                 v-model="laboratoryInfo.infrarenalAortaAldosteroneReninRatio"></el-input>
                         </el-form-item>
                         <el-form-item label="卵泡刺激素(FSH,mIU/L)：">

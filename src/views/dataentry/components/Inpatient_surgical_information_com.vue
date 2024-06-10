@@ -13,7 +13,7 @@
                 <el-row>
                     <el-col :span="12">
                         <el-form-item label="住院手术信息ID:">
-                            <el-input :disabled="editVis" style="width:220px" size="mini"
+                            <el-input :disabled="true" style="width:220px" size="mini"
                                 v-model="InpatientInfo.hospitalSurgeryInfoId"></el-input>
                         </el-form-item>
                     </el-col>

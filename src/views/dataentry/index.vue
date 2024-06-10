@@ -224,6 +224,9 @@ export default {
         async handleNodeClick(node) {
             //这里可以使用ajax请求后台，获取组织树的数据，转成json数组格式返回,result为返回的值
             //this.data=result.data;
+            console.log("111")
+
+            console.log(node)
 
             if (node.zindex == 3) {
                 console.log(node)
@@ -452,7 +455,7 @@ export default {
                     });
                     return;
                 }
-                console.log(node)
+                // console.log(node)
                 if (node.id == 1) {
                     this.$set(node, 'children', []);
                     const { data } = await getHospitalSurgeryPageInfo({
@@ -577,11 +580,16 @@ export default {
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
                         if (!node.children) {
+                            console.log(111111)
                             // 如果当前节点没有children数组，创建一个新数组
                             this.$set(node, 'children', []);
                         }
                         node.children.push(newLabResult);
                     });
+
+                    this.$forceUpdate()
+
+                    console.log(node.children)
                 } else if (node.id == 6) {
                     this.$set(node, 'children', []);
                     const { data } = await getFollowUpPageInfo({

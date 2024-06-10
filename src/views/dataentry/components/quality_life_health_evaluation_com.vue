@@ -131,7 +131,7 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.qualityInfo = data
-
+                // this.$parent.getPermissionsInfo()
             }
         },
     },

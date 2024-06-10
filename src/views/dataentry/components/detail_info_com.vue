@@ -23,8 +23,8 @@
                         </el-col>
 
                         <el-col :span="8" :lg="12" :xl="8">
-                            <el-form-item label="住院号">
-                                <el-input :disabled="true" style="width:200px" size="mini"
+                            <el-form-item label="病案号">
+                                <el-input :disabled="editVis" style="width:200px" size="mini"
                                     v-model="detailInfo.code"></el-input>
                             </el-form-item>
 
@@ -263,8 +263,8 @@
                     <el-row>
                         <el-col :span="24">
                             <el-form-item label="首次表现时间:">
-                                <el-input :disabled="editVis" v-model="detailInfo.initialSymptomsDate" type="textarea"
-                                    :rows="3" placeholder="请输入内容">
+                                <el-input :disabled="editVis" v-model="detailInfo.initialSymptomsDate"
+                                    placeholder="请输入内容">
                                 </el-input>
                             </el-form-item>
                         </el-col>
@@ -272,8 +272,8 @@
                     <el-row>
                         <el-col :span="24">
                             <el-form-item label="首次确诊时间:">
-                                <el-input :disabled="editVis" v-model="detailInfo.initialDiagnosisDate" type="textarea"
-                                    :rows="3" placeholder="请输入内容">
+                                <el-input :disabled="editVis" v-model="detailInfo.initialDiagnosisDate"
+                                    placeholder="请输入内容">
                                 </el-input>
                             </el-form-item>
                         </el-col>
@@ -282,7 +282,7 @@
                         <el-col :span="24">
                             <el-form-item label="首次确诊医院:">
                                 <el-input :disabled="editVis" v-model="detailInfo.initialDiagnosisHospital"
-                                    type="textarea" :rows="3" placeholder="请输入内容">
+                                    placeholder="请输入内容">
                                 </el-input>
                             </el-form-item>
                         </el-col>
