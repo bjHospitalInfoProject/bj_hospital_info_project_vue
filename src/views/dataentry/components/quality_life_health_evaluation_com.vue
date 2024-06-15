@@ -131,7 +131,12 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.qualityInfo = data
-                // this.$parent.getPermissionsInfo()
+                // this.$parent.handleNodeClick({
+                //     "zindex": 2,
+                //     "label": "生活质量健康评价",
+                //     "id": 5
+                // })
+                this.$parent.getPermissionsInfo()
             }
         },
     },
