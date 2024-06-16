@@ -884,13 +884,16 @@ export default {
             })
 
 
-            this.loadTree();
+            // this.loadTree();
 
         },
 
-        loadTree() {
-            this.getPermissionsInfo();
-        },
+        // loadTree() {
+        //     setTimeout(() => {
+        //         this.getPermissionsInfo();
+
+        //     }, 3000);
+        // },
         getDate() {
             const date = new Date();
             const month = (date.getMonth() + 1).toString().padStart(2, '0');
