@@ -3,7 +3,9 @@
         <dragDiv style="display: inline-block;" @change="widthChange">
             <div class="left-tree">
                 <el-tree highlight-current ref="elTree" check-on-click-node :current-node-key="currentKey" :data="tree"
-                    node-key="label" default-expand-all :expand-on-click-node="false" @node-click="handleNodeClick">
+                    node-key="label" default-expand-all :expand-on-click-node="false" :defaultProps="{
+                        children: 'children',
+                    }" @node-click="handleNodeClick">
                     <div slot-scope="{ node, data }" :title="node.label"
                         :class="'custom-tree-node tree-node-' + node.data.zindex">
                         <el-input class="tree-input-change" size="mini" v-if="node.data.zindex == 8"
@@ -13,9 +15,9 @@
                         <span style="float:right;">
                             <i @click.stop="addTree(node)"
                                 :class="node.data.zindex == 2 ? 'tree-icon el-icon-circle-plus-outline' : ''"></i>
-                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children
-            ? node.data.children.length :
-            node.data.childrenCount }}</span>
+                            <span v-if="node.data.zindex == 2" class="badge">{{ node.data.children.length > 0
+                                ? node.data.children.length :
+                                node.data.childrenCount }}</span>
                             <i @click.stop="delTree(node)"
                                 :class="node.data.zindex == 3 ? 'tree-icon el-icon-delete' : ''"></i>
                         </span>
@@ -224,9 +226,6 @@ export default {
         async handleNodeClick(node) {
             //这里可以使用ajax请求后台，获取组织树的数据，转成json数组格式返回,result为返回的值
             //this.data=result.data;
-            console.log("111")
-
-            console.log(node)
 
             if (node.zindex == 3) {
                 console.log(node)
@@ -570,7 +569,6 @@ export default {
                     });
                     // 循环遍历血样信息列表，并将每一项添加到当前节点的children数组中
                     data.data.forEach(obj => {
-                        console.log(obj);
                         const newLabResult = {
                             label: node.label + ' - ' + obj.createTime, // 使用血样信息的某些属性作为label
                             zindex: 3,
@@ -580,16 +578,13 @@ export default {
                         };
                         // 将新的实验室检验结果对象添加到当前节点的children数组中
                         if (!node.children) {
-                            console.log(111111)
                             // 如果当前节点没有children数组，创建一个新数组
                             this.$set(node, 'children', []);
                         }
                         node.children.push(newLabResult);
                     });
-
                     this.$forceUpdate()
 
-                    console.log(node.children)
                 } else if (node.id == 6) {
                     this.$set(node, 'children', []);
                     const { data } = await getFollowUpPageInfo({
@@ -887,6 +882,14 @@ export default {
                 this.collapseShow = false
                 this.defaultSelectId = node.data.id
             })
+
+
+            this.loadTree();
+
+        },
+
+        loadTree() {
+            this.getPermissionsInfo();
         },
         getDate() {
             const date = new Date();
@@ -1051,7 +1054,21 @@ export default {
                 templateId: this.templateId, groupId: this.groupId, centerId: this.centerId,
                 patientCode: this.$route.query.code
             })
-            this.tree = data
+
+
+            this.tree = JSON.parse(JSON.stringify(this.sortNoChildren(data)))
+        },
+
+        sortNoChildren(arr) {
+            arr.map(res => {
+                if (!res.children) {
+                    res.children = []
+                }
+                else {
+                    this.sortNoChildren(res.children)
+                }
+            })
+            return arr;
         },
         async getPaintDetalInfo() {
             const { data } = await getPatientPageInfoList({
