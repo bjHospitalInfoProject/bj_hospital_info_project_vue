@@ -211,6 +211,7 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.organizefrozenInfo = data
+                this.$parent.getPermissionsInfo()
 
             }
         },

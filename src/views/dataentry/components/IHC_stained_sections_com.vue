@@ -209,6 +209,8 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.IHCInfo = data
+                this.$parent.getPermissionsInfo()
+
             }
         },
     },

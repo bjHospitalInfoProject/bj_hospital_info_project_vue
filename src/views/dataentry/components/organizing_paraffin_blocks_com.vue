@@ -180,6 +180,8 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.organizingparaffinInfo = data
+                this.$parent.getPermissionsInfo()
+
             }
         },
     },

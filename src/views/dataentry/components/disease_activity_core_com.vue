@@ -853,7 +853,10 @@ export default {
             console.log(data)
             if (data) {
                 this.editVis = true
+             
                 this.$parent.diseaseInfo = data
+                this.$parent.getPermissionsInfo()
+
             }
         },
 

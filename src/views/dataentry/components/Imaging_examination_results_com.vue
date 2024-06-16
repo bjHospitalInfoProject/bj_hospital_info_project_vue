@@ -852,6 +852,7 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.imageInfo = data
+                this.$parent.getPermissionsInfo()
 
             }
         },

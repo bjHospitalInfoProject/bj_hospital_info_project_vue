@@ -195,6 +195,7 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.HEInfo = data
+                this.$parent.getPermissionsInfo()
 
             }
         },

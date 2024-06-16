@@ -203,6 +203,8 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.IFInfo = data
+                this.$parent.getPermissionsInfo()
+
             }
         },
     },

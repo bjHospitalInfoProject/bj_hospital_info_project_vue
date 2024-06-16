@@ -676,6 +676,7 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.followInfo = data
+                this.$parent.getPermissionsInfo()
 
             }
         },

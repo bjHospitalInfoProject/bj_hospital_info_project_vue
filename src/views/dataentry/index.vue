@@ -583,8 +583,6 @@ export default {
                         }
                         node.children.push(newLabResult);
                     });
-                    this.$forceUpdate()
-
                 } else if (node.id == 6) {
                     this.$set(node, 'children', []);
                     const { data } = await getFollowUpPageInfo({

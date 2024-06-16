@@ -1131,6 +1131,7 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.laboratoryInfo = data
+                this.$parent.getPermissionsInfo()
 
             }
         },

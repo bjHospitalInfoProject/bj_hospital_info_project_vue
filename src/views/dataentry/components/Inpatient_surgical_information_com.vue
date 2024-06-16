@@ -3024,6 +3024,7 @@ export default {
             if (data) {
                 this.editVis = true
                 this.$parent.InpatientInfo = data
+                this.$parent.getPermissionsInfo()
 
             }
         },
