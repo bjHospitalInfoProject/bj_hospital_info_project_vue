@@ -37,19 +37,19 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前组织单纯冻存冻存样本总管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.tissueSamplesCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前闭塞段单纯冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.blockedSamplesCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前搭桥段单纯冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.bridgeSamplesCount"></el-input>
                         </el-form-item>
                     </el-col>
@@ -57,19 +57,19 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前血管周围脂肪组织单纯冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.perivascularFatCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前血管周围淋巴结单纯冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.perivascularLymphCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前其他组织单纯冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.otherTissueCount"></el-input>
                         </el-form-item>
                     </el-col>
@@ -77,19 +77,19 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前组织RNAlater冻存冻存样本总管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.rnalaterCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前闭塞段RNAlater冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.blockedRnalaterCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前搭桥段RNAlater冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.bridgeRnalaterCount"></el-input>
                         </el-form-item>
                     </el-col>
@@ -97,19 +97,19 @@
                 <el-row>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前血管周围脂肪组织RNAlater冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.perivascularFatRnalaterCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前血管周围淋巴结RNAlater冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.perivascularLymphRnalaterCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8" :lg="12" :xl="8">
                         <el-form-item label="目前其他组织RNAlater冻存样本管数:">
-                            <el-input :disabled="editVis" style="width:100px" size="mini"
+                            <el-input :disabled="editVis" style="width:100px" size="mini" type="number"
                                 v-model="organizefrozenInfo.otherTissueRnalaterCount"></el-input>
                         </el-form-item>
                     </el-col>

@@ -109,7 +109,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
 
                             <el-form-item label="重建血管数：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                     v-model="detailInfo.vascularReconstructionCount"></el-input>
                             </el-form-item>
                         </el-col>
@@ -120,7 +120,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
 
                             <el-form-item label="介入手术次数：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                     v-model="detailInfo.interventionSurgeryCount"></el-input>
 
                             </el-form-item>
@@ -128,14 +128,14 @@
                         <el-col :span="8" :lg="12" :xl="8">
 
                             <el-form-item label="支架植入次数：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini"  type="number"
                                     v-model="detailInfo.stentImplantationCount"></el-input>
 
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="开刀手术次数：">
-                                <el-input :disabled="editVis" size="mini" style="width:200px"
+                                <el-input :disabled="editVis" size="mini" style="width:200px" type="number"
                                     v-model="detailInfo.surgicalCount"></el-input>
                             </el-form-item>
 
@@ -146,7 +146,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
 
                             <el-form-item label="桥血管(人工血管)数：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                     v-model="detailInfo.artificialBloodVesselCount"></el-input>
 
                             </el-form-item>
@@ -154,7 +154,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
 
                             <el-form-item label="桥血管(自体血管)数：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                     v-model="detailInfo.autologousBloodVesselCount"></el-input>
 
                             </el-form-item>
@@ -162,7 +162,7 @@
                         <el-col :span="8" :lg="12" :xl="8">
 
                             <el-form-item label="桥血管(人工、自体序贯)数：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                     v-model="detailInfo.bloodVesselCount"></el-input>
 
                             </el-form-item>
@@ -171,7 +171,7 @@
                     <el-row>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="杂交手术次数：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                     v-model="detailInfo.hybridSurgeryCount"></el-input>
 
                             </el-form-item>
@@ -205,14 +205,14 @@
                         <el-col :span="8" :lg="12" :xl="8">
 
                             <el-form-item label="随访电话1：">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" 
                                     v-model="detailInfo.followUpPhone1"></el-input>
 
                             </el-form-item>
                         </el-col>
                         <el-col :span="8" :lg="12" :xl="8">
                             <el-form-item label="随访电话2:">
-                                <el-input :disabled="editVis" style="width:200px" size="mini"
+                                <el-input :disabled="editVis" style="width:200px" size="mini" 
                                     v-model="detailInfo.followUpPhone2"></el-input>
 
                             </el-form-item>

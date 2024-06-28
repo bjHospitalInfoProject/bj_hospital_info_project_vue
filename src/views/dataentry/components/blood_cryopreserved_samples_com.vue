@@ -28,13 +28,13 @@
                 <el-row>
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="目前血浆样本管数:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                            <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                 v-model="bloodInfo.plasmaTubeCount"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="12" :lg="12" :xl="8">
                         <el-form-item label="目前白膜层样本管数:">
-                            <el-input :disabled="editVis" style="width:200px" size="mini"
+                            <el-input :disabled="editVis" style="width:200px" size="mini" type="number"
                                 v-model="bloodInfo.membraneTubeCount"></el-input>
                         </el-form-item>
                     </el-col>
